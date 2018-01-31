@@ -22,3 +22,7 @@ nav.mobile .left { display: -ms-flexbox; display: flex; }
 nav.mobile .right { text-align: right; }
 nav.mobile .middle { text-align: center; }
 nav.mobile .left, nav.mobile .right { width: 100px; }
+
+.colorList li { width: 1.5rem; height: 1.5rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); color: transparent; }
+
+.sizeList li { width: 2.5rem; height: 2.5rem; margin: 0 .5rem .5rem 0; line-height: 2.5rem; text-align: center; background-color: red; }
