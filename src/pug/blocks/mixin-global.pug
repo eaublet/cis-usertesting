@@ -1,0 +1,19 @@
+mixin colorSelector(colorSelected, colors)
+	.colorSelector
+		h5 Color
+			span.colorSelected!= colorSelected
+		ul.colorList.no-list
+			for c in colors
+				li(style="background-color: " + c[0] + "")!= c[1]
+
+mixin sizeSelector(sizes)
+	.sizeSelector
+		h5 Size
+			span.sizeSelected
+		ul.sizeList.no-list
+			for s in sizes
+				li!= s
+
+mixin pdpButtons()
+	.pdpButtons
+		a.btn.btn-full Add to cart

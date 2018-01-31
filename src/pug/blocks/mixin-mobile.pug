@@ -1,0 +1,23 @@
+mixin nav(surnav)
+	if surnav !== ''
+		.surnav.mobile!= surnav
+	nav.mobile
+		.left
+			.icon s
+			.icon#navBag b
+		.middle
+			.brand Brand
+		.right
+			.icon Menu
+
+
+
+
+mixin heroProduct(breadcrumb, productName, productPrice)
+	.m-heroProduct
+		ul.breadcrumb.no-list
+			each b in breadcrumb
+				li!= b
+		h1.productName!= productName
+		p.price $#{productPrice}
+

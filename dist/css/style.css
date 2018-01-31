@@ -1,0 +1,24 @@
+* { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body { margin: 0; padding: 0; }
+
+.no-list { list-style-type: none; padding: 0; margin: 0; }
+.no-list li { display: inline-block; }
+
+@font-face { font-family: "Dia"; font-style: "normal"; font-weight: 900; src: url("../fonts/Dia-Black.woff") format("woff"); }
+@font-face { font-family: "Dia"; font-style: "normal"; font-weight: 700; src: url("../fonts/Dia-Bold.woff") format("woff"); }
+@font-face { font-family: "Dia"; font-style: "normal"; font-weight: 500; src: url("../fonts/Dia-Regular.woff") format("woff"); }
+@font-face { font-family: "Dia"; font-style: "normal"; font-weight: 300; src: url("../fonts/Dia-Light.woff") format("woff"); }
+body { font-family: "Dia", "sans-serif"; }
+
+h1, h2, h3, h4, h5, h6, .header, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: "Dia", "sans-serif"; line-height: 1; margin: 0; }
+
+.surnav.mobile { display: block; text-align: center; padding: .125rem 0; font-size: .75rem; }
+
+nav.mobile { display: block; position: -webkit-sticky; position: sticky; top: 0; left: 0; width: 100%; height: 50px; background-color: #fafafa; border-color: #888; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; padding: 0 1rem; }
+nav.mobile .left { display: -ms-flexbox; display: flex; }
+nav.mobile .right { text-align: right; }
+nav.mobile .middle { text-align: center; }
+nav.mobile .left, nav.mobile .right { width: 100px; }

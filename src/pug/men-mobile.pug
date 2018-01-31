@@ -1,0 +1,19 @@
+//- TITLE
+- var pagetitle = 'Men Mobile'
+
+//- REGULAR INCLUDES
+include blocks/mixin-mobile.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body
+	+nav('Free shipping over $XX')
+	+heroProduct(["Men", "Footwear", "Boots"], "Beasien", 79.99)
+	+colorSelector("Black Patent", [["black", "Black Patent"], ["red", "Red Velvet"]])
+	+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11])
+	+pdpButtons
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+

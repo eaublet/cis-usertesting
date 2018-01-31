@@ -1,0 +1,43 @@
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+$path: '../fonts/';
+
+@include font-face('Dia', $path + 'Dia-Black', 900, 'normal', woff);
+@include font-face('Dia', $path + 'Dia-Bold', 700, 'normal', woff);
+@include font-face('Dia', $path + 'Dia-Regular', 500, 'normal', woff);
+@include font-face('Dia', $path + 'Dia-Light', 300, 'normal', woff);
+
+body{
+	font-family: $main-font;
+}
+
+h1, h2, h3, h4, h5, h6, .header, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: $alt-font;
+	line-height: 1;
+	margin: 0;
+}
