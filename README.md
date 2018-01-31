@@ -1,4 +1,5 @@
 # CIS Usertesting
 
-- `npm install`
+
+- `npm install`
 - Run `grunt watch`
