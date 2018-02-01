@@ -4,7 +4,10 @@ mixin colorSelector(colorSelected, colors)
 			span.colorSelected.label!= colorSelected
 		ul.colorList.no-list
 			for c in colors
-				li(style="background-color: " + c[0] + "")!= c[1]
+				if c[2]
+					li.active(style="background-image: url(/img/pdp/" + c[0] + ")")!= c[1]
+				else
+					li(style="background-image: url(/img/pdp/" + c[0] + ")")!= c[1]
 
 mixin sizeSelector(sizes)
 	.sizeSelector

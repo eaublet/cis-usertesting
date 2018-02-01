@@ -1,5 +1,5 @@
 (function() {
-  var initBuySticky, initNav, initPDP, log, sizeSelector;
+  var colorSelector, initBuySticky, initNav, initPDP, log, sizeSelector;
 
   log = function(msg) {
     return console.log(msg);
@@ -52,8 +52,19 @@
     });
   };
 
+  colorSelector = function() {
+    return $('.colorList li').click(function() {
+      $('.colorList li').each(function() {
+        return $(this).removeClass('active');
+      });
+      $(this).addClass('active');
+      return $('.colorSelected').html($(this).text());
+    });
+  };
+
   initPDP = function() {
-    return sizeSelector();
+    sizeSelector();
+    return colorSelector();
   };
 
   $(document).ready(function() {

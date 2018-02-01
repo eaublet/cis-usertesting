@@ -39,9 +39,17 @@ sizeSelector = () ->
 			$(@).removeClass 'active'
 		$(@).addClass 'active'
 		$('.sizeSelected').html($(@).text())
+
+colorSelector = () ->
+	$('.colorList li').click ->
+		$('.colorList li').each ->
+			$(@).removeClass 'active'
+		$(@).addClass 'active'
+		$('.colorSelected').html($(@).text())
  
 initPDP = () ->
 	sizeSelector()
+	colorSelector()
 
 $(document).ready ->
 	initNav()

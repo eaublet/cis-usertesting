@@ -55,7 +55,8 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .carousel .slide { position: relative; }
 .carousel .slide img { width: 100%; display: block; }
 
-.colorList li { width: 1.5rem; height: 1.5rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); color: transparent; }
+.colorList li { width: 2rem; height: 2rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); color: transparent; position: relative; background-size: cover; }
+.colorList li.active:before { content: ""; width: .5rem; height: .5rem; position: absolute; background-color: #fff; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%) rotate(45deg); transform: translate(-50%, -50%) rotate(45deg); }
 
 .sizeSelector { margin-top: 2rem; }
 
