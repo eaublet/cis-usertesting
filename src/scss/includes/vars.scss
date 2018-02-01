@@ -1,16 +1,25 @@
 $unit: 16px;
 
 // Colors
-$main-color: #123456;
-$alt-color: #654321;
-$black: #aaa;
+$main-color: #8C50C7;
+$alt-color: #3023AE;
+$alt2-color: #C86DD7;
+$black: #000;
 $darkest: #222;
 $dark: #444;
-$medium: #666;
-$light: #888;
-$lightest: #eee;
-$white: #fafafa;
+$medium: #888;
+$light: #ccc;
+$lightest: #D0D0D0;
+$cloud: #E5E5E5;
+$white: #fff;
 
+$main-gradient: linear-gradient(135deg, $alt-color 0%, $alt2-color 100%);
+
+
+// Animation
+$duration: 180ms;
+$longDuration: 280ms;
+$ease: cubic-bezier(0.19, 1, 0.22, 1);
 
 // Fonts
 $main-font: 'Dia', 'sans-serif';

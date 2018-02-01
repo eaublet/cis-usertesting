@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="6px" viewBox="0 0 4 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ico_chevron</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="PDP---Small-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-147.000000, -169.000000)">
+        <g id="breadcrumbs" transform="translate(15.000000, 151.000000)" fill="#999999">
+            <path d="M133.000867,18 C133.035559,18 133.063313,18.0138849 133.091067,18.0347122 L135.963573,20.9088805 C136.012142,20.9574776 136.012142,21.0407868 135.963573,21.0893839 L133.091067,23.9635522 C133.042498,24.0121493 132.959237,24.0121493 132.910668,23.9635522 C132.878289,23.2924501 132.878289,22.9407 132.910668,22.908302 L134.818734,20.9991322 L132.910668,19.0899624 C132.878289,19.0575644 132.878289,18.7058143 132.910668,18.0347122 C132.938422,18.0138849 132.966175,18 133.000867,18 Z" id="ico_chevron"></path>
+        </g>
+    </g>
+</svg>

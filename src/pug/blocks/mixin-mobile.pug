@@ -1,14 +1,26 @@
+mixin buySticky(productName, productPrice)
+	.buySticky
+		.left
+			p.productName!= productName
+			p.price $#{productPrice}
+		.right
+			a.btn.btn-gradient Select sizes
+
+
 mixin nav(surnav)
 	if surnav !== ''
 		.surnav.mobile!= surnav
 	nav.mobile
-		.left
-			.icon s
-			.icon#navBag b
-		.middle
-			.brand Brand
-		.right
-			.icon Menu
+		.navContent
+			.left
+				.icon: img(src="./img/global/ico_search.svg")
+				.icon#navBag: img(src="./img/global/ico_bagEmpty.svg")
+			.middle
+				.brand: img(src="./img/global/ico_brand.svg")
+			.right
+				.icon Menu
+		if block
+			block
 
 
 
@@ -18,6 +30,11 @@ mixin heroProduct(breadcrumb, productName, productPrice)
 		ul.breadcrumb.no-list
 			each b in breadcrumb
 				li!= b
-		h1.productName!= productName
-		p.price $#{productPrice}
+		.header.container
+			.content
+				h1.productName!= productName
+				p.price $#{productPrice}
+			.reviews: img(src="/img/pdp/reviews.png", width=75)
+		.carousel
+			.slide: img(src="/img/pdp/beasien_00.png")
 
