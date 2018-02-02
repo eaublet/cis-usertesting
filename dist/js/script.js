@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, showCart, showOverlay, sizeSelector, updateCart;
+  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, removeProduct, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart;
 
   log = function(msg) {
     return console.log(msg);
@@ -49,7 +49,7 @@
       });
       $(this).addClass('active');
       $('.sizeSelected').html($(this).text());
-      return window.product.size = $(this).text();
+      return $('.right > .btn-gradient').text('Add to Cart');
     });
   };
 
@@ -59,8 +59,7 @@
         return $(this).removeClass('active');
       });
       $(this).addClass('active');
-      $('.colorSelected').html($(this).text());
-      return window.product.color = $(this).text();
+      return $('.colorSelected').html($(this).text());
     });
   };
 
@@ -96,35 +95,107 @@
     $('#dir').empty();
     $('#bagCount').empty().html(products.length);
     return $.each(products, function(index) {
-      $('#dir').append($('<div>').addClass('whoWrap').text(this.name));
-      $('#dir').append($('<div>').addClass('whoWrap').text(this.price));
-      $('#dir').append($('<div>').addClass('whoWrap').text('Color: ' + this.color));
-      $('#dir').append($('<div>').addClass('whoWrap').text('Size: ' + this.size));
+      var productRowTmpl;
+      productRowTmpl = $('<div>').addClass('whoWrap').attr('data-index', index).html('<div>' + this.name + '</div><div>' + this.price + '</div><div>' + this.color + '</div><div>Size ' + this.size + '</div><div class="removeItem">Remove</div>');
+      $('#dir').append(productRowTmpl);
     });
   };
 
   addToCart = function() {
-    if ($('.colorList li').hasClass('active')) {
-      return $('.btn.addToCart').click(function() {
-        var color;
-        products[0] = {};
+    return $('.btn.addToCart').on('click', function(e) {
+      var addProduct, color, i, inArray, product, selectedSize;
+      log('Click fired');
+      e.stopPropagation();
+      e.preventDefault();
+      if ($('.sizeList li').hasClass('active')) {
+        product = {};
+        selectedSize = parseFloat($('.sizeList li.active').text());
         color = typeof product.color === 'undefined' ? $('.colorList li.active').text() : product.color;
-        this.product = {
-          name: $('h1.productName').text(),
-          price: $('p.price').first().text(),
-          color: color,
-          size: product.size
+        addProduct = function(product) {
+          return addToProductList(product);
         };
-        return addToProductList(this.product, 0);
-      });
-    }
+        inArray = false;
+        i = 0;
+        while (i < products.length) {
+          if (products[i]['size'] === selectedSize && products[i]['color'] === color) {
+            inArray = true;
+          }
+          i++;
+        }
+        if (inArray) {
+          showOverlay();
+          $('.c-cart-wrapper').removeClass('isHidden');
+          return $('.c-cart-wrapper').addClass('isVisible');
+        } else {
+          return addProduct({
+            name: window.product.name,
+            price: window.product.price,
+            color: color,
+            size: selectedSize,
+            active: true
+          });
+        }
+      } else {
+        return alert('Select a size first');
+      }
+    });
   };
 
-  addToProductList = function(product, index) {
-    products.splice(index, 1, product);
-    log('Product ' + product.name + ' added to Cart');
-    updateCart(window.products);
-    return log('Cart updated');
+  stickyBuyNow = function() {
+    return $('.right > .btn-gradient').on('click', function() {
+      var addProduct, color, i, inArray, product, selectedSize;
+      if ($('.sizeList li').hasClass('active')) {
+        product = {};
+        selectedSize = parseFloat($('.sizeList li.active').text());
+        color = typeof product.color === 'undefined' ? $('.colorList li.active').text() : product.color;
+        addProduct = function(product) {
+          return addToProductList(product);
+        };
+        inArray = false;
+        i = 0;
+        while (i < products.length) {
+          if (products[i]['size'] === selectedSize && products[i]['color'] === color) {
+            inArray = true;
+          }
+          i++;
+        }
+        if (inArray) {
+          showOverlay();
+          $('.c-cart-wrapper').removeClass('isHidden');
+          return $('.c-cart-wrapper').addClass('isVisible');
+        } else {
+          return addProduct({
+            name: window.product.name,
+            price: window.product.price,
+            color: color,
+            size: selectedSize,
+            active: true
+          });
+        }
+      } else {
+        return $('html, body').animate({
+          scrollTop: $('.colorList').position().top
+        }, 1000);
+      }
+    });
+  };
+
+  removeProduct = function() {
+    return $('body').on('click', '.removeItem', function() {
+      log($(this).parent());
+      return $(this).parent().remove();
+    });
+  };
+
+  addToProductList = function(product) {
+    if (product && product.active === true) {
+      products.push(product);
+      log('Product ' + product.name + ' added to Cart');
+      updateCart(products);
+      return log('Cart updated');
+    } else {
+      return console.log('Cart initialized');
+    }
   };
 
   quickAddToCart = function() {
@@ -133,7 +204,8 @@
         name: 'Ramaswamy',
         price: '49.99$',
         color: 'black',
-        size: 'one size'
+        size: 'one size',
+        active: true
       };
       return addToProductList(this.mixMatchProduct, 1);
     });
@@ -150,14 +222,25 @@
 
   initPDP = function() {
     window.products = [];
-    window.product = {};
+    window.product = {
+      name: $('h1.productName').text(),
+      price: $('p.price').first().text(),
+      active: false
+    };
     sizeSelector();
     colorSelector();
     showCart();
     closeCart();
     addToCart();
     checkout();
+<<<<<<< HEAD
     return quickAddToCart();
+=======
+    quickAddToCart();
+    addToProductList();
+    removeProduct();
+    return stickyBuyNow();
+>>>>>>> 1213f0a840a61e0f917f069c1b0935ee065b0a76
   };
 
   $(document).ready(function() {

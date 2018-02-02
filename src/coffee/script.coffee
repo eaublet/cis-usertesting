@@ -39,7 +39,8 @@ sizeSelector = () ->
 			$(@).removeClass 'active'
 		$(@).addClass 'active'
 		$('.sizeSelected').html($(@).text())
-		window.product.size = $(@).text()
+		$('.right > .btn-gradient').text('Add to Cart')
+		# window.product.size = $(@).text()
 
 colorSelector = () ->
 	$('.colorList li').click ->
@@ -47,7 +48,7 @@ colorSelector = () ->
 			$(@).removeClass 'active'
 		$(@).addClass 'active'
 		$('.colorSelected').html($(@).text())
-		window.product.color = $(@).text()
+		# window.product.color = $(@).text()
 
 showOverlay = () ->
 	$('.c-overlay').removeClass 'isHidden'
@@ -75,29 +76,83 @@ updateCart = (products) ->
 	$('#dir').empty()
 	$('#bagCount').empty().html(products.length)
 	$.each products, (index) ->
-		$('#dir').append $('<div>').addClass('whoWrap').text(@name)
-		$('#dir').append $('<div>').addClass('whoWrap').text(@price)
-		$('#dir').append $('<div>').addClass('whoWrap').text('Color: ' + @color)
-		$('#dir').append $('<div>').addClass('whoWrap').text('Size: ' + @size)
+		productRowTmpl = $('<div>').addClass('whoWrap').attr('data-index', index).html('<div>' + @name + '</div><div>' + @price + '</div><div>' + @color + '</div><div>Size ' + @size + '</div><div class="removeItem">Remove</div>')
+		$('#dir').append productRowTmpl
 		return
 
 addToCart = () ->
-	if $('.colorList li').hasClass('active')
-		$('.btn.addToCart').click ->
-			products[0] = {}
+	$('.btn.addToCart').on 'click', (e) ->
+		log('Click fired')
+		e.stopPropagation()
+		e.preventDefault()
+		if $('.sizeList li').hasClass('active')
+			product = {}
+			selectedSize = parseFloat($('.sizeList li.active').text())
 			color = if typeof(product.color) == 'undefined' then $('.colorList li.active').text() else product.color
-			@product = {name: $('h1.productName').text(), price: $('p.price').first().text(), color, size: product.size }
-			addToProductList(@product , 0)
+			addProduct = (product) ->
+				addToProductList(product)
 
-addToProductList = (product, index) ->
-	products.splice(index, 1, product)
-	log('Product ' + product.name + ' added to Cart')
-	updateCart(window.products)
-	log('Cart updated')
+			inArray = false
+			i = 0
+			while i < products.length
+				if products[i]['size'] == selectedSize and products[i]['color'] == color
+					inArray = true
+				i++
+
+			if inArray
+				showOverlay()
+				$('.c-cart-wrapper').removeClass 'isHidden'
+				$('.c-cart-wrapper').addClass 'isVisible'
+			else
+				addProduct({name: window.product.name, price: window.product.price, color: color, size: selectedSize, active: true })
+		else
+			alert('Select a size first')
+
+stickyBuyNow = () ->
+	$('.right > .btn-gradient').on 'click', () ->
+		if $('.sizeList li').hasClass('active')
+			product = {}
+			selectedSize = parseFloat($('.sizeList li.active').text())
+			color = if typeof(product.color) == 'undefined' then $('.colorList li.active').text() else product.color
+			addProduct = (product) ->
+				addToProductList(product)
+
+			inArray = false
+			i = 0
+			while i < products.length
+				if products[i]['size'] == selectedSize and products[i]['color'] == color
+					inArray = true
+				i++
+
+			if inArray
+				showOverlay()
+				$('.c-cart-wrapper').removeClass 'isHidden'
+				$('.c-cart-wrapper').addClass 'isVisible'
+			else
+				addProduct({name: window.product.name, price: window.product.price, color: color, size: selectedSize, active: true })
+		else
+			$('html, body').animate { scrollTop: $('.colorList').position().top }, 1000
+
+
+removeProduct = () ->
+	$('body').on 'click', '.removeItem',  () ->
+		log $(@).parent()
+		$(@).parent().remove()
+
+
+addToProductList = (product) ->
+	if product and product.active == true
+		products.push(product)
+		log('Product ' + product.name + ' added to Cart')
+		updateCart(products)
+		log('Cart updated')
+	else
+		console.log('Cart initialized')
+
 
 quickAddToCart = () ->
 	$('.btn.quickAddToCart').click ->
-		@mixMatchProduct = {name: 'Ramaswamy', price: '49.99$', color: 'black', size: 'one size' }
+		@mixMatchProduct = {name: 'Ramaswamy', price: '49.99$', color: 'black', size: 'one size', active: true }
 		addToProductList(@mixMatchProduct, 1)
 
 checkout = () ->
@@ -110,7 +165,8 @@ checkout = () ->
 
 initPDP = () ->
 	window.products = []
-	window.product = {}
+	window.product = {name: $('h1.productName').text(), price: $('p.price').first().text(), active: false}
+	# window.activeSize = 0
 	sizeSelector()
 	colorSelector()
 	showCart()
@@ -118,7 +174,13 @@ initPDP = () ->
 	addToCart()
 	checkout()
 	quickAddToCart()
+<<<<<<< HEAD
 	# addToProductList()
+=======
+	addToProductList()
+	removeProduct()
+	stickyBuyNow()
+>>>>>>> 1213f0a840a61e0f917f069c1b0935ee065b0a76
 
 $(document).ready ->
 	initNav()
