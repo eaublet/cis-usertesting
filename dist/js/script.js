@@ -48,7 +48,8 @@
         return $(this).removeClass('active');
       });
       $(this).addClass('active');
-      return $('.sizeSelected').html($(this).text());
+      $('.sizeSelected').html($(this).text());
+      return $('.right > .btn-gradient').text('Add to Cart');
     });
   };
 

@@ -39,6 +39,7 @@ sizeSelector = () ->
 			$(@).removeClass 'active'
 		$(@).addClass 'active'
 		$('.sizeSelected').html($(@).text())
+		$('.right > .btn-gradient').text('Add to Cart')
 		# window.product.size = $(@).text()
 
 colorSelector = () ->
