@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, showCart, showOverlay, sizeSelector, updateCart;
+  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, showCart, showOverlay, sizeSelector, updateCart;
 
   log = function(msg) {
     return console.log(msg);
@@ -77,7 +77,6 @@
   showCart = function() {
     if ($('.colorList li').hasClass('active')) {
       return $('#navBag').click(function() {
-        updateCart();
         showOverlay();
         $('.c-cart-wrapper').removeClass('isHidden');
         return $('.c-cart-wrapper').addClass('isVisible');
@@ -93,23 +92,50 @@
     });
   };
 
-  updateCart = function() {
-    var productName, productPrice;
-    productName = $('h1.productName').text();
-    productPrice = $('p.price').first().text();
-    $('[data-id="product-name"]').text(productName);
-    $('[data-qa-id="cart-summary-subtotal-value"]').text(productPrice);
-    $('[data-qa-id="product-final-price"]').text(productPrice);
-    $('[data-qa-id="product-size"').text('Size ' + product.size);
-    return $('[data-qa-id="product-style"]').text(product.color);
+  updateCart = function(products) {
+    $('#dir').empty();
+    return $.each(products, function(index) {
+      $('#dir').append($('<div>').addClass('whoWrap').text(this.name));
+      $('#dir').append($('<div>').addClass('whoWrap').text(this.price));
+      $('#dir').append($('<div>').addClass('whoWrap').text('Color: ' + this.color));
+      $('#dir').append($('<div>').addClass('whoWrap').text('Size: ' + this.size));
+    });
   };
 
   addToCart = function() {
     if ($('.colorList li').hasClass('active')) {
       return $('.btn.addToCart').click(function() {
-        return updateCart();
+        var color;
+        products[0] = {};
+        color = typeof product.color === 'undefined' ? $('.colorList li.active').text() : product.color;
+        this.product = {
+          name: $('h1.productName').text(),
+          price: $('p.price').first().text(),
+          color: color,
+          size: product.size
+        };
+        return addToProductList(this.product, 0);
       });
     }
+  };
+
+  addToProductList = function(product, index) {
+    products.splice(index, 1, product);
+    log('Product ' + product.name + ' added to Cart');
+    updateCart(window.products);
+    return log('Cart updated');
+  };
+
+  quickAddToCart = function() {
+    return $('.btn.quickAddToCart').click(function() {
+      this.mixMatchProduct = {
+        name: 'Ramaswamy',
+        price: '49.99$',
+        color: 'black',
+        size: 'one size'
+      };
+      return addToProductList(this.mixMatchProduct, 1);
+    });
   };
 
   checkout = function() {
@@ -122,13 +148,16 @@
   };
 
   initPDP = function() {
+    window.products = [];
     window.product = {};
     sizeSelector();
     colorSelector();
     showCart();
     closeCart();
     addToCart();
-    return checkout();
+    checkout();
+    quickAddToCart();
+    return addToProductList();
   };
 
   $(document).ready(function() {

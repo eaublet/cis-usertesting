@@ -60,7 +60,7 @@ closeOverlay = () ->
 showCart = () ->
 	if $('.colorList li').hasClass('active')
 		$('#navBag').click ->
-			updateCart()
+			# updateCart()
 			showOverlay()
 			$('.c-cart-wrapper').removeClass 'isHidden'
 			$('.c-cart-wrapper').addClass 'isVisible'
@@ -71,20 +71,33 @@ closeCart = () ->
 		$('.c-cart-wrapper').removeClass 'isVisible'
 		$('.c-cart-wrapper').addClass 'isHidden'
 
-updateCart = () ->
-	productName = $('h1.productName').text()
-	productPrice = $('p.price').first().text()
-	$('[data-id="product-name"]').text(productName)
-	$('[data-qa-id="cart-summary-subtotal-value"]').text(productPrice)
-	$('[data-qa-id="product-final-price"]').text(productPrice)
-	$('[data-qa-id="product-size"').text('Size ' + product.size)
-	$('[data-qa-id="product-style"]').text(product.color)
-
+updateCart = (products) ->
+	$('#dir').empty()
+	$.each products, (index) ->
+		$('#dir').append $('<div>').addClass('whoWrap').text(@name)
+		$('#dir').append $('<div>').addClass('whoWrap').text(@price)
+		$('#dir').append $('<div>').addClass('whoWrap').text('Color: ' + @color)
+		$('#dir').append $('<div>').addClass('whoWrap').text('Size: ' + @size)
+		return
 
 addToCart = () ->
 	if $('.colorList li').hasClass('active')
 		$('.btn.addToCart').click ->
-			updateCart()
+			products[0] = {}
+			color = if typeof(product.color) == 'undefined' then $('.colorList li.active').text() else product.color
+			@product = {name: $('h1.productName').text(), price: $('p.price').first().text(), color, size: product.size }
+			addToProductList(@product , 0)
+
+addToProductList = (product, index) ->
+	products.splice(index, 1, product)
+	log('Product ' + product.name + ' added to Cart')
+	updateCart(window.products)
+	log('Cart updated')
+
+quickAddToCart = () ->
+	$('.btn.quickAddToCart').click ->
+		@mixMatchProduct = {name: 'Ramaswamy', price: '49.99$', color: 'black', size: 'one size' }
+		addToProductList(@mixMatchProduct, 1)
 
 checkout = () ->
 	$('.goToCheckout').click ->
@@ -94,8 +107,8 @@ checkout = () ->
 		$('.c-checkout__wrapper').addClass 'isVisible'
 
 
-
 initPDP = () ->
+	window.products = []
 	window.product = {}
 	sizeSelector()
 	colorSelector()
@@ -103,6 +116,8 @@ initPDP = () ->
 	closeCart()
 	addToCart()
 	checkout()
+	quickAddToCart()
+	addToProductList()
 
 $(document).ready ->
 	initNav()
