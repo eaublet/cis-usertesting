@@ -106,6 +106,32 @@ addToCart = () ->
 		else
 			alert('Select a size first')
 
+stickyBuyNow = () ->
+	$('.right > .btn-gradient').on 'click', () ->
+		if $('.sizeList li').hasClass('active')
+			product = {}
+			selectedSize = parseFloat($('.sizeList li.active').text())
+			color = if typeof(product.color) == 'undefined' then $('.colorList li.active').text() else product.color
+			addProduct = (product) ->
+				addToProductList(product)
+
+			inArray = false
+			i = 0
+			while i < products.length
+				if products[i]['size'] == selectedSize and products[i]['color'] == color
+					inArray = true
+				i++
+
+			if inArray
+				showOverlay()
+				$('.c-cart-wrapper').removeClass 'isHidden'
+				$('.c-cart-wrapper').addClass 'isVisible'
+			else
+				addProduct({name: window.product.name, price: window.product.price, color: color, size: selectedSize, active: true })
+		else
+			$('html, body').animate { scrollTop: $('.colorList').position().top }, 1000
+
+
 removeProduct = () ->
 	$('body').on 'click', '.removeItem',  () ->
 		log $(@).parent()
@@ -148,6 +174,7 @@ initPDP = () ->
 	quickAddToCart()
 	addToProductList()
 	removeProduct()
+	stickyBuyNow()
 
 $(document).ready ->
 	initNav()

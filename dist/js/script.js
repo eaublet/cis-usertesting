@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, removeProduct, showCart, showOverlay, sizeSelector, updateCart;
+  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, removeProduct, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart;
 
   log = function(msg) {
     return console.log(msg);
@@ -139,6 +139,45 @@
     });
   };
 
+  stickyBuyNow = function() {
+    return $('.right > .btn-gradient').on('click', function() {
+      var addProduct, color, i, inArray, product, selectedSize;
+      if ($('.sizeList li').hasClass('active')) {
+        product = {};
+        selectedSize = parseFloat($('.sizeList li.active').text());
+        color = typeof product.color === 'undefined' ? $('.colorList li.active').text() : product.color;
+        addProduct = function(product) {
+          return addToProductList(product);
+        };
+        inArray = false;
+        i = 0;
+        while (i < products.length) {
+          if (products[i]['size'] === selectedSize && products[i]['color'] === color) {
+            inArray = true;
+          }
+          i++;
+        }
+        if (inArray) {
+          showOverlay();
+          $('.c-cart-wrapper').removeClass('isHidden');
+          return $('.c-cart-wrapper').addClass('isVisible');
+        } else {
+          return addProduct({
+            name: window.product.name,
+            price: window.product.price,
+            color: color,
+            size: selectedSize,
+            active: true
+          });
+        }
+      } else {
+        return $('html, body').animate({
+          scrollTop: $('.colorList').position().top
+        }, 1000);
+      }
+    });
+  };
+
   removeProduct = function() {
     return $('body').on('click', '.removeItem', function() {
       log($(this).parent());
@@ -194,7 +233,8 @@
     checkout();
     quickAddToCart();
     addToProductList();
-    return removeProduct();
+    removeProduct();
+    return stickyBuyNow();
   };
 
   $(document).ready(function() {
