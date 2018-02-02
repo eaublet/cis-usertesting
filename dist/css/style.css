@@ -34,12 +34,12 @@ nav.mobile .navContent .left .icon:not(:last-child) { -ms-transform: translate(0
 nav.mobile .navContent .right { text-align: right; vertical-align: middle; }
 nav.mobile .navContent .middle { text-align: center; }
 nav.mobile .navContent .left, nav.mobile .navContent .right { width: 100px; }
-nav.mobile .buySticky { height: 60px; width: 100%; background-color: #fff; border-bottom: 1px solid #ccc; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; padding: 0 1rem; z-index: 8; position: absolute; -ms-transform: translate(0, -100%); transform: translate(0, -100%); will-change: transform; transition: transform 280ms cubic-bezier(0.19, 1, 0.22, 1); }
+nav.mobile .buySticky { height: 60px; width: 100%; background-color: #fff; border-bottom: 1px solid #ccc; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; padding: 0 1rem; z-index: 8; position: absolute; -ms-transform: translate(0, -100%); transform: translate(0, -100%); will-change: transform; transition: transform 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 nav.mobile .buySticky .productName { margin: 0; font-size: 1.125rem; font-weight: 400; }
 nav.mobile .buySticky .price { margin: 0; color: #888; font-size: 0.875rem; }
 nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: translate(0, 0); }
 
-.headroom { will-change: transform; transition: transform 280ms cubic-bezier(0.19, 1, 0.22, 1); position: -webkit-sticky; position: sticky; }
+.headroom { will-change: transform; transition: transform 400ms cubic-bezier(0.77, 0, 0.175, 1); position: -webkit-sticky; position: sticky; }
 .headroom--pinned { -ms-transform: translate(0, 0); transform: translate(0, 0); }
 .headroom--unpinned { -ms-transform: translate(0, -75px); transform: translate(0, -75px); }
 

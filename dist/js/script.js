@@ -94,6 +94,7 @@
 
   updateCart = function(products) {
     $('#dir').empty();
+    $('#bagCount').empty().html(products.length);
     return $.each(products, function(index) {
       $('#dir').append($('<div>').addClass('whoWrap').text(this.name));
       $('#dir').append($('<div>').addClass('whoWrap').text(this.price));
@@ -156,8 +157,7 @@
     closeCart();
     addToCart();
     checkout();
-    quickAddToCart();
-    return addToProductList();
+    return quickAddToCart();
   };
 
   $(document).ready(function() {

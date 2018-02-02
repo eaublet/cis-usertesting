@@ -73,6 +73,7 @@ closeCart = () ->
 
 updateCart = (products) ->
 	$('#dir').empty()
+	$('#bagCount').empty().html(products.length)
 	$.each products, (index) ->
 		$('#dir').append $('<div>').addClass('whoWrap').text(@name)
 		$('#dir').append $('<div>').addClass('whoWrap').text(@price)
@@ -117,7 +118,7 @@ initPDP = () ->
 	addToCart()
 	checkout()
 	quickAddToCart()
-	addToProductList()
+	# addToProductList()
 
 $(document).ready ->
 	initNav()

@@ -18,8 +18,8 @@ $main-gradient: linear-gradient(135deg, $alt-color 0%, $alt2-color 100%);
 
 // Animation
 $duration: 180ms;
-$longDuration: 280ms;
-$ease: cubic-bezier(0.19, 1, 0.22, 1);
+$longDuration: 400ms;
+$ease: cubic-bezier(0.77, 0, 0.175, 1);
 
 // Fonts
 $main-font: 'Dia', 'sans-serif';

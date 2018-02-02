@@ -14,7 +14,9 @@ mixin nav(surnav)
 		.navContent
 			.left
 				.icon: img(src="./img/global/ico_search.svg")
-				.icon#navBag: img(src="./img/global/ico_bagEmpty.svg")
+				.icon#navBag
+					img(src="./img/global/ico_bagEmpty.svg")
+					span#bagCount
 			.middle
 				.brand: img(src="./img/global/ico_brand.svg")
 			.right
