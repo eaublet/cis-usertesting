@@ -72,9 +72,14 @@ closeCart = () ->
 		$('.c-cart-wrapper').removeClass 'isVisible'
 		$('.c-cart-wrapper').addClass 'isHidden'
 
+updateCartCount = (count) ->
+	$('#bagCount').empty().html(count)
 updateCart = (products) ->
 	$('#dir').empty()
-	$('#bagCount').empty().html(products.length)
+	$('nav.mobile').addClass('headroom--pinned').removeClass('headroom--unpinned')
+	setTimeout ( ->
+		updateCartCount(products.length)
+	), 640
 	$.each products, (index) ->
 		productRowTmpl = $('<div>').addClass('whoWrap').attr('data-index', index).html('<div>' + @name + '</div><div>' + @price + '</div><div>' + @color + '</div><div>Size ' + @size + '</div><div class="removeItem">Remove</div>')
 		$('#dir').append productRowTmpl

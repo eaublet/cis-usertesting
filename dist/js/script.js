@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, removeProduct, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart;
+  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, removeProduct, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount;
 
   log = function(msg) {
     return console.log(msg);
@@ -91,9 +91,16 @@
     });
   };
 
+  updateCartCount = function(count) {
+    return $('#bagCount').empty().html(count);
+  };
+
   updateCart = function(products) {
     $('#dir').empty();
-    $('#bagCount').empty().html(products.length);
+    $('nav.mobile').addClass('headroom--pinned').removeClass('headroom--unpinned');
+    setTimeout((function() {
+      return updateCartCount(products.length);
+    }), 640);
     return $.each(products, function(index) {
       var productRowTmpl;
       productRowTmpl = $('<div>').addClass('whoWrap').attr('data-index', index).html('<div>' + this.name + '</div><div>' + this.price + '</div><div>' + this.color + '</div><div>Size ' + this.size + '</div><div class="removeItem">Remove</div>');

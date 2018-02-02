@@ -27,7 +27,7 @@ mixin nav(surnav)
 
 
 
-mixin heroProduct(breadcrumb, productName, productPrice, saleMsg)
+mixin heroProduct(breadcrumb, img, productName, productPrice, saleMsg)
 	.m-heroProduct
 		ul.breadcrumb.no-list
 			each b in breadcrumb
@@ -42,7 +42,7 @@ mixin heroProduct(breadcrumb, productName, productPrice, saleMsg)
 					p.saleMsg!= saleMsg
 
 		.carousel
-			.slide: img(src="/img/pdp/beasien_00.png")
+			.slide: img(src="/img/pdp/" + img)
 			ul.pagination.no-list
 				li.active
 				li
@@ -64,19 +64,19 @@ mixin productDetails(imgA, imgB, imgSocial, handle, likes)
 mixin survey(title, iA, tA, vA, iB, tB, vB, iC, tC, vC)
 	.survey
 		h2= title
-		ul.surveyOptions
+		ul.surveyOptions.no-list
 			li
-				.icon
+				.icon: img(src="/img/pdp/" + iA)
 				h5= tA
 				span.voted #{vA}% agree
 				a.btn.btn-primary.btn-small Vote
 			li
-				.icon
+				.icon: img(src="/img/pdp/" + iB)
 				h5= tB
 				span.voted #{vB}% agree
 				a.btn.btn-primary.btn-small Vote
 			li
-				.icon
+				.icon: img(src="/img/pdp/" + iC)
 				h5= tC
 				span.voted #{vC}% agree
 				a.btn.btn-primary.btn-small Vote
@@ -84,25 +84,28 @@ mixin survey(title, iA, tA, vA, iB, tB, vB, iC, tC, vC)
 mixin reviews(title)
 	.reviews
 		h2 #{title}
-			img(src="/img/pdp/reviews.png")
+			img(src="/img/pdp/reviews.png", width=93)
 		ul.reviewsList
 			li
 				.left Sizing
 				.right
 					.low Small
-					.bar(style="left: 45%")
+					.bar
+						span(style="left: 45%")
 					.high Big
 			li
 				.left Width
 				.right
 					.low Narrow
-					.bar(style="left: 54%")
+					.bar
+						span(style="left: 54%")
 					.high Wide
 			li
 				.left Calf Width
 				.right
 					.low Narrow
-					.bar(style="left: 54%")
+					.bar
+						span(style="left: 54%")
 					.high Wide
 		.row.gutter
 			.column: a.btn.btn-primary.btn-full.btn-big Write a review
@@ -116,6 +119,19 @@ mixin overlay()
 				svg.c-icon(aria-hidden="true" fill="currentColor" focusable="false" version="1.1" viewbox="0 0 400 400")
 					path(role="presentation" d="M393.1,359.4L233.5,200L393.2,40.5c4.4-4.4,6.8-10.3,6.8-16.6c0-6.3-2.5-12.2-7-16.6c-4.4-4.4-10.6-7-16.8-7c-6.3,0-12.2,2.4-16.4,6.8L200,166.7L40.3,7.3c-4.4-4.4-10.4-6.9-16.7-6.9S11.3,2.8,6.9,7.3c-9.3,9.3-9.2,23.9,0.2,33.2l159.7,159.3L7.1,359.4c-4.5,4.5-7,10.5-7,16.9c0,6.2,2.4,12.1,6.9,16.5c4.4,4.4,10.4,6.9,16.7,6.9c6.2,0,12.1-2.4,16.7-6.9l159.9-159.5l159.5,159.3c4.5,4.5,10.5,7,16.8,7c6.1,0,12.1-2.5,16.4-6.8c4.4-4.4,6.9-10.3,6.9-16.5C400,370,397.6,364,393.1,359.4z")
 		block
+
+mixin mixnmatch(title, mainImg, altImg, altTitle, price)
+	.grid.border-top.mixnmatch.border-bottom
+		.cell.single
+			h2!= title
+		.cell.single
+			img.full(src="/img/pdp/" + mainImg)
+		.cell.double
+			img.full(src="/img/pdp/" + altImg)
+			.matchDetails
+				.title= altTitle
+				.price $#{price}
+			a.btn.btn-gradient.quickAddToCart Quick add
 
 mixin cart()
 	.c-cart-wrapper

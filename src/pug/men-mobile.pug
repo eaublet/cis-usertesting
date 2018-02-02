@@ -8,9 +8,9 @@ include blocks/std_head.pug
 include blocks/std_css.pug
 
 body
-	+nav('Free shipping over $XX')
+	+nav('Free shipping for pick-up in-store & online orders of $45+')
 		+buySticky("Beasien", 79.99)
-	+heroProduct(["Men", "Footwear", "Boots"], "Beasien", 79.99, '30% off at checkout')
+	+heroProduct(["Men", "Footwear", "Boots"], 'lintun_a.jpg', "Beasien", 79.99, '30% off at checkout')
 	.container
 		+colorSelector("Black Leopard", [["textureA.png", "Black Leopard", true], ["textureB.png", "Black Leather"]])
 		+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11])
@@ -35,10 +35,36 @@ body
 			ul.listDetails
 				li Heel Height: 4"
 		hr
-		+survey('Great For', '', 'Date night', 64, '', 'Special occasion', 35, '', 'All-day wear', 17)
+		+survey('Great For', 'champaign.svg', 'Date night', 64, 'dress.svg', 'Special occasion', 35, 'allday.svg', 'All-day wear', 17)
 		hr
 		+reviews('Reviews')
+	+mixnmatch('Mix &<br/>Match', 'lintun_a.jpg', 'belt.jpg', 'Ramaswamy', 19.99)
+	h2 Similar Styles
+	.grid.border-top
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_1.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_2.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_3.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_4.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
 
+		
+	.footer
+		img(src="/img/FooterMobile.png")
 	+overlay
 		+cart
 		+checkout

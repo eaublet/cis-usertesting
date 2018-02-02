@@ -2,7 +2,7 @@
 
 html { font-size: 16px; }
 
-body { margin: 0; padding: 0; height: 300vh; }
+body { margin: 0; padding: 0; }
 
 .no-list { list-style-type: none; padding: 0; margin: 0; }
 .no-list li { display: inline-block; }
@@ -29,7 +29,8 @@ p.lead { margin: 2rem 0; line-height: 1.5; }
 
 h1 { font-size: 1.875rem; margin-bottom: 0; }
 
-h2 { font-size: 1.875rem; text-align: center; margin: 1rem 0; font-weight: 500; }
+h2 { font-size: 1.875rem; text-align: center; margin: 1rem 0 2rem; font-weight: 500; }
+h2 img { display: block; margin: .45rem auto; }
 
 h5 { font-weight: 700; font-size: 0.875rem; margin-bottom: .5rem; }
 h5 .label { font-weight: 400; margin-left: .25rem; }
@@ -95,14 +96,45 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 
 .grid { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1px; background-color: #E5E5E5; }
 .grid.border-top { border-top: 1px solid #E5E5E5; }
+.grid.border-bottom { border-bottom: 1px solid #E5E5E5; }
 .grid .cell { background-color: #fff; }
 .grid .cell.single { grid-row: span 1; grid-column: span 1; }
 .grid .cell.double { grid-row: span 2; grid-column: span 2; }
 .grid .cell img.full { width: 100%; display: block; }
 .grid .cell img.full.padded { padding: .75rem; }
+.grid .cell.product { position: relative; }
+.grid .cell.product .details { color: #666; font-size: .875rem; position: absolute; bottom: 1rem; left: 1rem; }
 
 .socialInfo { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; padding-top: 1rem; padding-left: 1rem; font-size: .875rem; }
 .socialInfo img { width: 0.75rem; -ms-transform: translate(-0.35rem, 1px); transform: translate(-0.35rem, 1px); }
+
+.surveyOptions { display: -ms-flexbox; display: flex; -ms-flex-pack: distribute; justify-content: space-around; }
+.surveyOptions li { text-align: center; }
+.surveyOptions li .icon { height: 3.5rem; line-height: 3.5rem; }
+.surveyOptions li h5 { margin: 0; }
+.surveyOptions li span.voted { color: #666; font-size: 0.875rem; }
+.surveyOptions li .btn { margin-top: 1rem; }
+
+.reviews .reviewsList { list-style-type: none; margin: 0 0 2rem; padding: 0; width: 100%; font-size: 0.875rem; }
+.reviews .reviewsList li { width: 100%; display: -ms-flexbox; display: flex; margin-bottom: 1rem; }
+.reviews .reviewsList li .left, .reviews .reviewsList li .right { display: -ms-flexbox; display: flex; }
+.reviews .reviewsList li .left { color: #666; width: 5.5rem; }
+.reviews .reviewsList li .right { -ms-flex-positive: 1; flex-grow: 1; }
+.reviews .reviewsList li .right .low { width: 4rem; }
+.reviews .reviewsList li .right .high { width: 2.5rem; }
+.reviews .reviewsList li .right .bar { height: 7px; position: relative; top: 3px; border-left: 1px solid #E5E5E5; border-right: 1px solid #E5E5E5; margin-right: .5rem; display: block; -ms-flex-positive: 1; flex-grow: 1; }
+.reviews .reviewsList li .right .bar span { width: 7px; height: 7px; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); background-color: #000; position: absolute; top: 0; }
+.reviews .reviewsList li .right .bar:before { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: #E5E5E5; }
+
+.mixnmatch { margin-top: 4rem; margin-bottom: 4rem; position: relative; }
+.mixnmatch h2 { text-align: left; padding-left: 1rem; }
+.mixnmatch:before { position: absolute; top: calc(100% / 3); left: 50%; background-image: url(../img/pdp/mixnmatch.png); width: 65px; height: 65px; z-index: 3; content: ''; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-size: cover; }
+.mixnmatch .double { position: relative; }
+.mixnmatch .double .matchDetails { color: #666; font-size: .875rem; position: absolute; bottom: 1rem; left: 1rem; }
+.mixnmatch .double a { position: absolute; right: 1rem; bottom: 1rem; }
+
+.footer { width: 100%; }
+.footer img { width: 100%; display: block; }
 
 .colorList li { width: 2rem; height: 2rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); color: transparent; position: relative; background-size: cover; }
 .colorList li.active:before { content: ''; width: 110%; height: 110%; position: absolute; background-color: transparent; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); box-shadow: inset 0 0 0px 5px #fff; border: 1px solid #000; }
