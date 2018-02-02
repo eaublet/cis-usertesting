@@ -233,14 +233,10 @@
     closeCart();
     addToCart();
     checkout();
-<<<<<<< HEAD
-    return quickAddToCart();
-=======
     quickAddToCart();
     addToProductList();
     removeProduct();
     return stickyBuyNow();
->>>>>>> 1213f0a840a61e0f917f069c1b0935ee065b0a76
   };
 
   $(document).ready(function() {
