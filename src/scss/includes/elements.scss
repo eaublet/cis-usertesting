@@ -26,7 +26,20 @@
   }
 }
 .sizeSelector {
-  margin-top: 2rem;
+  margin: 2rem 0;
+  
+  .sizeOptions{
+    font-size: .875rem;
+    margin-top: .5rem;
+    a:not(:last-child){
+      margin-right: 1rem;
+    }
+    .truefit{
+      &:before{
+        background-image: url(../img/pdp/TrueFit.svg);
+      }
+    }
+  }
 }
 .sizeList {
   li {
@@ -37,7 +50,7 @@
     text-align: center;
     font-size: 0.875rem;
     background-color: $white;
-    border: 1px solid $light;
+    border: 1px solid $black;
     &.active {
       background: $black;
       border-color: $black;
@@ -49,6 +62,24 @@
 
 .pdpButtons {
   margin-bottom: 0.925rem;
+  .shareOptions{
+    font-size: .875rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    a:not(:last-child){
+      margin-right: 1rem;
+    }
+    .save{
+      &:before{
+        background-image: url(../img/pdp/save.svg);
+      }
+    }
+     .share{
+      &:before{
+        background-image: url(../img/pdp/share.svg);
+      }
+    }
+  }
 }
 
 .btn {
@@ -73,4 +104,11 @@
   &.btn-primary {
     border: 1px solid $black;
   }
+}
+
+hr{
+  height: 1px;
+  background-color: $cloud;
+  margin: 3rem 0;
+  border: 0;
 }

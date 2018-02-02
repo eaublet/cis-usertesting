@@ -43,10 +43,23 @@ h1, h2, h3, h4, h5, h6, .header, .h1, .h2, .h3, .h4, .h5, .h6{
 }
 p{
 	margin: 0;
+	&.lead{
+		margin: 2rem 0;
+		line-height: 1.5;
+	}
 }
 h1{
 	font-size: 1.875rem;
 	margin-bottom: 0;
+}
+h2{
+	font-size: 1.875rem;
+	text-align: center;
+	margin: 1rem 0;
+	font-weight: 500;
+}
+h4{
+
 }
 h5{
 	font-weight: 700;
@@ -55,5 +68,33 @@ h5{
 	.label{
 		font-weight: 400;
 		margin-left: .25rem;
+	}
+}
+ul.listDetails{
+	list-style-type: none;
+	margin: 0 0 2rem;
+	padding: 0;
+	font-size: 0.875rem;
+	li:not(:last-child){
+		margin-bottom: .5rem;
+	}
+}
+
+.link{
+	border-bottom: 1px solid $lightest;
+	font-size: 1em;
+	&.icon{
+		position: relative;
+		&:before{
+		  background-image: url(../img/pdp/TrueFit.svg);
+		  background-repeat: no-repeat;
+		  width: 1rem;
+		  height: 1rem;
+		  background-position: left 50%;
+		  content: '';
+		  position: absolute;
+		  left: -1.25rem;
+		}
+		margin-left: 1.25rem;
 	}
 }

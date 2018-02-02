@@ -10,11 +10,34 @@ include blocks/std_css.pug
 body
 	+nav('Free shipping over $XX')
 		+buySticky("Beasien", 79.99)
-	+heroProduct(["Men", "Footwear", "Boots"], "Beasien", 79.99)
+	+heroProduct(["Men", "Footwear", "Boots"], "Beasien", 79.99, '30% off at checkout')
 	.container
 		+colorSelector("Black Leopard", [["textureA.png", "Black Leopard", true], ["textureB.png", "Black Leather"]])
 		+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11])
 		+pdpButtons
+	+productDetails('lintun_b.jpg', 'lintun_c.jpg', 'lintun_social.jpg', 'klimp_1900', 344)
+	.container.productDetails
+		p.lead This high-heeled sandal has you covered for any occasion with a good dose of style and attitude, courtesy of three thick straps and subtle gold detailing.
+		.row
+			.column
+				h5 Details
+				ul.listDetails
+					li Almond toe
+					li Block heel
+					li Buckle closure
+			.column
+				h5 Materials
+				ul.listDetails
+					li Upper: Leather
+					li Sole: Textile
+		.column
+			h5 Measurements
+			ul.listDetails
+				li Heel Height: 4"
+		hr
+		+survey('Great For', '', 'Date night', 64, '', 'Special occasion', 35, '', 'All-day wear', 17)
+		hr
+		+reviews('Reviews')
 
 	+overlay
 		+cart

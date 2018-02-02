@@ -1,11 +1,13 @@
 .surnav.mobile {
   display: block;
   text-align: center;
-  padding: 0.125rem 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   position: relative;
   z-index: 99;
-  background-color: $lightest;
+  color:#666666;
+  height: 40px;
+  line-height: 40px;
+  background-color: #E5E7EB;
 }
 
 nav.mobile {
@@ -115,11 +117,19 @@ nav.mobile {
 .m-heroProduct {
   .header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
   }
   .price {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
+  }
+  .right{
+    padding-top: 7px;
+    text-align: right;
+    .saleMsg{
+      font-style: 0.875rem;
+      color: $main-color;
+    }
   }
 }
 
@@ -132,6 +142,25 @@ nav.mobile {
     img {
       width: 100%;
       display: block;
+    }
+  }
+  border-bottom: 1px solid $cloud;
+  margin-bottom: 2rem;
+  .pagination{
+    position: absolute;
+    bottom: 1.125rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    li{
+      width: 6px;
+      height: 6px;
+      background-color: $black;
+      transform: rotate(.125turn);
+      margin: .25rem;
+      opacity: .15;
+      &.active{
+        opacity: 1;
+      }
     }
   }
 }
@@ -202,5 +231,43 @@ nav.mobile {
 .c-checkout__wrapper {
   &.isVisible {
     display: block;
+  }
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1px;
+  background-color: $cloud;
+  &.border-top{border-top: 1px solid $cloud;}
+  .cell{
+    background-color: $white;
+    &.single{
+      grid-row: span 1;
+      grid-column: span 1;
+    }
+    &.double{
+      grid-row: span 2;
+      grid-column: span 2;
+    }
+    img.full{
+      width: 100%;
+      display: block;
+      &.padded{
+        padding: .75rem;
+      }
+    }
+  }
+}
+
+.socialInfo{
+  display: flex;
+  justify-content: space-between;
+  padding-top:1rem;
+  padding-left: 1rem;
+  font-size: .875rem; 
+  img{
+    width: 0.75rem;
+    transform: translate(-0.35rem, 1px)
   }
 }

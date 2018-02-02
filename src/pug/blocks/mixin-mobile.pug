@@ -27,7 +27,7 @@ mixin nav(surnav)
 
 
 
-mixin heroProduct(breadcrumb, productName, productPrice)
+mixin heroProduct(breadcrumb, productName, productPrice, saleMsg)
 	.m-heroProduct
 		ul.breadcrumb.no-list
 			each b in breadcrumb
@@ -35,10 +35,78 @@ mixin heroProduct(breadcrumb, productName, productPrice)
 		.header.container
 			.content
 				h1.productName!= productName
+				
+			.right
 				p.price $#{productPrice}
-			.reviews: img(src="/img/pdp/reviews.png", width=75)
+				if saleMsg
+					p.saleMsg!= saleMsg
+
 		.carousel
 			.slide: img(src="/img/pdp/beasien_00.png")
+			ul.pagination.no-list
+				li.active
+				li
+				li
+				li
+
+mixin productDetails(imgA, imgB, imgSocial, handle, likes)
+	.grid.border-top
+		.cell.single: img.full.padded(src='/img/pdp/' + imgA)
+		.cell.single: img.full.padded(src='/img/pdp/' + imgB)
+		.cell.double
+			img.full(src='/img/pdp/' + imgSocial)
+			.container.socialInfo
+				.handle @#{handle}
+				.likes
+					img(src="/img/pdp/save.svg")
+					span= likes
+
+mixin survey(title, iA, tA, vA, iB, tB, vB, iC, tC, vC)
+	.survey
+		h2= title
+		ul.surveyOptions
+			li
+				.icon
+				h5= tA
+				span.voted #{vA}% agree
+				a.btn.btn-primary.btn-small Vote
+			li
+				.icon
+				h5= tB
+				span.voted #{vB}% agree
+				a.btn.btn-primary.btn-small Vote
+			li
+				.icon
+				h5= tC
+				span.voted #{vC}% agree
+				a.btn.btn-primary.btn-small Vote
+
+mixin reviews(title)
+	.reviews
+		h2 #{title}
+			img(src="/img/pdp/reviews.png")
+		ul.reviewsList
+			li
+				.left Sizing
+				.right
+					.low Small
+					.bar(style="left: 45%")
+					.high Big
+			li
+				.left Width
+				.right
+					.low Narrow
+					.bar(style="left: 54%")
+					.high Wide
+			li
+				.left Calf Width
+				.right
+					.low Narrow
+					.bar(style="left: 54%")
+					.high Wide
+		.row.gutter
+			.column: a.btn.btn-primary.btn-full.btn-big Write a review
+			.column: a.btn.btn-gradient.btn-full.btn-big Show all(19)
 
 
 mixin overlay()

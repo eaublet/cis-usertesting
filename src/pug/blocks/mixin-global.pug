@@ -16,12 +16,18 @@ mixin sizeSelector(sizes)
 		ul.sizeList.no-list
 			for s in sizes
 				li!= s
+		.sizeOptions
+			a.link.truefit.icon True Fit
+			a.link View size chart
+
 
 mixin pdpButtons()
 	.pdpButtons
 		a.btn.btn-full.btn-gradient.addToCart.btn-big Add to cart
 	.pdpButtons
 		a.btn.btn-full.btn-primary.findInStore.btn-big Find in store
-
+		.shareOptions
+			a.link.save.icon Save for later
+			a.link.icon.share Share
 	.pdpButtons
 		a.btn.btn-full.btn-gradient.quickAddToCart.btn-big Quick add (test)

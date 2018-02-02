@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>TrueFit</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="PDP---Small---Mens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-15.000000, -949.000000)">
+        <g id="Size" transform="translate(15.000000, 792.000000)">
+            <g id="TrueFit" transform="translate(0.000000, 157.000000)">
+                <path d="M1.02189781,0 L12.9270073,0 C13.4890511,0 13.9489051,0.459854015 13.9489051,1.02189781 L13.9489051,12.9270073 C13.9489051,13.4890511 13.4890511,13.9489051 12.9270073,13.9489051 L1.02189781,13.9489051 C0.459854015,13.9489051 0,13.4890511 0,12.9270073 L0,1.02189781 C0,0.459854015 0.459854015,0 1.02189781,0 Z" id="Shape" fill="#231F20"></path>
+                <path d="M7.66788321,5.22627737 L7.66788321,9.97810219 L6.28832117,9.97810219 L6.28832117,5.22627737 L4.5,5.22627737 L4.5,4 L9.45620438,4 L9.45620438,5.22627737 L7.66788321,5.22627737 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
