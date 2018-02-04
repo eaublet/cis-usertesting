@@ -103,7 +103,7 @@
     background-position: 0;
     color: $white;
     font-weight: 700;
-    @include transition(background-position, $longDuration);
+    @include transition(background-position, $longDuration * 2);
     &.added{
       background-position: 100%;
     }

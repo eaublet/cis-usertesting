@@ -52,27 +52,27 @@ colorSelector = () ->
 
 showOverlay = () ->
 	$('body').addClass('fixed')
-	$('.c-overlay').removeClass 'isHidden'
+	# $('.c-overlay').removeClass 'isHidden'
 	$('.c-overlay').addClass 'isVisible'
 
 closeOverlay = () ->
 	$('body').removeClass('fixed')
 	$('.c-overlay').removeClass 'isVisible'
-	$('.c-overlay').addClass 'isHidden'
+	# $('.c-overlay').addClass 'isHidden'
 
 showCart = () ->
 	if $('.colorList li').hasClass('active')
 		$('#navBag').click ->
 			# updateCart()
 			showOverlay()
-			$('.c-cart-wrapper').removeClass 'isHidden'
+			# $('.c-cart-wrapper').removeClass 'isHidden'
 			$('.c-cart-wrapper').addClass 'isVisible'
 
 closeCart = () ->
 	$('.o-close-button').click ->
 		closeOverlay()
 		$('.c-cart-wrapper').removeClass 'isVisible'
-		$('.c-cart-wrapper').addClass 'isHidden'
+		# $('.c-cart-wrapper').addClass 'isHidden'
 
 updateCartCount = (count) ->
 	$('#bagCount .count').removeClass('have1 have2 have3 have4').addClass('have' + count).attr('data-count', count)
@@ -86,10 +86,13 @@ updateCart = (products) ->
 		updateCartCount(products.length)
 		$('#navBag').removeClass('adding')
 	), 640
+	totalValue = 0
 	$.each products, (index) ->
+		oldVal = totalValue
+		totalValue = ((oldVal * 1000) + (parseInt(@price.replace('$', '') * 1000))) / 1000
 		productRowTmpl = '<li><div class="img"><img src="' + @img + '"></div><div class="data"><div class="title">' + @name + '</div><div class="infos"><span>' + @color + '</span><span>Size ' + @size + '</span><span>Qty. 1</span></div></div><div class="options"><div class="price">' + @price + '</div><a class="btnLink">Edit</a><a class="btnLink">Remove</a></div></li>'
 		$('.productsCart').append productRowTmpl
-		return
+	$('.totalPrice').html('$' + totalValue)
 
 addToCart = () ->
 	$('.btn.addToCart').on 'click', (e) ->
@@ -114,7 +117,7 @@ addToCart = () ->
 
 			if inArray
 				showOverlay()
-				$('.c-cart-wrapper').removeClass 'isHidden'
+				# $('.c-cart-wrapper').removeClass 'isHidden'
 				$('.c-cart-wrapper').addClass 'isVisible'
 			else
 				addProduct({name: window.product.name, img: $('#mainImg').attr('src'), price: window.product.price, color: color, size: selectedSize, active: true })
@@ -139,7 +142,7 @@ stickyBuyNow = () ->
 
 			if inArray
 				showOverlay()
-				$('.c-cart-wrapper').removeClass 'isHidden'
+				# $('.c-cart-wrapper').removeClass 'isHidden'
 				$('.c-cart-wrapper').addClass 'isVisible'
 			else
 				addProduct({name: window.product.name, price: window.product.price, color: color, size: selectedSize, active: true })
@@ -166,14 +169,14 @@ addToProductList = (product) ->
 
 quickAddToCart = () ->
 	$('.btn.quickAddToCart').click ->
-		@mixMatchProduct = {name: 'Ramaswamy', price: '49.99$', color: 'black', size: 'one size', active: true }
+		@mixMatchProduct = {img:$(this).attr('quick-image'), name: $(this).attr('quick-name'), price: $(this).attr('quick-price'), color: $(this).attr('quick-color'), size: $(this).attr('quick-size'), active: true }
 		addToProductList(@mixMatchProduct, 1)
 
 checkout = () ->
 	$('.goToCheckout').click ->
 		$('.c-cart-wrapper').removeClass 'isVisible'
-		$('.c-cart-wrapper').addClass 'isHidden'
-		$('.c-checkout__wrapper').removeClass 'isHidden'
+		# $('.c-cart-wrapper').addClass 'isHidden'
+		# $('.c-checkout__wrapper').removeClass 'isHidden'
 		$('.c-checkout__wrapper').addClass 'isVisible'
 
 
@@ -195,6 +198,3 @@ initPDP = () ->
 $(document).ready ->
 	initNav()
 	initPDP()
-	showOverlay()
-	$('.c-cart-wrapper').removeClass 'isHidden'
-	$('.c-cart-wrapper').addClass 'isVisible'

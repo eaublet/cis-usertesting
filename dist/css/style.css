@@ -102,11 +102,8 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .carousel .pagination li { width: 6px; height: 6px; background-color: #000; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); margin: .25rem; opacity: .15; }
 .carousel .pagination li.active { opacity: 1; }
 
-.isHidden { display: none; z-index: -100; }
-
-.c-overlay { position: fixed; top: 0; left: 0; }
-.c-overlay.isHidden { display: none; z-index: -100; }
-.c-overlay.isVisible { display: block; z-index: 100; width: 100vw; background: #fff; height: 100vh; overflow: scroll; -webkit-overflow-scrolling: touch; }
+.c-overlay { position: fixed; top: 0; left: 0; z-index: 9999; will-change: transform; transition: transform 400ms cubic-bezier(0.77, 0, 0.175, 1); -ms-transform: translateY(-100%); transform: translateY(-100%); width: 100vw; background: #fff; height: 100vh; overflow: hidden; }
+.c-overlay.isVisible { -ms-transform: translateY(0); transform: translateY(0); }
 .c-overlay .o-close-button { z-index: 101; }
 
 .u-btn.o-close-button { background-color: transparent; border: 0; margin: 0; padding: 0; border-radius: 0; -ms-flex-align: center; align-items: center; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; position: absolute; right: 0; top: 0; z-index: 100; }
@@ -114,7 +111,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .u-btn.o-close-button .c-icon { height: 0.75rem; width: 0.75rem; }
 .u-btn.o-close-button .c-icon path { fill: #767676; }
 
-.c-cart-wrapper { background: #fff; position: relative; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+.c-cart-wrapper { background: #fff; position: relative; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; height: 100%; overflow: scroll; -webkit-overflow-scrolling: touch; }
 .c-cart-wrapper.isHidden { display: none; }
 
 .c-checkout__wrapper.isVisible { display: block; }
@@ -139,7 +136,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .surveyOptions li { text-align: center; }
 .surveyOptions li .icon { height: 3.5rem; line-height: 3.5rem; }
 .surveyOptions li h5 { margin: 0; }
-.surveyOptions li span.voted { color: #666; font-size: 0.875rem; }
+.surveyOptions li span.voted { color: #666; display: block; font-size: 0.875rem; }
 .surveyOptions li .btn { margin-top: 1rem; }
 
 .reviews .reviewsList { list-style-type: none; margin: 0 0 2rem; padding: 0; width: 100%; font-size: 0.875rem; }
@@ -163,7 +160,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .footer { width: 100%; }
 .footer img { width: 100%; display: block; }
 
-.c-cart-wrapper { padding-top: 1rem; margin-bottom: 60px; }
+.c-cart-wrapper { padding-top: 1rem; padding-bottom: 60px; }
 .c-cart-wrapper h1 span.count { margin-left: .5rem; font-weight: 500; color: #767676; }
 .c-cart-wrapper .cartId { color: #767676; margin-top: .5rem; margin-bottom: 2rem; font-size: 0.875rem; }
 .c-cart-wrapper .total { margin-bottom: 0; }
@@ -202,7 +199,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .btn { height: 2.5rem; line-height: 2.5rem; padding: 0 1rem; font-size: 0.875rem; display: inline-block; text-align: center; }
 .btn.btn-big { height: 3.75rem; line-height: 3.75rem; }
 .btn.btn-full { display: block; width: 100%; }
-.btn.btn-gradient { background: linear-gradient(135deg, #3023AE 0%, #C86DD7 50%, #4200D7 100%); background-size: 200%; background-position: 0; color: #fff; font-weight: 700; will-change: background-position; transition: background-position 400ms cubic-bezier(0.77, 0, 0.175, 1); }
+.btn.btn-gradient { background: linear-gradient(135deg, #3023AE 0%, #C86DD7 50%, #4200D7 100%); background-size: 200%; background-position: 0; color: #fff; font-weight: 700; will-change: background-position; transition: background-position 800ms cubic-bezier(0.77, 0, 0.175, 1); }
 .btn.btn-gradient.added { background-position: 100%; }
 .btn.btn-primary { border: 1px solid #000; }
 .btn.btn-alt { border: 1px solid #CCCCCC; color: #4200D7; }

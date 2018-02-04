@@ -246,28 +246,34 @@ nav.mobile {
   }
 }
 
-.isHidden {
-  display: none;
-  z-index: -100;
-}
+// .isHidden {
+//   display: none;
+//   z-index: -100;
+// }
 
 .c-overlay {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999;
+  @include transition(transform, $longDuration);
+  transform: translateY(-100%);
+  width: 100vw;
+  background: #fff;
+  height: 100vh;
+  overflow: hidden;
+
   &.isHidden {
-    display: none;
-    z-index: -100;
+    // display: none;
+    // z-index: -100;
+    
   }
 
   &.isVisible {
-    display: block;
-    z-index: 100;
-    width: 100vw;
-    background: #fff;
-    height: 100vh;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+    // display: block;
+    // z-index: 100;
+    
+    transform: translateY(0);
   }
 
   .o-close-button {
@@ -303,6 +309,9 @@ nav.mobile {
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   // height: 100%;
   &.isHidden {
     display: none;
@@ -387,6 +396,7 @@ nav.mobile {
     }
     span.voted{
       color: #666;
+      display: block;
       font-size: 0.875rem;
     }
     .btn{
@@ -502,7 +512,7 @@ nav.mobile {
 // Cart
 .c-cart-wrapper{
   padding-top: 1rem;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
   h1{
     span.count{
       margin-left: .5rem;

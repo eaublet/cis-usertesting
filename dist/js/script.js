@@ -65,21 +65,18 @@
 
   showOverlay = function() {
     $('body').addClass('fixed');
-    $('.c-overlay').removeClass('isHidden');
     return $('.c-overlay').addClass('isVisible');
   };
 
   closeOverlay = function() {
     $('body').removeClass('fixed');
-    $('.c-overlay').removeClass('isVisible');
-    return $('.c-overlay').addClass('isHidden');
+    return $('.c-overlay').removeClass('isVisible');
   };
 
   showCart = function() {
     if ($('.colorList li').hasClass('active')) {
       return $('#navBag').click(function() {
         showOverlay();
-        $('.c-cart-wrapper').removeClass('isHidden');
         return $('.c-cart-wrapper').addClass('isVisible');
       });
     }
@@ -88,8 +85,7 @@
   closeCart = function() {
     return $('.o-close-button').click(function() {
       closeOverlay();
-      $('.c-cart-wrapper').removeClass('isVisible');
-      return $('.c-cart-wrapper').addClass('isHidden');
+      return $('.c-cart-wrapper').removeClass('isVisible');
     });
   };
 
@@ -99,6 +95,7 @@
   };
 
   updateCart = function(products) {
+    var totalValue;
     $('.productsCart').empty();
     $('nav.mobile').addClass('headroom--pinned').removeClass('headroom--unpinned');
     $('#navBag').addClass('adding');
@@ -106,11 +103,15 @@
       updateCartCount(products.length);
       return $('#navBag').removeClass('adding');
     }), 640);
-    return $.each(products, function(index) {
-      var productRowTmpl;
+    totalValue = 0;
+    $.each(products, function(index) {
+      var oldVal, productRowTmpl;
+      oldVal = totalValue;
+      totalValue = ((oldVal * 1000) + (parseInt(this.price.replace('$', '') * 1000))) / 1000;
       productRowTmpl = '<li><div class="img"><img src="' + this.img + '"></div><div class="data"><div class="title">' + this.name + '</div><div class="infos"><span>' + this.color + '</span><span>Size ' + this.size + '</span><span>Qty. 1</span></div></div><div class="options"><div class="price">' + this.price + '</div><a class="btnLink">Edit</a><a class="btnLink">Remove</a></div></li>';
-      $('.productsCart').append(productRowTmpl);
+      return $('.productsCart').append(productRowTmpl);
     });
+    return $('.totalPrice').html('$' + totalValue);
   };
 
   addToCart = function() {
@@ -139,7 +140,6 @@
         }
         if (inArray) {
           showOverlay();
-          $('.c-cart-wrapper').removeClass('isHidden');
           return $('.c-cart-wrapper').addClass('isVisible');
         } else {
           return addProduct({
@@ -177,7 +177,6 @@
         }
         if (inArray) {
           showOverlay();
-          $('.c-cart-wrapper').removeClass('isHidden');
           return $('.c-cart-wrapper').addClass('isVisible');
         } else {
           return addProduct({
@@ -218,10 +217,11 @@
   quickAddToCart = function() {
     return $('.btn.quickAddToCart').click(function() {
       this.mixMatchProduct = {
-        name: 'Ramaswamy',
-        price: '49.99$',
-        color: 'black',
-        size: 'one size',
+        img: $(this).attr('quick-image'),
+        name: $(this).attr('quick-name'),
+        price: $(this).attr('quick-price'),
+        color: $(this).attr('quick-color'),
+        size: $(this).attr('quick-size'),
         active: true
       };
       return addToProductList(this.mixMatchProduct, 1);
@@ -231,8 +231,6 @@
   checkout = function() {
     return $('.goToCheckout').click(function() {
       $('.c-cart-wrapper').removeClass('isVisible');
-      $('.c-cart-wrapper').addClass('isHidden');
-      $('.c-checkout__wrapper').removeClass('isHidden');
       return $('.c-checkout__wrapper').addClass('isVisible');
     });
   };
@@ -258,10 +256,7 @@
 
   $(document).ready(function() {
     initNav();
-    initPDP();
-    showOverlay();
-    $('.c-cart-wrapper').removeClass('isHidden');
-    return $('.c-cart-wrapper').addClass('isVisible');
+    return initPDP();
   });
 
 }).call(this);

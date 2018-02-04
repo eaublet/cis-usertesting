@@ -138,10 +138,10 @@ mixin mixnmatch(title, mainImg, altImg, altTitle, price)
 			.matchDetails
 				.title= altTitle
 				.price $#{price}
-			a.btn.btn-gradient.quickAddToCart Quick add
+			a.btn.btn-gradient.quickAddToCart(quick-name='Ramaswamy', 'quick-price'='$19.99', quick-image='/img/pdp/belt.jpg', quick-size='One size', 'quick-color'='Brown') Quick add
 
 mixin cart()
-	.c-cart-wrapper
+	.c-cart-wrapper.isVisible
 		.container
 			h1.c-heading.c-cart-header__title(data-qa-id="cart-header-title")
 				span.c-markdown
@@ -157,7 +157,7 @@ mixin cart()
 					h5.total Total
 					p.small.beforeTaxes (before taxes)
 				.tableCell
-					.totalPrice $129.98
+					.totalPrice
 			.tableRow
 				.tableCell
 					a.btnLink Enter promo code(s)
@@ -170,7 +170,7 @@ mixin cart()
 					img(src="/img/cart/Visa.png", width=165)
 			hr.large
 		ul.productsCart
-			li
+			//- li
 				.img
 					img(src="/img/pdp/lintun_a.jpg")
 				.data
@@ -202,7 +202,7 @@ mixin cart()
 
 
 		#dir
-		a.btn.btn-full.btn-gradient.btn-big.goToCheckout.btn-fixedBottom Checkout
+		a.btn.btn-full.btn-gradient.btn-big.goToCheckout.btn-fixedBottom Begin checkout
 			
 
 mixin checkout()
