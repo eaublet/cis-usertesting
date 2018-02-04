@@ -139,7 +139,7 @@
         }
         if (inArray) {
           showOverlay();
-          return $('.c-cart-wrapper').addClass('isVisible');
+          return $('.cartWrapper').addClass('isVisible');
         } else {
           return addProduct({
             name: window.product.name,
