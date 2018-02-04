@@ -118,7 +118,7 @@ addToCart = () ->
 			if inArray
 				showOverlay()
 				# $('.c-cart-wrapper').removeClass 'isHidden'
-				$('.c-cart-wrapper').addClass 'isVisible'
+				$('.cartWrapper').addClass 'isVisible'
 			else
 				addProduct({name: window.product.name, img: $('#mainImg').attr('src'), price: window.product.price, color: color, size: selectedSize, active: true })
 		else

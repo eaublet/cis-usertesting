@@ -520,6 +520,7 @@ nav.mobile {
   transform: translateY(-120%);
   z-index: 9999;
   background-color: #fff;
+  -webkit-overflow-scrolling: touch;
   @include transition(transform, $longDuration * 2);
   &.isVisible{
     transform: translateY(0);
