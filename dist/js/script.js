@@ -64,8 +64,7 @@
   };
 
   showOverlay = function() {
-    $('body').addClass('fixed');
-    return $('.c-overlay').addClass('isVisible');
+    return $('body').addClass('fixed');
   };
 
   closeOverlay = function() {
@@ -77,15 +76,15 @@
     if ($('.colorList li').hasClass('active')) {
       return $('#navBag').click(function() {
         showOverlay();
-        return $('.c-cart-wrapper').addClass('isVisible');
+        return $('.cartWrapper').addClass('isVisible');
       });
     }
   };
 
   closeCart = function() {
-    return $('.o-close-button').click(function() {
+    return $('.u-btn__content').click(function() {
       closeOverlay();
-      return $('.c-cart-wrapper').removeClass('isVisible');
+      return $('.cartWrapper').removeClass('isVisible');
     });
   };
 

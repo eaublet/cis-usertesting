@@ -53,7 +53,7 @@ colorSelector = () ->
 showOverlay = () ->
 	$('body').addClass('fixed')
 	# $('.c-overlay').removeClass 'isHidden'
-	$('.c-overlay').addClass 'isVisible'
+	# $('.c-overlay').addClass 'isVisible'
 
 closeOverlay = () ->
 	$('body').removeClass('fixed')
@@ -66,12 +66,12 @@ showCart = () ->
 			# updateCart()
 			showOverlay()
 			# $('.c-cart-wrapper').removeClass 'isHidden'
-			$('.c-cart-wrapper').addClass 'isVisible'
+			$('.cartWrapper').addClass 'isVisible'
 
 closeCart = () ->
-	$('.o-close-button').click ->
+	$('.u-btn__content').click ->
 		closeOverlay()
-		$('.c-cart-wrapper').removeClass 'isVisible'
+		$('.cartWrapper').removeClass 'isVisible'
 		# $('.c-cart-wrapper').addClass 'isHidden'
 
 updateCartCount = (count) ->

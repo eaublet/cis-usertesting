@@ -257,7 +257,7 @@ nav.mobile {
   left: 0;
   z-index: 9999;
   @include transition(transform, $longDuration);
-  transform: translateY(-100%);
+  transform: translateY(-120%);
   width: 100vw;
   background: #fff;
   height: 100vh;
@@ -510,9 +510,22 @@ nav.mobile {
 
 
 // Cart
-.c-cart-wrapper{
+.cartWrapper{
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: scroll;
+  transform: translateY(-120%);
+  z-index: 9999;
+  background-color: #fff;
+  @include transition(transform, $longDuration * 2);
+  &.isVisible{
+    transform: translateY(0);
+  }
   padding-top: 1rem;
-  padding-bottom: 60px;
+  // padding-bottom: 60px;
   h1{
     span.count{
       margin-left: .5rem;
@@ -589,5 +602,7 @@ nav.mobile {
   align-items: center;
   svg{
     margin-left: .5rem;
+    width: .75rem;
+    color: #767676;
   }
 }
