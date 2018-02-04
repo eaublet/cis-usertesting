@@ -104,7 +104,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['sass:dev', 'autoprefixer', 'pug', 'coffee']);
-  grunt.registerTask('neweronly', ['sass:dev', 'autoprefixer', 'newer:pug', 'newer:coffee']);
+  grunt.registerTask('neweronly', ['sass:dev', 'autoprefixer', 'pug', 'newer:coffee']);
   grunt.registerTask('prod', ['sass:prod', 'autoprefixer', 'pug', 'coffee']);
 
   // USE THESE TASKS

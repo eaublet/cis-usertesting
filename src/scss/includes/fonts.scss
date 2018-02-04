@@ -63,7 +63,10 @@ h2{
 	}
 }
 h4{
-
+	font-size: 1.125rem;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 1.5rem;
 }
 h5{
 	font-weight: 700;
@@ -84,6 +87,9 @@ ul.listDetails{
 	}
 }
 
+p.small{
+	font-size: 0.875rem;
+}
 .link{
 	border-bottom: 1px solid $lightest;
 	font-size: 1em;

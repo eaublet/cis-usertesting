@@ -51,10 +51,12 @@ colorSelector = () ->
 		# window.product.color = $(@).text()
 
 showOverlay = () ->
+	$('body').addClass('fixed')
 	$('.c-overlay').removeClass 'isHidden'
 	$('.c-overlay').addClass 'isVisible'
 
 closeOverlay = () ->
+	$('body').removeClass('fixed')
 	$('.c-overlay').removeClass 'isVisible'
 	$('.c-overlay').addClass 'isHidden'
 
@@ -73,16 +75,20 @@ closeCart = () ->
 		$('.c-cart-wrapper').addClass 'isHidden'
 
 updateCartCount = (count) ->
-	$('#bagCount').empty().html(count)
+	$('#bagCount .count').removeClass('have1 have2 have3 have4').addClass('have' + count).attr('data-count', count)
+	$('.c-heading .count').html('(' + count + ')')
+
 updateCart = (products) ->
-	$('#dir').empty()
+	$('.productsCart').empty()
 	$('nav.mobile').addClass('headroom--pinned').removeClass('headroom--unpinned')
+	$('#navBag').addClass('adding')
 	setTimeout ( ->
 		updateCartCount(products.length)
+		$('#navBag').removeClass('adding')
 	), 640
 	$.each products, (index) ->
-		productRowTmpl = $('<div>').addClass('whoWrap').attr('data-index', index).html('<div>' + @name + '</div><div>' + @price + '</div><div>' + @color + '</div><div>Size ' + @size + '</div><div class="removeItem">Remove</div>')
-		$('#dir').append productRowTmpl
+		productRowTmpl = '<li><div class="img"><img src="' + @img + '"></div><div class="data"><div class="title">' + @name + '</div><div class="infos"><span>' + @color + '</span><span>Size ' + @size + '</span><span>Qty. 1</span></div></div><div class="options"><div class="price">' + @price + '</div><a class="btnLink">Edit</a><a class="btnLink">Remove</a></div></li>'
+		$('.productsCart').append productRowTmpl
 		return
 
 addToCart = () ->
@@ -96,9 +102,11 @@ addToCart = () ->
 			color = if typeof(product.color) == 'undefined' then $('.colorList li.active').text() else product.color
 			addProduct = (product) ->
 				addToProductList(product)
-
 			inArray = false
 			i = 0
+			setTimeout ( ->
+				$('.btn.addToCart').addClass('added').html('Added! Open cart')
+			), 640
 			while i < products.length
 				if products[i]['size'] == selectedSize and products[i]['color'] == color
 					inArray = true
@@ -109,7 +117,7 @@ addToCart = () ->
 				$('.c-cart-wrapper').removeClass 'isHidden'
 				$('.c-cart-wrapper').addClass 'isVisible'
 			else
-				addProduct({name: window.product.name, price: window.product.price, color: color, size: selectedSize, active: true })
+				addProduct({name: window.product.name, img: $('#mainImg').attr('src'), price: window.product.price, color: color, size: selectedSize, active: true })
 		else
 			alert('Select a size first')
 
@@ -143,6 +151,7 @@ removeProduct = () ->
 	$('body').on 'click', '.removeItem',  () ->
 		log $(@).parent()
 		$(@).parent().remove()
+		updateCartCount($('#bagCount .count').attr('data-count') - 1)
 
 
 addToProductList = (product) ->
@@ -186,3 +195,6 @@ initPDP = () ->
 $(document).ready ->
 	initNav()
 	initPDP()
+	showOverlay()
+	$('.c-cart-wrapper').removeClass 'isHidden'
+	$('.c-cart-wrapper').addClass 'isVisible'

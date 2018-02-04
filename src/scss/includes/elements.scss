@@ -95,15 +95,38 @@
   }
   &.btn-full {
     display: block;
+    width: 100%;
   }
   &.btn-gradient {
     background: $main-gradient;
+    background-size: 200%;
+    background-position: 0;
     color: $white;
     font-weight: 700;
+    @include transition(background-position, $longDuration);
+    &.added{
+      background-position: 100%;
+    }
   }
   &.btn-primary {
     border: 1px solid $black;
   }
+  &.btn-alt {
+    border: 1px solid #CCCCCC;
+    color: $main-color;
+  }
+  &.btn-padded{
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+  }
+  &.btn-fixedBottom{
+    position: fixed;
+    bottom: 0;
+  }
+}
+a.btnLink{
+  color: $main-color;
+  font-size: 0.875rem;
 }
 
 hr{
@@ -111,4 +134,10 @@ hr{
   background-color: $cloud;
   margin: 3rem 0;
   border: 0;
+  &.large{
+    margin: 1.5rem 0;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+  }
 }

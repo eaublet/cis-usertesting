@@ -2,6 +2,7 @@ $unit: 16px;
 
 // Colors
 $main-color: #8C50C7;
+$main-color: #4200D7; //not sure what the good color is. 
 $alt-color: #3023AE;
 $alt2-color: #C86DD7;
 $black: #000;
@@ -14,7 +15,7 @@ $cloud: #E5E5E5;
 $white: #fff;
 
 
-$main-gradient: linear-gradient(135deg, $alt-color 0%, $alt2-color 100%);
+$main-gradient: linear-gradient(135deg, $alt-color 0%, $alt2-color 50%, $main-color 100%);
 
 
 // Animation
