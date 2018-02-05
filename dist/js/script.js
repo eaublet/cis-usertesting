@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, removeProduct, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount;
+  var addToCart, addToProductList, checkout, closeCart, closeOverlay, colorSelector, initBuySticky, initNav, initPDP, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount;
 
   log = function(msg) {
     return console.log(msg);
@@ -49,7 +49,8 @@
       });
       $(this).addClass('active');
       $('.sizeSelected').html($(this).text());
-      return $('.right > .btn-gradient').text('Add to Cart');
+      $('.right > .btn-gradient').removeClass('added').text('Add size ' + $(this).text() + ' to Cart');
+      return $('a.addToCart').removeClass('added').html('Add to cart');
     });
   };
 
@@ -107,10 +108,24 @@
       var oldVal, productRowTmpl;
       oldVal = totalValue;
       totalValue = ((oldVal * 1000) + (parseInt(this.price.replace('$', '') * 1000))) / 1000;
-      productRowTmpl = '<li><div class="img"><img src="' + this.img + '"></div><div class="data"><div class="title">' + this.name + '</div><div class="infos"><span>' + this.color + '</span><span>Size ' + this.size + '</span><span>Qty. 1</span></div></div><div class="options"><div class="price">' + this.price + '</div><a class="btnLink">Edit</a><a class="btnLink">Remove</a></div></li>';
+      productRowTmpl = '<li data-id=' + this.id + '><div class="img"><img src="' + this.img + '"></div><div class="data"><div class="title">' + this.name + '</div><div class="infos">';
+      if (this.color) {
+        productRowTmpl += '<span>' + this.color + '</span>';
+      }
+      if (this.size) {
+        productRowTmpl += '<span>Size ' + this.size + '</span>';
+      }
+      productRowTmpl += '<span>Qty. 1</span></div></div><div class="options"><div class="price">' + this.price + '</div><a class="btnLink">Edit</a><a class="btnLink removeItem">Remove</a></div></li>';
       return $('.productsCart').append(productRowTmpl);
     });
     return $('.totalPrice').html('$' + totalValue);
+  };
+
+  setAdded = function() {
+    return setTimeout((function() {
+      $('.btn.addToCart').addClass('added').html('Added! Open cart');
+      return $('.right > .btn-gradient').addClass('added').html('Added! Open cart');
+    }), 640);
   };
 
   addToCart = function() {
@@ -128,9 +143,7 @@
         };
         inArray = false;
         i = 0;
-        setTimeout((function() {
-          return $('.btn.addToCart').addClass('added').html('Added! Open cart');
-        }), 640);
+        setAdded();
         while (i < products.length) {
           if (products[i]['size'] === selectedSize && products[i]['color'] === color) {
             inArray = true;
@@ -168,6 +181,7 @@
         };
         inArray = false;
         i = 0;
+        setAdded();
         while (i < products.length) {
           if (products[i]['size'] === selectedSize && products[i]['color'] === color) {
             inArray = true;
@@ -176,10 +190,11 @@
         }
         if (inArray) {
           showOverlay();
-          return $('.c-cart-wrapper').addClass('isVisible');
+          return $('.cartWrapper').addClass('isVisible');
         } else {
           return addProduct({
             name: window.product.name,
+            img: $('#mainImg').attr('src'),
             price: window.product.price,
             color: color,
             size: selectedSize,
@@ -196,14 +211,26 @@
 
   removeProduct = function() {
     return $('body').on('click', '.removeItem', function() {
+      var r, rId, thisId;
       log($(this).parent());
-      $(this).parent().remove();
-      return updateCartCount($('#bagCount .count').attr('data-count') - 1);
+      thisId = $(this).parent().parent().attr('data-id');
+      console.log(products);
+      r = 0;
+      while (r < products.length) {
+        rId = products[r]['id'];
+        if (rId = thisId) {
+          products.splice(r, 1);
+        }
+        r++;
+      }
+      console.log(products);
+      return updateCart(products);
     });
   };
 
   addToProductList = function(product) {
     if (product && product.active === true) {
+      product.id = Date.now();
       products.push(product);
       log('Product ' + product.name + ' added to Cart');
       updateCart(products);
@@ -219,8 +246,8 @@
         img: $(this).attr('quick-image'),
         name: $(this).attr('quick-name'),
         price: $(this).attr('quick-price'),
-        color: $(this).attr('quick-color'),
-        size: $(this).attr('quick-size'),
+        color: $(this).attr('quick-color') || void 0,
+        size: $(this).attr('quick-size') || void 0,
         active: true
       };
       return addToProductList(this.mixMatchProduct, 1);
@@ -229,7 +256,7 @@
 
   checkout = function() {
     return $('.goToCheckout').click(function() {
-      $('.c-cart-wrapper').removeClass('isVisible');
+      $('.cartWrapper').removeClass('isVisible');
       return $('.c-checkout__wrapper').addClass('isVisible');
     });
   };

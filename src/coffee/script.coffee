@@ -39,7 +39,8 @@ sizeSelector = () ->
 			$(@).removeClass 'active'
 		$(@).addClass 'active'
 		$('.sizeSelected').html($(@).text())
-		$('.right > .btn-gradient').text('Add to Cart')
+		$('.right > .btn-gradient').removeClass('added').text('Add size ' + $(@).text() + ' to Cart')
+		$('a.addToCart').removeClass('added').html('Add to cart')
 		# window.product.size = $(@).text()
 
 colorSelector = () ->
@@ -65,14 +66,14 @@ showCart = () ->
 		$('#navBag').click ->
 			# updateCart()
 			showOverlay()
-			# $('.c-cart-wrapper').removeClass 'isHidden'
+			# $('.cartWrapper').removeClass 'isHidden'
 			$('.cartWrapper').addClass 'isVisible'
 
 closeCart = () ->
 	$('.u-btn__content').click ->
 		closeOverlay()
 		$('.cartWrapper').removeClass 'isVisible'
-		# $('.c-cart-wrapper').addClass 'isHidden'
+		# $('.cartWrapper').addClass 'isHidden'
 
 updateCartCount = (count) ->
 	$('#bagCount .count').removeClass('have1 have2 have3 have4').addClass('have' + count).attr('data-count', count)
@@ -90,10 +91,19 @@ updateCart = (products) ->
 	$.each products, (index) ->
 		oldVal = totalValue
 		totalValue = ((oldVal * 1000) + (parseInt(@price.replace('$', '') * 1000))) / 1000
-		productRowTmpl = '<li><div class="img"><img src="' + @img + '"></div><div class="data"><div class="title">' + @name + '</div><div class="infos"><span>' + @color + '</span><span>Size ' + @size + '</span><span>Qty. 1</span></div></div><div class="options"><div class="price">' + @price + '</div><a class="btnLink">Edit</a><a class="btnLink">Remove</a></div></li>'
+		productRowTmpl = '<li data-id=' + @id + '><div class="img"><img src="' + @img + '"></div><div class="data"><div class="title">' + @name + '</div><div class="infos">'
+		if @color
+			productRowTmpl += '<span>' + @color + '</span>'
+		if @size
+			productRowTmpl += '<span>Size ' + @size + '</span>'
+		productRowTmpl += '<span>Qty. 1</span></div></div><div class="options"><div class="price">' + @price + '</div><a class="btnLink">Edit</a><a class="btnLink removeItem">Remove</a></div></li>'
 		$('.productsCart').append productRowTmpl
 	$('.totalPrice').html('$' + totalValue)
-
+setAdded = () ->
+	setTimeout ( ->
+		$('.btn.addToCart').addClass('added').html('Added! Open cart')
+		$('.right > .btn-gradient').addClass('added').html('Added! Open cart')
+	), 640
 addToCart = () ->
 	$('.btn.addToCart').on 'click', (e) ->
 		log('Click fired')
@@ -107,17 +117,14 @@ addToCart = () ->
 				addToProductList(product)
 			inArray = false
 			i = 0
-			setTimeout ( ->
-				$('.btn.addToCart').addClass('added').html('Added! Open cart')
-			), 640
+			setAdded()
 			while i < products.length
 				if products[i]['size'] == selectedSize and products[i]['color'] == color
 					inArray = true
 				i++
-
 			if inArray
 				showOverlay()
-				# $('.c-cart-wrapper').removeClass 'isHidden'
+				# $('.cartWrapper').removeClass 'isHidden'
 				$('.cartWrapper').addClass 'isVisible'
 			else
 				addProduct({name: window.product.name, img: $('#mainImg').attr('src'), price: window.product.price, color: color, size: selectedSize, active: true })
@@ -135,6 +142,7 @@ stickyBuyNow = () ->
 
 			inArray = false
 			i = 0
+			setAdded()
 			while i < products.length
 				if products[i]['size'] == selectedSize and products[i]['color'] == color
 					inArray = true
@@ -142,10 +150,10 @@ stickyBuyNow = () ->
 
 			if inArray
 				showOverlay()
-				# $('.c-cart-wrapper').removeClass 'isHidden'
-				$('.c-cart-wrapper').addClass 'isVisible'
+				# $('.cartWrapper').removeClass 'isHidden'
+				$('.cartWrapper').addClass 'isVisible'
 			else
-				addProduct({name: window.product.name, price: window.product.price, color: color, size: selectedSize, active: true })
+				addProduct({name: window.product.name,img: $('#mainImg').attr('src'), price: window.product.price, color: color, size: selectedSize, active: true })
 		else
 			$('html, body').animate { scrollTop: $('.colorList').position().top }, 1000
 
@@ -153,12 +161,21 @@ stickyBuyNow = () ->
 removeProduct = () ->
 	$('body').on 'click', '.removeItem',  () ->
 		log $(@).parent()
-		$(@).parent().remove()
-		updateCartCount($('#bagCount .count').attr('data-count') - 1)
+		thisId = $(@).parent().parent().attr('data-id')
+		console.log(products)
+		r = 0
+		while r < products.length
+			rId = products[r]['id']
+			if rId = thisId
+				products.splice(r, 1)
+			r++
+		console.log(products)
+		updateCart(products)
 
 
 addToProductList = (product) ->
 	if product and product.active == true
+		product.id = Date.now()
 		products.push(product)
 		log('Product ' + product.name + ' added to Cart')
 		updateCart(products)
@@ -169,13 +186,13 @@ addToProductList = (product) ->
 
 quickAddToCart = () ->
 	$('.btn.quickAddToCart').click ->
-		@mixMatchProduct = {img:$(this).attr('quick-image'), name: $(this).attr('quick-name'), price: $(this).attr('quick-price'), color: $(this).attr('quick-color'), size: $(this).attr('quick-size'), active: true }
+		@mixMatchProduct = {img:$(this).attr('quick-image'), name: $(this).attr('quick-name'), price: $(this).attr('quick-price'), color: $(this).attr('quick-color') || undefined, size: $(this).attr('quick-size') || undefined, active: true }
 		addToProductList(@mixMatchProduct, 1)
 
 checkout = () ->
 	$('.goToCheckout').click ->
-		$('.c-cart-wrapper').removeClass 'isVisible'
-		# $('.c-cart-wrapper').addClass 'isHidden'
+		$('.cartWrapper').removeClass 'isVisible'
+		# $('.cartWrapper').addClass 'isHidden'
 		# $('.c-checkout__wrapper').removeClass 'isHidden'
 		$('.c-checkout__wrapper').addClass 'isVisible'
 

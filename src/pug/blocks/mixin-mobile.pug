@@ -4,7 +4,7 @@ mixin buySticky(productName, productPrice)
 			p.productName!= productName
 			p.price $#{productPrice}
 		.right
-			a.btn.btn-gradient Select sizes
+			a.btn.btn-gradient Select a size
 
 
 mixin nav(surnav)
@@ -196,13 +196,13 @@ mixin cart()
 				.details
 					.title Multi Protector
 					.price $12.99
-				a.btn.btn-alt.btn-padded Quick add
+				a.btn.btn-alt.btn-padded.quickAddToCart(quick-name='Multi-Protector', 'quick-price'='$12.99', quick-image='/img/pdp/inCart_men1.png') Quick add
 			.cell.single.product.cta
 				img.full(src='/img/pdp/inCart_men2.png')
 				.details
 					.title Laces
 					.price $5.99
-				a.btn.btn-alt.btn-padded Quick add
+				a.btn.btn-alt.btn-padded.quickAddToCart(quick-name='Laces', 'quick-price'='$5.99', quick-image='/img/pdp/inCart_men2.png', quick-size='One size') Quick add
 
 
 		#dir
