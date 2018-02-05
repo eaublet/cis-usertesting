@@ -281,8 +281,10 @@
   };
 
   $(document).ready(function() {
-    initNav();
-    return initPDP();
+    if ($('body.pdp').length) {
+      initNav();
+      return initPDP();
+    }
   });
 
 }).call(this);

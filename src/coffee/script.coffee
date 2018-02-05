@@ -214,5 +214,6 @@ initPDP = () ->
 	stickyBuyNow()
 
 $(document).ready ->
-	initNav()
-	initPDP()
+	if $('body.pdp').length
+		initNav()
+		initPDP()

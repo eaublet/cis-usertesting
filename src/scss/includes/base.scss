@@ -64,3 +64,17 @@ body{
 		}
 	}
 }
+.section{
+	margin-top: 3rem;
+	.content{
+		padding-bottom: 2rem;
+	}
+	&.inactive{
+		h2{
+			opacity: .25;
+		}
+		.content{
+			// display: none;
+		}
+	}
+}

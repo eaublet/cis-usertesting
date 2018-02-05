@@ -51,6 +51,12 @@ p{
 h1{
 	font-size: 1.875rem;
 	margin-bottom: 0;
+	span.side{
+		font-size: 0.875rem;
+		font-weight: 400;
+		color: #767676;
+		float: right;
+	}
 }
 h2{
 	font-size: 1.875rem;
@@ -60,6 +66,9 @@ h2{
 	img{
 		display: block;
 		margin: .45rem auto;
+	}
+	&.left{
+		text-align: left;
 	}
 }
 h4{

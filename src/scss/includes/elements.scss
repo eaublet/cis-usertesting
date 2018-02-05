@@ -143,3 +143,129 @@ hr{
     transform: translate(-50%,0);
   }
 }
+
+
+
+// FORMS
+
+header{
+  margin-top: 2rem;
+  h1{
+    margin-bottom: 2rem;
+  }
+}
+.input{
+  width: 100%;
+  position: relative;
+}
+input[type=text]{
+  display: block;
+  height: 3.75rem;
+  width: 100%;
+  border: 0;
+  font-size: 1.125rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+  font-family: $main-font;
+  padding: 0;
+  + label{
+    color: #767676;
+    position: absolute;
+    top: 1.125rem;
+    left: 0;
+    font-size: 1.125rem;
+    transform-origin: top left;
+    transform: scale(.75) translate(0, -1.75rem);
+    @include transition(all);
+  }
+  &:placeholder-shown{
+    // padding: 0 1rem;
+    + label{
+      transform: scale(1) translate(0, 0);
+    }
+  }
+  &:focus{
+    outline: none;
+    border-color: $main-color;
+  }
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: transparent;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: transparent;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: transparent;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: transparent;
+}
+.input + p.small {
+  color: #767676;
+  margin-bottom: 1rem;
+}
+
+.tabs{
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+  .tab{
+    flex-grow: 1;
+    color: $main-color;
+    padding: 1rem 0;
+    box-shadow: inset 0 -1px 0 0 #ccc;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    .img{
+      padding: 0 .75rem 0 0 ;
+
+    }
+    .info{
+      flex-grow: 1;
+    }
+    .small{
+      color: #767676;
+    }
+    &:not(.selected){
+      cursor: pointer;
+      &:hover{
+        box-shadow: inset 0 -2px 0 0 $main-color;
+      }
+    }
+    &.selected{
+      color: $darkest;
+      filter: grayscale(100%) contrast(120%);
+      box-shadow: inset 0 -2px 0 0 $darkest;
+    }
+  }
+  &:hover{
+    .tab{
+      opacity: .5;
+      &:hover{
+        opacity: 1;
+        &.selected ~ .tab{
+          opacity: 1
+        }
+      }
+    }
+  }
+}
+
+.check, .radio{
+  margin-top: 2rem;
+  padding-left: 2.75rem;
+  &:before{
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid $darkest;
+  }
+  .title{
+    font-size: 1.125rem;
+  }
+  .sub{
+    font-size: 0.875rem;
+    color: #767676;
+  }
+}

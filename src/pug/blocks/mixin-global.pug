@@ -29,3 +29,35 @@ mixin pdpButtons()
 		.shareOptions
 			a.link.save.icon Save for later
 			a.link.icon.share Share
+
+mixin input(collect, label, id, value)
+	.input
+		if collect
+			input.collect(type='text', id=id, value=value, placeholder=label)
+		else
+			input(type='text', id=id, value=value, placeholder=label)
+		label(for=id)!= label
+
+mixin check(checked, label, sub)
+	if checked
+		.check.checked
+			p.title!= label
+			if sub
+				span.sub!= sub
+	else
+		.check
+			p.title!= label
+			if sub
+				span.sub!= sub
+
+mixin radio(checked, label, sub)
+	if checked
+		.radio.checked
+			p.title!= label
+			if sub
+				span.sub!= sub
+	else
+		.radio
+			p.title!= label
+			if sub
+				span.sub!= sub

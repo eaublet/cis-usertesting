@@ -1,0 +1,120 @@
+//- TITLE
+- var pagetitle = 'Men Mobile'
+
+//- REGULAR INCLUDES
+include blocks/mixin-mobile.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body
+	+nav('', true)
+	.container
+		header
+			h1 Checkout
+				span.side
+					|Already have an<br/>account? 
+					a.btnLink Sign in
+
+		.section.active
+			h2.left Who is placing the order? 
+			.content
+				+input(false, 'First name', 'first-fn')
+				+input(false, 'Last name', 'first-ln')
+				+input(true, 'Email address', 'first-email')
+				+check(false, 'Yes, please send me newsletters')
+		.section.inactive
+			h2.left Where are we sending your items? 
+			.content
+				.tabs.withLabel
+					.tab.selected(data-tab='ship', data-container='.shipping-option')
+						.img: img(src='/img/checkout/box.svg')
+						.info
+							.label Ship by mail
+							p.small Sorry, no P.O. boxes
+					.tab(data-tab='store', data-container='.shipping-option')
+						.img: img(src='/img/checkout/icon.svg')
+						.info
+							.label Ship to store
+							p.small Always free!
+				.shipping-option.active(date-tab='ship')
+					p.lead We ship to any valid United States address, except A.P.O./F.P.O. and P.O. box.
+					+input(false, 'First name', 'second-fn')
+					+input(false, 'Last name', 'second-ln')
+					+input(false, 'Phone number*', 'second-pn')
+					p.small *We'll only call if we need assistance delivering your order
+					+input(false, 'Extension (optional)', 'second-ext')
+					+input(false, 'Start typing your address...', 'second-address')
+					.hidden-address
+						| Show me only if user has started to type his address
+
+					+radio(true, 'Standard (Free)', 'Estimated delivery date: March 19, 2018')
+					+radio(true, 'Express ($20)', 'Estimated delivery date: March 15, 2018')
+
+
+				.shipping-option(date-tab='store')
+					| Show me only if ship to store is selected
+
+
+		.section.inactive
+			h2.left How would you like to pay? 
+			.content
+				.tabs
+					.tab.selected(data-tab='cc', data-container='.payment-option')
+						.info: .label Credit card
+					.tab(data-tab='pp', data-container='.payment-option')
+						.info: .label PayPal
+					.tab(data-tab='vc', data-container='.payment-option')
+						.info: .label Visa Checkout
+				.payment-option.active(date-tab='cc')
+					+input(false, 'Card number', 'third-cc')
+					.row.gutter
+						.column: +input(false, 'Exp. MM/YY', 'third-exp')
+						.column: +input(false, 'CVC', 'third-cvc')
+
+					+check(true, 'Billing address same as shipping', 'Billing address, country, name, and zip code must match your credit card statement.')
+				.address
+					span.name
+					span.line1
+					span.line2
+					span.line3
+					span.phone
+				a.btnLink Add promo code(s)	
+				.payment-option(date-tab='pp')
+					| Show me only if PayPal
+				.payment-option(date-tab='vc')
+					| Show me only if Visa Checkout
+
+
+
+
+		.section.inactive
+			h2.left Review your order
+			.content
+				.table.summary
+					.tableRow
+						.tableCell
+							h5 Shipping
+						.tableCell
+							p Standard (free)
+					.tableRow
+						.tableCell
+							h5 Taxes
+						.tableCell
+							p $0.00
+					.tableRow
+						.tableCell
+							h5 Promo code(s)
+						.tableCell
+							a.btnLink Enter code
+					.tableRow
+						.tableCell
+							h5.total Total
+							p.small.beforeTaxes (before taxes)
+						.tableCell
+							.totalPrice $XX
+
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+
