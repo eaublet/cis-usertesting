@@ -159,7 +159,7 @@ stickyBuyNow = () ->
 
 
 removeProduct = () ->
-	$('body').on 'click', '.removeItem',  () ->
+	$('body').on 'click tap', '.removeItem',  () ->
 		log $(@).parent()
 		thisId = $(@).parent().parent().attr('data-id')
 		console.log(products)
@@ -198,6 +198,94 @@ checkout = () ->
 		$('.c-checkout__wrapper').addClass 'isVisible'
 
 
+initCheckboxes = () ->
+	$('.check').click ->
+		$(@).toggleClass 'checked'
+
+initRadios = () ->
+	$('.radio').click ->
+		$(@).parent().find('.radio').each ->
+			$(@).removeClass 'checked'
+		$(@).toggleClass 'checked'
+
+initTabs = () ->
+	$('.tab').click ->
+		console.log('tap')
+		$(@).parent().find('.tab').each ->
+			$(@).removeClass 'selected'
+		$(@).toggleClass 'selected'
+		container = $(@).attr('data-container')
+		tab = $(@).attr('data-tab')
+		$(container).removeClass('active')
+		$(container + '[data-tab=' + tab + ']').addClass('active')
+		
+initSections = () ->
+	$('.editSection').click ->
+		$(@).parent().removeClass('inactive filled').addClass('active')
+	# $('.section h2').click ->
+	# 	if $(@).parent().hasClass 'active'
+	# 		return
+	# 	$(@).parent().removeClass('inactive filled').addClass('active')
+	# 	$(@).parent().nextAll().removeClass('active').addClass('inactive')
+	# 	$(@).parent().prevAll().removeClass('active').addClass('inactive filled')
+
+watchField = (el, nextLabel) ->
+	unless el is false
+		elements = el.split(',')
+		toValidate = elements.length
+		$('.nextStep').html(nextLabel)
+		for i in elements
+			$(i).on 'focus', ->
+				toValidate--
+				if toValidate is 0
+					$('.nextStep').removeClass('btn-inactive')
+	else
+		$('.nextStep').html(nextLabel).removeClass('btn-inactive')
+
+checkoutButtonNextStep = () ->
+	maxStep = '3'
+	$('.nextStep').click ->
+		if $('.nextStep').hasClass 'btn-inactive'
+			return
+		else
+			thisStep = $(@).attr('data-current-step')
+			if JSON.stringify(thisStep) is JSON.stringify(maxStep)
+				alert 'Go to Confirm'
+				return
+			$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
+			thisStep++
+			$('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass 'active'
+			setTimeout (-> $('html, body').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 640), 640
+			$(@).attr('data-current-step', thisStep).addClass('btn-inactive')
+			changeStep()
+				
+changeStep = () ->
+	switch $('.nextStep').attr('data-current-step')
+		when '0'
+			watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping')
+			checkoutButtonNextStep()
+		when '1'
+			$('.section[data-step=0] .surcontent').html('<span>' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '</span><span>' + $('#first-email').val() + '</span>')
+			$('#second-fn').val($('#first-fn').val())
+			$('#second-ln').val($('#first-ln').val())
+			watchField('#second-address', 'Continue to payment')
+			checkoutButtonNextStep()
+		when '2'
+			$('.section[data-step=1] .surcontent').html('<span>' + $('#second-fn').val() + ' ' + $('#second-ln').val() + '</span><span>' + $('#second-pn').val() + '</span>')
+			watchField('#third-cc, #third-cvc', 'Continue to review')
+			checkoutButtonNextStep()
+		when '3'
+			$('.cartSummary').hide()
+			setTimeout ( -> $('.nextStep').html('Complete your purchase').removeClass('btn-inactive') ), 320
+			checkoutButtonNextStep()
+		else
+
+initCheckoutButton = () ->
+	changeStep()
+	# checkoutButtonNextStep('#second-address', 'Continue to payment')
+
+	
+
 initPDP = () ->
 	window.products = []
 	window.product = {name: $('h1.productName').text(), price: $('p.price').first().text(), active: false}
@@ -213,7 +301,19 @@ initPDP = () ->
 	removeProduct()
 	stickyBuyNow()
 
+initUI = () ->
+	initCheckboxes()
+	initRadios()
+	# initTabs()
+
+initCheckout = () ->
+	initSections()
+	initCheckoutButton()
+
 $(document).ready ->
+	initUI()
+	if $('body.checkout').length
+		initCheckout()
 	if $('body.pdp').length
 		initNav()
 		initPDP()

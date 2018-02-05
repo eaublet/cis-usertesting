@@ -7,31 +7,42 @@ mixin buySticky(productName, productPrice)
 			a.btn.btn-gradient Select a size
 
 
-mixin nav(surnav)
+mixin nav(surnav, simple)
 	if surnav !== ''
 		.surnav.mobile!= surnav
 	nav.mobile
 		.navContent
-			.left
-				.icon: img(src="./img/global/ico_search.svg")
-				.icon#navBag
-					img(src="./img/global/ico_bagEmpty.svg")
-					#bagCount
-						.count
-							span 9
-							span 8
-							span 7
-							span 6
-							span 5
-							span 4
-							span 3
-							span 2
-							span 1
-							span 
+			if simple
+				.left
+					p.small
+						img(src="/img/checkout/arrowBack.svg")
+						|Keep shopping
+			else
+				.left
+					.icon: img(src="./img/global/ico_search.svg")
+					.icon#navBag
+						img(src="./img/global/ico_bagEmpty.svg")
+						#bagCount
+							.count
+								span 9
+								span 8
+								span 7
+								span 6
+								span 5
+								span 4
+								span 3
+								span 2
+								span 1
+								span 
 			.middle
 				.brand: img(src="./img/global/ico_brand.svg")
-			.right
-				.icon Menu
+			if simple
+				.right
+					p.small Need help? 
+						a.btnLink Contact us
+			else
+				.right
+					.icon Menu
 		if block
 			block
 
