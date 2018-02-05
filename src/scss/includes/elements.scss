@@ -122,7 +122,7 @@
     &.added{
       &:before{
         transform: translate(-50%, -50%) rotate(.5turn);
-        @include transition(transform, $longDuration * 2);
+        @include transition(transform, $duration, ease-out);
       }
     }
   }
