@@ -236,8 +236,9 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .btn { height: 2.5rem; line-height: 2.5rem; padding: 0 1rem; font-size: 0.875rem; display: inline-block; text-align: center; }
 .btn.btn-big { height: 3.75rem; line-height: 3.75rem; }
 .btn.btn-full { display: block; width: 100%; }
-.btn.btn-gradient { background: linear-gradient(135deg, #3023AE 0%, #C86DD7 50%, #C86DD7 50%); background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }
-.btn.btn-gradient.added { background-position: 100%; background-repeat: no-repeat; will-change: background-position; transition: background-position 800ms cubic-bezier(0.77, 0, 0.175, 1); }
+.btn.btn-gradient { position: relative; overflow: hidden; background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }
+.btn.btn-gradient:before { position: absolute; width: 130%; height: 600%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: red; top: 50%; left: 50%; content: ""; z-index: -1; background: linear-gradient(90deg, #3023AE 0%, #C86DD7 100%); }
+.btn.btn-gradient.added:before { -ms-transform: translate(-50%, -50%) rotate(0.5turn); transform: translate(-50%, -50%) rotate(0.5turn); will-change: transform; transition: transform 800ms cubic-bezier(0.77, 0, 0.175, 1); }
 .btn.btn-primary { border: 1px solid #000; }
 .btn.btn-alt { border: 1px solid #CCCCCC; color: #4200D7; }
 .btn.btn-padded { width: calc(100% - 2rem); margin-left: 1rem; }
