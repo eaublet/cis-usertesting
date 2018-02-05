@@ -65,11 +65,16 @@ nav.mobile .navContent .left, nav.mobile .navContent .right { width: 100px; }
 nav.mobile .navContent #navBag { position: relative; }
 nav.mobile .navContent #navBag #bagCount { position: absolute; width: 1rem; height: 1rem; top: 3px; left: 1rem; background-color: #fff; overflow: hidden; word-wrap: nowrap; }
 nav.mobile .navContent #navBag #bagCount:before { content: ''; left: 0; top: 0; width: 4px; height: 100%; background: linear-gradient(to right, white, rgba(255, 255, 255, 0)); position: absolute; }
-nav.mobile .navContent #navBag #bagCount .count { width: 5rem; position: absolute; top: 0; right: 0; color: #222; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
+nav.mobile .navContent #navBag #bagCount .count { width: 10rem; position: absolute; top: 0; right: 0; color: #222; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
 nav.mobile .navContent #navBag #bagCount .count.have1 { right: -1rem; }
 nav.mobile .navContent #navBag #bagCount .count.have2 { right: -2rem; }
 nav.mobile .navContent #navBag #bagCount .count.have3 { right: -3rem; }
 nav.mobile .navContent #navBag #bagCount .count.have4 { right: -4rem; }
+nav.mobile .navContent #navBag #bagCount .count.have5 { right: -5rem; }
+nav.mobile .navContent #navBag #bagCount .count.have6 { right: -6rem; }
+nav.mobile .navContent #navBag #bagCount .count.have7 { right: -7rem; }
+nav.mobile .navContent #navBag #bagCount .count.have8 { right: -8rem; }
+nav.mobile .navContent #navBag #bagCount .count.have9 { right: -9rem; }
 nav.mobile .navContent #navBag #bagCount span { text-align: center; width: 1rem; display: inline-block; }
 nav.mobile .navContent #navBag:before { width: 4rem; height: 4rem; content: ""; background-color: #4200D7; border-radius: 100%; position: absolute; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; margin-left: -2rem; margin-top: -2rem; opacity: 0; z-index: 3; }
 nav.mobile .navContent #navBag.adding:before { animation: addToCart 400ms 400ms 1 ease-out; }

@@ -71,7 +71,7 @@ nav.mobile {
           position: absolute;
         }
         .count{
-          width: 5rem;
+          width: 10rem;
           position: absolute;
           top: 0;
           right: 0;
@@ -88,6 +88,21 @@ nav.mobile {
           }
           &.have4{
             right: -4rem;
+          }
+          &.have5{
+            right: -5rem;
+          }
+          &.have6{
+            right: -6rem;
+          }
+          &.have7{
+            right: -7rem;
+          }
+          &.have8{
+            right: -8rem;
+          }
+          &.have9{
+            right: -9rem;
           }
         }
         span{

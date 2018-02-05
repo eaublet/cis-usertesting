@@ -37,7 +37,7 @@
         up: 5,
         down: 10
       },
-      offset: ($('.surnav.mobile').outerHeight() || 0) + $('nav.mobile').outerHeight()
+      offset: $('.sizeSelector').offset().top
     });
     initBuySticky();
   };
@@ -218,19 +218,19 @@
       r = 0;
       while (r < products.length) {
         rId = products[r]['id'];
-        if (rId = thisId) {
+        if (JSON.stringify(rId) === thisId) {
           products.splice(r, 1);
+          updateCart(products);
+          return;
         }
         r++;
       }
-      console.log(products);
-      return updateCart(products);
     });
   };
 
   addToProductList = function(product) {
     if (product && product.active === true) {
-      product.id = Date.now();
+      product.id = Math.random();
       products.push(product);
       log('Product ' + product.name + ' added to Cart');
       updateCart(products);
