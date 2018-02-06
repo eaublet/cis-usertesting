@@ -11,8 +11,10 @@ body.fixed { overflow: hidden; height: 100vh; }
 .no-list li { display: inline-block; }
 
 .container { padding: 0 1rem; }
+@media (min-width: 1024px) { .container { max-width: 80%; padding: 0; margin-left: auto; margin-right: auto; } }
 
 .row { display: -ms-flexbox; display: flex; }
+.row.small { max-width: 425px; margin-left: auto; margin-right: auto; }
 .row .column { -ms-flex-positive: 1; flex-grow: 1; }
 .row.gutter { -ms-flex-pack: justify; justify-content: space-between; }
 .row.gutter .column { margin: 0 .5rem; }
@@ -52,6 +54,7 @@ h1, h2, h3, h4, h5, h6, .header, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: "Di
 
 p { margin: 0; }
 p.lead { margin: 2rem 0; line-height: 1.5; }
+@media (min-width: 1024px) { p.lead { font-size: 1.125rem; line-height: 2; } }
 
 h1 { font-size: 1.875rem; margin-bottom: 0; }
 h1 span.side { font-size: 0.875rem; font-weight: 400; color: #767676; float: right; text-align: right; }
@@ -71,6 +74,8 @@ h5 .label { font-weight: 400; margin-left: .25rem; }
 
 ul.listDetails { list-style-type: none; margin: 0 0 2rem; padding: 0; font-size: 0.875rem; }
 ul.listDetails li:not(:last-child) { margin-bottom: .5rem; }
+@media (min-width: 1024px) { ul.listDetails { margin-top: 1rem; }
+  ul.listDetails li:not(:last-child) { margin-bottom: 1rem; } }
 
 a { text-decoration: none; }
 
@@ -179,7 +184,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .surveyOptions li span.voted { color: #666; display: block; font-size: 0.875rem; }
 .surveyOptions li .btn { margin-top: 1rem; }
 
-.reviews .reviewsList { list-style-type: none; margin: 0 0 2rem; padding: 0; width: 100%; font-size: 0.875rem; }
+.reviews .reviewsList { list-style-type: none; margin: 0 auto 2rem; padding: 0; width: 100%; font-size: 0.875rem; max-width: 450px; }
 .reviews .reviewsList li { width: 100%; display: -ms-flexbox; display: flex; margin-bottom: 1rem; }
 .reviews .reviewsList li .left, .reviews .reviewsList li .right { display: -ms-flexbox; display: flex; }
 .reviews .reviewsList li .left { color: #666; width: 5.5rem; }
@@ -223,6 +228,24 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .u-btn__content { font-size: 0.75rem; color: #767676; position: absolute; top: 1rem; right: 1rem; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; }
 .u-btn__content svg { margin-left: .5rem; width: .75rem; color: #767676; }
 
+.grid.desktop { grid-template-columns: 1fr 1fr 1fr 1fr; background-image: url("../img/pdp/huge.jpg"); background-attachment: fixed; background-size: 100%; margin-top: 2rem; }
+.grid.desktop.mixnmatch:before { top: 50%; width: 96px; height: 96px; background-image: url("../img/pdp/mix.jpg"); }
+.grid.desktop .cell { box-shadow: 0 0 0 1px #e5e5e5; }
+.grid.desktop .cell.double { height: 50vw; }
+.grid.desktop .cell.single { height: 25vw; }
+.grid.desktop .cell.empty { background-color: transparent; }
+.grid.desktop .cell.social { background-color: #fff; position: relative; }
+.grid.desktop .cell.social img { padding: 1.5rem 2rem 2rem; }
+.grid.desktop .cell.social .socialInfo { width: 100%; position: absolute; bottom: 0; left: 0; padding: 0 2rem 0.75rem; height: 2rem; -ms-flex-align: end; align-items: flex-end; }
+.grid.desktop .cell.social .socialInfo img { padding: 0; }
+.grid.desktop .cell.texture { background-image: url(../img/pdp/linearBkg.png); background-size: cover; }
+.grid.desktop .cell.stroke { position: relative; }
+.grid.desktop .cell.stroke:before { width: 200%; height: 1px; background-color: #e5e5e5; position: absolute; top: 0.5px; left: 0.5px; -ms-transform-origin: top left; transform-origin: top left; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); content: ""; }
+
+.productDetails.desktop { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+.productDetails.desktop .column { margin-top: 2.5rem; }
+.productDetails.desktop p.lead { width: 50%; }
+
 .colorList li { width: 2rem; height: 2rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); color: transparent; position: relative; background-size: cover; }
 .colorList li.active:before { content: ''; width: 110%; height: 110%; position: absolute; background-color: transparent; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); box-shadow: inset 0 0 0px 5px #fff; border: 1px solid #000; }
 
@@ -241,6 +264,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .pdpButtons .shareOptions .share:before { background-image: url(../img/pdp/share.svg); }
 
 .btn { height: 2.5rem; line-height: 2.5rem; padding: 0 1rem; font-size: 0.875rem; display: inline-block; text-align: center; }
+@media (min-width: 1024px) { .btn { padding: 0 2.5rem; } }
 .btn.btn-big { height: 3.75rem; line-height: 3.75rem; }
 .btn.btn-full { display: block; width: 100%; }
 .btn.btn-gradient { position: relative; overflow: hidden; background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }

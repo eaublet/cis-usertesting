@@ -1,0 +1,201 @@
+mixin buySticky(productName, productPrice)
+	.buySticky
+		.left
+			p.productName!= productName
+			p.price $#{productPrice}
+		.right
+			a.btn.btn-gradient Select a size
+
+
+mixin nav(surnav, simple)
+	nav.desktop
+		.navRow
+			.right
+				if surnav !== ''
+					.surnav.mobile!= surnav
+			.left
+				.item My account
+					img(src='/img/pdp/arrowDown.svg')
+				.item
+					img(src='/img/pdp/USA.svg')
+					| EN 
+					img(src='/img/pdp/arrowDown.svg')
+		.navContent
+			ul.mainLinks
+				li Women
+				li Men
+				li Sale
+			.brand: img(src="./img/global/ico_brand.svg")
+			ul.tools
+				li
+					img(src="./img/global/ico_search.svg")
+					| Search
+				li
+					img(src="./img/pdp/fav.svg")
+					| Favourites: 0
+				li
+					img(src="./img/global/ico_bagEmpty.svg")
+					| Bag: 0
+		if block
+			block
+
+
+
+
+mixin heroProduct(breadcrumb, img, productName, productPrice, saleMsg)
+	.d-heroProduct
+		ul.breadcrumb.no-list
+			each b in breadcrumb
+				li!= b
+		.header.container
+			.content
+				h1.productName!= productName
+				p.price $#{productPrice}
+				if saleMsg
+					p.saleMsg!= saleMsg
+
+mixin productDetails(imgA, imgB, imgSocial, handle, likes)
+	.grid.border-top
+		.cell.single: img.full.padded(src='/img/pdp/' + imgA)
+		.cell.single: img.full.padded(src='/img/pdp/' + imgB)
+		.cell.double
+			img.full(src='/img/pdp/' + imgSocial)
+			.container.socialInfo
+				.handle @#{handle}
+				.likes
+					img(src="/img/pdp/save.svg")
+					span= likes
+
+mixin survey(title, iA, tA, vA, iB, tB, vB, iC, tC, vC)
+	.survey
+		h2= title
+		ul.surveyOptions.no-list
+			li
+				.icon: img(src="/img/pdp/" + iA)
+				h5= tA
+				span.voted #{vA}% agree
+				a.btn.btn-primary.btn-small Vote
+			li
+				.icon: img(src="/img/pdp/" + iB)
+				h5= tB
+				span.voted #{vB}% agree
+				a.btn.btn-primary.btn-small Vote
+			li
+				.icon: img(src="/img/pdp/" + iC)
+				h5= tC
+				span.voted #{vC}% agree
+				a.btn.btn-primary.btn-small Vote
+
+mixin reviews(title)
+	.reviews
+		h2 #{title}
+			img(src="/img/pdp/reviews.png", width=93)
+		ul.reviewsList
+			li
+				.left Sizing
+				.right
+					.low Small
+					.bar
+						span(style="left: 45%")
+					.high Big
+			li
+				.left Width
+				.right
+					.low Narrow
+					.bar
+						span(style="left: 54%")
+					.high Wide
+			li
+				.left Calf Width
+				.right
+					.low Narrow
+					.bar
+						span(style="left: 54%")
+					.high Wide
+		.row.gutter.small
+			.column: a.btn.btn-primary.btn-full.btn-big Write a review
+			.column: a.btn.btn-gradient.btn-full.btn-big Show all(19)
+
+
+mixin overlay()
+	.c-overlay.isHidden
+		button.u-btn.u-btn--has-custom-focus.o-close-button.u-reset-button(aria-disabled="false" aria-label="Close Shopping bag dialog" data-qa-id="overlay-close-button" type="button")
+			span.u-btn__content
+				|Close
+				svg.c-icon(aria-hidden="true", focusable="false", version="1.1", viewbox="0 0 400 400")
+					path(role="presentation", d="M393.1,359.4L233.5,200L393.2,40.5c4.4-4.4,6.8-10.3,6.8-16.6c0-6.3-2.5-12.2-7-16.6c-4.4-4.4-10.6-7-16.8-7c-6.3,0-12.2,2.4-16.4,6.8L200,166.7L40.3,7.3c-4.4-4.4-10.4-6.9-16.7-6.9S11.3,2.8,6.9,7.3c-9.3,9.3-9.2,23.9,0.2,33.2l159.7,159.3L7.1,359.4c-4.5,4.5-7,10.5-7,16.9c0,6.2,2.4,12.1,6.9,16.5c4.4,4.4,10.4,6.9,16.7,6.9c6.2,0,12.1-2.4,16.7-6.9l159.9-159.5l159.5,159.3c4.5,4.5,10.5,7,16.8,7c6.1,0,12.1-2.5,16.4-6.8c4.4-4.4,6.9-10.3,6.9-16.5C400,370,397.6,364,393.1,359.4z")
+		block
+
+mixin mixnmatch(title, mainImg, altImg, altTitle, price, color)
+	h2!= title
+	.grid.border-top.mixnmatch.border-bottom.desktop
+		.cell.double
+			img.full(src="/img/pdp/" + mainImg)
+		.cell.double
+			img.full(src="/img/pdp/" + altImg)
+			.matchDetails
+				.title= altTitle
+				.price $#{price}
+			a.btn.btn-gradient.quickAddToCart(style="z-index: 99", quick-name=title, 'quick-price'= '$' + price, quick-image="/img/pdp/" + altImg, quick-size='One size', 'quick-color'=color) Quick add
+
+mixin cart(productA, productB)
+	.cartWrapper
+		span.u-btn__content
+			|Close
+			svg.c-icon(aria-hidden="true", focusable="false", version="1.1", viewbox="0 0 400 400")
+				path(role="presentation", d="M393.1,359.4L233.5,200L393.2,40.5c4.4-4.4,6.8-10.3,6.8-16.6c0-6.3-2.5-12.2-7-16.6c-4.4-4.4-10.6-7-16.8-7c-6.3,0-12.2,2.4-16.4,6.8L200,166.7L40.3,7.3c-4.4-4.4-10.4-6.9-16.7-6.9S11.3,2.8,6.9,7.3c-9.3,9.3-9.2,23.9,0.2,33.2l159.7,159.3L7.1,359.4c-4.5,4.5-7,10.5-7,16.9c0,6.2,2.4,12.1,6.9,16.5c4.4,4.4,10.4,6.9,16.7,6.9c6.2,0,12.1-2.4,16.7-6.9l159.9-159.5l159.5,159.3c4.5,4.5,10.5,7,16.8,7c6.1,0,12.1-2.5,16.4-6.8c4.4-4.4,6.9-10.3,6.9-16.5C400,370,397.6,364,393.1,359.4z")
+		.container
+			h1.c-heading.c-cart-header__title(data-qa-id="cart-header-title")
+				span.c-markdown
+					| Shopping bag
+				span.count (2)
+			p.small.cartId ID: 29525114
+
+			p.small Your subtotal is over $60 and qualifies for free shipping!
+			hr.large
+		.container
+			.tableRow
+				.tableCell
+					h5.total Total
+					p.small.beforeTaxes (before taxes)
+				.tableCell
+					.totalPrice
+			.tableRow
+				.tableCell
+					a.btnLink Enter promo code(s)
+				.tableCell
+					a.btnLink Show details +
+			.tableRow.center
+				.tableCell
+					img(src="/img/cart/Paypal.png", width=165)
+				.tableCell
+					img(src="/img/cart/Visa.png", width=165)
+			hr.large
+		ul.productsCart
+
+		.container
+			hr.large
+		h4 Popular add-ons
+		.grid.border-top
+			.cell.single.product.cta
+				img.full(src=productA.img)
+				.details
+					.title!= productA.title
+					.price!= productA.price
+				a.btn.btn-alt.btn-padded.quickAddToCart(quick-name= productA.title, 'quick-price'=productA.price, quick-image=productA.img) Quick add
+			.cell.single.product.cta
+				img.full(src=productB.img)
+				.details
+					.title!= productB.title
+					.price!= productB.price
+				a.btn.btn-alt.btn-padded.quickAddToCart(quick-name= productB.title, 'quick-price'=productB.price, quick-image=productB.img) Quick add
+			
+
+
+		#dir
+		a.btn.btn-full.btn-gradient.btn-big.goToCheckout.btn-fixedBottom Begin checkout
+			
+
+mixin checkout()
+	.c-checkout__wrapper.isHidden
+		h1 Checkout

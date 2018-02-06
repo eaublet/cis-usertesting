@@ -46,6 +46,10 @@ p{
 	&.lead{
 		margin: 2rem 0;
 		line-height: 1.5;
+		@media (min-width: 1024px){
+			font-size: 1.125rem;
+			line-height: 2;
+		}
 	}
 }
 h1{
@@ -108,6 +112,13 @@ ul.listDetails{
 	font-size: 0.875rem;
 	li:not(:last-child){
 		margin-bottom: .5rem;
+
+	}
+	@media (min-width: 1024px){
+		margin-top: 1rem;
+		li:not(:last-child){
+			margin-bottom: 1rem;
+		}
 	}
 }
 a{

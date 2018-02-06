@@ -1,0 +1,92 @@
+//- TITLE
+- var pagetitle = 'Men Mobile'
+
+//- REGULAR INCLUDES
+include blocks/mixin-desktop.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body.pdp
+	+nav('Free shipping for pick-up in-store & online orders of $45+')
+		+buySticky("Lintun", 79.99)
+	.heroInfos
+		+heroProduct(["Men", "Footwear", "Boots"], 'lintun_a.jpg', "Lintun", 79.99)
+		+colorSelector("Black Leopard", [["textureA.png", "Black Leopard", true], ["textureB.png", "Black Leather"]])
+		+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11], true)
+		+pdpButtons(true)
+	.grid.desktop
+		.cell.double: img#mainImg.full(src="/img/pdp/lintun_a.jpg")
+		.cell.single: img#mainImg.full(src="/img/pdp/lintun_b.jpg")
+		.cell.single: img#mainImg.full(src="/img/pdp/lintun_c.jpg")
+		.cell.single.empty
+		.cell.single.empty
+		.cell.double.empty
+		.cell.single.empty
+		.cell.single.empty.social
+			img.full.social(src='/img/pdp/lintun_social.jpg')
+			.container.socialInfo
+				.handle @klimpt_1900
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 344
+		.cell.single.stroke.empty
+		.cell.single.texture
+	//- +productDetails('lintun_b.jpg', 'lintun_c.jpg', 'lintun_social.jpg', 'klimp_1900', 344)
+	.container.productDetails.desktop
+		p.lead This high-heeled sandal has you covered for any occasion with a good dose of style and attitude, courtesy of three thick straps and subtle gold detailing.
+		.column
+			h5 Details
+			ul.listDetails
+				li Almond toe
+				li Block heel
+				li Buckle closure
+		.column
+			h5 Materials
+			ul.listDetails
+				li Upper: Leather
+				li Sole: Textile
+		.column
+			h5 Measurements
+			ul.listDetails
+				li Heel Height: 4"
+	hr
+	+survey('Great For', 'champaign.svg', 'Date night', 64, 'dress.svg', 'Special occasion', 35, 'allday.svg', 'All-day wear', 17)
+	hr
+	+reviews('Reviews')
+	hr
+	+mixnmatch('Mix & Match', 'lintun_a.jpg', 'belt.jpg', 'Ramaswamy', 19.99, 'Brown')
+	h2 Similar Styles
+	.grid.border-top.desktop
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_1.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_2.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_3.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarMen_4.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+
+		
+	.footer
+		img(src="/img/FooterMobile.png")
+	//- +overlay
+	+cart({img: '/img/pdp/inCart_men1.png' , title: 'Multi-Protector' , price: '$12.99'}, {img: '/img/pdp/inCart_men2.png' , title: 'Laces' , price: '$5.99'})
+	//- +checkout
+
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+

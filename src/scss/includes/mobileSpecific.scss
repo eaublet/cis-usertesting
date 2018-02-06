@@ -438,10 +438,11 @@ nav.mobile {
 .reviews{
   .reviewsList{
     list-style-type: none;
-    margin: 0 0 2rem;
+    margin: 0 auto 2rem;
     padding: 0;
     width: 100%;
     font-size: 0.875rem;
+    max-width: 450px;
     li{
       width: 100%;
       display: flex;

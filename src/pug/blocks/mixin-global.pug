@@ -9,26 +9,42 @@ mixin colorSelector(colorSelected, colors)
 				else
 					li(style="background-image: url(/img/pdp/" + c[0] + ")")!= c[1]
 
-mixin sizeSelector(sizes)
+mixin sizeSelector(sizes, desktop)
 	.sizeSelector
 		h5 Size
 			span.sizeSelected.label
+		if desktop
+			.sizeOptions
+				a.link.truefit.icon True Fit
+				a.link View size chart
 		ul.sizeList.no-list
 			for s in sizes
 				li!= s
-		.sizeOptions
-			a.link.truefit.icon True Fit
-			a.link View size chart
+		if !desktop
+			.sizeOptions
+				a.link.truefit.icon True Fit
+				a.link View size chart
 
 
-mixin pdpButtons()
-	.pdpButtons
-		a.btn.btn-full.btn-gradient.addToCart.btn-big Add to cart
-	.pdpButtons
-		a.btn.btn-full.btn-primary.findInStore.btn-big Find in store
-		.shareOptions
-			a.link.save.icon Save for later
-			a.link.icon.share Share
+mixin pdpButtons(desktop)
+	if desktop
+		.row.gutter
+			.column
+				a.btn.btn-full.btn-primary.findInStore.btn-big Find in store
+			.column
+				a.btn.btn-full.btn-gradient.addToCart.btn-big Add to cart
+		.pdpButtons
+			.shareOptions
+				a.link.save.icon Save for later
+				a.link.icon.share Share
+	else
+		.pdpButtons
+			a.btn.btn-full.btn-gradient.addToCart.btn-big Add to cart
+		.pdpButtons
+			a.btn.btn-full.btn-primary.findInStore.btn-big Find in store
+			.shareOptions
+				a.link.save.icon Save for later
+				a.link.icon.share Share
 
 mixin input(collect, label, id, value)
 	.input
