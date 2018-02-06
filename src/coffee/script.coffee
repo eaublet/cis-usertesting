@@ -252,7 +252,8 @@ checkoutButtonNextStep = () ->
 		else
 			thisStep = $(@).attr('data-current-step')
 			if JSON.stringify(thisStep) is JSON.stringify(maxStep)
-				$('.nextStep').attr('/confirm.html?products=' + JSON.stringify(products) + '&infos={email:' + $('#first-email').val() + '}').click()
+				$('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:' + $('#first-email').val() + '}')
+				$('.nextStep').click()
 				return
 			$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
 			thisStep++
@@ -300,8 +301,11 @@ getUrlParameter = (sParam) ->
 	return
 
 getProducts = () ->
-	window.products = JSON.parse( getUrlParameter('products') )
+	products = getUrlParameter('products');
+
+	
 	if products
+		window.products = JSON.parse( products )
 		totalValue = 0
 		$.each products, (index) ->
 			oldVal = totalValue

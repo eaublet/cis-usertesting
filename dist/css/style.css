@@ -268,13 +268,14 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .btn.btn-big { height: 3.75rem; line-height: 3.75rem; }
 .btn.btn-full { display: block; width: 100%; }
 .btn.btn-gradient { position: relative; overflow: hidden; background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }
-.btn.btn-gradient:before { position: absolute; width: 130%; height: 600%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: red; top: 50%; left: 50%; content: ""; z-index: -1; background: linear-gradient(90deg, #3023AE 0%, #C86DD7 100%); }
+.btn.btn-gradient:before { position: absolute; width: 130%; height: 1000%; border-radius: 100%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: red; top: 50%; left: 50%; content: ""; z-index: -1; opacity: 1; background: linear-gradient(90deg, #3023AE 0%, #C86DD7 100%); }
 .btn.btn-gradient.added:before { -ms-transform: translate(-50%, -50%) rotate(0.5turn); transform: translate(-50%, -50%) rotate(0.5turn); will-change: transform; transition: transform 400ms ease-out; }
 .btn.btn-primary { border: 1px solid #000; }
 .btn.btn-alt { border: 1px solid #CCCCCC; color: #4200D7; }
 .btn.btn-padded { width: calc(100% - 2rem); margin-left: 1rem; }
 .btn.btn-fixedBottom { position: -webkit-sticky; position: sticky; bottom: 0; }
 .btn.btn-inactive { color: #fff; background: #C0C0C0; }
+.btn.btn-inactive:before { opacity: 0; }
 
 a.btnLink { color: #4200D7; font-size: 0.875rem; }
 
@@ -285,7 +286,7 @@ header { margin-top: 2rem; }
 header.halfSquare { margin-top: 0; }
 header h1 { margin-bottom: 2rem; }
 
-.halfSquare { height: 100vw; position: relative; }
+.halfSquare { height: 100vw; position: relative; background-size: cover; }
 .halfSquare .mask { -webkit-shape-outside: polygon(95% 0, 100% 0, 100% 100%, 0 100%, 0 95%); shape-outside: polygon(95% 0, 100% 0, 100% 100%, 0 100%, 0 95%); width: 100%; height: 100%; float: right; }
 .halfSquare .content { background-color: #fff; height: 100%; width: 100%; -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0); clip-path: polygon(0 0, 0% 100%, 100% 0); padding: 1rem; }
 .halfSquare .content h1 { margin-bottom: 1rem; }

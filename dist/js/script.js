@@ -330,7 +330,8 @@
       } else {
         thisStep = $(this).attr('data-current-step');
         if (JSON.stringify(thisStep) === JSON.stringify(maxStep)) {
-          $('.nextStep').attr('/confirm.html?products=' + JSON.stringify(products) + '&infos={email:' + $('#first-email').val() + '}').click();
+          $('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:' + $('#first-email').val() + '}');
+          $('.nextStep').click();
           return;
         }
         $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
@@ -396,9 +397,10 @@
   };
 
   getProducts = function() {
-    var totalValue;
-    window.products = JSON.parse(getUrlParameter('products'));
+    var products, totalValue;
+    products = getUrlParameter('products');
     if (products) {
+      window.products = JSON.parse(products);
       totalValue = 0;
       $.each(products, function(index) {
         var oldVal, productRowTmpl;
