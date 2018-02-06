@@ -122,7 +122,7 @@
     &.added{
       &:before{
         transform: translate(-50%, -50%) rotate(.5turn);
-        @include transition(transform, $duration, ease-out);
+        @include transition(transform, $longDuration, ease-out);
       }
     }
   }
@@ -179,6 +179,7 @@ header{
   position: relative;
 }
 input[type=text]{
+  border-radius: 0;
   display: block;
   height: 3.75rem;
   width: 100%;
@@ -293,6 +294,11 @@ input[type=text]{
   }
   .title{
     font-size: 1.125rem;
+  }
+  &.noSub{
+    .title{
+      padding-top: .5rem;
+    }
   }
   .sub{
     font-size: 0.875rem;

@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initNav, initPDP, initRadios, initSections, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, changeStep, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initNav, initPDP, initRadios, initSections, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -210,7 +210,7 @@
   };
 
   removeProduct = function() {
-    return $('body').on('click tap', '.removeItem', function() {
+    return $('body').on('click touchstart', '.removeItem', function() {
       var r, rId, thisId;
       log($(this).parent());
       thisId = $(this).parent().parent().attr('data-id');
@@ -256,8 +256,7 @@
 
   checkout = function() {
     return $('.goToCheckout').click(function() {
-      $('.cartWrapper').removeClass('isVisible');
-      return $('.c-checkout__wrapper').addClass('isVisible');
+      return $(this).attr('href', 'checkout.html?products=' + JSON.stringify(products)).click();
     });
   };
 
@@ -374,6 +373,50 @@
     return changeStep();
   };
 
+  getUrlParameter = function(sParam) {
+    var i, sPageURL, sParameterName, sURLVariables;
+    sPageURL = decodeURIComponent(window.location.search.substring(1));
+    sURLVariables = sPageURL.split('&');
+    sParameterName = void 0;
+    i = void 0;
+    i = 0;
+    while (i < sURLVariables.length) {
+      sParameterName = sURLVariables[i].split('=');
+      if (sParameterName[0] === sParam) {
+        if (sParameterName[1] === void 0) {
+          return true;
+        } else {
+          return sParameterName[1];
+        }
+      }
+      i++;
+    }
+  };
+
+  getProducts = function() {
+    var products, totalValue;
+    products = JSON.parse(getUrlParameter('products'));
+    if (products) {
+      totalValue = 0;
+      $.each(products, function(index) {
+        var oldVal, productRowTmpl;
+        oldVal = totalValue;
+        totalValue = ((oldVal * 1000) + (parseInt(this.price.replace('$', '') * 1000))) / 1000;
+        productRowTmpl = '<li data-id=' + this.id + '><div class="img"><img src="' + this.img + '"></div><div class="data"><div class="title">' + this.name + '</div><div class="infos">';
+        if (this.color) {
+          productRowTmpl += '<span>' + this.color + '</span>';
+        }
+        if (this.size) {
+          productRowTmpl += '<span>Size ' + this.size + '</span>';
+        }
+        productRowTmpl += '<span>Qty. 1</span></div></div><div class="options"><div class="price">' + this.price + '</div></div></li>';
+        return $('.productsCart').append(productRowTmpl);
+      });
+      $('.totalPrice').html('$' + (totalValue * 1).toFixed(2));
+      return $('.taxes').html('$' + (totalValue * 0.15).toFixed(2));
+    }
+  };
+
   initPDP = function() {
     window.products = [];
     window.product = {
@@ -399,6 +442,7 @@
   };
 
   initCheckout = function() {
+    getProducts();
     initSections();
     return initCheckoutButton();
   };

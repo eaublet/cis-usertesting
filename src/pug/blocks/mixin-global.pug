@@ -39,13 +39,16 @@ mixin input(collect, label, id, value)
 		label(for=id)!= label
 
 mixin check(checked, label, sub)
+	- var noSub = 'noSub'
+	if sub
+		- var noSub = ''
 	if checked
-		.check.checked
+		.check.checked(class=noSub)
 			p.title!= label
 			if sub
 				span.sub!= sub
 	else
-		.check
+		.check(class=noSub)
 			p.title!= label
 			if sub
 				span.sub!= sub

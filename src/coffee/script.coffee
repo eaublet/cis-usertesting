@@ -159,7 +159,7 @@ stickyBuyNow = () ->
 
 
 removeProduct = () ->
-	$('body').on 'click tap', '.removeItem',  () ->
+	$('body').on 'click touchstart', '.removeItem',  () ->
 		log $(@).parent()
 		thisId = $(@).parent().parent().attr('data-id')
 		console.log(products)
@@ -192,10 +192,11 @@ quickAddToCart = () ->
 
 checkout = () ->
 	$('.goToCheckout').click ->
-		$('.cartWrapper').removeClass 'isVisible'
+		$(@).attr('href', 'checkout.html?products=' + JSON.stringify(products)).click()
+		# $('.cartWrapper').removeClass 'isVisible'
 		# $('.cartWrapper').addClass 'isHidden'
 		# $('.c-checkout__wrapper').removeClass 'isHidden'
-		$('.c-checkout__wrapper').addClass 'isVisible'
+		# $('.c-checkout__wrapper').addClass 'isVisible'
 
 
 initCheckboxes = () ->
@@ -284,6 +285,35 @@ initCheckoutButton = () ->
 	changeStep()
 	# checkoutButtonNextStep('#second-address', 'Continue to payment')
 
+getUrlParameter = (sParam) ->
+	sPageURL = decodeURIComponent(window.location.search.substring(1))
+	sURLVariables = sPageURL.split('&')
+	sParameterName = undefined
+	i = undefined
+	i = 0
+	while i < sURLVariables.length
+		sParameterName = sURLVariables[i].split('=')
+		if sParameterName[0] == sParam
+			return if sParameterName[1] == undefined then true else sParameterName[1]
+		i++
+	return
+
+getProducts = () ->
+	products = JSON.parse( getUrlParameter('products') )
+	if products
+		totalValue = 0
+		$.each products, (index) ->
+			oldVal = totalValue
+			totalValue = ((oldVal * 1000) + (parseInt(@price.replace('$', '') * 1000))) / 1000
+			productRowTmpl = '<li data-id=' + @id + '><div class="img"><img src="' + @img + '"></div><div class="data"><div class="title">' + @name + '</div><div class="infos">'
+			if @color
+				productRowTmpl += '<span>' + @color + '</span>'
+			if @size
+				productRowTmpl += '<span>Size ' + @size + '</span>'
+			productRowTmpl += '<span>Qty. 1</span></div></div><div class="options"><div class="price">' + @price + '</div></div></li>'
+			$('.productsCart').append productRowTmpl
+		$('.totalPrice').html('$' + (totalValue * 1).toFixed(2))
+		$('.taxes').html('$' + (totalValue * 0.15).toFixed(2))
 	
 
 initPDP = () ->
@@ -307,6 +337,7 @@ initUI = () ->
 	# initTabs()
 
 initCheckout = () ->
+	getProducts()
 	initSections()
 	initCheckoutButton()
 

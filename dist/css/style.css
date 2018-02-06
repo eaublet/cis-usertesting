@@ -72,6 +72,8 @@ h5 .label { font-weight: 400; margin-left: .25rem; }
 ul.listDetails { list-style-type: none; margin: 0 0 2rem; padding: 0; font-size: 0.875rem; }
 ul.listDetails li:not(:last-child) { margin-bottom: .5rem; }
 
+a { text-decoration: none; }
+
 p.small { font-size: 0.875rem; }
 
 .link { border-bottom: 1px solid #D0D0D0; font-size: 1em; }
@@ -238,7 +240,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .btn.btn-full { display: block; width: 100%; }
 .btn.btn-gradient { position: relative; overflow: hidden; background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }
 .btn.btn-gradient:before { position: absolute; width: 130%; height: 600%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: red; top: 50%; left: 50%; content: ""; z-index: -1; background: linear-gradient(90deg, #3023AE 0%, #C86DD7 100%); }
-.btn.btn-gradient.added:before { -ms-transform: translate(-50%, -50%) rotate(0.5turn); transform: translate(-50%, -50%) rotate(0.5turn); will-change: transform; transition: transform 180ms ease-out; }
+.btn.btn-gradient.added:before { -ms-transform: translate(-50%, -50%) rotate(0.5turn); transform: translate(-50%, -50%) rotate(0.5turn); will-change: transform; transition: transform 400ms ease-out; }
 .btn.btn-primary { border: 1px solid #000; }
 .btn.btn-alt { border: 1px solid #CCCCCC; color: #4200D7; }
 .btn.btn-padded { width: calc(100% - 2rem); margin-left: 1rem; }
@@ -255,7 +257,7 @@ header h1 { margin-bottom: 2rem; }
 
 .input { width: 100%; position: relative; }
 
-input[type=text] { display: block; height: 3.75rem; width: 100%; border: 0; font-size: 1.125rem; border-bottom: 1px solid #ccc; margin-bottom: 1rem; font-family: "Dia", "sans-serif"; padding: 0; }
+input[type=text] { border-radius: 0; display: block; height: 3.75rem; width: 100%; border: 0; font-size: 1.125rem; border-bottom: 1px solid #ccc; margin-bottom: 1rem; font-family: "Dia", "sans-serif"; padding: 0; }
 input[type=text] + label { color: #767676; position: absolute; top: 1.125rem; left: 0; font-size: 1.125rem; -ms-transform-origin: top left; transform-origin: top left; -ms-transform: scale(0.75) translate(0, -1.75rem); transform: scale(0.75) translate(0, -1.75rem); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
 input[type=text]:placeholder-shown + label { -ms-transform: scale(1) translate(0, 0); transform: scale(1) translate(0, 0); }
 input[type=text]:focus { outline: none; border-color: #4200D7; }
@@ -283,6 +285,7 @@ input[type=text]:focus { outline: none; border-color: #4200D7; }
 .check:before, .radio:before { width: 2.25rem; height: 2.25rem; border: 1px solid #ccc; position: absolute; content: ""; margin-left: -3rem; top: 0.125rem; box-sizing: border-box; }
 .check:hover:before, .radio:hover:before { border-color: #222; }
 .check .title, .radio .title { font-size: 1.125rem; }
+.check.noSub .title, .radio.noSub .title { padding-top: .5rem; }
 .check .sub, .radio .sub { font-size: 0.875rem; color: #767676; }
 
 .check.checked:before { border-color: #222; background-image: url(../img/checkout/check.svg); background-position: center center; background-repeat: no-repeat; }
