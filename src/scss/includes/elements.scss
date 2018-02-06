@@ -169,9 +169,41 @@ hr{
 // FORMS
 
 header{
+
   margin-top: 2rem;
+  &.halfSquare{
+    margin-top: 0;
+  }
   h1{
     margin-bottom: 2rem;
+  }
+}
+
+.halfSquare{
+  height: 100vw;
+  position: relative;
+  .mask{
+    shape-outside: polygon(95% 0, 100% 0, 100% 100%, 0 100%, 0 95%);
+    width: 100%;
+    height: 100%;
+    float: right;
+  }
+  .content{
+    h1{
+      margin-bottom: 1rem;
+    }
+    p.small{
+      margin-bottom: 1rem;
+    }
+    background-color: $white;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0 0, 0% 100%, 100% 0);
+    padding: 1rem;
+    a{
+      white-space: nowrap;
+      position: absolute;
+    }
   }
 }
 .input{

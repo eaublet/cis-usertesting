@@ -1,0 +1,99 @@
+//- TITLE
+- var pagetitle = 'Men Mobile'
+
+//- REGULAR INCLUDES
+include blocks/mixin-mobile.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body.confirm
+	+nav('Free shipping for pick-up in-store & online orders of $45+')
+	header.halfSquare(style="background-image: url(/img/confirm/giphy.gif)")
+		.mask
+		.content
+			h1 Thank you for<br/> your order!
+			p.small Your order (#8429068) has been received. We’ve sent an email to <span class='emailReplace'>sarah@gmail.com</span>.
+			a.btnLink Continue shopping
+
+	.grid.border-top.border-bottom
+		.cell.single.square.padded
+			h5 Shipping
+			p.infos.small
+				span Sarah Layng
+				span 231 Front Street
+				span 5th Fl
+				span Brooklyn, NY 11201
+				span (718) 123-4567
+		.cell.single.square.padded
+			h5 Billing
+			.visa: img(src="/img/checkout/visa.png", width=49)
+			p.infos.small
+				span **** **** **** 4632
+				span Expires 07/22
+		.cell.single.square.padded
+			h5 Delivery
+			p.infos.small
+				span Standard Shipping
+				span March 19, 2018
+				span via Canada Post
+		.cell.single.square.padded
+			h5 Tracking
+			p.infos.small
+				span.trunk 940011020082888939688788788787878787
+			a.btnLink Track your order
+	.container
+		.section.active
+			h2.left Review your order
+			a.btn.btn-alt.editSection Edit
+			.content
+				.table.summary
+					.tableRow
+						.tableCell
+							h5 Subtotal
+						.tableCell
+							p.subtotalPrice $0.00
+					.tableRow
+						.tableCell
+							h5 Shipping
+						.tableCell
+							p Standard (free)
+					.tableRow
+						.tableCell
+							h5 Taxes
+						.tableCell
+							p.taxes $0.00
+					.tableRow
+						.tableCell
+							h5.total Total
+								span.small.beforeTaxes (Shipping & taxes calculated)
+						.tableCell
+							.totalPrice $XX
+		
+	.cartSummary
+		.container
+			hr.large
+			//- .tableRow
+			//- 	.tableCell
+			//- 		h3(data-qa-id="cart-header-title")
+			//- 			| Summary
+			//- 			span ID: 29525114
+				//- .tableCell: a.btnLink Edit shopping bag
+		ul.productsCart
+	.footer
+		img(src="/img/FooterMobile.png")
+			//- li 
+				.img
+					img(src='/img/pdp/bag.jpg')
+				.data
+					.title Product
+					.infos
+						span Color
+						span Size
+				.options
+					.price $79
+
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+

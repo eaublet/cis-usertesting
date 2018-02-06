@@ -75,6 +75,9 @@ ul.listDetails li:not(:last-child) { margin-bottom: .5rem; }
 a { text-decoration: none; }
 
 p.small { font-size: 0.875rem; }
+p.small.infos span { display: block; }
+
+.trunk { width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .link { border-bottom: 1px solid #D0D0D0; font-size: 1em; }
 .link.icon { position: relative; margin-left: 1.25rem; }
@@ -151,12 +154,14 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 
 .c-checkout__wrapper.isVisible { display: block; }
 
-.grid { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1px; background-color: #E5E5E5; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 1px; width: 100%; background-color: #E5E5E5; }
 .grid.border-top { border-top: 1px solid #E5E5E5; }
 .grid.border-bottom { border-bottom: 1px solid #E5E5E5; }
-.grid .cell { background-color: #fff; }
+.grid .cell { background-color: #fff; overflow: hidden; }
 .grid .cell.single { grid-row: span 1; grid-column: span 1; }
+.grid .cell.single.square { height: 50vw; }
 .grid .cell.double { grid-row: span 2; grid-column: span 2; }
+.grid .cell.padded { padding: 1rem; }
 .grid .cell img.full { width: 100%; display: block; }
 .grid .cell img.full.padded { padding: .75rem; }
 .grid .cell.product { position: relative; }
@@ -253,7 +258,15 @@ hr { height: 1px; background-color: #E5E5E5; margin: 3rem 0; border: 0; }
 hr.large { margin: 1.5rem 0; width: 100vw; margin-left: 50%; -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); }
 
 header { margin-top: 2rem; }
+header.halfSquare { margin-top: 0; }
 header h1 { margin-bottom: 2rem; }
+
+.halfSquare { height: 100vw; position: relative; }
+.halfSquare .mask { -webkit-shape-outside: polygon(95% 0, 100% 0, 100% 100%, 0 100%, 0 95%); shape-outside: polygon(95% 0, 100% 0, 100% 100%, 0 100%, 0 95%); width: 100%; height: 100%; float: right; }
+.halfSquare .content { background-color: #fff; height: 100%; width: 100%; -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0); clip-path: polygon(0 0, 0% 100%, 100% 0); padding: 1rem; }
+.halfSquare .content h1 { margin-bottom: 1rem; }
+.halfSquare .content p.small { margin-bottom: 1rem; }
+.halfSquare .content a { white-space: nowrap; position: absolute; }
 
 .input { width: 100%; position: relative; }
 

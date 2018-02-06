@@ -28,8 +28,9 @@ initNav = () ->
 		tolerance:
 			up: 5
 			down: 10
-		offset: $('.sizeSelector').offset().top
-	initBuySticky()
+		offset: 300 || $('.sizeSelector').offset().top
+	if $('.buySticky').length
+		initBuySticky()
 	return
 
 
@@ -251,7 +252,7 @@ checkoutButtonNextStep = () ->
 		else
 			thisStep = $(@).attr('data-current-step')
 			if JSON.stringify(thisStep) is JSON.stringify(maxStep)
-				alert 'Go to Confirm'
+				$('.nextStep').attr('/confirm.html?products=' + JSON.stringify(products) + '&infos={email:' + $('#first-email').val() + '}').click()
 				return
 			$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
 			thisStep++
@@ -299,7 +300,7 @@ getUrlParameter = (sParam) ->
 	return
 
 getProducts = () ->
-	products = JSON.parse( getUrlParameter('products') )
+	window.products = JSON.parse( getUrlParameter('products') )
 	if products
 		totalValue = 0
 		$.each products, (index) ->
@@ -312,9 +313,14 @@ getProducts = () ->
 				productRowTmpl += '<span>Size ' + @size + '</span>'
 			productRowTmpl += '<span>Qty. 1</span></div></div><div class="options"><div class="price">' + @price + '</div></div></li>'
 			$('.productsCart').append productRowTmpl
-		$('.totalPrice').html('$' + (totalValue * 1).toFixed(2))
+		$('.subtotalPrice').html('$' + (totalValue * 1).toFixed(2))
+		$('.totalPrice').html('$' + (totalValue * 1.15).toFixed(2))
 		$('.taxes').html('$' + (totalValue * 0.15).toFixed(2))
-	
+
+getInfos = () ->
+	infos = eval('(' + getUrlParameter('infos') + ')')
+	if infos.email
+		$('span.emailReplace').html(infos.email)
 
 initPDP = () ->
 	window.products = []
@@ -337,14 +343,23 @@ initUI = () ->
 	# initTabs()
 
 initCheckout = () ->
+	window.products = []
 	getProducts()
 	initSections()
 	initCheckoutButton()
+
+initConfirm = () ->
+	window.products = []
+	getProducts()
+	getInfos()
 
 $(document).ready ->
 	initUI()
 	if $('body.checkout').length
 		initCheckout()
+	if $('body.confirm').length
+		initNav()
+		initConfirm()
 	if $('body.pdp').length
 		initNav()
 		initPDP()

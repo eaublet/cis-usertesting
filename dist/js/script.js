@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initNav, initPDP, initRadios, initSections, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, changeStep, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initRadios, initSections, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -37,9 +37,11 @@
         up: 5,
         down: 10
       },
-      offset: $('.sizeSelector').offset().top
+      offset: 300 || $('.sizeSelector').offset().top
     });
-    initBuySticky();
+    if ($('.buySticky').length) {
+      initBuySticky();
+    }
   };
 
   sizeSelector = function() {
@@ -328,7 +330,7 @@
       } else {
         thisStep = $(this).attr('data-current-step');
         if (JSON.stringify(thisStep) === JSON.stringify(maxStep)) {
-          alert('Go to Confirm');
+          $('.nextStep').attr('/confirm.html?products=' + JSON.stringify(products) + '&infos={email:' + $('#first-email').val() + '}').click();
           return;
         }
         $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
@@ -394,8 +396,8 @@
   };
 
   getProducts = function() {
-    var products, totalValue;
-    products = JSON.parse(getUrlParameter('products'));
+    var totalValue;
+    window.products = JSON.parse(getUrlParameter('products'));
     if (products) {
       totalValue = 0;
       $.each(products, function(index) {
@@ -412,8 +414,17 @@
         productRowTmpl += '<span>Qty. 1</span></div></div><div class="options"><div class="price">' + this.price + '</div></div></li>';
         return $('.productsCart').append(productRowTmpl);
       });
-      $('.totalPrice').html('$' + (totalValue * 1).toFixed(2));
+      $('.subtotalPrice').html('$' + (totalValue * 1).toFixed(2));
+      $('.totalPrice').html('$' + (totalValue * 1.15).toFixed(2));
       return $('.taxes').html('$' + (totalValue * 0.15).toFixed(2));
+    }
+  };
+
+  getInfos = function() {
+    var infos;
+    infos = eval('(' + getUrlParameter('infos') + ')');
+    if (infos.email) {
+      return $('span.emailReplace').html(infos.email);
     }
   };
 
@@ -442,15 +453,26 @@
   };
 
   initCheckout = function() {
+    window.products = [];
     getProducts();
     initSections();
     return initCheckoutButton();
+  };
+
+  initConfirm = function() {
+    window.products = [];
+    getProducts();
+    return getInfos();
   };
 
   $(document).ready(function() {
     initUI();
     if ($('body.checkout').length) {
       initCheckout();
+    }
+    if ($('body.confirm').length) {
+      initNav();
+      initConfirm();
     }
     if ($('body.pdp').length) {
       initNav();
