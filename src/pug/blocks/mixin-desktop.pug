@@ -1,7 +1,7 @@
-mixin buySticky(productName, productPrice)
+mixin buySticky(productName, productPrice, img)
 	.buySticky
 		.left
-			.img: img(src="/img/pdp/lintun_a.jpg")
+			.img: img(src=img)
 			.details
 				p.productName!= productName
 				p.price $#{productPrice}

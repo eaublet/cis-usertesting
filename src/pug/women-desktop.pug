@@ -1,0 +1,92 @@
+//- TITLE
+- var pagetitle = 'Women Desktop'
+
+//- REGULAR INCLUDES
+include blocks/mixin-desktop.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body.pdp.desktop
+	+nav('Free shipping for pick-up in-store & online orders of $45+')
+		+buySticky("Beasien", 79.99, '/img/pdp/beasien_a.jpg')
+	.heroInfos
+		+heroProduct(["Women", "Footwear", "Boots"], 'beasien_a.jpg', "Beasien", 79.99)
+			+colorSelector("Black Leopard", [["textureA.png", "Black Leopard", true], ["textureB.png", "Black Leather"]])
+			+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11], true)
+			+pdpButtons(true)
+	.grid.desktop(style="background-image: url(/img/pdp/hugeWomen.jpg)")
+		.cell.double: img#mainImg.full(src="/img/pdp/beasien_a.jpg")
+		.cell.single: img#mainImg.full(src="/img/pdp/beasien_b.jpg")
+		.cell.single: img#mainImg.full(src="/img/pdp/beasien_c.jpg")
+		.cell.single.empty.noBorder
+		.cell.single.empty.noBorder.stroke.reverseStroke
+		.cell.double.empty
+		.cell.single.empty
+		.cell.single.empty.social
+			img.full.social(src='/img/pdp/beasien_social.jpg')
+			.container.socialInfo
+				.handle @klimpt_1900
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 344
+		.cell.single.stroke.empty
+		.cell.single.texture
+	//- +productDetails('beasien_b.jpg', 'beasien_c.jpg', 'beasien_social.jpg', 'klimp_1900', 344)
+	.container.productDetails.desktop
+		p.lead This high-heeled sandal has you covered for any occasion with a good dose of style and attitude, courtesy of three thick straps and subtle gold detailing.
+		.column
+			h5 Details
+			ul.listDetails
+				li Almond toe
+				li Block heel
+				li Buckle closure
+		.column
+			h5 Materials
+			ul.listDetails
+				li Upper: Leather
+				li Sole: Textile
+		.column
+			h5 Measurements
+			ul.listDetails
+				li Heel Height: 4"
+	hr
+	+survey('Great For', 'dress.svg', 'Date night', 64, 'badWeather.svg', 'Bad weather', 35, 'allday.svg', 'All-day wear', 17)
+	hr
+	+reviews('Reviews')
+	hr
+	+mixnmatch('Mix & Match', 'beasien_a.jpg', 'bag.jpg', 'Ramaswamy', 19.99, 'Black')
+	h2 Similar Styles
+	.grid.border-top.desktop
+		.cell.single.product
+			img.full(src='/img/pdp/similarWomen_1.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarWomen_2.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarWomen_3.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+		.cell.single.product
+			img.full(src='/img/pdp/similarWomen_4.jpg')
+			.details
+				.title Ramaswamy
+				.price $49.99
+
+		
+	.footer.desktop
+		img(src="/img/global/desktopFooter.png")
+	//- +overlay
+	+cart({img: '/img/pdp/inCart_men1.png' , title: 'Multi-Protector' , price: '$12.99'}, {img: '/img/pdp/inCart_men2.png' , title: 'Laces' , price: '$5.99'})
+	//- +checkout
+
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+
