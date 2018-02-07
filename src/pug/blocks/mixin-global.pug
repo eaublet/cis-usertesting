@@ -28,18 +28,23 @@ mixin sizeSelector(sizes, desktop)
 
 mixin pdpButtons(desktop)
 	if desktop
-		.row.gutter
-			.column
-				a.btn.btn-full.btn-primary.findInStore.btn-big Find in store
-			.column
-				a.btn.btn-full.btn-gradient.addToCart.btn-big Add to cart
 		.pdpButtons
+			.row.gutter
+				.column
+					a.btn.btn-full.btn-primary.findInStore.btn-big Find in store
+				.column
+					a.btn.btn-full.btn-gradient.addToCart.btn-big
+						.iconCheck: img(src="/img/pdp/checkW.svg")
+						span.label Add to cart
+		
 			.shareOptions
 				a.link.save.icon Save for later
 				a.link.icon.share Share
 	else
 		.pdpButtons
-			a.btn.btn-full.btn-gradient.addToCart.btn-big Add to cart
+			a.btn.btn-full.btn-gradient.addToCart.btn-big
+				.iconCheck: img(src="/img/pdp/checkW.svg")
+				span.label Add to cart
 		.pdpButtons
 			a.btn.btn-full.btn-primary.findInStore.btn-big Find in store
 			.shareOptions

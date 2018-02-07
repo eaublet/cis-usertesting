@@ -24,7 +24,13 @@ initBuySticky = () ->
 			return
 
 initNav = () ->
-	$('nav.mobile').headroom
+	$(window).scroll (event) ->
+		scroll = $(window).scrollTop()
+		if scroll > 40
+			$('.navContent').addClass 'reduced'
+		if scroll < 40
+			$('.navContent').removeClass 'reduced'
+	$('nav.mobile, .navContent.desktop').headroom
 		tolerance:
 			up: 5
 			down: 10
@@ -40,8 +46,8 @@ sizeSelector = () ->
 			$(@).removeClass 'active'
 		$(@).addClass 'active'
 		$('.sizeSelected').html($(@).text())
-		$('.right > .btn-gradient').removeClass('added').text('Add size ' + $(@).text() + ' to Cart')
-		$('a.addToCart').removeClass('added').html('Add to cart')
+		$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(@).text() + ' to Cart')
+		$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
 		# window.product.size = $(@).text()
 
 colorSelector = () ->
@@ -102,8 +108,8 @@ updateCart = (products) ->
 	$('.totalPrice').html('$' + totalValue)
 setAdded = () ->
 	setTimeout ( ->
-		$('.btn.addToCart').addClass('added').html('Added! Open cart')
-		$('.right > .btn-gradient').addClass('added').html('Added! Open cart')
+		$('.btn.addToCart').addClass('added').find('.label').html('Added! Open cart')
+		$('.right > .btn-gradient').addClass('added').find('.label').html('Added! Open cart')
 	), 640
 addToCart = () ->
 	$('.btn.addToCart').on 'click', (e) ->
@@ -156,7 +162,10 @@ stickyBuyNow = () ->
 			else
 				addProduct({name: window.product.name,img: $('#mainImg').attr('src'), price: window.product.price, color: color, size: selectedSize, active: true })
 		else
-			$('html, body').animate { scrollTop: $('.colorList').position().top }, 1000
+			if $('nav.desktop').length
+				$('html, body').animate { scrollTop: 0 }, 640
+			else
+				$('html, body').animate { scrollTop: $('.colorList').position().top }, 640
 
 
 removeProduct = () ->
@@ -238,6 +247,7 @@ watchField = (el, nextLabel) ->
 		$('.nextStep').html(nextLabel)
 		for i in elements
 			$(i).on 'focus', ->
+				console.log('yeee')
 				toValidate--
 				if toValidate is 0
 					$('.nextStep').removeClass('btn-inactive')
@@ -300,12 +310,20 @@ getUrlParameter = (sParam) ->
 		i++
 	return
 
-getProducts = () ->
-	products = getUrlParameter('products');
+initSurvey = () ->
+	$('.surveyOptions a').click ->
+		unless $('.surveyOptions').hasClass 'active'
+			$('.surveyOptions').addClass 'active'
+			$(@).parent().addClass 'added'
+			$(@).addClass 'active'
+			$(@).find('.label').html 'Voted'
+			return
+		return
 
-	
-	if products
-		window.products = JSON.parse( products )
+getProducts = () ->
+	pro = getUrlParameter('products');
+	if pro
+		window.products = JSON.parse(pro)
 		totalValue = 0
 		$.each products, (index) ->
 			oldVal = totalValue
@@ -322,9 +340,11 @@ getProducts = () ->
 		$('.taxes').html('$' + (totalValue * 0.15).toFixed(2))
 
 getInfos = () ->
-	infos = eval('(' + getUrlParameter('infos') + ')')
-	if infos.email
-		$('span.emailReplace').html(infos.email)
+	haveInfos = getUrlParameter('infos')
+	if haveInfos
+		infos = eval('(' + haveInfos + ')')
+		if infos.email
+			$('span.emailReplace').html(infos.email)
 
 initPDP = () ->
 	window.products = []
@@ -340,6 +360,7 @@ initPDP = () ->
 	addToProductList()
 	removeProduct()
 	stickyBuyNow()
+	initSurvey()
 
 initUI = () ->
 	initCheckboxes()

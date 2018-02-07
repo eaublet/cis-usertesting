@@ -4,38 +4,42 @@ mixin buySticky(productName, productPrice)
 			p.productName!= productName
 			p.price $#{productPrice}
 		.right
-			a.btn.btn-gradient Select a size
+			a.btn.btn-gradient.btn-big
+				.iconCheck: img(src="/img/pdp/checkW.svg")
+				span.label Select a size
 
 
 mixin nav(surnav, simple)
 	nav.desktop
-		.navRow
-			.right
-				if surnav !== ''
-					.surnav.mobile!= surnav
-			.left
-				.item My account
-					img(src='/img/pdp/arrowDown.svg')
-				.item
-					img(src='/img/pdp/USA.svg')
-					| EN 
-					img(src='/img/pdp/arrowDown.svg')
-		.navContent
-			ul.mainLinks
+	.navRow
+		.left
+			if surnav !== ''
+				.surnav!= surnav
+		.right
+			.item My account
+				img(src='/img/pdp/arrowDown.svg')
+			.item
+				img(src='/img/pdp/USA.svg')
+				| EN 
+				img(src='/img/pdp/arrowDown.svg')
+	.navContent.desktop
+		.wrapper
+			ul.mainLinks.no-list
 				li Women
 				li Men
 				li Sale
 			.brand: img(src="./img/global/ico_brand.svg")
-			ul.tools
+			ul.tools.no-list
 				li
-					img(src="./img/global/ico_search.svg")
-					| Search
+					img(src="./img/global/ico_bagEmpty.svg")
+					| Bag: 0
 				li
 					img(src="./img/pdp/fav.svg")
 					| Favourites: 0
 				li
-					img(src="./img/global/ico_bagEmpty.svg")
-					| Bag: 0
+					img(src="./img/global/ico_search.svg")
+					| Search
+				
 		if block
 			block
 
@@ -53,6 +57,8 @@ mixin heroProduct(breadcrumb, img, productName, productPrice, saleMsg)
 				p.price $#{productPrice}
 				if saleMsg
 					p.saleMsg!= saleMsg
+		if block
+			block
 
 mixin productDetails(imgA, imgB, imgSocial, handle, likes)
 	.grid.border-top
@@ -74,17 +80,23 @@ mixin survey(title, iA, tA, vA, iB, tB, vB, iC, tC, vC)
 				.icon: img(src="/img/pdp/" + iA)
 				h5= tA
 				span.voted #{vA}% agree
-				a.btn.btn-primary.btn-small Vote
+				a.btn.btn-primary.btn-small
+					.iconCheck: img(src="/img/pdp/check.svg")
+					span.label Vote
 			li
 				.icon: img(src="/img/pdp/" + iB)
 				h5= tB
 				span.voted #{vB}% agree
-				a.btn.btn-primary.btn-small Vote
+				a.btn.btn-primary.btn-small
+					.iconCheck: img(src="/img/pdp/check.svg")
+					span.label Vote
 			li
 				.icon: img(src="/img/pdp/" + iC)
 				h5= tC
 				span.voted #{vC}% agree
-				a.btn.btn-primary.btn-small Vote
+				a.btn.btn-primary.btn-small
+					.iconCheck: img(src="/img/pdp/check.svg")
+					span.label Vote
 
 mixin reviews(title)
 	.reviews

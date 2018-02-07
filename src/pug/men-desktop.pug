@@ -12,10 +12,10 @@ body.pdp
 		+buySticky("Lintun", 79.99)
 	.heroInfos
 		+heroProduct(["Men", "Footwear", "Boots"], 'lintun_a.jpg', "Lintun", 79.99)
-		+colorSelector("Black Leopard", [["textureA.png", "Black Leopard", true], ["textureB.png", "Black Leather"]])
-		+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11], true)
-		+pdpButtons(true)
-	.grid.desktop
+			+colorSelector("Black Leopard", [["textureA.png", "Black Leopard", true], ["textureB.png", "Black Leather"]])
+			+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11], true)
+			+pdpButtons(true)
+	.grid.desktop(style="background-image: url(/img/pdp/hugeMen.jpg)")
 		.cell.double: img#mainImg.full(src="/img/pdp/lintun_a.jpg")
 		.cell.single: img#mainImg.full(src="/img/pdp/lintun_b.jpg")
 		.cell.single: img#mainImg.full(src="/img/pdp/lintun_c.jpg")
@@ -51,7 +51,7 @@ body.pdp
 			ul.listDetails
 				li Heel Height: 4"
 	hr
-	+survey('Great For', 'champaign.svg', 'Date night', 64, 'dress.svg', 'Special occasion', 35, 'allday.svg', 'All-day wear', 17)
+	+survey('Great For', 'dress.svg', 'Date night', 64, 'badWeather.svg', 'Bad weather', 35, 'allday.svg', 'All-day wear', 17)
 	hr
 	+reviews('Reviews')
 	hr
@@ -80,8 +80,8 @@ body.pdp
 				.price $49.99
 
 		
-	.footer
-		img(src="/img/FooterMobile.png")
+	.footer.desktop
+		img(src="/img/global/desktopFooter.png")
 	//- +overlay
 	+cart({img: '/img/pdp/inCart_men1.png' , title: 'Multi-Protector' , price: '$12.99'}, {img: '/img/pdp/inCart_men2.png' , title: 'Laces' , price: '$5.99'})
 	//- +checkout

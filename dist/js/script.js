@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initRadios, initSections, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, changeStep, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initRadios, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -32,7 +32,17 @@
   };
 
   initNav = function() {
-    $('nav.mobile').headroom({
+    $(window).scroll(function(event) {
+      var scroll;
+      scroll = $(window).scrollTop();
+      if (scroll > 40) {
+        $('.navContent').addClass('reduced');
+      }
+      if (scroll < 40) {
+        return $('.navContent').removeClass('reduced');
+      }
+    });
+    $('nav.mobile, .navContent.desktop').headroom({
       tolerance: {
         up: 5,
         down: 10
@@ -51,8 +61,8 @@
       });
       $(this).addClass('active');
       $('.sizeSelected').html($(this).text());
-      $('.right > .btn-gradient').removeClass('added').text('Add size ' + $(this).text() + ' to Cart');
-      return $('a.addToCart').removeClass('added').html('Add to cart');
+      $('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(this).text() + ' to Cart');
+      return $('a.addToCart').removeClass('added').find('.label').html('Add to cart');
     });
   };
 
@@ -125,8 +135,8 @@
 
   setAdded = function() {
     return setTimeout((function() {
-      $('.btn.addToCart').addClass('added').html('Added! Open cart');
-      return $('.right > .btn-gradient').addClass('added').html('Added! Open cart');
+      $('.btn.addToCart').addClass('added').find('.label').html('Added! Open cart');
+      return $('.right > .btn-gradient').addClass('added').find('.label').html('Added! Open cart');
     }), 640);
   };
 
@@ -204,9 +214,15 @@
           });
         }
       } else {
-        return $('html, body').animate({
-          scrollTop: $('.colorList').position().top
-        }, 1000);
+        if ($('nav.desktop').length) {
+          return $('html, body').animate({
+            scrollTop: 0
+          }, 640);
+        } else {
+          return $('html, body').animate({
+            scrollTop: $('.colorList').position().top
+          }, 640);
+        }
       }
     });
   };
@@ -308,6 +324,7 @@
       for (j = 0, len = elements.length; j < len; j++) {
         i = elements[j];
         results.push($(i).on('focus', function() {
+          console.log('yeee');
           toValidate--;
           if (toValidate === 0) {
             return $('.nextStep').removeClass('btn-inactive');
@@ -396,11 +413,23 @@
     }
   };
 
+  initSurvey = function() {
+    return $('.surveyOptions a').click(function() {
+      if (!$('.surveyOptions').hasClass('active')) {
+        $('.surveyOptions').addClass('active');
+        $(this).parent().addClass('added');
+        $(this).addClass('active');
+        $(this).find('.label').html('Voted');
+        return;
+      }
+    });
+  };
+
   getProducts = function() {
-    var products, totalValue;
-    products = getUrlParameter('products');
-    if (products) {
-      window.products = JSON.parse(products);
+    var pro, totalValue;
+    pro = getUrlParameter('products');
+    if (pro) {
+      window.products = JSON.parse(pro);
       totalValue = 0;
       $.each(products, function(index) {
         var oldVal, productRowTmpl;
@@ -423,10 +452,13 @@
   };
 
   getInfos = function() {
-    var infos;
-    infos = eval('(' + getUrlParameter('infos') + ')');
-    if (infos.email) {
-      return $('span.emailReplace').html(infos.email);
+    var haveInfos, infos;
+    haveInfos = getUrlParameter('infos');
+    if (haveInfos) {
+      infos = eval('(' + haveInfos + ')');
+      if (infos.email) {
+        return $('span.emailReplace').html(infos.email);
+      }
     }
   };
 
@@ -446,7 +478,8 @@
     quickAddToCart();
     addToProductList();
     removeProduct();
-    return stickyBuyNow();
+    stickyBuyNow();
+    return initSurvey();
   };
 
   initUI = function() {

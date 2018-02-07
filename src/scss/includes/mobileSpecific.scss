@@ -416,24 +416,65 @@ nav.mobile {
 .surveyOptions{
   display: flex;
   justify-content: space-around;
+  max-width: 35rem;
+  margin: 0 auto;
   li{
     text-align: center;
+    @include transition(color);
     .icon{
       height: 3.5rem;
       line-height: 3.5rem;
+      @include transition(filter);
+      filter: grayscale(100%) contrast(300%);
     }
     h5{
       margin: 0;
     }
     span.voted{
+      @include transition(color);
       color: #666;
       display: block;
       font-size: 0.875rem;
     }
     .btn{
+      @include transition(all);
       margin-top: 1rem;
+      text-align: center;
+      width: 100px;
+      padding: 0;
     }
   }
+  &.active{
+    .btn{
+      opacity: 0;
+      &.added{
+        opacity: 1;
+      }
+    }
+    li.added{
+      color: $main-color;
+      .voted{
+        color: currentColor;
+      }
+      .icon{
+        filter: grayscale(0%) contrast(100%);
+      }
+      .btn{
+        opacity: 1;
+        border-color: $main-color;
+      }
+    }
+  }
+}
+.btn .iconCheck{
+  display: inline-flex;
+  width: 0px;
+  overflow: hidden;
+  text-align: center;
+  @include transition(width);
+}
+.active .iconCheck, .added .iconCheck{
+  width: 1rem;
 }
 .reviews{
   .reviewsList{

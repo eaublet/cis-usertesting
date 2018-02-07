@@ -4,7 +4,9 @@ mixin buySticky(productName, productPrice)
 			p.productName!= productName
 			p.price $#{productPrice}
 		.right
-			a.btn.btn-gradient Select a size
+			a.btn.btn-gradient
+				.iconCheck: img(src="/img/pdp/checkW.svg")
+				span.label Select a size
 
 
 mixin nav(surnav, simple)
@@ -91,17 +93,23 @@ mixin survey(title, iA, tA, vA, iB, tB, vB, iC, tC, vC)
 				.icon: img(src="/img/pdp/" + iA)
 				h5= tA
 				span.voted #{vA}% agree
-				a.btn.btn-primary.btn-small Vote
+				a.btn.btn-primary.btn-small
+					.iconCheck: img(src="/img/pdp/check.svg")
+					span.label Vote
 			li
 				.icon: img(src="/img/pdp/" + iB)
 				h5= tB
 				span.voted #{vB}% agree
-				a.btn.btn-primary.btn-small Vote
+				a.btn.btn-primary.btn-small
+					.iconCheck: img(src="/img/pdp/check.svg")
+					span.label Vote
 			li
 				.icon: img(src="/img/pdp/" + iC)
 				h5= tC
 				span.voted #{vC}% agree
-				a.btn.btn-primary.btn-small Vote
+				a.btn.btn-primary.btn-small
+					.iconCheck: img(src="/img/pdp/check.svg")
+					span.label Vote
 
 mixin reviews(title)
 	.reviews
