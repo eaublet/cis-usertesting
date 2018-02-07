@@ -385,7 +385,9 @@
         watchField('#third-cc, #third-cvc', 'Continue to review');
         return checkoutButtonNextStep();
       case '3':
-        $('.cartSummary').hide();
+        if (!$('body').hasClass('desktop')) {
+          $('.cartSummary').hide();
+        }
         setTimeout((function() {
           return $('.nextStep').html('Complete your purchase').removeClass('btn-inactive');
         }), 320);

@@ -292,7 +292,8 @@ changeStep = () ->
 			watchField('#third-cc, #third-cvc', 'Continue to review')
 			checkoutButtonNextStep()
 		when '3'
-			$('.cartSummary').hide()
+			unless $('body').hasClass 'desktop'
+				$('.cartSummary').hide()
 			setTimeout ( -> $('.nextStep').html('Complete your purchase').removeClass('btn-inactive') ), 320
 			checkoutButtonNextStep()
 		else
