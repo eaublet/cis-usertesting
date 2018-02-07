@@ -77,8 +77,7 @@
   };
 
   showOverlay = function() {
-    $('body').addClass('fixed');
-    return console.log('lklllk');
+    return $('body').addClass('fixed');
   };
 
   closeOverlay = function() {
@@ -275,7 +274,11 @@
 
   checkout = function() {
     return $('.goToCheckout').click(function() {
-      return $(this).attr('href', 'checkout.html?products=' + JSON.stringify(products)).click();
+      if ($('body').hasClass('desktop')) {
+        $(this).attr('href', 'checkoutDesktop.html?products=' + JSON.stringify(products)).click();
+      } else {
+        return $(this).attr('href', 'checkout.html?products=' + JSON.stringify(products)).click();
+      }
     });
   };
 

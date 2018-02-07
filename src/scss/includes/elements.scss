@@ -172,6 +172,9 @@ a.btnLink{
   font-size: 0.875rem;
   @media(min-width: 1024px){
     font-size: 1.125rem;
+    &.small{
+      font-size: 1em
+    }
   }
 }
 
@@ -189,6 +192,9 @@ hr{
   @media(min-width: 1024px){
     &.large{
       margin: 3rem auto;
+    }
+    &.small{
+       margin: 2rem 0;
     }
   }
 }
@@ -239,6 +245,9 @@ header{
 .input{
   width: 100%;
   position: relative;
+  @media (min-width: 1024px){
+    margin-top: 2rem;
+  }
 }
 input[type=text]{
   border-radius: 0;
@@ -430,5 +439,26 @@ input[type=text]{
   display: none;
   &.active{
     display: block;
+  }
+}
+
+ul.dropDownButtons{
+  @extend .no-list;
+  display: flex;
+  flex-direction: column;
+  li{
+    height: 75px;
+    line-height: 75px;
+    font-weight: 700;
+    font-size: .875rem;
+    border-top: 1px solid #e5e5e5;
+    padding: 0 1rem;
+    background-image: url('../img/global/carret.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1rem) center;
+    @media(min-width: 1024px){
+      padding: 0 2rem;
+      background-position: calc(100% - 2rem) center;
+    }
   }
 }

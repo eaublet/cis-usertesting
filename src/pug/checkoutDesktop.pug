@@ -1,0 +1,209 @@
+//- TITLE
+- var pagetitle = 'Men Mobile'
+
+//- REGULAR INCLUDES
+include blocks/mixin-mobile.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body.checkout.desktop
+	.checkoutLayout
+		.sideLeft
+			+nav('', true)
+			.container
+				header
+					h1 Checkout
+						span.side
+							|Already have an<br/>account? 
+							a.btnLink.small Sign in
+
+				.section.active(data-step=0)
+					h2.left Who is placing the order? 
+					a.btn.btn-alt.editSection Edit
+					.surcontent
+						span First Last 
+						span Email
+					.content
+						.row.gutter
+							.column
+								+input(false, 'First name', 'first-fn')
+							.column
+								+input(false, 'Last name', 'first-ln')
+						.row.gutter
+							.column
+								+input(true, 'Email address', 'first-email')
+							.column
+								+check(false, 'Yes, please send me newsletters')
+				.section.inactive(data-step=1)
+					h2.left Where are we sending your items? 
+					a.btn.btn-alt.editSection Edit
+					.surcontent
+						span Sarah
+						span Email
+						span Email
+						span Email
+						span Email
+					.content
+						.tabs.withLabel
+							.tab.selected(data-tab='ship', data-container='.shipping-option')
+								.img: img(src='/img/checkout/box.svg')
+								.info
+									.label Ship by mail
+									p.small Sorry, no P.O. boxes
+							.tab(data-tab='store', data-container='.shipping-option')
+								.img: img(src='/img/checkout/icon.svg')
+								.info
+									.label Ship to store
+									p.small Always free!
+						.shipping-option.active(data-tab='ship')
+							p.lead We ship to any valid United States address, except A.P.O./F.P.O. and P.O. box.
+							.row.gutter
+								.column
+									+input(false, 'First name', 'second-fn')
+								.column
+									+input(false, 'Last name', 'second-ln')
+							.row.gutter
+								.column
+									+input(false, 'Phone number*', 'second-pn')
+									p.small *We'll only call if we need assistance delivering your order
+								.column
+									+input(false, 'Extension (optional)', 'second-ext')
+							+input(false, 'Start typing your address...', 'second-address')
+							.hidden-address
+								| Show me only if user has started to type his address
+							.row.gutter
+								.column
+									+radio(true, 'Standard (Free)', 'Estimated delivery date: March 19, 2018')
+								.column
+									+radio(false, 'Express ($20)', 'Estimated delivery date: March 15, 2018')
+
+
+						.shipping-option(data-tab='store')
+							| Show me only if ship to store is selected
+
+
+				.section.inactive(data-step=2)
+					h2.left How would you like to pay? 
+					a.btn.btn-alt.editSection Edit
+					.surcontent
+						.visa
+							img(src="/img/checkout/visa.png", width=49)
+							span **** **** **** 4632
+						span Expires 07/22
+					.content
+						.tabs
+							.tab.selected(data-tab='cc', data-container='.payment-option')
+								.info: .label Credit/debit card
+							.tab(data-tab='pp', data-container='.payment-option')
+								.info: .label PayPal
+							.tab(data-tab='vc', data-container='.payment-option')
+								.info: .label Visa Checkout
+						.payment-option.active(data-tab='cc')
+							.row.gutter
+								.column
+									+input(false, 'Card number', 'third-cc')
+								.column.center
+									img(src="/img/checkout/cc.png", width=194)
+							.row.gutter
+								.column: +input(false, 'Exp. MM/YY', 'third-exp')
+								.column: +input(false, 'CVC', 'third-cvc')
+
+							+check(true, 'Billing address same as shipping', 'Billing address, country, name, and zip code must match your credit card statement.')
+							.address
+								span.name Sarah
+								span.line1 AddLine 1
+								span.line2 AddLine2
+								span.line3 AddLine2
+								span.phone Phone
+							a.btnLink Add promo code(s)	
+						.payment-option(data-tab='pp')
+							| Show me only if PayPal
+						.payment-option(data-tab='vc')
+							| Show me only if Visa Checkout
+
+				.section.inactive(data-step=3)
+					h2.left Review your order
+					a.btn.btn-alt.editSection Edit
+					.content
+						.table.summary
+							.tableRow
+								.tableCell
+									h5 Subtotal
+								.tableCell
+									p.subtotalPrice $0.00
+							.tableRow
+								.tableCell
+									h5 Shipping
+								.tableCell
+									p Standard (free)
+							.tableRow
+								.tableCell
+									h5 Taxes
+								.tableCell
+									p.taxes $0.00
+							.tableRow
+								.tableCell
+									h5 Promo code(s)
+								.tableCell
+									a.btnLink Enter code
+							.tableRow
+								.tableCell
+									h5.total Total
+										span.small.beforeTaxes (Shipping & taxes calculated)
+								.tableCell
+									.totalPrice $XX
+							
+						+check(false, 'Save this information to my account', 'Save your info for fast and easy checkout, plus see our recommendations based on the styles you like.')
+			a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive(data-current-step=0) Continue to shipping
+		.sideRight
+			.cartSummary
+				
+				.container
+					.tableRow.editShopping
+						.tableCell
+						.tableCell: a.btnLink.small Edit shopping bag
+					.tableRow
+						.tableCell
+							h3(data-qa-id="cart-header-title")
+								| Summary
+						.tableCell
+							h3: span ID: 29525114
+					.table.summary
+						.tableRow
+							.tableCell
+								h5 Subtotal
+							.tableCell
+								p.subtotalPrice $0.00
+						.tableRow
+							.tableCell
+								h5 Shipping
+							.tableCell
+								p Standard (free)
+						.tableRow
+							.tableCell
+								h5 Taxes
+							.tableCell
+								p.taxes $0.00
+						.tableRow
+							.tableCell
+								h5 Promo code(s)
+							.tableCell
+								a.btnLink.small Enter code
+						.tableRow
+							.tableCell
+								h5.total Total
+									span.small.beforeTaxes
+										br
+										|(Shipping & taxes calculated)
+							.tableCell
+								.totalPrice $XX
+				ul.productsCart
+				ul.dropDownButtons
+					li Return policy
+					li Delivery details
+
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+

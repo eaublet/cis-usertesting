@@ -61,6 +61,22 @@ body{
 			&:last-child{
 				margin-right: 0;
 			}
+			&.center{
+				display: flex;
+				align-items: center;
+			}
+		}
+		@media(min-width: 1024px){
+			.column{
+				width: 50%;
+				margin: 0 1rem;
+				&:first-child{
+					margin-left: 0;
+				}
+				&:last-child{
+					margin-right: 0;
+				}
+			}
 		}
 	}
 }

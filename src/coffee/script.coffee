@@ -60,7 +60,6 @@ colorSelector = () ->
 
 showOverlay = () ->
 	$('body').addClass('fixed')
-	console.log('lklllk')
 	# $('.c-overlay').removeClass 'isHidden'
 	# $('.c-overlay').addClass 'isVisible'
 
@@ -203,7 +202,11 @@ quickAddToCart = () ->
 
 checkout = () ->
 	$('.goToCheckout').click ->
-		$(@).attr('href', 'checkout.html?products=' + JSON.stringify(products)).click()
+		if $('body').hasClass 'desktop'
+			$(@).attr('href', 'checkoutDesktop.html?products=' + JSON.stringify(products)).click()
+			return
+		else
+			$(@).attr('href', 'checkout.html?products=' + JSON.stringify(products)).click()
 		# $('.cartWrapper').removeClass 'isVisible'
 		# $('.cartWrapper').addClass 'isHidden'
 		# $('.c-checkout__wrapper').removeClass 'isHidden'
