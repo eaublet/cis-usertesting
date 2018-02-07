@@ -31,8 +31,20 @@ mixin nav(surnav, simple)
 			.brand: img(src="./img/global/ico_brand.svg")
 			ul.tools.no-list
 				li
-					img(src="./img/global/ico_bagEmpty.svg")
-					| Bag: 0
+					.icon#navBag
+						img(src="./img/global/ico_bagEmpty.svg")
+						#bagCount
+							.count
+								span 9
+								span 8
+								span 7
+								span 6
+								span 5
+								span 4
+								span 3
+								span 2
+								span 1
+								span 
 				li
 					img(src="./img/pdp/fav.svg")
 					| Favourites: 0
@@ -151,7 +163,7 @@ mixin mixnmatch(title, mainImg, altImg, altTitle, price, color)
 			a.btn.btn-gradient.quickAddToCart(style="z-index: 99", quick-name=title, 'quick-price'= '$' + price, quick-image="/img/pdp/" + altImg, quick-size='One size', 'quick-color'=color) Quick add
 
 mixin cart(productA, productB)
-	.cartWrapper
+	.cartWrapper.desktop
 		span.u-btn__content
 			|Close
 			svg.c-icon(aria-hidden="true", focusable="false", version="1.1", viewbox="0 0 400 400")
@@ -163,13 +175,13 @@ mixin cart(productA, productB)
 				span.count (2)
 			p.small.cartId ID: 29525114
 
-			p.small Your subtotal is over $60 and qualifies for free shipping!
+			p.lead Your subtotal is over $60 and qualifies for free shipping!
 			hr.large
 		.container
 			.tableRow
 				.tableCell
 					h5.total Total
-					p.small.beforeTaxes (before taxes)
+						p.small.beforeTaxes (before taxes)
 				.tableCell
 					.totalPrice
 			.tableRow
@@ -179,9 +191,9 @@ mixin cart(productA, productB)
 					a.btnLink Show details +
 			.tableRow.center
 				.tableCell
-					img(src="/img/cart/Paypal.png", width=165)
+					img(src="/img/cart/Paypal.png", width=200)
 				.tableCell
-					img(src="/img/cart/Visa.png", width=165)
+					img(src="/img/cart/Visa.png", width=200)
 			hr.large
 		ul.productsCart
 

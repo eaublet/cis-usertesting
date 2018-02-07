@@ -4,23 +4,31 @@
     width: 2rem;
     height: 2rem;
     margin: 1rem 1rem 0.5rem 0.5rem;
-    transform: rotate(0.125turn);
+    transform: rotate(0.12501turn);
+
     color: transparent;
     position: relative;
     background-size: cover;
+    &:before {
+      content: '';
+      width: 110%;
+      height: 110%;
+      position: absolute;
+      background-color: transparent;
+      top: 50%;
+      left: 50%;
+      transform-origin: center center;
+      transform: translate(-50%, -50%);
+      @include transition(all);
+      box-shadow: inset 0 0 0 0 transparent;
+      border: 1px solid transparent;
+      opacity: 0;
+    }
     &.active {
       &:before {
-        content: '';
-        width: 110%;
-        height: 110%;
-        position: absolute;
-        background-color: transparent;
-        top: 50%;
-        left: 50%;
-        transform-origin: center center;
-        transform: translate(-50%, -50%);
+        opacity: 1;
         box-shadow: inset 0 0 0px 5px $white;
-        border: 1px solid #000;
+        border-color: #000;
       }
     }
   }
@@ -87,7 +95,7 @@
   line-height: 2.5rem;
   padding: 0 1rem;
   @media(min-width: 1024px){
-    padding: 0 2.5rem;
+    padding: 0 1.5rem;
   }
   font-size: 0.875rem;
   display: inline-block;
@@ -145,6 +153,11 @@
   &.btn-fixedBottom{
     position: sticky;
     bottom: 0;
+    @media(min-width: 1024px){
+      font-size: 1.125rem;
+      height: 90px;
+      line-height: 90px;
+    }
   }
   &.btn-inactive{
     color: $white;
@@ -157,6 +170,9 @@
 a.btnLink{
   color: $main-color;
   font-size: 0.875rem;
+  @media(min-width: 1024px){
+    font-size: 1.125rem;
+  }
 }
 
 hr{
@@ -169,6 +185,11 @@ hr{
     width: 100vw;
     margin-left: 50%;
     transform: translate(-50%,0);
+  }
+  @media(min-width: 1024px){
+    &.large{
+      margin: 3rem auto;
+    }
   }
 }
 

@@ -77,7 +77,8 @@
   };
 
   showOverlay = function() {
-    return $('body').addClass('fixed');
+    $('body').addClass('fixed');
+    return console.log('lklllk');
   };
 
   closeOverlay = function() {

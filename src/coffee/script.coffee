@@ -60,6 +60,7 @@ colorSelector = () ->
 
 showOverlay = () ->
 	$('body').addClass('fixed')
+	console.log('lklllk')
 	# $('.c-overlay').removeClass 'isHidden'
 	# $('.c-overlay').addClass 'isVisible'
 
