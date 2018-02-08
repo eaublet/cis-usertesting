@@ -175,3 +175,24 @@ body{
 		}
 	}
 }
+.zoomable{
+	position: relative;
+
+	&:after{
+		opacity: .5;
+		@include transition(opacity);
+		width: 1rem;
+		height: 1rem;
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+		content: "";
+		cursor: pointer;
+		background-image: url(../img/pdp/magnifier.svg);
+	}
+	&:hover{
+		&:after{
+			opacity: 1;
+		}
+	}
+}

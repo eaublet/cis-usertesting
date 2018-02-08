@@ -12,13 +12,13 @@ body.pdp.desktop
 		+buySticky("Lintun", 79.99)
 	.heroInfos
 		+heroProduct(["Men", "Footwear", "Boots"], 'lintun_a.jpg', "Lintun", 79.99)
-			+colorSelector("Black Leopard", [["textureA.png", "Black Leopard", true], ["textureB.png", "Black Leather"]])
+			+colorSelector("Beige Suede", [["lintun/lintun_16_SW_100.JPG", "Beige Suede", true], ["lintun/lintun_96_SW_100.JPG", "Black Suede"]])
 			+sizeSelector([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11], true)
 			+pdpButtons(true)
 	.grid.desktop(style="background-image: url(/img/pdp/hugeMen.jpg)")
-		.cell.double: img#mainImg.full(src="/img/pdp/lintun_a.jpg")
-		.cell.single: img#mainImg.full(src="/img/pdp/lintun_b.jpg")
-		.cell.single: img#mainImg.full(src="/img/pdp/lintun_c.jpg")
+		.cell.double.zoomable: img#mainImg.full(src="/img/pdp/lintun_a.jpg")
+		.cell.single.zoomable: img#mainImg.full(src="/img/pdp/lintun_b.jpg")
+		.cell.single.zoomable: img#mainImg.full(src="/img/pdp/lintun_c.jpg")
 		.cell.single.empty.noBorder
 		.cell.single.empty.noBorder.stroke.reverseStroke
 		.cell.double.empty
