@@ -278,6 +278,9 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .navRow .right .item:last-child { margin-left: 4rem; }
 
 .navContent.desktop { background-color: #fff; width: 100%; position: -webkit-sticky; position: sticky; top: 0; z-index: 9999999; }
+.navContent.desktop #navBag { padding-right: 1rem; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; -ms-transform: translateY(-3px); transform: translateY(-3px); }
+.navContent.desktop #navBag .label { -ms-transform: translateY(3px); transform: translateY(3px); }
+.navContent.desktop #navBag #bagCount { top: 4px; right: 0; left: initial; }
 .navContent.desktop .wrapper { -ms-flex-positive: 1; flex-grow: 1; background-color: #fff; padding: 0 2rem; display: -ms-flexbox; display: flex; width: 100%; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; border-bottom: 1px solid #e5e5e5; position: -webkit-sticky; position: sticky; top: 0; height: 4rem; z-index: 9999999; }
 .navContent.desktop.headroom--unpinned { -ms-transform: translate(0, -64px); transform: translate(0, -64px); }
 .navContent.desktop .buySticky { height: 7rem; width: 100%; background-color: #fff; border-bottom: 1px solid #e5e5e5; display: -ms-flexbox; display: flex; margin-top: -7rem; z-index: 99999; transition: transform 400ms cubic-bezier(0.77, 0, 0.175, 1), opacity 120ms 120ms cubic-bezier(0.77, 0, 0.175, 1); -ms-transform: translate(0, 0); transform: translate(0, 0); padding: 0 2rem; -ms-flex-align: center; align-items: center; -ms-flex-pack: justify; justify-content: space-between; opacity: 0; }

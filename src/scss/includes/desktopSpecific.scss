@@ -120,6 +120,20 @@
 	width: 100%;
 	position: sticky;
 	top: 0;
+	#navBag{
+		padding-right: 1rem;
+		display: flex;
+		align-items: center;
+		transform: translateY(-3px);
+		.label{
+			transform: translateY(3px);
+		}
+		#bagCount{
+			top: 4px;
+			right: 0;
+			left: initial;
+		}
+	}
 	.wrapper{
 		flex-grow: 1;
 		background-color: $white;
