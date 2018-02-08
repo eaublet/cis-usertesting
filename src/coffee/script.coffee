@@ -88,7 +88,7 @@ updateCartCount = (count) ->
 
 updateCart = (products) ->
 	$('.productsCart').empty()
-	$('nav.mobile').addClass('headroom--pinned').removeClass('headroom--unpinned')
+	$('nav.mobile, .desktop.navContent').addClass('headroom--pinned').removeClass('headroom--unpinned')
 	$('#navBag').addClass('adding')
 	setTimeout ( ->
 		updateCartCount(products.length)

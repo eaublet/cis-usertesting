@@ -109,7 +109,7 @@
   updateCart = function(products) {
     var totalValue;
     $('.productsCart').empty();
-    $('nav.mobile').addClass('headroom--pinned').removeClass('headroom--unpinned');
+    $('nav.mobile, .desktop.navContent').addClass('headroom--pinned').removeClass('headroom--unpinned');
     $('#navBag').addClass('adding');
     setTimeout((function() {
       updateCartCount(products.length);
