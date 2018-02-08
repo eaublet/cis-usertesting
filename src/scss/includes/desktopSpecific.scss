@@ -387,6 +387,8 @@ body.desktop.fixed{
 			margin-left: 1rem;
 		}
 	}
+}
+.desktop{
 	.productsCart{
 		li{
 			.img{
@@ -505,4 +507,75 @@ body.desktop.fixed{
 		font-size: 1.125rem;
 		margin-bottom: .5rem;
 	}
+}
+
+.confirm.desktop{
+	.grid{
+		margin-top: 0;
+		h5{
+			font-size: 1.125rem;
+		}
+		p.infos{
+			font-size: 1.125rem;
+			line-height: 1.4;
+			margin-bottom: .5rem;
+		}
+		.padded{
+			padding: 2rem;
+		}
+	}
+	.doubleFree{
+		grid-row: 1;
+		grid-column: span 2;
+		padding: 2rem;
+		h2{
+			margin: 0 0 2rem;
+		}
+		&.cartSummary{
+			padding: 0;
+		}
+		li{
+			padding: 0 2rem;
+			margin-bottom: 0;
+			&:not(:last-child){
+				border-bottom: 1px solid #e5e5e5;
+			}
+		}
+	}
+	.halfSquare{
+		.content{
+			padding: 2rem;
+			h1{
+				font-size: 3rem;
+			}
+			p{
+				font-size: 1.125rem;
+				line-height: 1.2;
+			}
+		}
+	}
+	.summary{
+		font-size: 1rem;
+		margin-bottom: 4rem;
+		h5{
+			font-size: 1.125rem;
+		}
+		.tableRow{
+			margin-bottom: 1rem;
+		}
+		.totalPrice{
+			font-size: 2.25rem;
+		}
+		.btnLink{
+			font-size: 1em;
+		}
+	}
+	.table.summary .tableRow:before{
+		z-index: 0;
+	}
+	.table.summary .tableRow .tableCell *{
+		position: relative;
+		z-index: 1;
+	}
+
 }

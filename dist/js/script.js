@@ -351,7 +351,7 @@
       } else {
         thisStep = $(this).attr('data-current-step');
         if (JSON.stringify(thisStep) === JSON.stringify(maxStep)) {
-          $('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:' + $('#first-email').val() + '}');
+          $('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
           $('.nextStep').click();
           return;
         }

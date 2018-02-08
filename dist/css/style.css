@@ -43,7 +43,7 @@ body.fixed { overflow: hidden; height: 100vh; }
 .section .surcontent { display: none; }
 .section .editSection { position: absolute; top: 0; right: 0; display: none; }
 .section.inactive h2 { opacity: .25; }
-.section.inactive .content { padding: 0; }
+.section.inactive .content { max-height: 0; padding: 0; }
 .section.filled .surcontent { display: block; }
 .section.filled .editSection { display: block; }
 .section.filled h2 { font-size: .875rem; opacity: 1; font-weight: 700; }
@@ -342,10 +342,11 @@ body.desktop.fixed:before { opacity: 1; }
 .cartWrapper.desktop .u-btn__content svg * { fill: #767676; }
 .cartWrapper.desktop .tableRow.center .tableCell:first-child { text-align: right; margin-right: 1rem; }
 .cartWrapper.desktop .tableRow.center .tableCell:last-child { text-align: left; margin-left: 1rem; }
-.cartWrapper.desktop .productsCart li .img { width: 300px; }
-.cartWrapper.desktop .productsCart li .img img { max-width: 200px; margin: 0 auto; }
-.cartWrapper.desktop .productsCart li .title, .cartWrapper.desktop .productsCart li .price { font-size: 1.125rem; }
-.cartWrapper.desktop .productsCart li .data, .cartWrapper.desktop .productsCart li .options { margin-top: 2rem; }
+
+.desktop .productsCart li .img { width: 300px; }
+.desktop .productsCart li .img img { max-width: 200px; margin: 0 auto; }
+.desktop .productsCart li .title, .desktop .productsCart li .price { font-size: 1.125rem; }
+.desktop .productsCart li .data, .desktop .productsCart li .options { margin-top: 2rem; }
 
 .quickAddToCart { z-index: 9999; }
 
@@ -373,6 +374,26 @@ body.desktop.fixed:before { opacity: 1; }
 
 .desktop .survey ul { max-width: 800px; }
 .desktop .survey h5 { font-size: 1.125rem; margin-bottom: .5rem; }
+
+.confirm.desktop .grid { margin-top: 0; }
+.confirm.desktop .grid h5 { font-size: 1.125rem; }
+.confirm.desktop .grid p.infos { font-size: 1.125rem; line-height: 1.4; margin-bottom: .5rem; }
+.confirm.desktop .grid .padded { padding: 2rem; }
+.confirm.desktop .doubleFree { grid-row: 1; grid-column: span 2; padding: 2rem; }
+.confirm.desktop .doubleFree h2 { margin: 0 0 2rem; }
+.confirm.desktop .doubleFree.cartSummary { padding: 0; }
+.confirm.desktop .doubleFree li { padding: 0 2rem; margin-bottom: 0; }
+.confirm.desktop .doubleFree li:not(:last-child) { border-bottom: 1px solid #e5e5e5; }
+.confirm.desktop .halfSquare .content { padding: 2rem; }
+.confirm.desktop .halfSquare .content h1 { font-size: 3rem; }
+.confirm.desktop .halfSquare .content p { font-size: 1.125rem; line-height: 1.2; }
+.confirm.desktop .summary { font-size: 1rem; margin-bottom: 4rem; }
+.confirm.desktop .summary h5 { font-size: 1.125rem; }
+.confirm.desktop .summary .tableRow { margin-bottom: 1rem; }
+.confirm.desktop .summary .totalPrice { font-size: 2.25rem; }
+.confirm.desktop .summary .btnLink { font-size: 1em; }
+.confirm.desktop .table.summary .tableRow:before { z-index: 0; }
+.confirm.desktop .table.summary .tableRow .tableCell * { position: relative; z-index: 1; }
 
 .colorList li { width: 2rem; height: 2rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.12501turn); transform: rotate(0.12501turn); color: transparent; position: relative; background-size: cover; }
 .colorList li:before { content: ''; width: 110%; height: 110%; position: absolute; background-color: transparent; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); box-shadow: inset 0 0 0 0 transparent; border: 1px solid transparent; opacity: 0; }
