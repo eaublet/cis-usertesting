@@ -22,8 +22,9 @@ body.checkout.desktop
 					h2.left Who is placing the order? 
 					a.btn.btn-alt.editSection Edit
 					.surcontent
-						span First Last 
-						span Email
+						h5 Your info
+						span.name First Last 
+						span.email Email
 					.content
 						.row.gutter
 							.column
@@ -39,11 +40,12 @@ body.checkout.desktop
 					h2.left Where are we sending your items? 
 					a.btn.btn-alt.editSection Edit
 					.surcontent
-						span Sarah
-						span Email
-						span Email
-						span Email
-						span Email
+						h5 Shipping
+						span.name Sarah
+						span.line1 400 Boulevard de Maisonneuve O #700
+						span.line2 Montreal, QC
+						span.line3 H3A 1L4
+						span.phone (514) 448-4035
 					.content
 						.tabs.withLabel
 							.tab.selected(data-tab='ship', data-container='.shipping-option')
@@ -93,6 +95,7 @@ body.checkout.desktop
 					h2.left How would you like to pay? 
 					a.btn.btn-alt.editSection Edit
 					.surcontent
+						h5 Billing
 						.visa
 							img(src="/img/checkout/visa.png", width=49)
 							span **** **** **** 4632

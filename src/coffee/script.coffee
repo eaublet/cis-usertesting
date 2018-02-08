@@ -267,7 +267,7 @@ checkoutButtonNextStep = () ->
 			thisStep = $(@).attr('data-current-step')
 			if JSON.stringify(thisStep) is JSON.stringify(maxStep)
 				if $('body').hasClass 'desktop'
-					$('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
+					$('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }')
 				else
 					$('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
 				$('.nextStep').click()
@@ -285,14 +285,15 @@ changeStep = () ->
 			watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping')
 			checkoutButtonNextStep()
 		when '1'
-			$('.section[data-step=0] .surcontent').html('<span>' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '</span><span>' + $('#first-email').val() + '</span>')
+			$('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
+			$('.section[data-step=0] .surcontent .email').text($('#first-email').val())
 			$('#second-fn').val($('#first-fn').val())
 			$('#second-ln').val($('#first-ln').val())
 			$('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#second-address', 'Continue to payment')
 			checkoutButtonNextStep()
 		when '2'
-			$('.section[data-step=1] .surcontent').html('<span>' + $('#second-fn').val() + ' ' + $('#second-ln').val() + '</span><span>' + $('#second-pn').val() + '</span>')
+			$('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#third-cc', 'Continue to review')
 			checkoutButtonNextStep()
 		when '3'
@@ -354,13 +355,15 @@ getInfos = () ->
 		infos = eval('(' + haveInfos + ')')
 		if infos.email
 			$('span.emailReplace').html(infos.email)
+		if infos.name
+			$('span.name').html(infos.name)
 
 initPDP = () ->
 	window.products = []
 	window.product = {name: $('h1.productName').text(), price: $('p.price').first().text(), active: false}
 	# window.activeSize = 0
 	sizeSelector()
-	colorSelector()
+	# colorSelector()
 	showCart()
 	closeCart()
 	addToCart()

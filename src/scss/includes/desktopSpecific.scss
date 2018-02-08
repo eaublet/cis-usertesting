@@ -388,22 +388,20 @@ body.desktop.fixed{
 		}
 	}
 }
-.desktop{
-	.cartWrapper .productsCart{
-		li{
-			.img{
-				width: 300px;
-				img{
-					max-width: 200px;
-					margin: 0 auto;
-				}
+.desktop .cartWrapper .productsCart, .desktop.confirm .productsCart{
+	li{
+		.img{
+			width: 300px;
+			img{
+				max-width: 200px;
+				margin: 0 auto;
 			}
-			.title, .price{
-				font-size: 1.125rem;
-			}
-			.data, .options{
-				margin-top: 2rem;
-			}
+		}
+		.title, .price{
+			font-size: 1.125rem;
+		}
+		.data, .options{
+			margin-top: 2rem;
 		}
 	}
 }

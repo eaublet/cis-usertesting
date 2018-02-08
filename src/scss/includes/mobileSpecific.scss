@@ -602,6 +602,10 @@ nav.mobile {
 
 #navBag{
   position: relative;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
   &:after{
     content: "";
     width: 14px;

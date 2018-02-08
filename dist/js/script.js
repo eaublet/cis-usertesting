@@ -352,7 +352,7 @@
         thisStep = $(this).attr('data-current-step');
         if (JSON.stringify(thisStep) === JSON.stringify(maxStep)) {
           if ($('body').hasClass('desktop')) {
-            $('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
+            $('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }');
           } else {
             $('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
           }
@@ -379,14 +379,15 @@
         watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping');
         return checkoutButtonNextStep();
       case '1':
-        $('.section[data-step=0] .surcontent').html('<span>' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '</span><span>' + $('#first-email').val() + '</span>');
+        $('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
+        $('.section[data-step=0] .surcontent .email').text($('#first-email').val());
         $('#second-fn').val($('#first-fn').val());
         $('#second-ln').val($('#first-ln').val());
         $('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#second-address', 'Continue to payment');
         return checkoutButtonNextStep();
       case '2':
-        $('.section[data-step=1] .surcontent').html('<span>' + $('#second-fn').val() + ' ' + $('#second-ln').val() + '</span><span>' + $('#second-pn').val() + '</span>');
+        $('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#third-cc', 'Continue to review');
         return checkoutButtonNextStep();
       case '3':
@@ -468,7 +469,10 @@
     if (haveInfos) {
       infos = eval('(' + haveInfos + ')');
       if (infos.email) {
-        return $('span.emailReplace').html(infos.email);
+        $('span.emailReplace').html(infos.email);
+      }
+      if (infos.name) {
+        return $('span.name').html(infos.name);
       }
     }
   };
@@ -481,7 +485,6 @@
       active: false
     };
     sizeSelector();
-    colorSelector();
     showCart();
     closeCart();
     addToCart();
