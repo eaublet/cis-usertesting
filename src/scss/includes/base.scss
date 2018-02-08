@@ -157,7 +157,7 @@ body{
 			opacity: .25;
 		}
 		.content{
-			max-height: 0;
+			// max-height: 0;
 			padding: 0;
 		}
 	}
@@ -194,5 +194,14 @@ body{
 		&:after{
 			opacity: 1;
 		}
+	}
+}
+
+.hidden-address{
+	max-height: 0;
+	@include transition(all);
+	overflow: hidden;
+	&.active{
+		max-height: 1000px;
 	}
 }

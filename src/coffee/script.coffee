@@ -285,11 +285,12 @@ changeStep = () ->
 			$('.section[data-step=0] .surcontent').html('<span>' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '</span><span>' + $('#first-email').val() + '</span>')
 			$('#second-fn').val($('#first-fn').val())
 			$('#second-ln').val($('#first-ln').val())
+			$('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#second-address', 'Continue to payment')
 			checkoutButtonNextStep()
 		when '2'
 			$('.section[data-step=1] .surcontent').html('<span>' + $('#second-fn').val() + ' ' + $('#second-ln').val() + '</span><span>' + $('#second-pn').val() + '</span>')
-			watchField('#third-cc, #third-cvc', 'Continue to review')
+			watchField('#third-cc', 'Continue to review')
 			checkoutButtonNextStep()
 		when '3'
 			unless $('body').hasClass 'desktop'
@@ -372,11 +373,25 @@ initUI = () ->
 	initRadios()
 	# initTabs()
 
+checkAddress = () ->
+	$('#second-address').keyup (event) ->
+		if $('#second-address').val().length > 2
+			$('.hidden-address').addClass 'active'
+
+checkCC = () ->
+	$('#third-cc').keyup (event) ->
+		if $('#third-cc').val().length > 0
+			$('#third-cc').val('4111 1111 1111 1111')
+			$('#third-exp').val('08/22')
+			$('#third-cvc').val('321')
+
 initCheckout = () ->
 	window.products = []
 	getProducts()
 	initSections()
 	initCheckoutButton()
+	checkAddress()
+	checkCC()
 
 initConfirm = () ->
 	window.products = []

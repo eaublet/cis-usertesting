@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initRadios, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initRadios, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -378,11 +378,12 @@
         $('.section[data-step=0] .surcontent').html('<span>' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '</span><span>' + $('#first-email').val() + '</span>');
         $('#second-fn').val($('#first-fn').val());
         $('#second-ln').val($('#first-ln').val());
+        $('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#second-address', 'Continue to payment');
         return checkoutButtonNextStep();
       case '2':
         $('.section[data-step=1] .surcontent').html('<span>' + $('#second-fn').val() + ' ' + $('#second-ln').val() + '</span><span>' + $('#second-pn').val() + '</span>');
-        watchField('#third-cc, #third-cvc', 'Continue to review');
+        watchField('#third-cc', 'Continue to review');
         return checkoutButtonNextStep();
       case '3':
         if (!$('body').hasClass('desktop')) {
@@ -493,11 +494,31 @@
     return initRadios();
   };
 
+  checkAddress = function() {
+    return $('#second-address').keyup(function(event) {
+      if ($('#second-address').val().length > 2) {
+        return $('.hidden-address').addClass('active');
+      }
+    });
+  };
+
+  checkCC = function() {
+    return $('#third-cc').keyup(function(event) {
+      if ($('#third-cc').val().length > 0) {
+        $('#third-cc').val('4111 1111 1111 1111');
+        $('#third-exp').val('08/22');
+        return $('#third-cvc').val('321');
+      }
+    });
+  };
+
   initCheckout = function() {
     window.products = [];
     getProducts();
     initSections();
-    return initCheckoutButton();
+    initCheckoutButton();
+    checkAddress();
+    return checkCC();
   };
 
   initConfirm = function() {

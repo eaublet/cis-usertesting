@@ -71,7 +71,13 @@ body.checkout.desktop
 									+input(false, 'Extension (optional)', 'second-ext')
 							+input(false, 'Start typing your address...', 'second-address')
 							.hidden-address
-								| Show me only if user has started to type his address
+								+input(false, 'Address Line 1', 'addr-line1', '400 Boulevard de Maisonneuve O #700')
+								.row.gutter
+									.column
+										+input(false, 'City', 'addr-city', 'Montreal')
+									.column
+										+input(false, 'Province', 'addr-prov', 'Quebec')
+								+input(false, 'Postal Code', 'addr-postal', 'H3A 1L4')
 							.row.gutter
 								.column
 									+radio(true, 'Standard (Free)', 'Estimated delivery date: March 19, 2018')
@@ -111,11 +117,11 @@ body.checkout.desktop
 
 							+check(true, 'Billing address same as shipping', 'Billing address, country, name, and zip code must match your credit card statement.')
 							.address
-								span.name Sarah
-								span.line1 AddLine 1
-								span.line2 AddLine2
-								span.line3 AddLine2
-								span.phone Phone
+								span.name 
+								span.line1 400 Boulevard de Maisonneuve O #700
+								span.line2 Montreal, QC
+								span.line3 H3A 1L4
+								span.phone (514) 448-4035
 							a.btnLink Add promo code(s)	
 						.payment-option(data-tab='pp')
 							| Show me only if PayPal
