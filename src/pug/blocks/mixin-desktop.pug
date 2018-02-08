@@ -163,7 +163,7 @@ mixin mixnmatch(title, mainImg, altImg, altTitle, price, color)
 			.matchDetails
 				.title= altTitle
 				.price $#{price}
-			a.btn.btn-gradient.quickAddToCart(style="z-index: 99", quick-name=title, 'quick-price'= '$' + price, quick-image="/img/pdp/" + altImg, quick-size='One size', 'quick-color'=color) Quick add
+			a.btn.btn-gradient.quickAddToCart(style="z-index: 99", quick-name=altTitle, 'quick-price'= '$' + price, quick-image="/img/pdp/" + altImg, quick-size='One size', 'quick-color'=color) Quick add
 
 mixin cart(productA, productB)
 	.cartWrapper.desktop
