@@ -351,7 +351,11 @@
       } else {
         thisStep = $(this).attr('data-current-step');
         if (JSON.stringify(thisStep) === JSON.stringify(maxStep)) {
-          $('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
+          if ($('body').hasClass('desktop')) {
+            $('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
+          } else {
+            $('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
+          }
           $('.nextStep').click();
           return;
         }

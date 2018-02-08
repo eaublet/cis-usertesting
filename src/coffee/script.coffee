@@ -266,7 +266,10 @@ checkoutButtonNextStep = () ->
 		else
 			thisStep = $(@).attr('data-current-step')
 			if JSON.stringify(thisStep) is JSON.stringify(maxStep)
-				$('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
+				if $('body').hasClass 'desktop'
+					$('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
+				else
+					$('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
 				$('.nextStep').click()
 				return
 			$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'

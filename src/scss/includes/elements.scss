@@ -347,6 +347,9 @@ input[type=text]{
 
 .check, .radio{
   margin: 1rem 0;
+  @media (min-width: 1024px){
+    margin: 2rem 0 1rem
+  }
   padding-left: 3rem;
   position: relative;
   cursor: pointer;
