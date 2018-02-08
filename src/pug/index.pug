@@ -5,21 +5,33 @@
 include blocks/std_head.pug
 include blocks/std_css.pug
 
-body
+body.index
 
 	h1 User testing
-	small January 31st
+	p.small January 31st
 
-	ul
-		li: a(href="/men-mobile.html") Men Mobile
-		li: a(href="/women-mobile.html") Women Mobile
-		li: a(href="/checkout.html") Checkout Mobile
-		li: a(href="/confirm.html") Confirmation Mobile
+	ul.listLinks
 		li
-		li: a(href="/men-desktop.html") Men Desktop
-		li: a(href="/women-desktop.html") Women Desktop
-		li: a(href="/checkoutDesktop.html") Checkout Desktop
-		li: a(href="/confirmDesktop.html") Confirm Desktop
+			.label Women
+			.links
+				a.btnLink(href="/women-mobile.html") Mobile
+				a.btnLink(href="/women-desktop.html") Desktop
+		li
+			.label Men
+			.links
+				a.btnLink(href="/men-mobile.html") Mobile
+				a.btnLink(href="/men-desktop.html") Desktop
+		li
+			.label Checkout
+			.links
+				a.btnLink(href='/checkout.html?products=[{"name":"Lintun","img":"/img/pdp/lintun_a.jpg","price":"$79.99","color":"Beige%20Suede","size":6.5,"active":true,"id":0.2895750306468896}]') Mobile
+				a.btnLink(href='/checkoutDesktop.html?products=[{"name":"Lintun","img":"/img/pdp/lintun_a.jpg","price":"$79.99","color":"Beige%20Suede","size":6.5,"active":true,"id":0.2895750306468896}]') Desktop
+		li
+			.label Confirmation
+			.links
+				a.btnLink(href='/confirm.html?products=[{"name":"Lintun","img":"/img/pdp/lintun_a.jpg","price":"$79.99","color":"Beige%20Suede","size":6.5,"active":true,"id":0.2895750306468896}]&infos={email:"john@doe.com", name:"John Doe"}') Mobile
+				a.btnLink(href='/confirmDesktop.html?products=[{"name":"Lintun","img":"/img/pdp/lintun_a.jpg","price":"$79.99","color":"Beige%20Suede","size":6.5,"active":true,"id":0.2895750306468896}]&infos={email:"john@doe.com", name:"John Doe"}') Desktop
+
 
 	//- REGULAR SCRIPTS
 	include blocks/std_scripts.pug

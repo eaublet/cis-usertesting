@@ -206,3 +206,50 @@ body{
 		max-height: 1000px;
 	}
 }
+
+
+body.index{
+	margin: 2rem 1rem;
+	@media(min-width: 1024px){
+		margin: 4rem;
+	}
+	ul{
+		margin-top: 3rem;
+		@extend .no-list;
+		display: flex;
+		width: 100%;
+		max-width: 640px;
+		flex-direction: column;
+		li{
+			height: 50px;
+			padding: 0 1rem;
+			line-height: 50px;
+			margin-bottom: 1rem;
+			border: 1px solid #e5e5e5;
+			background-color: $white;
+			display: flex;
+			justify-content: space-between;
+			@include transition(all);
+			&:hover{
+				border-color: $main-color;
+			}
+			.label{
+				font-weight: 700;
+			}
+			.links{
+				text-align: right;
+				flex-grow: 1;
+				a{
+					font-size: .875rem;
+					&:not(:last-child){
+						margin-right: 1rem;
+					}
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+	
+}

@@ -344,11 +344,13 @@ input[type=text]{
     box-sizing: border-box;
     border: 1px solid transparent;
     border-bottom: 0;
-    &:first-child{
-      margin-left: 1rem;
-    }
-    &:last-child{
-      margin-right: 1rem;
+    @media(min-width: 1024px){
+      &:first-child{
+        margin-left: 1rem;
+      }
+      &:last-child{
+        margin-right: 1rem;
+      }
     }
     .img{
       padding: 0 .75rem 0 0 ;
