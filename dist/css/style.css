@@ -228,6 +228,11 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .u-btn__content svg { margin-left: .5rem; width: .75rem; color: #767676; }
 
 #navBag { position: relative; }
+#navBag:after { content: ""; width: 14px; height: 15px; background-color: #000; position: absolute; border-radius: 4px; top: 4px; left: 0; z-index: -1; -ms-transform: scaleY(0); transform: scaleY(0); -ms-transform-origin: bottom left; transform-origin: bottom left; }
+@keyframes bagAppear { 0% { transform: scaleY(0); transform-origin: bottom left; }
+  25% { transform: scaleY(1); transform-origin: bottom left; }
+  75% { transform: scaleY(1); transform-origin: top left; }
+  100% { transform: scaleY(0); transform-origin: top left; } }
 #navBag #bagCount { position: absolute; width: 1rem; height: 1rem; top: 3px; left: 1rem; background-color: #fff; overflow: hidden; word-wrap: nowrap; }
 #navBag #bagCount:before { content: ''; left: 0; top: 0; width: 4px; height: 100%; background: linear-gradient(to right, white, rgba(255, 255, 255, 0)); position: absolute; }
 #navBag #bagCount .count { width: 10rem; position: absolute; top: 0; right: 0; color: #222; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
@@ -242,7 +247,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 #navBag #bagCount .count.have9 { right: -9rem; }
 #navBag #bagCount span { text-align: center; width: 1rem; display: inline-block; }
 #navBag:before { width: 4rem; height: 4rem; content: ""; background-color: #683EBD; border-radius: 100%; position: absolute; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; margin-left: -2rem; margin-top: -2rem; opacity: 0; z-index: 3; }
-#navBag.adding:before { animation: addToCart 400ms 400ms 1 ease-out; }
+#navBag.adding:after { animation: bagAppear 1s 400ms 1 cubic-bezier(0.77, 0, 0.175, 1); }
 @keyframes addToCart { 0% { opacity: 0; transform: scale(1); }
   30% { opacity: 0.6; transform: scale(0.5); }
   100% { opacity: 0; transform: scale(0); } }

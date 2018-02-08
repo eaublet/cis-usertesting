@@ -93,7 +93,7 @@ updateCart = (products) ->
 	setTimeout ( ->
 		updateCartCount(products.length)
 		$('#navBag').removeClass('adding')
-	), 640
+	), 1300
 	totalValue = 0
 	$.each products, (index) ->
 		oldVal = totalValue

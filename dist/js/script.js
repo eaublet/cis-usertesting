@@ -114,7 +114,7 @@
     setTimeout((function() {
       updateCartCount(products.length);
       return $('#navBag').removeClass('adding');
-    }), 640);
+    }), 1300);
     totalValue = 0;
     $.each(products, function(index) {
       var oldVal, productRowTmpl;

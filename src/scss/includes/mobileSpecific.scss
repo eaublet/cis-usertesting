@@ -602,6 +602,38 @@ nav.mobile {
 
 #navBag{
   position: relative;
+  &:after{
+    content: "";
+    width: 14px;
+    height: 15px;
+    background-color: $black;
+    position: absolute;
+    border-radius: 4px;
+    top: 4px;
+    left: 0;
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: bottom left;
+    
+  }
+  @keyframes bagAppear{
+    0%{
+      transform: scaleY(0);
+      transform-origin: bottom left;
+    }
+    25%{
+      transform: scaleY(1);
+      transform-origin: bottom left;
+    }
+    75%{
+      transform: scaleY(1);
+      transform-origin: top left;
+    }
+    100%{
+      transform: scaleY(0);
+      transform-origin: top left;
+    }
+  }
   #bagCount{
     position: absolute;
     width: 1rem;
@@ -677,8 +709,11 @@ nav.mobile {
     z-index: 3;
   }
   &.adding{
+    &:after{
+      animation: bagAppear 1s $longDuration 1 $ease;
+    }
     &:before{
-      animation: addToCart $longDuration $longDuration 1 ease-out;
+      // animation: addToCart $longDuration $longDuration 1 ease-out;
     }
     @keyframes addToCart{
       0%{
