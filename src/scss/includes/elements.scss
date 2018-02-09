@@ -284,7 +284,7 @@ input[type=text]{
   border: 0;
   font-size: 1.125rem;
   border-bottom: 1px solid #ccc;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-family: $main-font;
   padding: 0;
   + label{
@@ -294,7 +294,7 @@ input[type=text]{
     left: 0;
     font-size: 1.125rem;
     transform-origin: top left;
-    transform: scale(.75) translate(0, -1.75rem);
+    transform: scale(.75) translate(0, -1.5rem);
     @include transition(all);
   }
   &:placeholder-shown{
@@ -308,6 +308,10 @@ input[type=text]{
     border-color: $main-color;
   }
 }
+input:focus + label{
+      // transform: scale(1) translate(0, 0);
+      transform: scale(.75) translate(0, -1.5rem)!important;
+    }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: transparent;
 }
@@ -340,18 +344,18 @@ input[type=text]{
     font-size: 1.125rem;
     display: flex;
     align-items: center;
-    padding-left: 1rem;
+    // padding-left: 1rem;
     box-sizing: border-box;
     border: 1px solid transparent;
     border-bottom: 0;
-    @media(min-width: 1024px){
-      &:first-child{
-        margin-left: 1rem;
-      }
-      &:last-child{
-        margin-right: 1rem;
-      }
-    }
+    // @media(min-width: 1024px){
+    //   &:first-child{
+    //     margin-left: 1rem;
+    //   }
+    //   &:last-child{
+    //     margin-right: 1rem;
+    //   }
+    // }
     .img{
       padding: 0 .75rem 0 0 ;
 
@@ -369,10 +373,10 @@ input[type=text]{
       }
     }
     &.selected{
-      border-color: #ccc;
+      // border-color: #ccc;
       color: $darkest;
       filter: grayscale(100%) contrast(120%);
-      box-shadow: inset 0 -2px 0 0 transparent;
+      box-shadow: inset 0 -2px 0 0 $darkest;
       &:hover{
         box-shadow: none;
       }
