@@ -13,7 +13,8 @@
     elemTop = $(targetIn).offset().top;
     showSticky = function() {
       if ($(document).scrollTop() >= $(targetIn).offset().top) {
-        return buySticky.addClass('visible');
+        buySticky.addClass('visible');
+        return $('nav.mobile, .navContent.desktop').addClass('headroom--unpinned');
       }
     };
     hideSticky = function() {
@@ -47,7 +48,7 @@
         up: 5,
         down: 10
       },
-      offset: 300 || $('.sizeSelector').offset().top
+      offset: $('.addToCart').offset().top
     });
     if ($('.buySticky').length) {
       initBuySticky();
@@ -513,6 +514,7 @@
     return $('#third-cc').keyup(function(event) {
       if ($('#third-cc').val().length > 0) {
         $('#third-cc').val('4111 1111 1111 1111');
+        $('.img.cc img:first-child').addClass('inactive');
         $('#third-exp').val('08/22');
         return $('#third-cvc').val('321');
       }

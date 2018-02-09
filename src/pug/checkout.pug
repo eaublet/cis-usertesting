@@ -91,7 +91,9 @@ body.checkout
 						.info: .label Visa Checkout
 				.payment-option.active(data-tab='cc')
 					+input(false, 'Card number', 'third-cc')
-					img(src="/img/checkout/cc.png", width=194)
+					.img.cc
+						img(src="/img/checkout/cc.png", width=194)
+						img(src="/img/checkout/ccFade.png", width=194)
 					.row.gutter
 						.column: +input(false, 'Exp. MM/YY', 'third-exp')
 						.column: +input(false, 'CVC', 'third-cvc')
@@ -149,7 +151,7 @@ body.checkout
 					h3(data-qa-id="cart-header-title")
 						| Summary
 						span ID: 29525114
-				.tableCell: a.btnLink Edit shopping bag
+				//- .tableCell: a.btnLink Edit shopping bag
 		ul.productsCart
 			//- li 
 				.img

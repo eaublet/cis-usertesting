@@ -10,6 +10,7 @@ initBuySticky = () ->
 	showSticky = () ->
 		if $(document).scrollTop() >= $(targetIn).offset().top
 			buySticky.addClass 'visible'
+			$('nav.mobile, .navContent.desktop').addClass 'headroom--unpinned'
 	hideSticky = () ->
 		buySticky.removeClass 'visible'
 
@@ -34,7 +35,7 @@ initNav = () ->
 		tolerance:
 			up: 5
 			down: 10
-		offset: 300 || $('.sizeSelector').offset().top
+		offset: $('.addToCart').offset().top
 	if $('.buySticky').length
 		initBuySticky()
 	return
@@ -388,6 +389,7 @@ checkCC = () ->
 	$('#third-cc').keyup (event) ->
 		if $('#third-cc').val().length > 0
 			$('#third-cc').val('4111 1111 1111 1111')
+			$('.img.cc img:first-child').addClass 'inactive'
 			$('#third-exp').val('08/22')
 			$('#third-cvc').val('321')
 

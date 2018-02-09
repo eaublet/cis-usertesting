@@ -113,7 +113,9 @@ body.checkout.desktop
 								.column
 									+input(false, 'Card number', 'third-cc')
 								.column.center
-									img(src="/img/checkout/cc.png", width=194)
+									.img.cc
+										img(src="/img/checkout/cc.png", width=194)
+										img(src="/img/checkout/ccFade.png", width=194)
 							.row.gutter
 								.column: +input(false, 'Exp. MM/YY', 'third-exp')
 								.column: +input(false, 'CVC', 'third-cvc')
@@ -171,7 +173,7 @@ body.checkout.desktop
 				.container
 					.tableRow.editShopping
 						.tableCell
-						.tableCell: a.btnLink.small Edit shopping bag
+						//- .tableCell: a.btnLink.small Edit shopping bag
 					.tableRow
 						.tableCell
 							h3(data-qa-id="cart-header-title")

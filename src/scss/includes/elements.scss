@@ -520,3 +520,17 @@ ul.dropDownButtons{
     }
   }
 }
+
+.img.cc{
+  position: relative;
+  @media(max-width: 1024px){margin-top: -1rem; margin-bottom: 1rem;}
+  img:first-child{
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include transition(opacity);
+    &.inactive{
+      opacity: 0;
+    }
+  }
+}

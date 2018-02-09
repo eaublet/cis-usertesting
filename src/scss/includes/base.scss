@@ -128,7 +128,7 @@ body{
 				bottom: 11px;
 				left: 0;
 				z-index: -1;
-				border-bottom: 1px dashed #767676;
+				border-bottom: 1px dotted #e5e5e5;
 				content: "";
 			}
 		}
@@ -157,7 +157,7 @@ body{
 			opacity: .25;
 		}
 		.content{
-			max-height: 0;
+			// max-height: 0;
 			padding: 0;
 		}
 	}
