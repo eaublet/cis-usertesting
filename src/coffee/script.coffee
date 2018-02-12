@@ -35,7 +35,7 @@ initNav = () ->
 		tolerance:
 			up: 5
 			down: 10
-		offset: $('.addToCart').offset().top
+		offset: 300 || $('.addToCart').offset().top
 	if $('.buySticky').length
 		initBuySticky()
 	return
@@ -220,9 +220,14 @@ initCheckboxes = () ->
 
 initRadios = () ->
 	$('.radio').click ->
-		$(@).parent().find('.radio').each ->
-			$(@).removeClass 'checked'
-		$(@).toggleClass 'checked'
+		unless $('body').hasClass 'desktop'
+			$(@).parent().find('.radio').each ->
+				$(@).removeClass 'checked'
+			$(@).toggleClass 'checked'
+		else
+			$(@).parent().parent().find('.radio').each ->
+				$(@).removeClass 'checked'
+			$(@).toggleClass 'checked'
 
 initTabs = () ->
 	$('.tab').click ->
@@ -252,7 +257,6 @@ watchField = (el, nextLabel) ->
 		$('.nextStep').html(nextLabel)
 		for i in elements
 			$(i).on 'focus', ->
-				console.log('yeee')
 				toValidate--
 				if toValidate is 0
 					$('.nextStep').removeClass('btn-inactive')

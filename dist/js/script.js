@@ -48,7 +48,7 @@
         up: 5,
         down: 10
       },
-      offset: $('.addToCart').offset().top
+      offset: 300 || $('.addToCart').offset().top
     });
     if ($('.buySticky').length) {
       initBuySticky();
@@ -291,10 +291,17 @@
 
   initRadios = function() {
     return $('.radio').click(function() {
-      $(this).parent().find('.radio').each(function() {
-        return $(this).removeClass('checked');
-      });
-      return $(this).toggleClass('checked');
+      if (!$('body').hasClass('desktop')) {
+        $(this).parent().find('.radio').each(function() {
+          return $(this).removeClass('checked');
+        });
+        return $(this).toggleClass('checked');
+      } else {
+        $(this).parent().parent().find('.radio').each(function() {
+          return $(this).removeClass('checked');
+        });
+        return $(this).toggleClass('checked');
+      }
     });
   };
 
@@ -329,7 +336,6 @@
       for (j = 0, len = elements.length; j < len; j++) {
         i = elements[j];
         results.push($(i).on('focus', function() {
-          console.log('yeee');
           toValidate--;
           if (toValidate === 0) {
             return $('.nextStep').removeClass('btn-inactive');

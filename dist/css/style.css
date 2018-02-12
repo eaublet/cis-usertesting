@@ -43,7 +43,7 @@ body.fixed { overflow: hidden; height: 100vh; }
 .section .surcontent { display: none; }
 .section .editSection { position: absolute; top: 0; right: 0; display: none; }
 .section.inactive h2 { opacity: .25; }
-.section.inactive .content { padding: 0; }
+.section.inactive .content { max-height: 0; padding: 0; }
 .section.filled .surcontent { display: block; }
 .section.filled .editSection { display: block; }
 .section.filled h2 { font-size: .875rem; opacity: 0; display: none; font-weight: 700; }
@@ -377,7 +377,7 @@ body.desktop.fixed:before { opacity: 1; }
 .checkout.desktop .checkoutLayout .sideRight .summary { font-size: 0.875rem; }
 .checkout.desktop .checkoutLayout .sideRight .editShopping { height: 75px; line-height: 75px; padding: 0; font-size: .875rem; margin-bottom: 2rem; }
 .checkout.desktop .checkoutLayout .sideRight .editShopping .tableCell { padding: 0; }
-.checkout.desktop .checkoutLayout .sideRight .cartSummary { height: 100%; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+.checkout.desktop .checkoutLayout .sideRight .cartSummary { height: 100%; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; padding-top: .75rem; }
 .checkout.desktop .checkoutLayout .sideRight .cartSummary .container { margin: 0 0 2rem; border-bottom: 1px solid #e5e5e5; max-width: 100%; padding: 0 2rem 2rem; }
 .checkout.desktop .checkoutLayout .sideRight h3 span { -ms-transform: translate(0, -0.25rem); transform: translate(0, -0.25rem); }
 .checkout.desktop .navContent .right .btnLink { font-size: 1em; }
@@ -492,7 +492,7 @@ input:focus + label { -ms-transform: scale(0.75) translate(0, -1.5rem) !importan
 .tabs .tab:not(.selected) { cursor: pointer; }
 .tabs .tab:not(.selected):hover { box-shadow: inset 0 -2px 0 0 #683EBD; }
 .tabs .tab.selected { color: #222; -webkit-filter: grayscale(100%) contrast(120%); filter: grayscale(100%) contrast(120%); box-shadow: inset 0 -2px 0 0 #222; }
-.tabs .tab.selected:hover { box-shadow: none; }
+.tabs .tab.selected:hover { box-shadow: inset 0 -2px 0 0 #222; }
 .tabs .tab:hover { color: #683EBD; box-shadow: inset 0 -2px 0 0 #683EBD; }
 
 .check, .radio { margin: 1rem 0; padding-left: 3rem; position: relative; cursor: pointer; }
