@@ -4,8 +4,10 @@ log = (msg) ->
 initPanelNav = () ->
 	$('.navItem').click ->
 		unless $(@).hasClass 'active'
-			$('.megaNav').addClass 'active'
 			panel = $(@).attr('data-panel')
+			$('.megaNav').removeClass 'men women sale'
+			$('.megaNav').addClass 'active'
+			$('.megaNav').addClass panel
 			$('.navpanel, .navItem').each ->
 				$(@).removeClass 'active'
 			$(@).addClass 'active'
@@ -16,7 +18,7 @@ initPanelNav = () ->
 			$(@).removeClass 'active'
 			$('.navpanel').each ->
 				$(@).removeClass 'active'
-			$('.megaNav').removeClass 'active'
+			$('.megaNav').removeClass 'active sale'
 
 
 initBuySticky = () ->

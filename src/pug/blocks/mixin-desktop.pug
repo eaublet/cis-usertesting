@@ -92,13 +92,16 @@ mixin nav(surnav, simple)
 					h1 20% Off All Winter<br/>Accessories
 					a.btnLink.small Shop now
 			.navpanel(data-panel='men')
-				.main MAIN MEN
-				.block
-				.block
+				.main: img(src="/img/nav/menNav_panelA.jpg", width=660)
+				.block.padded(style= "background-image:url('/img/nav/menNav_backgroundB.jpg')")
+					h1 Chelsea </br>Boots
+					a.btnLink.small Shop now
+				.block.padded(style= "background-image:url('/img/nav/menNav_backgroundC.jpg')")
+					h1 Hybrid </br>Sneakers
+					a.btnLink.small Shop now
 			.navpanel(data-panel='sale')
-				.main MAIN SALE
-				.block
-				.block
+				.main: img(src="/img/nav/sale_Left.jpg", width=345)
+				.block.double.full.unbordered(style="background-image: url(/img/nav/sale_Right.jpg)")
 		if block
 			block
 

@@ -9,8 +9,10 @@
     return $('.navItem').click(function() {
       var panel;
       if (!$(this).hasClass('active')) {
-        $('.megaNav').addClass('active');
         panel = $(this).attr('data-panel');
+        $('.megaNav').removeClass('men women sale');
+        $('.megaNav').addClass('active');
+        $('.megaNav').addClass(panel);
         $('.navpanel, .navItem').each(function() {
           return $(this).removeClass('active');
         });
@@ -23,7 +25,7 @@
         $('.navpanel').each(function() {
           return $(this).removeClass('active');
         });
-        return $('.megaNav').removeClass('active');
+        return $('.megaNav').removeClass('active sale');
       }
     });
   };

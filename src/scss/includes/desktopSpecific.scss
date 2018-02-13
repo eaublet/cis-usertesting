@@ -728,10 +728,13 @@ body.desktop.fixed{
 	height: 540px;
 	transform: translateY(-100%);
 	opacity: 0;
-	z-index: 99999999999;
+	z-index: 9999;
 	pointer-events: none;
 	overflow: hidden;
 	@include transition(all);
+	&.sale{
+		height: 360px;
+	}
 	&.active{
 		transform: translateY(0);
 		opacity: 1;
@@ -739,7 +742,7 @@ body.desktop.fixed{
 	}
 	.navpanel{
 		@include transition(all, 120ms);
-		// transform: translateY(-1rem);
+		transform: translateY(-1rem);
 		opacity: 0;
 		position: absolute;
 		width: 100%;
@@ -764,6 +767,16 @@ body.desktop.fixed{
 			&.padded{
 				background-position: 2rem calc(100% - 2rem);
 				background-size: calc(100% - 4rem);
+			}
+			&.double{
+				width: 50vw;
+			}
+			&.full{
+				background-position: top left;
+				background-size: 100%;
+			}
+			&.unbordered{
+				border-color: transparent;
 			}
 		}
 		&.active{
