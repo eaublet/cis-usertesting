@@ -213,6 +213,14 @@ body.index{
 	@media(min-width: 1024px){
 		margin: 4rem;
 	}
+	.status{
+		width: 100%;
+		max-width: 640px;
+		padding: 1rem;
+		margin-top: 2rem;
+		border: 1px solid orange;
+		background-color: bisque;
+	}
 	ul{
 		margin-top: 3rem;
 		@extend .no-list;
@@ -233,6 +241,18 @@ body.index{
 			&:hover{
 				border-color: $main-color;
 			}
+			&.descoped{
+				opacity: .5;
+				cursor: initial;
+				color: grey;
+				text-decoration: line-through;
+				a{
+					color: inherit;
+				}
+				&:hover{
+					border-color: #e5e5e5;
+				}
+			}
 			.label{
 				font-weight: 700;
 			}
@@ -252,4 +272,12 @@ body.index{
 		}
 	}
 	
+}
+
+.fullWidthImage{
+	width: 100%;
+	img{
+		width: 100%;
+		display: block;
+	}
 }

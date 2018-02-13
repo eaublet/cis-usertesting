@@ -420,3 +420,5 @@ $(document).ready ->
 	if $('body.pdp').length
 		initNav()
 		initPDP()
+	if $('body.nav').length
+		initNav()

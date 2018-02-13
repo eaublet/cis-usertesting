@@ -553,7 +553,10 @@
     }
     if ($('body.pdp').length) {
       initNav();
-      return initPDP();
+      initPDP();
+    }
+    if ($('body.nav').length) {
+      return initNav();
     }
   });
 
