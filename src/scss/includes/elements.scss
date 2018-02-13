@@ -106,6 +106,13 @@
     line-height: 3.75rem;
 
   }
+  &.btn-mega {
+    height: 5.625rem;
+    line-height: 5.625rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+
+  }
   &.btn-full {
     display: block;
     width: 100%;
@@ -165,6 +172,15 @@
       border-color: $main-color;
     }
   }
+  &.btn-metowe {
+    border: 2px solid #00AAE7;
+    color: #00AAE7;
+    font-weight: 600;
+    &:hover{
+      color: darken(#00AAE7, 10);
+      border-color: darken(#00AAE7, 10);
+    }
+  }
   &.btn-alt {
     border: 1px solid #CCCCCC;
     color: $main-color;
@@ -186,6 +202,12 @@
       line-height: 90px;
     }
   }
+  &.btn-centered{
+    margin: 1rem 0;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
   &.btn-inactive{
     color: $white;
     background: #C0C0C0;
@@ -201,6 +223,10 @@ a.btnLink{
     font-size: 1.125rem;
     &.small{
       font-size: 1em
+    }
+    &:hover{
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 }

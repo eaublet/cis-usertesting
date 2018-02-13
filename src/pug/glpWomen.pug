@@ -9,13 +9,22 @@ include blocks/std_css.pug
 
 body.nav.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
-	+imgFull('/img/glp/glpW_a.png')
-	+imgFull('/img/glp/glpW_b.png')
+	h2.title Women
+	.grid.desktop.nomargin
+		header.halfSquare.cell.double.stripped
+			.mask
+			.content.padded
+				h6 Trend Shop
+				h1.big Pastels
+				p.lead.tight Put on some soft hues to pull off the<br/> look of the season.
+				a.btnLink.small Shop the Trend
+		.cell.double
+			img.full(src='/img/glp/glpW_lead.jpg')
 	+imgFull('/img/glp/glpW_c.png')
-	+imgFull('/img/glp/glpW_d.png')
-	+imgFull('/img/glp/glpW_e.png')
+	+trendModule('Looking to<br/>shop the Latest<br/>Trends?', 'Visit the Trend Shop', '/img/glp/heroWomen.jpg')
+	+imgFull('/img/glp/glpW_e.png').todo
 	+imgFull('/img/glp/glpW_f.png')
-	+imgFull('/img/glp/glpW_g.png')
+	+loadMore('Load more images')
 
 	
 	.footer.desktop

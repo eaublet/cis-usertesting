@@ -1,6 +1,29 @@
+mixin trendModule(title, cta, img)
+	.trendModule(style='background-image: url(' + img + ')')
+		.copy
+			.maskLeft
+			.maskRight
+			.content
+				h1!= title
+				a.btnLink= cta
+
+
+mixin largeHalfTriangle(title, cta, img)
+	.halfSquare.cell.hero(style="background-image: url(" + img + ")")
+		.left
+			.mask
+			.content
+				img(src="/img/me2we/me2welogo.png", width='148')
+				h1.hero!= title
+				a.btn.btn-big.btn-metowe= cta
+
 mixin imgFull(url)
-	.fullWidthImage
+	.fullWidthImage(class=attributes.class)
 		img(src=url)
+
+mixin loadMore(txt)
+	.loadMore
+		a.btn.btn-mega.btn-primary= txt
 
 mixin buySticky(productName, productPrice, img)
 	.buySticky
@@ -31,9 +54,9 @@ mixin nav(surnav, simple)
 	.navContent.desktop
 		.wrapper
 			ul.mainLinks.no-list
-				li Women
-				li Men
-				li Sale
+				li: a.navItem(data-panel='women') Women
+				li: a.navItem(data-panel='men') Men
+				li: a.navItem(data-panel='sale') Sale
 			.brand: img(src="./img/global/ico_brand.svg")
 			ul.tools.no-list
 				li
@@ -58,7 +81,24 @@ mixin nav(surnav, simple)
 				li
 					img(src="./img/global/ico_search.svg")
 					| Search
-				
+	
+		.megaNav
+			.navpanel(data-panel='women')
+				.main: img(src="/img/nav/womenNav_panelA.jpg", width=660)
+				.block(style= "background-image:url('/img/nav/womenNav_backgroundB.jpg')")
+					h1 Flower <br/>Patterns
+					a.btnLink.small Shop the trend
+				.block.padded(style= "background-image:url('/img/nav/womenNav_backgroundC.jpg')")
+					h1 20% Off All Winter<br/>Accessories
+					a.btnLink.small Shop now
+			.navpanel(data-panel='men')
+				.main MAIN MEN
+				.block
+				.block
+			.navpanel(data-panel='sale')
+				.main MAIN SALE
+				.block
+				.block
 		if block
 			block
 

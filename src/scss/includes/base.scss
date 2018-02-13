@@ -276,7 +276,12 @@ body.index{
 
 .fullWidthImage{
 	width: 100%;
+	&.todo{
+		background-color: red;
+		img {opacity: .5;}
+	}
 	img{
+
 		width: 100%;
 		display: block;
 	}

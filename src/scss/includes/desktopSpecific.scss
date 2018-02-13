@@ -5,6 +5,9 @@
 	background-size: 100% auto;
 	background-position: 0 90%;
 	margin-top: 2rem;
+	&.nomargin{
+		margin: 0;
+	}
 	&.mixnmatch{
 		&:before{
 			top: 50%;
@@ -577,5 +580,197 @@ body.desktop.fixed{
 		z-index: 1;
 	}
 
+}
+
+.loadMore{
+	height: 22.5rem;
+	width: 100%;
+	position: relative;
+	background-image: url(../img/global/emptyRow.jpg);
+	background-size: cover;
+	a.btn{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+}
+
+.halfSquare .content.padded{
+	padding: 2rem;
+}
+.halfSquare.stripped{
+	background: repeating-linear-gradient(
+	    45deg,
+	    white,
+	    white 5px,
+	    #e5e5e5 6px,
+	    #e5e5e5 7px
+	  );
+	&:before{
+		width: 200%;
+	    height: 1px;
+	    background-color: #e5e5e5;
+	    position: absolute;
+	    top: 50%;
+	    left: -50%;
+	    transform: rotate(-45deg);
+	    content: "";
+	}
+}
+.halfSquare.hero{
+	height: 50vw;
+	width: 100vw;
+	background-attachment: fixed;
+	.left{
+		.content{padding: 2rem;}
+		h1{
+			margin: 1rem 0 2rem;
+		}
+		width: 50vw;
+		height: 50vw;
+	}
+}
+
+@function sqrt($r) {
+  $x0: 1;
+  $x1: $x0;
+ 
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+ 
+  @return $x1;
+}
+
+
+
+.trendModule{
+	width: 100vw;
+	height: 50vw;
+	position: relative;
+	background-size: cover;
+
+	// background-attachment: fixed;
+	overflow: hidden;
+	&:before, &:after{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: sqrt((50 * 50) / 2) * 1vw;
+		height: sqrt((50 * 50) / 2) * 1vw;
+		content: '';
+		background: repeating-linear-gradient(
+		    0deg,
+		    white,
+		    white 5px,
+		    #e5e5e5 6px,
+		    #e5e5e5 7px
+		  );
+	}
+	&:before{
+		transform-origin: top left;
+   		transform: rotate(45deg) translate(100%, 0%);
+	}
+	&:after{
+		transform-origin: top left;
+   		transform: rotate(45deg) translate(100%, -200%);
+	}
+	.maskLeft{
+		width: 50%;
+		height: 100%;
+		float: left;
+		shape-outside: polygon(100% 0, 0 0, 0 50%, 0 100%, 100% 100%, 0 50%);
+	}
+	.maskRight{
+		width: 50%;
+		height: 100%;
+		float: right;
+		shape-outside: polygon(100% 0, 0 0, 100% 50%, 0 100%, 100% 100%, 100% 50%);
+	}
+	.copy{
+		width: 50vw;
+		height: 50vw;
+		margin-left: 50%;
+		transform: translate(-50%, 0);
+		background-color: white;
+		clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+		position: relative;
+		
+		.content{
+			h1{
+				padding-top: 16.5rem;
+				margin-bottom: 2rem;
+				font-size: 3.75rem;
+			}
+			width: 100%;
+			height: 100%;
+			text-align: center;
+		}
+	}
+}
+.navItem{
+	border-bottom: 1px solid transparent;
+	@include transition(all);
+	&:hover{
+		border-color: #e5e5e5;
+	}
+	&.active{
+		border-color: $black;
+	}
+}
+.megaNav{
+	position: absolute;
+	width: 100%;
+	background-color: white;
+	height: 540px;
+	transform: translateY(-100%);
+	opacity: 0;
+	z-index: 99999999999;
+	pointer-events: none;
+	overflow: hidden;
+	@include transition(all);
+	&.active{
+		transform: translateY(0);
+		opacity: 1;
+		pointer-events: initial;
+	}
+	.navpanel{
+		@include transition(all, 120ms);
+		// transform: translateY(-1rem);
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		pointer-events: none;
+		.main{
+			width: 50vw;
+			padding: 2rem 0 0 2rem;
+		}
+		h1{
+			font-size: 2.25rem;
+			margin-bottom: 2rem;
+		}
+		.block{
+			padding: 2rem;
+			width: 25vw;
+			border-left: 1px solid #e5e5e5;
+			background-position: bottom left;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			&.padded{
+				background-position: 2rem calc(100% - 2rem);
+				background-size: calc(100% - 4rem);
+			}
+		}
+		&.active{
+			pointer-events: initial;
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
 }
 

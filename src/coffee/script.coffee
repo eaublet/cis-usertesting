@@ -1,6 +1,24 @@
 log = (msg) ->
 	console.log(msg)
 
+initPanelNav = () ->
+	$('.navItem').click ->
+		unless $(@).hasClass 'active'
+			$('.megaNav').addClass 'active'
+			panel = $(@).attr('data-panel')
+			$('.navpanel, .navItem').each ->
+				$(@).removeClass 'active'
+			$(@).addClass 'active'
+			setTimeout ( ->
+				$('.navpanel[data-panel=' + panel + ']').addClass 'active'
+			), 320
+		else
+			$(@).removeClass 'active'
+			$('.navpanel').each ->
+				$(@).removeClass 'active'
+			$('.megaNav').removeClass 'active'
+
+
 initBuySticky = () ->
 	buySticky = $('.buySticky')
 	targetIn = ".addToCart"
@@ -412,6 +430,8 @@ initConfirm = () ->
 
 $(document).ready ->
 	initUI()
+	if $('body.desktop').length
+		initPanelNav()
 	if $('body.checkout').length
 		initCheckout()
 	if $('body.confirm').length
