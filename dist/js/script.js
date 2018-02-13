@@ -1,33 +1,64 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initRadios, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initRadios, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
   };
 
   initPanelNav = function() {
-    return $('.navItem').click(function() {
+    $(document).mouseup(function(e) {
+      var container;
+      if ($('.megaNav').hasClass('active')) {
+        container = $('.megaNav');
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+          if (!$('.navItem').is(e.target)) {
+            hidePanel();
+          }
+        }
+      }
+    });
+    $(window).scroll(function() {
+      if ($('.megaNav').hasClass('active')) {
+        return hidePanel();
+      }
+    });
+    return $('.navItem').mouseenter(function() {
       var panel;
       if (!$(this).hasClass('active')) {
         panel = $(this).attr('data-panel');
-        $('.megaNav').removeClass('men women sale');
-        $('.megaNav').addClass('active');
-        $('.megaNav').addClass(panel);
-        $('.navpanel, .navItem').each(function() {
-          return $(this).removeClass('active');
-        });
-        $(this).addClass('active');
-        return setTimeout((function() {
-          return $('.navpanel[data-panel=' + panel + ']').addClass('active');
-        }), 320);
+        showMegaNav(panel);
+        return $(this).addClass('active');
       } else {
-        $(this).removeClass('active');
-        $('.navpanel').each(function() {
-          return $(this).removeClass('active');
-        });
-        return $('.megaNav').removeClass('active sale');
+        return $(this).removeClass('active');
       }
     });
+  };
+
+  hidePanel = function() {
+    $('body').removeClass('overlayed');
+    $(this).removeClass('active');
+    $('.navpanel, .navItem').each(function() {
+      return $(this).removeClass('active');
+    });
+    $('.megaNav').addClass('inactive');
+    return setTimeout((function() {
+      return $('.megaNav').removeClass('active sale inactive');
+    }), 320);
+  };
+
+  showMegaNav = function(panel) {
+    $('body').addClass('overlayed');
+    $('.megaNav').removeClass('men women sale');
+    $('.megaNav').addClass('active');
+    $('.megaNav').addClass(panel);
+    if (panel !== $('.navpanel.active').attr('data-panel')) {
+      $('.navpanel, .navItem').each(function() {
+        return $(this).removeClass('active');
+      });
+      return setTimeout((function() {
+        return $('.navpanel[data-panel=' + panel + ']').addClass('active');
+      }), 320);
+    }
   };
 
   initBuySticky = function() {

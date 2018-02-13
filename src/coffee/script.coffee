@@ -2,23 +2,46 @@ log = (msg) ->
 	console.log(msg)
 
 initPanelNav = () ->
-	$('.navItem').click ->
+	$(document).mouseup (e) ->
+		if $('.megaNav').hasClass 'active'
+			container = $('.megaNav')
+			if !container.is(e.target) and container.has(e.target).length == 0
+				unless $('.navItem').is(e.target)
+					hidePanel()
+			return
+	$(window).scroll ->
+		if $('.megaNav').hasClass 'active'
+			hidePanel()
+	$('.navItem').mouseenter ->
 		unless $(@).hasClass 'active'
 			panel = $(@).attr('data-panel')
-			$('.megaNav').removeClass 'men women sale'
-			$('.megaNav').addClass 'active'
-			$('.megaNav').addClass panel
-			$('.navpanel, .navItem').each ->
-				$(@).removeClass 'active'
+			showMegaNav(panel)
 			$(@).addClass 'active'
-			setTimeout ( ->
-				$('.navpanel[data-panel=' + panel + ']').addClass 'active'
-			), 320
 		else
 			$(@).removeClass 'active'
-			$('.navpanel').each ->
-				$(@).removeClass 'active'
-			$('.megaNav').removeClass 'active sale'
+
+hidePanel = () ->
+	$('body').removeClass 'overlayed'
+	$(@).removeClass 'active'
+	$('.navpanel, .navItem').each ->
+		$(@).removeClass 'active'
+	$('.megaNav').addClass 'inactive'
+	setTimeout (->
+		$('.megaNav').removeClass 'active sale inactive'
+	), 320
+
+showMegaNav = (panel) ->
+	$('body').addClass 'overlayed'
+	$('.megaNav').removeClass 'men women sale'
+	$('.megaNav').addClass 'active'
+	$('.megaNav').addClass panel
+	unless panel is $('.navpanel.active').attr('data-panel')
+		$('.navpanel, .navItem').each ->
+			$(@).removeClass 'active'
+		setTimeout ( ->
+			$('.navpanel[data-panel=' + panel + ']').addClass 'active'
+		), 320
+			
 
 
 initBuySticky = () ->

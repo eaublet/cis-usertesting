@@ -330,8 +330,27 @@ body.desktop{
 		@include transition(opacity);
 		background-color: rgba(0,0,0,.6);
 	}
+	&:after{
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		content: "";
+		top: 0;
+		left: 0;
+		z-index: 999999;
+		opacity: 0;
+		pointer-events: none;
+		@include transition(opacity);
+		background-color: rgba(0,0,0,.6);
+	}
+}
+body.desktop.overlayed{
+	&:after{
+		opacity: 1;
+	}
 }
 body.desktop.fixed{
+
 	&:before{
 		opacity: 1;
 	}
@@ -713,6 +732,7 @@ body.desktop.fixed{
 }
 .navItem{
 	border-bottom: 1px solid transparent;
+	cursor: pointer;
 	@include transition(all);
 	&:hover{
 		border-color: #e5e5e5;
@@ -739,6 +759,9 @@ body.desktop.fixed{
 		transform: translateY(0);
 		opacity: 1;
 		pointer-events: initial;
+	}
+	&.inactive{
+		opacity: 0;
 	}
 	.navpanel{
 		@include transition(all, 120ms);
