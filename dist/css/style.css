@@ -292,6 +292,8 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
   100% { opacity: 0; transform: scale(0); } }
 @media (max-width: 640px) { body.pdp .productDetails h2.left { margin-top: 2rem; margin-bottom: -1rem; } }
 
+a.uncolor { color: inherit; }
+
 .grid.desktop { grid-template-columns: 1fr 1fr 1fr 1fr; background-attachment: fixed; background-size: 100% auto; background-position: 0 90%; margin-top: 2rem; }
 .grid.desktop.thirds { grid-template-columns: 1fr 1fr 1fr; }
 .grid.desktop.thirds .cell a { margin: 2rem 0 0; display: block; text-align: center; }
@@ -309,24 +311,30 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .grid.desktop .cell.product img { -ms-transform-origin: center center; transform-origin: center center; -ms-transform: scale(1); transform: scale(1); will-change: transform; transition: transform 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 .grid.desktop .cell.product:hover .title { -ms-transform: translateY(0); transform: translateY(0); opacity: 1; }
 .grid.desktop .cell.product:hover img { -ms-transform: scale(1.08); transform: scale(1.08); }
+.grid.desktop .cell.product.num:before { position: absolute; top: 1rem; left: 1rem; width: 1.5rem; height: 1.5rem; border: 1px solid black; content: ""; z-index: 99; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); -ms-transform-origin: center center; transform-origin: center center; }
+.grid.desktop .cell.product.num:after { position: absolute; top: 1rem; left: 1rem; width: 1.5rem; height: 1.5rem; content: "A"; z-index: 99; text-align: center; line-height: 1.5rem; font-size: .875rem; }
+.grid.desktop .cell.product.num.num1:after { content: '1'; }
+.grid.desktop .cell.product.num.num2:after { content: '2'; }
+.grid.desktop .cell.product.num.num3:after { content: '3'; }
 .grid.desktop .cell.social { background-color: #fff; position: relative; }
 .grid.desktop .cell.social img { padding: 1.5rem 2rem 2rem; }
 .grid.desktop .cell.social .socialInfo { width: 100%; position: absolute; bottom: 0; left: 0; padding: 0 2rem 0.75rem; height: 2rem; -ms-flex-align: end; align-items: flex-end; }
 .grid.desktop .cell.social .socialInfo img { padding: 0; }
 .grid.desktop .cell.texture { background-image: url(../img/pdp/linearBkg.png); background-size: cover; }
-.grid.desktop .cell.halftexture { background-image: url(../img/global/halfTexture.jpg); background-size: cover; }
+.grid.desktop .cell.halftexture { background-image: url(../img/global/halfTexture.jpg); background-size: auto 100%; background-position: bottom right; background-repeat: no-repeat; }
 .grid.desktop .cell.stroke { position: relative; }
 .grid.desktop .cell.stroke:before { width: 200%; height: 1px; background-color: #e5e5e5; position: absolute; top: 0.5px; left: 0.5px; -ms-transform-origin: top left; transform-origin: top left; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); content: ""; }
 .grid.desktop .cell.noBorder { box-shadow: 0 0 0 1px #fff; }
+.grid.desktop .cell h3 { font-size: 2.25rem; }
 .grid.desktop .cell.doubleWidth { grid-column: span 2; height: 25vw; display: -ms-flexbox; display: flex; padding: 0; }
 .grid.desktop .cell.doubleWidth .content { padding: 2rem; }
 .grid.desktop .cell.doubleWidth .left, .grid.desktop .cell.doubleWidth .right { -ms-flex-positive: 1; flex-grow: 1; padding: 2rem; width: 50%; }
-.grid.desktop .cell.doubleWidth h3 { font-size: 2.25rem; }
 .grid.desktop .cell.doubleWidth p { margin: 2rem 0 1rem; font-size: 1.125rem; line-height: 1.25; }
 .grid.desktop .cell.doubleWidth .right img { width: 100%; }
 .grid.desktop .cell.reverseStroke { -ms-transform: rotate(0.25turn); transform: rotate(0.25turn); }
 .grid.desktop.pdp h2 { margin: 0; }
 .grid.desktop.pdp .content { margin: 0; padding: 8rem 6rem; }
+.grid.desktop.hp .socialInfo { padding-left: 0; }
 .grid.desktop.plp { grid-auto-flow: dense; grid-auto-rows: 12.5vw; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
 .grid.desktop.plp .cell { background-color: white; height: 100%; }
 .grid.desktop.plp .cell .socialInfo { padding-left: 0; }
@@ -476,7 +484,7 @@ body.desktop.fixed:before { opacity: 1; }
 .halfSquare.hero .left .content { padding: 2rem; }
 .halfSquare.hero .left h1 { margin: 1rem 0 2rem; }
 
-.trendModule { width: 100vw; height: 50vw; position: relative; background-size: cover; overflow: hidden; }
+.trendModule { width: 100vw; height: 50vw; position: relative; background-size: cover; overflow: hidden; border-bottom: 1px solid #e5e5e5; }
 .trendModule:before, .trendModule:after { position: absolute; top: 0; left: 0; width: 35.35534vw; height: 35.35534vw; content: ''; background: repeating-linear-gradient(0deg, white, white 5px, #e5e5e5 6px, #e5e5e5 7px); }
 .trendModule:before { -ms-transform-origin: top left; transform-origin: top left; -ms-transform: rotate(45deg) translate(100%, 0%); transform: rotate(45deg) translate(100%, 0%); }
 .trendModule:after { -ms-transform-origin: top left; transform-origin: top left; -ms-transform: rotate(45deg) translate(100%, -200%); transform: rotate(45deg) translate(100%, -200%); }

@@ -1,3 +1,6 @@
+a.uncolor{
+	color: inherit;
+}
 .grid.desktop{
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	// background-image: url('../img/pdp/huge.jpg');
@@ -68,6 +71,41 @@
 					transform: scale(1.08);
 				}
 			}
+			&.num{
+				&:before{
+					position: absolute;
+					top: 1rem;
+					left: 1rem;
+					width: 1.5rem;
+					height: 1.5rem;
+					border: 1px solid black;
+					content: "";
+					z-index: 99;
+					transform: rotate(.125001turn);
+					transform-origin: center center;
+				}
+				&:after{
+					position: absolute;
+					top: 1rem;
+					left: 1rem;
+					width: 1.5rem;
+					height: 1.5rem;
+					content: "A";
+					z-index: 99;
+					text-align: center;
+					line-height: 1.5rem;
+					font-size: .875rem;
+				}
+				&.num1{
+					&:after{content: '1'}
+				}
+				&.num2{
+					&:after{content: '2'}
+				}
+				&.num3{
+					&:after{content: '3'}
+				}
+			}
 		}
 		&.social{
 			background-color: $white;
@@ -94,7 +132,9 @@
 		}
 		&.halftexture{
 			background-image: url(../img/global/halfTexture.jpg);
-			background-size: cover;
+			background-size: auto 100%;
+			background-position: bottom right;
+			background-repeat: no-repeat;
 		}
 
 		&.stroke{
@@ -114,6 +154,9 @@
 		&.noBorder{
 			box-shadow: 0 0 0 1px #fff
 		}
+		h3{
+				font-size: 2.25rem;
+			}
 		&.doubleWidth{
 			grid-column: span 2;
 			height: 25vw;
@@ -127,9 +170,7 @@
 				padding: 2rem;
 				width: 50%;
 			}
-			h3{
-				font-size: 2.25rem;
-			}
+			
 			p{
 				margin: 2rem 0 1rem;
 				font-size: 1.125rem;
@@ -152,6 +193,11 @@
 		.content{
 			margin: 0;
 			padding: 8rem 6rem;
+		}
+	}
+	&.hp{
+		.socialInfo{
+			padding-left: 0;
 		}
 	}
 	&.plp {
@@ -797,6 +843,7 @@ body.desktop.fixed{
 
 	// background-attachment: fixed;
 	overflow: hidden;
+	border-bottom: 1px solid #e5e5e5;
 	&:before, &:after{
 		position: absolute;
 		top: 0;

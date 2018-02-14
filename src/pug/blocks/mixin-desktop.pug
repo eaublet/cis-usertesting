@@ -2,12 +2,13 @@ mixin promo(img)
 	.cell.promo(class=attributes.class)
 		img.full(src=img)
 
-mixin product(title, price, img)
+mixin product(title, price, img, link)
 	.cell.product(class=attributes.class)
-		img.full(src='/img/products/' + img + '')
-		.details
-			.title!= title
-			.price!= price
+		a(href=link)
+			img.full(src='/img/products/' + img + '')
+			.details
+				.title!= title
+				.price!= price
 
 mixin trendModule(title, cta, img, sur, p)
 	.trendModule(style='background-image: url(' + img + ')')

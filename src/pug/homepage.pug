@@ -26,14 +26,51 @@ body.nav.desktop
 				img(src='/img/hp/chelseaTile.jpg')
 		.cell.doubleWidth
 			.left
-				h6 Partnership
-				img.logo(src="/img/hp/me2we.jpg", width=120)
-				p WE is a movement that believes when we come together we can create an even better world.
-				a.btnLink.small Learn more
+				a(href="/metowe.html").uncolor
+					h6 Partnership
+					img.logo(src="/img/hp/me2we.jpg", width=120)
+					p WE is a movement that believes when we come together we can create an even better world.
+					a.btnLink.small Learn more
 			.right
-				img(src='/img/hp/me2weTile.jpg')
+				a(href="/metowe.html").uncolor
+					img(src='/img/hp/me2weTile.jpg')
 	//- +imgFull('/img/hp/hp_sectionB.jpg')
-	+imgFull('/img/hp/hp_sectionC.jpg')
+	.grid.desktop.nomargin.hp.border-bottom
+		.cell.single.halftexture.padded-double
+			h3 The Top 3:
+				br
+				| January
+				br
+				| 2018
+		+product('Umtiti', '$79.99', 'hp/top3_A.jpg').single.num.num1
+		+product('Vermaelen', '$69.99', 'hp/top3_B.jpg').single.num.num2
+		+product('Dembele', '$49.99', 'hp/top3_C.jpg').single.num.num3
+		.cell.doubleWidth.halftexture
+			.left
+				h3 #instashop
+				p.lead Curabitur blandit tempus porttitor.<br/> Lorem ipsum dolor sit amet, consectetur adipiscing.
+				a.btnLink.small Check out @brandname
+		.cell.double.padded-double
+			img.full(src='/img/hp/hp_socialC.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		.cell.single.padded-double
+			img.full(src='/img/hp/hp_socialA.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		.cell.single.padded-double
+			img.full(src='/img/hp/hp_socialB.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
 	+loadMore('Load more images')
 	
 	.footer.desktop
