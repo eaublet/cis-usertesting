@@ -1,8 +1,16 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initRadios, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
+  };
+
+  initReveal = function() {
+    var targetIn;
+    targetIn = '.revealSection';
+    return inView(targetIn).on('enter', function(el) {
+      return $(el).removeClass('active');
+    }).on('exit', function(el) {});
   };
 
   initPanelNav = function() {
@@ -615,7 +623,10 @@
       initPDP();
     }
     if ($('body.nav').length) {
-      return initNav();
+      initNav();
+    }
+    if ($('.revealSection').length) {
+      return initReveal();
     }
   });
 

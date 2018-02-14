@@ -1,6 +1,15 @@
 log = (msg) ->
 	console.log(msg)
 
+initReveal = () ->
+	targetIn = '.revealSection'
+	inView(targetIn).on('enter', (el) ->
+		$(el).removeClass 'active'
+	).on 'exit', (el) ->
+		# el.removeClass 'active'
+		return
+
+
 initPanelNav = () ->
 	$(document).mouseup (e) ->
 		if $('.megaNav').hasClass 'active'
@@ -467,3 +476,5 @@ $(document).ready ->
 		initPDP()
 	if $('body.nav').length
 		initNav()
+	if $('.revealSection').length
+		initReveal()

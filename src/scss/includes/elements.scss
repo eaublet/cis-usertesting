@@ -121,6 +121,7 @@
     position: relative;
     overflow: hidden;
     z-index: 0;
+    background-color: $black;
     &:before{
       position: absolute;
       width: 130%;
@@ -162,7 +163,8 @@
     &.added{
       &:before{
         transform: translate(-50%, -50%) rotate(.5turn);
-        @include transition(transform, $longDuration, ease-out);
+        opacity: 0;
+        @include transition(all, $longDuration, ease-out);
       }
     }
   }
@@ -188,6 +190,15 @@
     &:hover{
       color: $main-color;
       border-color: $main-color;
+    }
+  }
+  &.btn-reverse {
+    border: 1px solid white;
+    color: white;
+    &:hover{
+      color: inherit;
+      border-color: inherit;
+      opacity: .8;
     }
   }
   &.btn-padded{
@@ -558,6 +569,109 @@ ul.dropDownButtons{
     @include transition(opacity);
     &.inactive{
       opacity: 0;
+    }
+  }
+}
+
+.revealSection{
+  background: linear-gradient(-45deg, $alt2-color, $alt-color);
+  position: relative;
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  @include transition(all, $longDuration);
+  @media(max-width: 640px){
+    padding: 4rem 2rem;
+  }
+  .content{
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    width: 100%;
+    color: white;
+    box-sizing: border-box;
+    @include transition(all, $xlongDuration);
+    *{
+      @include transition(all, $xlongDuration);
+      color: white;
+      fill: white;
+      border-color: white;
+    }
+    // transition: all $duration $ease;
+  }
+  &:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: linear-gradient(-35deg, rgba(256,256,256,1), rgba(256,256,256,1), rgba(256,256,256,0), rgba(256,256,256,0));
+    background-position: 0 0;
+    background-size: 500%;
+    // transition: all $duration $ease;
+    @include transition(all, $xlongDuration);
+    z-index: 0;
+  }
+  &.active{
+    .content{
+      opacity: 1;
+      color: $black;
+      *{
+        color: $black;
+        fill: $black;
+        border-color: $black;
+      }
+      // transition: all $duration $ease;
+    }
+    &:before{
+      background-position: 100% 100%;
+    }
+  }
+  .pdpContextual{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    .icon{
+      width: 2.625rem;
+      margin: 0 auto;
+      svg{
+        display: block;
+        width: 100%;
+      }
+    }
+    .statement{
+      font-size: 3rem;
+      font-weight: 400;
+      margin: 3rem 0;
+      line-height: 3rem;
+      .underlined{
+        text-decoration: underline;
+      }
+    }
+    .btn{
+      margin-top: 1rem;
+      display: table;
+      margin: 1rem auto 0;
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+    @media(max-width: 640px){
+      .icon{
+        width: 2rem;
+      }
+      .statement{
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        margin: 2rem auto 1rem;
+
+      }
+      .btn{
+        font-size: initial;
+        font-weight: 400;
+      }
     }
   }
 }

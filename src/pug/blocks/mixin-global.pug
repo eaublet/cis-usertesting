@@ -9,6 +9,12 @@ mixin colorSelector(colorSelected, colors)
 				else
 					li(style="background-image: url(/img/pdp/" + c[0] + ")")!= c[1]
 
+mixin reveal()
+	.revealSection.active
+		if block
+			.content
+				block
+
 mixin sizeSelector(sizes, desktop)
 	.sizeSelector
 		h5 Size

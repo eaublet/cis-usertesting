@@ -283,6 +283,12 @@ nav.mobile {
         padding: .75rem;
       }
     }
+    .wrapper{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
     &.product{
       position: relative;
       .details{
@@ -291,6 +297,12 @@ nav.mobile {
         position: absolute;
         bottom: 1rem;
         left: 1rem;
+        .title{
+          text-transform: lowercase;
+          &:first-letter{
+            text-transform: uppercase;
+          }
+        }
       }
       &.cta{
         .details{
@@ -732,6 +744,14 @@ nav.mobile {
         opacity: 0;
         transform: scale(0);
       }
+    }
+  }
+}
+body.pdp{
+  .productDetails h2.left{
+    @media (max-width: 640px){
+      margin-top: 2rem;
+      margin-bottom: -1rem;
     }
   }
 }

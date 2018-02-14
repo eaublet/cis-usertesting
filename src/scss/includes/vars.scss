@@ -3,8 +3,8 @@ $unit: 16px;
 // Colors
 $main-color: #8C50C7;
 $main-color: #683EBD; //not sure what the good color is. 
-$alt-color: #3023AE;
-$alt2-color: #C86DD7;
+$alt-color: #10069F;
+$alt2-color: #9932CC;
 $black: #000;
 $darkest: #222;
 $dark: #444;
@@ -21,6 +21,7 @@ $main-gradient: linear-gradient(90deg, $alt-color 0%, $alt2-color 100%);
 // Animation
 $duration: 180ms;
 $longDuration: 400ms;
+$xlongDuration: 1800ms;
 $ease: cubic-bezier(0.77, 0, 0.175, 1);
 
 // Fonts
