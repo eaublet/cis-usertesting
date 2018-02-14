@@ -9,11 +9,31 @@ include blocks/std_css.pug
 
 body.nav.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
-	
 	+imgFull('/img/hp/hp_bannerDesktop.png')
-	+imgFull('/img/hp/hp_caroussel.png').todo
-	+imgFull('/img/hp/hp_sectionA.png').todo
-	+imgFull('/img/hp/hp_sectionB.png').todo
+	+trendModule('Pastels', 'Shop the Trend', '/img/hp/hpHero.jpg', 'Trend Shop', 'Put on some soft hues to pull off the<br/> look of the season.')
+	.grid.desktop.nomargin
+		.cell.doubleWidth
+			.left
+				h6 Men
+				h3 Chelsea
+					br
+					|Boots
+				p Rain or shine, Chelsea Boots
+					br
+					|are a wardrobe staple.
+				a.btnLink.small Shop Chelsea Boots
+			.right
+				img(src='/img/hp/chelseaTile.jpg')
+		.cell.doubleWidth
+			.left
+				h6 Partnership
+				img.logo(src="/img/hp/me2we.jpg", width=120)
+				p WE is a movement that believes when we come together we can create an even better world.
+				a.btnLink.small Learn more
+			.right
+				img(src='/img/hp/me2weTile.jpg')
+	//- +imgFull('/img/hp/hp_sectionB.jpg')
+	+imgFull('/img/hp/hp_sectionC.jpg')
 	+loadMore('Load more images')
 	
 	.footer.desktop

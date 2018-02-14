@@ -5,6 +5,20 @@
 	background-size: 100% auto;
 	background-position: 0 90%;
 	margin-top: 2rem;
+	
+	&.thirds{
+		grid-template-columns: 1fr 1fr 1fr;
+		.cell{
+			a{
+				margin: 2rem 0 0;
+				display: block;
+				text-align: center;
+			}
+			&.padded{
+				padding: 2rem;
+			}
+		}
+	}
 	&.nomargin{
 		margin: 0;
 	}
@@ -27,7 +41,34 @@
 		&.empty{
 			background-color: transparent;
 		}
-
+		&.padded-double{
+			padding: 2rem;
+		}
+		&.tall{
+			grid-row: span 1.5
+		}
+		&.product{
+			cursor: pointer;
+			.title{
+				opacity: 0;
+				transform: translateY(0.5rem);
+				@include transition(all, $longDuration);
+			}
+			img{
+				transform-origin: center center;
+				transform: scale(1);
+				@include transition(transform, $longDuration);
+			}
+			&:hover{
+				.title{
+					transform: translateY(0);
+					opacity: 1;
+				}
+				img{
+					transform: scale(1.08);
+				}
+			}
+		}
 		&.social{
 			background-color: $white;
 			position: relative;
@@ -51,6 +92,11 @@
 			background-image: url(../img/pdp/linearBkg.png);
 			background-size: cover;
 		}
+		&.halftexture{
+			background-image: url(../img/global/halfTexture.jpg);
+			background-size: cover;
+		}
+
 		&.stroke{
 			position: relative;
 			&:before{
@@ -66,10 +112,80 @@
 			}
 		}
 		&.noBorder{
-			box-shadow: none;
+			box-shadow: 0 0 0 1px #fff
+		}
+		&.doubleWidth{
+			grid-column: span 2;
+			height: 25vw;
+			display: flex;
+			padding: 0;
+			.content{
+				padding: 2rem;
+			}
+			.left, .right{
+				flex-grow: 1;
+				padding: 2rem;
+				width: 50%;
+			}
+			h3{
+				font-size: 2.25rem;
+			}
+			p{
+				margin: 2rem 0 1rem;
+				font-size: 1.125rem;
+				line-height: 1.25
+			}
+			.right{
+				img{
+					width: 100%;
+				}
+			}
 		}
 		&.reverseStroke{
 			transform: rotate(.25turn);
+		}
+	}
+	&.pdp{
+		h2{
+			margin: 0;
+		}
+		.content{
+			margin: 0;
+			padding: 8rem 6rem;
+		}
+	}
+	&.plp {
+		grid-auto-flow: dense;
+		grid-auto-rows: 12.5vw;
+		.cell{
+			background-color: white;
+			height: 100%;
+			.socialInfo{
+				padding-left: 0;
+			}
+			&.header{
+				position: relative;
+				.btn{
+					position: absolute;
+					bottom: 2rem;
+				}
+			}
+			&.half{
+				grid-row: span 1;
+			}
+			&.single{
+				grid-row: span 2;
+			}
+			&.tall{
+				grid-row: span 3;
+			}
+			&.double{
+				grid-row: span 4;
+			}
+			&.halfEmpty{
+				background-image: url(../img/global/halfEmpty.jpg);
+				background-size: cover;
+			}
 		}
 	}
 }
@@ -719,10 +835,17 @@ body.desktop.fixed{
 		position: relative;
 		
 		.content{
+			padding-top: 16.5rem;
+			p{
+				font-size: 1.125rem;
+				margin-bottom: 1rem;
+			}
 			h1{
-				padding-top: 16.5rem;
-				margin-bottom: 2rem;
+				margin-bottom: 1rem;
 				font-size: 3.75rem;
+			}
+			a{
+				margin-top: 1rem;
 			}
 			width: 100%;
 			height: 100%;
@@ -772,6 +895,7 @@ body.desktop.fixed{
 		height: 100%;
 		display: flex;
 		pointer-events: none;
+		background-color: white;
 		.main{
 			width: 50vw;
 			padding: 2rem 0 0 2rem;

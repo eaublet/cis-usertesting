@@ -120,6 +120,7 @@
   &.btn-gradient {
     position: relative;
     overflow: hidden;
+    z-index: 0;
     &:before{
       position: absolute;
       width: 130%;
@@ -222,7 +223,7 @@ a.btnLink{
   @media(min-width: 1024px){
     font-size: 1.125rem;
     &.small{
-      font-size: 1em
+      font-size: 0.825rem;
     }
     &:hover{
       cursor: pointer;

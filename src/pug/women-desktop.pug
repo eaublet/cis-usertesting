@@ -33,26 +33,29 @@ body.pdp.desktop
 		.cell.single.stroke.empty
 		.cell.single.texture
 	//- +productDetails('beasien_b.jpg', 'beasien_c.jpg', 'beasien_social.jpg', 'klimp_1900', 344)
-	.container.productDetails.desktop
-		p.lead This high-heeled sandal has you covered for any occasion with a good dose of style and attitude, courtesy of three thick straps and subtle gold detailing.
-		.column
-			h5 Details
-			ul.listDetails
-				li Almond toe
-				li Block heel
-				li Buckle closure
-		.column
-			h5 Materials
-			ul.listDetails
-				li Upper: Leather
-				li Sole: Textile
-		.column
-			h5 Measurements
-			ul.listDetails
-				li Heel Height: 4"
-	hr
-	+survey('Great For', 'dress.svg', 'Date night', 64, 'badWeather.svg', 'Bad weather', 35, 'allday.svg', 'All-day wear', 17)
-	hr
+	.grid.desktop.pdp.nomargin
+		.cell.double.double-padded.border-bottom
+			.content
+				h2.left Details
+				p.lead This high-heeled sandal has you covered for any occasion with a good dose of style and attitude, courtesy of three thick straps and subtle gold detailing.
+				.row
+					.column
+						h5 Details
+						ul.listDetails
+							li Almond toe
+							li Block heel
+							li Buckle closure
+					.column
+						h5 Materials
+						ul.listDetails
+							li Upper: Leather
+							li Sole: Textile
+					.column
+						h5 Measurements
+						ul.listDetails
+							li Heel Height: 4"
+	//- +survey('Great For', 'dress.svg', 'Date night', 64, 'badWeather.svg', 'Bad weather', 35, 'allday.svg', 'All-day wear', 17)
+	//- hr
 	+reviews('Reviews')
 	hr
 	+mixnmatch('Mix & Match', 'beasien_a.jpg', 'bag.jpg', 'Ramaswamy', 19.99, 'Black')

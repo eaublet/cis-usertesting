@@ -9,10 +9,73 @@ include blocks/std_css.pug
 
 body.nav.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
-	+imgFull('/img/plp/plpM_a.png')
-	+imgFull('/img/plp/plpM_b.png')
-	+imgFull('/img/plp/plpM_c.png')
+	.grid.desktop.plp.border-bottom.nomargin
+		.cell.single.padded-double.header.noBorder
+			h6 Men
+			h1.big Footwear
+			a.btn.btn-gradient.btn-big Filter + 
+		.cell.empty.halftexture.single.noBorder
+		+product('Name', '$49.99', 'men/M03.jpg').double
+		+product('Name', '$49.99', 'men/M01.jpg').single
+		+product('Name', '$49.99', 'men/M02.jpg').single
+		+product('Name', '$49.99', 'men/M10.jpg').single
+		+product('Name', '$49.99', 'men/M04.jpg').tall
+		+product('Name', '$49.99', 'men/M06.jpg').single
+		+promo('/img/plp/men_PromoA.jpg').tall
+		.cell.halfEmpty
+		.cell.double.padded-double
+			img.full(src='/img/plp/men_SocialA.jpg')
+			.socialInfo
+				.handle @marshallwhite
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		+product('Name', '$49.99', 'men/M07.jpg').single
+		+product('Name', '$49.99', 'men/M08.jpg').single
+		+product('Name', '$49.99', 'men/M14.jpg').single
 
+		+product('Name', '$49.99', 'men/M11.jpg').single
+		+product('Name', '$49.99', 'men/M13.jpg').single
+		+product('Name', '$49.99', 'men/M12.jpg').single
+		
+		+product('Name', '$49.99', 'men/M09.jpg').single
+		+product('Name', '$49.99', 'men/M15.jpg').single
+		
+
+		+product('Name', '$49.99', 'men/M16.jpg').single
+		+promo('/img/plp/women_PromoB.jpg').tall
+
+		+product('Name', '$49.99', 'men/M17.jpg').single
+		.cell.halfEmpty
+		+product('Name', '$49.99', 'men/M18.jpg').single
+		
+		+product('Name', '$49.99', 'men/M22.jpg').single
+		
+
+		+product('Name', '$49.99', 'men/M05.jpg').tall
+		.cell.double.padded-double
+			img.full(src='/img/plp/men_SocialB.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		+product('Name', '$49.99', 'men/M19.jpg').single
+		+product('Name', '$49.99', 'men/M20.jpg').single
+		+product('Name', '$49.99', 'men/M21.jpg').single
+
+	+imgFull('/img/plp/plpW_b.png')
+	h2.title Shop by category
+	.grid.thirds.border-top.desktop.border-bottom
+		.cell.padded
+			img.full(src='/img/glp/mfeat_A.jpg')
+			a.btnLink.small.centered Shop Footwear
+		.cell.padded
+			img.full(src='/img/glp/mfeat_B.jpg')
+			a.btnLink.small.centered Shop Bags & Backpacks
+		.cell.padded
+			img.full(src='/img/glp/mfeat_C.jpg')
+			a.btnLink.small.centered Shop Accessories
 	
 	.footer.desktop
 		img(src="/img/global/desktopFooter.png")

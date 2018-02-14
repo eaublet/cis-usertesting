@@ -10,20 +10,48 @@ include blocks/std_css.pug
 body.nav.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
 	h2.title Women
-	.grid.desktop.nomargin
-		header.halfSquare.cell.double.stripped
-			.mask
-			.content.padded
-				h6 Trend Shop
+	.grid.desktop.nomargin.border-top.border-bottom
+		.cell.doubleWidth
+			.content
+				//- h6 Trend Shop
 				h1.big Pastels
 				p.lead.tight Put on some soft hues to pull off the<br/> look of the season.
 				a.btnLink.small Shop the Trend
 		.cell.double
 			img.full(src='/img/glp/glpW_lead.jpg')
-	+imgFull('/img/glp/glpW_c.png')
+		.cell.single
+			img.full(src='/img/glp/glpW_tile.jpg')
+		.cell.texture
+	.grid.desktop.nomargin.border-bottom
+		.cell.doubleWidth
+			.left
+				h6 Limited Time Offer
+				h3 Sneakers at $34.99
+				p 
+				a.btnLink.small Shop Sneakers
+			.right
+				img(src='/img/glp/glpW_tileB.jpg')
+		.cell.doubleWidth
+			.left
+				h6 &nbsp;
+				h3 Sock Boot<br/>Season
+				p
+				a.btnLink.small Shop Sock Boots
+			.right
+				img(src='/img/glp/glpW_tileC.jpg')
 	+trendModule('Looking to<br/>shop the Latest<br/>Trends?', 'Visit the Trend Shop', '/img/glp/heroWomen.jpg')
-	+imgFull('/img/glp/glpW_e.png').todo
-	+imgFull('/img/glp/glpW_f.png')
+	h2.title Shop by category
+	.grid.thirds.border-top.desktop.border-bottom
+		.cell.padded
+			img.full(src='/img/glp/wfeat_A.jpg')
+			a.btnLink.small.centered Shop Footwear
+		.cell.padded
+			img.full(src='/img/glp/wfeat_B.jpg')
+			a.btnLink.small.centered Shop Handbags
+		.cell.padded
+			img.full(src='/img/glp/wfeat_C.jpg')
+			a.btnLink.small.centered Shop Accessories
+	+imgFull('/img/glp/glpW_f.jpg')
 	+loadMore('Load more images')
 
 	

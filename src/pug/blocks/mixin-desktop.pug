@@ -1,11 +1,26 @@
-mixin trendModule(title, cta, img)
+mixin promo(img)
+	.cell.promo(class=attributes.class)
+		img.full(src=img)
+
+mixin product(title, price, img)
+	.cell.product(class=attributes.class)
+		img.full(src='/img/products/' + img + '')
+		.details
+			.title!= title
+			.price!= price
+
+mixin trendModule(title, cta, img, sur, p)
 	.trendModule(style='background-image: url(' + img + ')')
 		.copy
 			.maskLeft
 			.maskRight
 			.content
+				if sur
+					h6!= sur
 				h1!= title
-				a.btnLink= cta
+				if p
+					p!= p
+				a.btnLink.small= cta
 
 
 mixin largeHalfTriangle(title, cta, img)
@@ -86,19 +101,25 @@ mixin nav(surnav, simple)
 			.navpanel(data-panel='women')
 				.main: img(src="/img/nav/womenNav_panelA.jpg", width=660)
 				.block(style= "background-image:url('/img/nav/womenNav_backgroundB.jpg')")
-					h1 Flower <br/>Patterns
+					h6 &nbsp;
+					h1 Pastels
+					p.large Put on some soft hues to pull off the look of the season.
 					a.btnLink.small Shop the trend
 				.block.padded(style= "background-image:url('/img/nav/womenNav_backgroundC.jpg')")
-					h1 20% Off All Winter<br/>Accessories
-					a.btnLink.small Shop now
+					h6 Limited Time Offer
+					h1 Sneakers at $34.99
+					a.btnLink.small Shop Sneakers
 			.navpanel(data-panel='men')
 				.main: img(src="/img/nav/menNav_panelA.jpg", width=660)
-				.block.padded(style= "background-image:url('/img/nav/menNav_backgroundB.jpg')")
+				.block(style= "background-image:url('/img/nav/menNav_backgroundB.jpg')")
+					h6 &nbsp;
 					h1 Chelsea </br>Boots
-					a.btnLink.small Shop now
+					p.large Rain or shine, Chelsea Boots are a wardrobe staple.
+					a.btnLink.small Shop Chelsea Boots
 				.block.padded(style= "background-image:url('/img/nav/menNav_backgroundC.jpg')")
-					h1 Hybrid </br>Sneakers
-					a.btnLink.small Shop now
+					h6 Limited Time Offer
+					h1 Sneakers at $54.99
+					a.btnLink.small Shop Sneakers
 			.navpanel(data-panel='sale')
 				.main: img(src="/img/nav/sale_Left.jpg", width=345)
 				.block.double.full.unbordered(style="background-image: url(/img/nav/sale_Right.jpg)")

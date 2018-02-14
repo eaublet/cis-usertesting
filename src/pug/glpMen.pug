@@ -9,13 +9,50 @@ include blocks/std_css.pug
 
 body.nav.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
-	+imgFull('/img/glp/glpM_a.png')
-	+imgFull('/img/glp/glpM_b.png')
-	+imgFull('/img/glp/glpM_c.png')
-	+imgFull('/img/glp/glpM_d.png')
-	+imgFull('/img/glp/glpM_e.png')
-	+imgFull('/img/glp/glpM_f.png')
-	+imgFull('/img/glp/glpM_g.png')
+	h2.title Men
+	.grid.desktop.nomargin.border-top.border-bottom
+		.cell.doubleWidth
+			.content
+				//- h6 Trend Shop
+				h1.big Chelsea Boots
+				p.lead.tight A wardrobe staple — pair it with any look, rain or shine.
+				a.btnLink.small Shop Chelsea Boots
+		.cell.double
+			img.full(src='/img/glp/glpM_lead.jpg')
+		.cell.single
+			img.full(src='/img/glp/glp_tile.jpg')
+		.cell.texture
+	.grid.desktop.nomargin.border-bottom
+		.cell.doubleWidth
+			.left
+				h6 Limited Time Offer
+				h3 Sneakers at $54.99
+				p 
+				a.btnLink.small Shop Sneakers
+			.right
+				img(src='/img/glp/glpM_tileB.jpg')
+		.cell.doubleWidth
+			.left
+				h6 &nbsp;
+				h3 Keep it Casual <br/>(With Flair)
+				p
+				a.btnLink.small Shop Casual Shoes
+			.right
+				img(src='/img/glp/glpM_tileC.jpg')
+	+trendModule('All Men’s<br/>Sneakers at<br/>$59.99', 'Shop Sneakers', '/img/glp/heroMen.jpg', 'Limited Time Offer')
+	h2.title Shop by category
+	.grid.thirds.border-top.desktop.border-bottom
+		.cell.padded
+			img.full(src='/img/glp/mfeat_A.jpg')
+			a.btnLink.small.centered Shop Footwear
+		.cell.padded
+			img.full(src='/img/glp/mfeat_B.jpg')
+			a.btnLink.small.centered Shop Bags & Backpacks
+		.cell.padded
+			img.full(src='/img/glp/mfeat_C.jpg')
+			a.btnLink.small.centered Shop Accessories
+	+imgFull('/img/glp/glpM_f.jpg')
+	+loadMore('Load more images')
 
 	
 	.footer.desktop
