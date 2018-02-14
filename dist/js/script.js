@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initParalax, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -11,6 +11,14 @@
     return inView(targetIn).on('enter', function(el) {
       return $(el).removeClass('active');
     }).on('exit', function(el) {});
+  };
+
+  initParalax = function() {
+    return $(window).scroll(function() {
+      var scrolledY;
+      scrolledY = $(window).scrollTop();
+      $('.paralax').css('background-position', 'center ' + (scrolledY * -0.3) + 'px');
+    });
   };
 
   initPanelNav = function() {
@@ -637,7 +645,10 @@
       initNav();
     }
     if ($('.revealSection').length) {
-      return initReveal();
+      initReveal();
+    }
+    if ($('.paralax').length) {
+      return initParalax();
     }
   });
 

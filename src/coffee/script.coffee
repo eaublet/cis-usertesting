@@ -9,6 +9,11 @@ initReveal = () ->
 		# el.removeClass 'active'
 		return
 
+initParalax = () ->
+	$(window).scroll ->
+		scrolledY = $(window).scrollTop()
+		$('.paralax').css 'background-position', 'center ' + (scrolledY * -0.3) + 'px'
+		return
 
 initPanelNav = () ->
 	$(document).mouseup (e) ->
@@ -485,3 +490,5 @@ $(document).ready ->
 		initNav()
 	if $('.revealSection').length
 		initReveal()
+	if $('.paralax').length
+		initParalax()

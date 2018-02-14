@@ -296,7 +296,7 @@ a.uncolor { color: inherit; }
 
 .desktop .brand { cursor: pointer; }
 
-.grid.desktop { grid-template-columns: 1fr 1fr 1fr 1fr; background-attachment: fixed; background-size: 100% auto; background-position: 0 90%; margin-top: 2rem; }
+.grid.desktop { grid-template-columns: 1fr 1fr 1fr 1fr; background-attachment: fixed; background-size: 100% auto; background-position: center 0; margin-top: 2rem; }
 .grid.desktop.thirds { grid-template-columns: 1fr 1fr 1fr; }
 .grid.desktop.thirds .cell a { margin: 2rem 0 0; display: block; text-align: center; }
 .grid.desktop.thirds .cell.padded { padding: 2rem; }
