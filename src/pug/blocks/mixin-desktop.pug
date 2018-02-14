@@ -70,8 +70,8 @@ mixin nav(surnav, simple)
 	.navContent.desktop
 		.wrapper
 			ul.mainLinks.no-list
-				li: a.navItem(data-panel='women') Women
-				li: a.navItem(data-panel='men') Men
+				li: a.navItem(data-panel='women', href="/glpWomen.html") Women
+				li: a.navItem(data-panel='men', href="/glpMen.html") Men
 				li: a.navItem(data-panel='sale') Sale
 			.brand: img(src="./img/global/ico_brand.svg")
 			ul.tools.no-list
@@ -100,7 +100,9 @@ mixin nav(surnav, simple)
 	
 		.megaNav
 			.navpanel(data-panel='women')
-				.main: img(src="/img/nav/womenNav_panelA.jpg", width=660)
+				.main
+					a(href="/glpWomen.html"): img(src="/img/nav/women_nav_top.jpg", width=660)
+					a(href="/plpWomen.html"): img(src="/img/nav/women_nav_bottom.jpg", width=660)
 				.block(style= "background-image:url('/img/nav/womenNav_backgroundB.jpg')")
 					h6 &nbsp;
 					h1 Pastels
@@ -111,7 +113,8 @@ mixin nav(surnav, simple)
 					h1 Sneakers at $34.99
 					a.btnLink.small Shop Sneakers
 			.navpanel(data-panel='men')
-				.main: img(src="/img/nav/menNav_panelA.jpg", width=660)
+				.main
+					a(href="/plpMen.html"): img(src="/img/nav/menNav_panelA.jpg", width=660)
 				.block(style= "background-image:url('/img/nav/menNav_backgroundB.jpg')")
 					h6 &nbsp;
 					h1 Chelsea </br>Boots

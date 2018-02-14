@@ -464,6 +464,10 @@ initConfirm = () ->
 
 $(document).ready ->
 	initUI()
+	$('.surnav').dblclick ->
+		window.location = './'
+	$('.desktop .brand').click ->
+		window.location = './homepage.html'
 	if $('body.desktop').length
 		if $('.plp.hidden').length
 			$('#loadMore').click ->

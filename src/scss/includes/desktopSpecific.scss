@@ -1,6 +1,9 @@
 a.uncolor{
 	color: inherit;
 }
+.desktop .brand{
+	cursor: pointer;
+}
 .grid.desktop{
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	// background-image: url('../img/pdp/huge.jpg');
@@ -910,6 +913,7 @@ body.desktop.fixed{
 .navItem{
 	border-bottom: 1px solid transparent;
 	cursor: pointer;
+	color: inherit;
 	@include transition(all);
 	&:hover{
 		border-color: #e5e5e5;

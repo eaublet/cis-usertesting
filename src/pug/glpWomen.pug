@@ -43,15 +43,42 @@ body.nav.desktop
 	h2.title Shop by category
 	.grid.thirds.border-top.desktop.border-bottom
 		.cell.padded
-			img.full(src='/img/glp/wfeat_A.jpg')
-			a.btnLink.small.centered Shop Footwear
+			a(href="/plpWomen.html")(style="margin: 0;")
+				img.full(src='/img/glp/wfeat_A.jpg')
+				a.btnLink.small.centered Shop Footwear
 		.cell.padded
 			img.full(src='/img/glp/wfeat_B.jpg')
 			a.btnLink.small.centered Shop Handbags
 		.cell.padded
 			img.full(src='/img/glp/wfeat_C.jpg')
 			a.btnLink.small.centered Shop Accessories
-	+imgFull('/img/glp/glpW_f.jpg')
+	.grid.desktop.nomargin.border-bottom
+		.cell.doubleWidth.halftexture
+			.left
+				h3 #instashop
+				p.lead Curabitur blandit tempus porttitor.<br/> Lorem ipsum dolor sit amet, consectetur adipiscing.
+				a.btnLink.small Check out @brandname
+		.cell.double.padded-double
+			img.full(src='/img/glp/glpW_socialC.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		.cell.single.padded-double
+			img.full(src='/img/glp/glpW_socialA.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		.cell.single.padded-double
+			img.full(src='/img/glp/glpW_socialB.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
 	+loadMore('Load more images')
 
 	

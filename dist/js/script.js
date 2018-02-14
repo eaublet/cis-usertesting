@@ -608,6 +608,12 @@
 
   $(document).ready(function() {
     initUI();
+    $('.surnav').dblclick(function() {
+      return window.location = './';
+    });
+    $('.desktop .brand').click(function() {
+      return window.location = './homepage.html';
+    });
     if ($('body.desktop').length) {
       if ($('.plp.hidden').length) {
         $('#loadMore').click(function() {
