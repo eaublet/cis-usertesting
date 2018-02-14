@@ -1,28 +1,36 @@
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
-	$src: null;
+  $src: null;
 
-	$extmods: (
-		eot: "?",
-		svg: "#" + str-replace($name, " ", "_")
-	);
+  $extmods: (
+    eot: '?',
+    svg: '#' + str-replace($name, ' ', '_')
+  );
 
-	$formats: (
-		otf: "opentype",
-		ttf: "truetype"
-	);
+  $formats: (
+    otf: 'opentype',
+    ttf: 'truetype'
+  );
 
-	@each $ext in $exts {
-		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
-	}
+  @each $ext in $exts {
+    $extmod: if(
+      map-has-key($extmods, $ext),
+      $ext + map-get($extmods, $ext),
+      $ext
+    );
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append(
+      $src,
+      url(quote($path + '.' + $extmod)) format(quote($format)),
+      comma
+    );
+  }
 
-	@font-face {
-		font-family: quote($name);
-		font-style: $style;
-		font-weight: $weight;
-		src: $src;
-	}
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
 }
 
 $path: '../fonts/';
@@ -32,164 +40,178 @@ $path: '../fonts/';
 @include font-face('Dia', $path + 'Dia-Regular', 500, 'normal', woff);
 @include font-face('Dia', $path + 'Dia-Light', 300, 'normal', woff);
 
-body{
-	font-family: $main-font;
+body {
+  font-family: $main-font;
 }
 
-h1, h2, h3, h4, h5, h6, .header, .h1, .h2, .h3, .h4, .h5, .h6{
-	font-family: $alt-font;
-	line-height: 1;
-	margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.header,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $alt-font;
+  line-height: 1;
+  margin: 0;
 }
-p{
-	margin: 0;
-	&.lead{
-		margin: 2rem 0;
-		line-height: 1.5;
-		@media (min-width: 1024px){
-			font-size: 1.125rem;
-			line-height: 2;
-		}
-	}
-	&.large{
-		margin: 1rem 0;
-		line-height: 1.5;
-		@media (min-width: 1024px){
-			font-size: 1.125rem;
-			line-height: 1.2;
-		}
-	}
-	&.tight{
-		line-height: 1.2;
-	}
+p {
+  margin: 0;
+  &.lead {
+    margin: 2rem 0;
+    line-height: 1.5;
+    @media (min-width: 1024px) {
+      font-size: 1.125rem;
+      line-height: 2;
+    }
+  }
+  &.large {
+    margin: 1rem 0;
+    line-height: 1.5;
+    @media (min-width: 1024px) {
+      font-size: 1.125rem;
+      line-height: 1.2;
+    }
+  }
+  &.tight {
+    line-height: 1.2;
+  }
 }
-h1{
-	font-size: 1.875rem;
-	margin-bottom: 0;
-	span.side{
-		font-size: 0.875rem;
-		font-weight: 400;
-		color: #767676;
-		float: right;
-		text-align: right;
-	}
-	&.hero{
-		font-size: 4.5rem;
-		color: #282D40;
-	}
-	&.big{
-		font-size: 3.75rem;
-	}
+h1 {
+  font-size: 1.875rem;
+  margin-bottom: 0;
+  span.side {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #767676;
+    float: right;
+    text-align: right;
+  }
+  &.hero {
+    font-size: 4.5rem;
+    color: #282d40;
+  }
+  &.big {
+    font-size: 3.75rem;
+  }
 }
-h2{
-	font-size: 1.875rem;
-	text-align: center;
-	margin: 2rem 0 2rem;
-	font-weight: 500;
-	img{
-		display: block;
-		margin: .45rem auto;
-	}
-	&.left{
-		text-align: left;
-	}
-	@media(min-width: 1024px){
-		font-size: 2.25rem;
-		margin: 6rem 0 4rem;
-	}
-	&.title{
-		font-weight: 700;
-		margin-top: 4rem;
-	}
+h2 {
+  font-size: 1.875rem;
+  text-align: center;
+  margin: 2rem 0 2rem;
+  font-weight: 500;
+  img {
+    display: block;
+    margin: 0.45rem auto;
+  }
+  &.left {
+    text-align: left;
+  }
+  @media (min-width: 1024px) {
+    font-size: 2.25rem;
+    margin: 6rem 0 4rem;
+  }
+  &.title {
+    font-weight: 700;
+    margin-top: 4rem;
+  }
 }
-h3{
-	font-size: 1.125rem;
-	span{
-		color: #767676;
-		font-size: 0.875rem;
-		display: block;
-		font-weight: 400;
-		margin-top: .5rem;
-	}
-	margin-bottom: 1rem;
-	.btnLink{
-		float: right;
-	}
+h3 {
+  font-size: 1.125rem;
+  span {
+    color: #767676;
+    font-size: 0.875rem;
+    display: block;
+    font-weight: 400;
+    margin-top: 0.5rem;
+  }
+  margin-bottom: 1rem;
+  .btnLink {
+    float: right;
+  }
 }
-h4{
-	font-size: 1.125rem;
-	font-weight: 700;
-	text-align: center;
-	margin-bottom: 1.5rem;
-	@media(min-width: 1024px){
-		font-size: 2.25rem;
-		margin-bottom: 3rem;
-	}
+h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  @media (min-width: 1024px) {
+    font-size: 2.25rem;
+    margin-bottom: 3rem;
+  }
 }
-h5{
-	font-weight: 700;
-	font-size: 0.875rem;
-	margin-bottom: .5rem;
-	.label{
-		font-weight: 400;
-		margin-left: .25rem;
-	}
-	
+h5 {
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  .label {
+    font-weight: 400;
+    margin-left: 0.25rem;
+  }
 }
-h6{
-	font-size: 0.875rem;
-	color: #888;
-	font-weight: 400;
-	margin-bottom: 1rem;
+h6 {
+  font-size: 0.875rem;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
-ul.listDetails{
-	list-style-type: none;
-	margin: 0 0 2rem;
-	padding: 0;
-	font-size: 0.875rem;
-	li:not(:last-child){
-		margin-bottom: .5rem;
+ul.listDetails {
+  list-style-type: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  font-size: 0.875rem;
+  li:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+  @media (min-width: 1024px) {
+    margin-top: 1rem;
+    li:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+a {
+  text-decoration: none;
+}
+p.small {
+  font-size: 0.875rem;
+  &.infos {
+    span {
+      display: block;
+    }
+  }
+}
+.trunk {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link {
+  border-bottom: 1px solid $lightest;
+  font-size: 1em;
+  &.icon {
+    position: relative;
+    &:before {
+      background-image: url(../img/pdp/TrueFit.svg);
+      background-repeat: no-repeat;
+      width: 1rem;
+      height: 1rem;
+      background-position: left 50%;
+      content: '';
+      position: absolute;
+      left: -1.25rem;
+    }
+    margin-left: 1.25rem;
+  }
+}
 
-	}
-	@media (min-width: 1024px){
-		margin-top: 1rem;
-		li:not(:last-child){
-			margin-bottom: 1rem;
-		}
-	}
-}
-a{
-	text-decoration: none;
-}
-p.small{
-	font-size: 0.875rem;
-	&.infos{
-		span{
-			display: block;
-		}
-	}
-}
-.trunk{
-	width: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.link{
-	border-bottom: 1px solid $lightest;
-	font-size: 1em;
-	&.icon{
-		position: relative;
-		&:before{
-		  background-image: url(../img/pdp/TrueFit.svg);
-		  background-repeat: no-repeat;
-		  width: 1rem;
-		  height: 1rem;
-		  background-position: left 50%;
-		  content: '';
-		  position: absolute;
-		  left: -1.25rem;
-		}
-		margin-left: 1.25rem;
-	}
+.isBold {
+  font-weight: 700;
 }
