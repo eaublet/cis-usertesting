@@ -465,6 +465,9 @@ initConfirm = () ->
 $(document).ready ->
 	initUI()
 	if $('body.desktop').length
+		if $('.plp.hidden').length
+			$('#loadMore').click ->
+				$('.plp.hidden').removeClass 'hidden'
 		initPanelNav()
 	if $('body.checkout').length
 		initCheckout()

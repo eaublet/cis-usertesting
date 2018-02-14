@@ -157,6 +157,7 @@
 	&.plp {
 		grid-auto-flow: dense;
 		grid-auto-rows: 12.5vw;
+		@include transition(all);
 		.cell{
 			background-color: white;
 			height: 100%;
@@ -186,6 +187,11 @@
 				background-image: url(../img/global/halfEmpty.jpg);
 				background-size: cover;
 			}
+		}
+		&.hidden{
+			opacity: 0;
+			height: 0;
+			transform: translatey(-2rem)
 		}
 	}
 }
@@ -723,6 +729,7 @@ body.desktop.fixed{
 	position: relative;
 	background-image: url(../img/global/emptyRow.jpg);
 	background-size: cover;
+	border-bottom: 1px solid #e5e5e5;
 	a.btn{
 		position: absolute;
 		top: 50%;

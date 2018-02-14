@@ -609,6 +609,11 @@
   $(document).ready(function() {
     initUI();
     if ($('body.desktop').length) {
+      if ($('.plp.hidden').length) {
+        $('#loadMore').click(function() {
+          return $('.plp.hidden').removeClass('hidden');
+        });
+      }
       initPanelNav();
     }
     if ($('body.checkout').length) {
