@@ -580,10 +580,12 @@ ul.dropDownButtons{
   padding: 4rem;
   display: flex;
   align-items: center;
+  
   height: 100%;
   @include transition(all, $longDuration);
   @media(max-width: 640px){
     padding: 4rem 2rem;
+    height: initial;
   }
   .content{
     position: relative;
