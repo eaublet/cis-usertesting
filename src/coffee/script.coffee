@@ -55,7 +55,7 @@ showMegaNav = (panel) ->
 		setTimeout ( ->
 			$('.navpanel[data-panel=' + panel + ']').addClass 'active'
 		), 320
-			
+
 
 
 initBuySticky = () ->
@@ -104,9 +104,27 @@ sizeSelector = () ->
 			$(@).removeClass 'active'
 		$(@).addClass 'active'
 		$('.sizeSelected').html($(@).text())
+		sizeSelectedVal = $(@).text()
+		$(".size-selectbox option[selected=selected]").removeAttr("selected")
+		$(".size-selectbox option[value='"+	sizeSelectedVal+"']").attr('selected', 'selected')
 		$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(@).text() + ' to Cart')
 		$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
-		# window.product.size = $(@).text()
+
+
+	$('.size-selectbox').change (e) ->
+		console.log($(@))
+		sizeSelectedVal = e.target.value
+		$(".size-selectbox option[selected=selected]").removeAttr("selected")
+		$(".size-selectbox option[value='"+	sizeSelectedVal+"']").attr('selected', 'selected')
+		# $(@).val(e.target.value)
+		$('.sizeSelected').html(sizeSelectedVal)
+		$('.sizeList li').each ->
+			$(@).removeClass 'active'
+			if $(@).text() == sizeSelectedVal
+				$(@).addClass 'active'
+		$('.sizeSelected').html(sizeSelected)
+		$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + sizeSelectedVal + ' to Cart')
+		$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
 
 colorSelector = () ->
 	$('.colorList li').click ->
@@ -239,7 +257,7 @@ removeProduct = () ->
 				updateCart(products)
 				return
 			r++
-		
+
 
 
 addToProductList = (product) ->
@@ -296,7 +314,7 @@ initTabs = () ->
 		tab = $(@).attr('data-tab')
 		$(container).removeClass('active')
 		$(container + '[data-tab=' + tab + ']').addClass('active')
-		
+
 initSections = () ->
 	$('.editSection').click ->
 		$(@).parent().removeClass('inactive filled').addClass('active')
@@ -340,7 +358,7 @@ checkoutButtonNextStep = () ->
 			setTimeout (-> $('html, body').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 640), 640
 			$(@).attr('data-current-step', thisStep).addClass('btn-inactive')
 			changeStep()
-				
+
 changeStep = () ->
 	switch $('.nextStep').attr('data-current-step')
 		when '0'
