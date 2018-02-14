@@ -112,7 +112,6 @@ sizeSelector = () ->
 
 
 	$('.size-selectbox').change (e) ->
-		console.log($(@))
 		sizeSelectedVal = e.target.value
 		$(".size-selectbox option[selected=selected]").removeAttr("selected")
 		$(".size-selectbox option[value='"+	sizeSelectedVal+"']").attr('selected', 'selected')
@@ -122,7 +121,7 @@ sizeSelector = () ->
 			$(@).removeClass 'active'
 			if $(@).text() == sizeSelectedVal
 				$(@).addClass 'active'
-		$('.sizeSelected').html(sizeSelected)
+		$('.sizeSelected').html(sizeSelectedVal)
 		$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + sizeSelectedVal + ' to Cart')
 		$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
 
