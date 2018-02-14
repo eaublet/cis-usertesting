@@ -128,13 +128,33 @@
   };
 
   sizeSelector = function() {
-    return $('.sizeList li').click(function() {
+    $('.sizeList li').click(function() {
+      var sizeSelectedVal;
       $('.sizeList li').each(function() {
         return $(this).removeClass('active');
       });
       $(this).addClass('active');
       $('.sizeSelected').html($(this).text());
+      sizeSelectedVal = $(this).text();
+      $(".size-selectbox option[selected=selected]").removeAttr("selected");
+      $(".size-selectbox option[value='" + sizeSelectedVal + "']").attr('selected', 'selected');
       $('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(this).text() + ' to Cart');
+      return $('a.addToCart').removeClass('added').find('.label').html('Add to cart');
+    });
+    return $('.size-selectbox').change(function(e) {
+      var sizeSelectedVal;
+      sizeSelectedVal = e.target.value;
+      $(".size-selectbox option[selected=selected]").removeAttr("selected");
+      $(".size-selectbox option[value='" + sizeSelectedVal + "']").attr('selected', 'selected');
+      $('.sizeSelected').html(sizeSelectedVal);
+      $('.sizeList li').each(function() {
+        $(this).removeClass('active');
+        if ($(this).text() === sizeSelectedVal) {
+          return $(this).addClass('active');
+        }
+      });
+      $('.sizeSelected').html(sizeSelectedVal);
+      $('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + sizeSelectedVal + ' to Cart');
       return $('a.addToCart').removeClass('added').find('.label').html('Add to cart');
     });
   };
