@@ -59,11 +59,27 @@
     font-size: 0.875rem;
     background-color: $white;
     border: 1px solid $black;
+    cursor: pointer;
     &.active {
       background: $black;
       border-color: $black;
       color: $white;
       font-weight: 700;
+    }
+    &.disabled {
+      color: rgba($black, 0.25);
+      border-color: rgba($black, 0.25);
+      position: relative;
+      cursor: default;
+      &:after {
+        border-bottom: 1px solid rgba($black, 0.25);
+        content: '';
+        left: 0;
+        position: absolute;
+        top: 50%;
+        transform: skewY(45deg);
+        width: 100%;
+      }
     }
   }
 }
@@ -585,7 +601,7 @@ ul.dropDownButtons {
   padding: 4rem;
   display: flex;
   align-items: center;
-  
+
   height: 100%;
   @include transition(all, $longDuration);
   @media (max-width: 640px) {
@@ -696,13 +712,16 @@ ul.dropDownButtons {
   border-radius: 0;
   font-size: 1rem;
   border: 2px solid;
-  padding: 10px;
   width: 100%;
   height: 3.75rem;
   display: inline-block;
   vertical-align: text-bottom;
   font-weight: 700;
-  padding-left: 1.2rem;
+  padding: 0 1.2rem;
+  @media (max-width: 640px) {
+    height: 2.5rem;
+    padding: 0 1.25rem 0 1rem;
+  }
 }
 
 .selectbox-wrapper {
@@ -713,6 +732,11 @@ ul.dropDownButtons {
   height: 3.75rem;
   line-height: 3.75rem;
   vertical-align: top;
+  @media (max-width: 640px) {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    width: 4.6875rem;
+  }
 }
 
 .selectbox-wrapper:before {
@@ -724,4 +748,20 @@ ul.dropDownButtons {
   display: inline-block;
   right: 1.2rem;
   pointer-events: none;
+  @media (max-width: 640px) {
+    right: 0.5rem;
+  }
+}
+
+.addToWishList {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  right: 1rem;
+  &.added {
+    path {
+      fill: #ff8585;
+      transition: fill 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+  }
 }

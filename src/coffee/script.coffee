@@ -97,18 +97,29 @@ initNav = () ->
 		initBuySticky()
 	return
 
+addToWishList = () ->
+	$('.addToWishList').click ->
+		totalFav = $('#fav .count').text()
+		$(@).toggleClass 'added'
+		if $(@).hasClass 'added'
+			val = parseInt(totalFav) + 1
+			$('#fav').find('.count').text(val)
+		else
+			val = parseInt(totalFav) - 1
+			$('#fav').find('.count').text(totalFav - 1)
 
 sizeSelector = () ->
 	$('.sizeList li').click ->
-		$('.sizeList li').each ->
-			$(@).removeClass 'active'
-		$(@).addClass 'active'
-		$('.sizeSelected').html($(@).text())
-		sizeSelectedVal = $(@).text()
-		$(".size-selectbox option[selected=selected]").removeAttr("selected")
-		$(".size-selectbox option[value='"+	sizeSelectedVal+"']").attr('selected', 'selected')
-		$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(@).text() + ' to Cart')
-		$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
+		if !$(@).hasClass('disabled')
+			$('.sizeList li').each ->
+				$(@).removeClass 'active'
+			$(@).addClass 'active'
+			$('.sizeSelected').html($(@).text())
+			sizeSelectedVal = $(@).text()
+			$(".size-selectbox option[selected=selected]").removeAttr("selected")
+			$(".size-selectbox option[value='"+	sizeSelectedVal+"']").attr('selected', 'selected')
+			$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(@).text() + ' to Cart')
+			$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
 
 
 	$('.size-selectbox').change (e) ->
@@ -122,7 +133,7 @@ sizeSelector = () ->
 			if $(@).text() == sizeSelectedVal
 				$(@).addClass 'active'
 		$('.sizeSelected').html(sizeSelectedVal)
-		$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + sizeSelectedVal + ' to Cart')
+		$('.right > .btn-gradient').removeClass('added').find('.label').text('Add to bag')
 		$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
 
 colorSelector = () ->
@@ -152,6 +163,10 @@ showCart = () ->
 			$('.cartWrapper').addClass 'isVisible'
 
 closeCart = () ->
+	$(document).mouseup (e) ->
+		if $('.cartWrapper').hasClass 'isVisible'
+			closeOverlay()
+			$('.cartWrapper').removeClass 'isVisible'
 	$('.u-btn__content').click ->
 		closeOverlay()
 		$('.cartWrapper').removeClass 'isVisible'
@@ -456,6 +471,7 @@ initPDP = () ->
 initUI = () ->
 	initCheckboxes()
 	initRadios()
+	addToWishList()
 	# initTabs()
 
 checkAddress = () ->

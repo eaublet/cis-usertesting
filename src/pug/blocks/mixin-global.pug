@@ -25,7 +25,10 @@ mixin sizeSelector(sizes, desktop)
 				a.link View size chart
 		ul.sizeList.no-list
 			for s in sizes
-				li!= s
+				if s == 8.5 || s == 9 || s == 11
+					li.disabled!= s
+				else
+					li!= s
 		if !desktop
 			.sizeOptions
 				a.link.truefit.icon True Fit
@@ -42,7 +45,7 @@ mixin pdpButtons(desktop)
 					a.btn.btn-full.btn-gradient.addToCart.btn-big
 						.iconCheck: img(src="/img/pdp/checkW.svg")
 						span.label Add to cart
-		
+
 			.shareOptions
 				a.link.save.icon Save for later
 				a.link.icon.share Share

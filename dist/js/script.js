@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initParalax, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, addToWishList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initParalax, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -127,19 +127,36 @@
     }
   };
 
+  addToWishList = function() {
+    return $('.addToWishList').click(function() {
+      var totalFav, val;
+      totalFav = $('#fav .count').text();
+      $(this).toggleClass('added');
+      if ($(this).hasClass('added')) {
+        val = parseInt(totalFav) + 1;
+        return $('#fav').find('.count').text(val);
+      } else {
+        val = parseInt(totalFav) - 1;
+        return $('#fav').find('.count').text(totalFav - 1);
+      }
+    });
+  };
+
   sizeSelector = function() {
     $('.sizeList li').click(function() {
       var sizeSelectedVal;
-      $('.sizeList li').each(function() {
-        return $(this).removeClass('active');
-      });
-      $(this).addClass('active');
-      $('.sizeSelected').html($(this).text());
-      sizeSelectedVal = $(this).text();
-      $(".size-selectbox option[selected=selected]").removeAttr("selected");
-      $(".size-selectbox option[value='" + sizeSelectedVal + "']").attr('selected', 'selected');
-      $('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(this).text() + ' to Cart');
-      return $('a.addToCart').removeClass('added').find('.label').html('Add to cart');
+      if (!$(this).hasClass('disabled')) {
+        $('.sizeList li').each(function() {
+          return $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+        $('.sizeSelected').html($(this).text());
+        sizeSelectedVal = $(this).text();
+        $(".size-selectbox option[selected=selected]").removeAttr("selected");
+        $(".size-selectbox option[value='" + sizeSelectedVal + "']").attr('selected', 'selected');
+        $('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(this).text() + ' to Cart');
+        return $('a.addToCart').removeClass('added').find('.label').html('Add to cart');
+      }
     });
     return $('.size-selectbox').change(function(e) {
       var sizeSelectedVal;
@@ -154,7 +171,7 @@
         }
       });
       $('.sizeSelected').html(sizeSelectedVal);
-      $('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + sizeSelectedVal + ' to Cart');
+      $('.right > .btn-gradient').removeClass('added').find('.label').text('Add to bag');
       return $('a.addToCart').removeClass('added').find('.label').html('Add to cart');
     });
   };
@@ -188,6 +205,12 @@
   };
 
   closeCart = function() {
+    $(document).mouseup(function(e) {
+      if ($('.cartWrapper').hasClass('isVisible')) {
+        closeOverlay();
+        return $('.cartWrapper').removeClass('isVisible');
+      }
+    });
     return $('.u-btn__content').click(function() {
       closeOverlay();
       return $('.cartWrapper').removeClass('isVisible');
@@ -597,7 +620,8 @@
 
   initUI = function() {
     initCheckboxes();
-    return initRadios();
+    initRadios();
+    return addToWishList();
   };
 
   checkAddress = function() {

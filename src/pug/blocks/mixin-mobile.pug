@@ -4,6 +4,7 @@ mixin buySticky(productName, productPrice)
 			p.productName!= productName
 			p.price $#{productPrice}
 		.right
+			+sizeSelectbox([5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5, 11], false)
 			a.btn.btn-gradient
 				.iconCheck: img(src="/img/pdp/checkW.svg")
 				span.label Select a size
@@ -35,12 +36,12 @@ mixin nav(surnav, simple)
 								span 3
 								span 2
 								span 1
-								span 
+								span
 			.middle
 				.brand: img(src="./img/global/ico_brand.svg")
 			if simple
 				.right
-					p.small Need help? 
+					p.small Need help?
 						a.btnLink Chat with us
 			else
 				.right
@@ -59,7 +60,7 @@ mixin heroProduct(breadcrumb, img, productName, productPrice, saleMsg)
 		.header.container
 			.content
 				h1.productName!= productName
-				
+
 			.right
 				p.price $#{productPrice}
 				if saleMsg
@@ -215,13 +216,26 @@ mixin cart(productA, productB)
 					.title!= productB.title
 					.price!= productB.price
 				a.btn.btn-alt.btn-padded.quickAddToCart(quick-name= productB.title, 'quick-price'=productB.price, quick-image=productB.img) Quick add
-			
+
 
 
 		#dir
 		a.btn.btn-full.btn-gradient.btn-big.goToCheckout.btn-fixedBottom Begin checkout
-			
+
 
 mixin checkout()
 	.c-checkout__wrapper.isHidden
 		h1 Checkout
+
+mixin sizeSelectbox(sizes, desktop)
+	//- .sizeOptions
+	//- 	a.link.truefit.icon True Fit
+	//- 	a.link View size chart
+	.selectbox-wrapper
+		select.size-selectbox
+			option(selected disabled hidden) #{desktop ? "Select a Size" : "Size"}
+			for s in sizes
+				if s == 8.5 || s == 9 || s == 11
+					option(value=s disabled) #{s} - Sold Out
+				else
+					option(value=s) #{s}

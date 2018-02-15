@@ -4,6 +4,10 @@ mixin promo(img)
 
 mixin product(title, price, img, link)
 	.cell.product(class=attributes.class)
+		.addToWishList
+			svg(xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewbox="0 0 20 17")
+				path(fill-rule="evenodd" d="M5.105.284a5.133 5.133 0 0 0-3.61 1.478 4.988 4.988 0 0 0 0 7.122l8.086 7.989a.44.44 0 0 0 .618 0c2.699-2.66 5.4-5.315 8.099-7.975a4.994 4.994 0 0 0 0-7.13 5.154 5.154 0 0 0-7.219 0l-1.175 1.17-1.19-1.176A5.133 5.133 0 0 0 5.105.284zm0 .873c1.08 0 2.161.413 2.99 1.23l1.5 1.479a.44.44 0 0 0 .618 0l1.485-1.472a4.26 4.26 0 0 1 5.981 0 4.094 4.094 0 0 1 0 5.879c-2.595 2.558-5.193 5.114-7.789 7.672L2.114 8.26a4.087 4.087 0 0 1 0-5.872 4.255 4.255 0 0 1 2.991-1.23z")
+
 		a(href=link)
 			img.full(src='/img/products/' + img + '')
 			.details
@@ -92,9 +96,10 @@ mixin nav(surnav, simple)
 								span 2
 								span 1
 								span 0
-				li
+				li#fav
 					img(src="./img/pdp/fav.svg")
-					| Favourites: 0
+					| Favourites:&nbsp;
+					span.count 0
 				li
 					img(src="./img/global/ico_search.svg")
 					| Search
@@ -301,9 +306,12 @@ mixin sizeSelectbox(sizes, desktop)
 	//- 	a.link View size chart
 	.selectbox-wrapper
 		select.size-selectbox
-			option(selected disabled hidden) Select a Size
+			option(selected disabled hidden) #{desktop ? "Select a Size" : "Size"}
 			for s in sizes
-				option(value=s) Size #{s}
+				if s == 8.5 || s == 9 || s == 11
+					option(value=s disabled) Size #{s} - Sold Out
+				else
+					option(value=s) Size #{s}
 
 
 
