@@ -146,10 +146,14 @@
     $('.sizeList li').click(function() {
       var sizeSelectedVal;
       if (!$(this).hasClass('disabled')) {
-        $('.sizeList li').each(function() {
-          return $(this).removeClass('active');
-        });
-        $(this).addClass('active');
+        if ($(this).hasClass('active')) {
+          $(this).removeClass('active');
+        } else {
+          $('.sizeList li').each(function() {
+            return $(this).removeClass('active');
+          });
+          $(this).addClass('active');
+        }
         $('.sizeSelected').html($(this).text());
         sizeSelectedVal = $(this).text();
         $(".size-selectbox option[selected=selected]").removeAttr("selected");

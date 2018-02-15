@@ -109,11 +109,15 @@ addToWishList = () ->
 			$('#fav').find('.count').text(totalFav - 1)
 
 sizeSelector = () ->
+
 	$('.sizeList li').click ->
 		if !$(@).hasClass('disabled')
-			$('.sizeList li').each ->
+			if $(@).hasClass('active')
 				$(@).removeClass 'active'
-			$(@).addClass 'active'
+			else
+				$('.sizeList li').each ->
+					$(@).removeClass 'active'
+				$(@).addClass 'active'
 			$('.sizeSelected').html($(@).text())
 			sizeSelectedVal = $(@).text()
 			$(".size-selectbox option[selected=selected]").removeAttr("selected")
