@@ -545,10 +545,10 @@ body.desktop.fixed:before { opacity: 1; }
 
 .btn { height: 2.5rem; line-height: 2.5rem; padding: 0 1rem; font-size: 0.875rem; display: inline-block; text-align: center; cursor: pointer; }
 @media (min-width: 1024px) { .btn { padding: 0 1.5rem; } }
-.btn.btn-big { height: 3.75rem; line-height: 3.75rem; }
+.btn.btn-big { height: 3.75rem; line-height: 3.75rem; min-width: 7.74rem; }
 .btn.btn-mega { height: 5.625rem; line-height: 5.625rem; padding-left: 6rem; padding-right: 6rem; }
 .btn.btn-full { display: block; width: 100%; }
-.btn.btn-gradient { position: relative; overflow: hidden; z-index: 0; background-color: #000; background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }
+.btn.btn-gradient { position: relative; overflow: hidden; z-index: 0; background-color: #000; min-width: 6.74rem; background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }
 .btn.btn-gradient:before { position: absolute; width: 130%; height: 1000%; border-radius: 100%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: red; top: 50%; left: 50%; content: ''; z-index: -1; opacity: 1; background: linear-gradient(90deg, #10069F 0%, #9932CC 100%); }
 .btn.btn-gradient:after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: -1; opacity: 0; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
 .btn.btn-gradient:hover:after { opacity: 1; }
@@ -682,3 +682,5 @@ ul.dropDownButtons li { height: 75px; line-height: 75px; font-weight: 700; font-
 
 .addToWishList { position: absolute; z-index: 1; top: 1rem; right: 1rem; }
 .addToWishList.added path { fill: #ff8585; transition: fill 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+
+#fav .count { min-width: 0.9375rem; text-align: center; }
