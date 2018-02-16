@@ -9,11 +9,13 @@ include blocks/std_css.pug
 
 body.nav.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
+		+filters('Men', 'Footwear', '123')
 	.grid.desktop.plp.border-bottom.nomargin
 		.cell.single.padded-double.header.noBorder
 			h6 Men
 			h1.big Footwear
-			a.btn.btn-gradient.btn-big Filter + 
+				h6 123 Items
+			a.btn.btn-gradient.btn-big#openFilters Filter + 
 		.cell.empty.halftexture.single.noBorder
 		+product('AFILADIEN', '$49.99', 'men/M03.jpg').double
 		+product('AIDIEN', '$49.99', 'men/M01.jpg').single

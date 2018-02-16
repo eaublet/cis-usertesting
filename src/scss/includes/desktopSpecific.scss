@@ -1371,9 +1371,14 @@ body.me2we .grid{
     }
   }
 }
-
+h1 + h6{
+  margin-top: 1rem;
+}
 .filterPanel{
-  display: none;
+  position: absolute;
+  transform: translateY(-100%);
+  opacity: 0;
+  background-color: white;
   @include transition(all, $longDuration);
   header{
     position: relative;
@@ -1395,5 +1400,9 @@ body.me2we .grid{
   }
   img.full{
     width: 100%;
+  }
+  &.active{
+    transform: translateY(0);
+    opacity: 1;
   }
 }
