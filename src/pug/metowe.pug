@@ -7,7 +7,7 @@ include blocks/mixin-global.pug
 include blocks/std_head.pug
 include blocks/std_css.pug
 
-body.nav.desktop
+body.nav.desktop.me2we
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
 	
 	+largeHalfTriangle('Make an<br /> impact', 'Play Video', '/img/me2we/bigHero.jpg')
@@ -17,9 +17,49 @@ body.nav.desktop
 	+imgFull('/img/me2we/me2we_c.png')
 	+imgFull('/img/me2we/me2we_d.png')
 	+imgFull('/img/me2we/me2we_e.png')
-	+imgFull('/img/me2we/me2we_f.png')
-	+imgFull('/img/me2we/me2we_g.png')
-	+imgFull('/img/me2we/me2we_h.png')
+	.grid.desktop.border-top.nomargin
+		.cell.doubleHeight.padded-double
+			.content
+				.icon: img(src="/img/me2we/ico_opp.png")
+				h2.left Opportunity
+				p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper.
+				a.btn.btn-big.btn-metowe-2(style='margin-bottom: 4rem;') See products for Opportunity
+		.cell.single.padded-double
+			img.full(src="/img/me2we/opp_a.jpg")
+		.cell.double.padded-double
+			img.full(src="/img/me2we/opp_b.jpg")
+		+product('Dembele', '$12.99', 'm2w/pro_1.jpg', '', true).single.boxed
+
+	.grid.desktop.nomargin
+		.cell.doubleHeight.padded-double
+			.content
+				.icon: img(src="/img/me2we/ico_cle.png")
+				h2.left Clean Water
+				p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper.
+				a.btn.btn-big.btn-metowe-2(style='margin-bottom: 4rem;') See products for Clean Water
+		.cell.double.padded-double
+			img.full(src="/img/me2we/cle_a.jpg")
+		.cell.single.padded-double
+			img.full(src="/img/me2we/cle_b.jpg")
+		
+		+product('Dembele', '$12.99', 'm2w/pro_2.jpg', '', true).single.boxed
+
+	.grid.desktop.nomargin
+		.cell.doubleHeight.padded-double
+			.content
+				.icon: img(src="/img/me2we/ico_edu.png")
+				h2.left Education
+				p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper.
+				a.btn.btn-big.btn-metowe-2(style='margin-bottom: 4rem;') See products for Education
+		.cell.single.padded-double
+			img.full(src="/img/me2we/edu_a.jpg")
+		.cell.double.padded-double
+			img.full(src="/img/me2we/edu_c.jpg")
+		+product('Dembele', '$12.99', 'm2w/pro_3.jpg', '', true).single.boxed
+ 
+	//- +imgFull('/img/me2we/me2we_f.png')
+	//- +imgFull('/img/me2we/me2we_g.png')
+	//- +imgFull('/img/me2we/me2we_h.png')
 	+imgFull('/img/me2we/me2we_i.png')
 	
 	.footer.desktop

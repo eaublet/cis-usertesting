@@ -201,6 +201,15 @@
       border-color: darken(#00aae7, 10);
     }
   }
+   &.btn-metowe-2 {
+    border: 2px solid #0B3252;
+    color: #0B3252;
+    font-weight: 600;
+    &:hover {
+      color: darken(#0B3252, 10);
+      border-color: darken(#0B3252, 10);
+    }
+  }
   &.btn-alt {
     border: 1px solid #cccccc;
     color: $main-color;

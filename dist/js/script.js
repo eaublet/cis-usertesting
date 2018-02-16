@@ -35,7 +35,7 @@
     return $(window).scroll(function() {
       var scrolledY;
       scrolledY = $(window).scrollTop();
-      $('.paralax').css('background-position', 'center ' + (scrolledY * -0.3) + 'px');
+      $('.paralax').css('background-position', 'center ' + (scrolledY * -0.1) + 'px');
     });
   };
 

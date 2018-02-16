@@ -316,7 +316,12 @@ a.uncolor { color: inherit; }
 .grid.desktop .cell.empty { background-color: transparent; }
 .grid.desktop .cell.padded-double { padding: 2rem; }
 .grid.desktop .cell.tall { grid-row: span 1.5; }
-.grid.desktop .cell.product { cursor: pointer; }
+.grid.desktop .cell.product { box-shadow: none; cursor: pointer; }
+.grid.desktop .cell.product.boxed .details { left: 2rem; }
+.grid.desktop .cell.product.boxed .addToWishList { top: 3rem; right: 3rem; }
+.grid.desktop .cell.product .img { overflow: hidden; width: calc(100% - 4rem); height: calc(100% - 5rem); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); top: 2rem; left: 2rem; position: relative; }
+.grid.desktop .cell.product .img img { width: 100%; }
+.grid.desktop .cell.product:hover.boxed .img { height: calc(100% - 6rem); }
 .grid.desktop .cell.product .title { opacity: 0; -ms-transform: translateY(0.5rem); transform: translateY(0.5rem); will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 .grid.desktop .cell.product img { -ms-transform-origin: center center; transform-origin: center center; -ms-transform: scale(1); transform: scale(1); will-change: transform; transition: transform 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 .grid.desktop .cell.product:hover .title { -ms-transform: translateY(0); transform: translateY(0); opacity: 1; }
@@ -328,7 +333,7 @@ a.uncolor { color: inherit; }
 .grid.desktop .cell.product.num.num3:after { content: '3'; }
 .grid.desktop .cell.social { background-color: #fff; position: relative; }
 .grid.desktop .cell.social img { padding: 1.5rem 2rem 2rem; }
-.grid.desktop .cell.social .socialInfo { width: 100%; position: absolute; bottom: 0; left: 0; padding: 0 2rem 0.75rem; height: 2rem; -ms-flex-align: end; align-items: flex-end; }
+.grid.desktop .cell.social .socialInfo { width: 100%; position: relative; bottom: 2.125rem; left: 0; padding: 0; height: 2rem; -ms-flex-align: end; align-items: flex-end; }
 .grid.desktop .cell.social .socialInfo img { padding: 0; }
 .grid.desktop .cell.texture { background-image: url(../img/pdp/linearBkg.png); background-size: cover; }
 .grid.desktop .cell.halftexture { background-image: url(../img/global/halfTexture.jpg); background-size: auto 100%; background-position: bottom right; background-repeat: no-repeat; }
@@ -580,6 +585,11 @@ body.desktop.fixed:before { opacity: 1; }
 .promo.shipping:hover p { color: #9932CC; }
 .promo.shipping:hover .triangle { background-size: 200%; padding: 2rem; width: calc(25vw - 3rem); height: calc(25vw - 3rem); bottom: 1.5rem; right: 1.5rem; }
 
+body.me2we .grid h2 { padding: 0 !important; margin-bottom: 1rem !important; margin-top: 2rem !important; color: #0B3252; font-size: 2.25rem; }
+body.me2we .grid p { font-size: 1rem; line-height: 1.2; color: #767676; margin-bottom: 1rem !important; }
+body.me2we .grid .icon { margin: 0; padding: 0; width: 3.75rem; }
+body.me2we .grid .icon img { width: 100%; }
+
 .colorList li { width: 2rem; height: 2rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.12501turn); transform: rotate(0.12501turn); color: transparent; position: relative; background-size: cover; }
 .colorList li:before { content: ''; width: 110%; height: 110%; position: absolute; background-color: transparent; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); box-shadow: inset 0 0 0 0 transparent; border: 1px solid transparent; opacity: 0; }
 .colorList li.active:before { opacity: 1; box-shadow: inset 0 0 0px 5px #fff; border-color: #000; }
@@ -614,6 +624,8 @@ body.desktop.fixed:before { opacity: 1; }
 .btn.btn-primary:hover { color: #683EBD; border-color: #683EBD; }
 .btn.btn-metowe { border: 2px solid #00aae7; color: #00aae7; font-weight: 600; }
 .btn.btn-metowe:hover { color: #0084b4; border-color: #0084b4; }
+.btn.btn-metowe-2 { border: 2px solid #0B3252; color: #0B3252; font-weight: 600; }
+.btn.btn-metowe-2:hover { color: #051725; border-color: #051725; }
 .btn.btn-alt { border: 1px solid #cccccc; color: #683EBD; }
 .btn.btn-alt:hover { color: #683EBD; border-color: #683EBD; }
 .btn.btn-reverse { border: 1px solid white; color: white; }

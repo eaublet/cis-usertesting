@@ -57,6 +57,35 @@ a.uncolor {
       grid-row: span 1.5;
     }
     &.product {
+      box-shadow: none;
+      &.boxed{
+        .details{
+          left: 2rem;
+        }
+        .addToWishList{
+          top: 3rem;
+          right: 3rem;
+        }
+      }
+      .img{
+        overflow: hidden;
+        width: calc(100% - 4rem);
+        height: calc(100% - 5rem);
+        @include transition(all);
+        top: 2rem;
+        left: 2rem;
+        position: relative;
+        img{
+          width: 100%;
+        }
+      }
+      &:hover{
+        &.boxed{
+          .img{
+            height: calc(100% - 6rem);
+          }
+        }
+      }
       cursor: pointer;
       .title {
         opacity: 0;
@@ -128,13 +157,14 @@ a.uncolor {
         padding: 1.5rem 2rem 2rem;
       }
       .socialInfo {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        padding: 0 2rem 0.75rem;
-        height: 2rem;
-        align-items: flex-end;
+       width: 100%;
+       position: relative;
+       bottom: 2.125rem;
+       left: 0;
+       padding: 0;
+       height: 2rem;
+       -ms-flex-align: end;
+       align-items: flex-end;
         img {
           padding: 0;
         }
@@ -1314,6 +1344,30 @@ body.desktop.fixed {
       height: calc(25vw - 3rem);
       bottom: 1.5rem;
       right: 1.5rem;
+    }
+  }
+}
+
+body.me2we .grid{
+  h2{
+    padding: 0!important;
+    margin-bottom: 1rem!important;
+    margin-top: 2rem !important;
+    color: #0B3252;
+    font-size: 2.25rem;
+  }
+  p{
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #767676;
+    margin-bottom:1rem !important;
+  }
+  .icon{
+    margin: 0;
+    padding: 0;
+    width: 3.75rem;
+    img{
+      width: 100%;
     }
   }
 }

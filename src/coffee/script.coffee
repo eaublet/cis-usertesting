@@ -26,7 +26,7 @@ initReveal = () ->
 initParalax = () ->
 	$(window).scroll ->
 		scrolledY = $(window).scrollTop()
-		$('.paralax').css 'background-position', 'center ' + (scrolledY * -0.3) + 'px'
+		$('.paralax').css 'background-position', 'center ' + (scrolledY * -0.1) + 'px'
 		return
 
 initPanelNav = () ->
