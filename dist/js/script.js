@@ -9,6 +9,24 @@
     var targetIn;
     targetIn = '.revealSection';
     return inView(targetIn).on('enter', function(el) {
+      var bigNumber, inter, n, num, t;
+      if ($('.bigNumber').length) {
+        if (!$('.bigNumber').hasClass('active')) {
+          $('.bigNumber').addClass('active');
+          bigNumber = false;
+          num = $('.bigNumber').attr('data-number');
+          n = 5;
+          t = 10;
+          inter = setInterval((function() {
+            if (num > n) {
+              $('.bigNumber').html(n);
+              return n++;
+            } else {
+              return clearInterval(inter);
+            }
+          }), 20);
+        }
+      }
       return $(el).removeClass('active');
     }).on('exit', function(el) {});
   };

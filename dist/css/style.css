@@ -687,16 +687,20 @@ ul.dropDownButtons li { height: 75px; line-height: 75px; font-weight: 700; font-
 .revealSection { background: linear-gradient(-45deg, #9932CC, #10069F); position: relative; padding: 4rem; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; height: 100%; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 @media (max-width: 640px) { .revealSection { padding: 4rem 2rem; height: initial; } }
 .revealSection .content { position: relative; z-index: 1; opacity: 1; width: 100%; color: white; box-sizing: border-box; will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); }
-.revealSection .content * { will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); color: white; fill: white; border-color: white; }
+.revealSection .content .statement, .revealSection .content p, .revealSection .content a { will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); color: white; fill: white; border-color: white; }
+.revealSection .content svg * { fill: white; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 .revealSection:before { position: absolute; top: 0; left: 0; width: 100%; height: 100%; content: ''; background: linear-gradient(-35deg, white, white, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)); background-position: 0 0; background-size: 500%; will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); z-index: 0; }
 .revealSection.active .content { opacity: 1; color: #000; }
 .revealSection.active .content * { color: #000; fill: #000; border-color: #000; }
+.revealSection.active .content .bigNumber { -webkit-text-stroke: 3px #000; }
 .revealSection.active:before { background-position: 100% 100%; }
 .revealSection .pdpContextual { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; text-align: center; }
 .revealSection .pdpContextual .icon { width: 2.625rem; margin: 0 auto; }
 .revealSection .pdpContextual .icon svg { display: block; width: 100%; }
+.revealSection .pdpContextual .bigNumber { font-weight: 700; font-size: 10rem; color: transparent; will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); -webkit-text-stroke: 3px white; margin-bottom: -2rem; }
 .revealSection .pdpContextual .statement { font-size: 3rem; font-weight: 400; margin: 3rem 0; line-height: 3rem; }
 .revealSection .pdpContextual .statement .underlined { text-decoration: underline; }
+.revealSection .pdpContextual .statement.small { margin-top: 1rem; font-size: 1.5rem; line-height: 1.5rem; }
 .revealSection .pdpContextual .btn { margin-top: 1rem; display: table; margin: 1rem auto 0; font-size: 1.125rem; font-weight: 700; }
 @media (max-width: 640px) { .revealSection .pdpContextual .icon { width: 2rem; }
   .revealSection .pdpContextual .statement { font-size: 1.5rem; line-height: 1.5rem; margin: 2rem auto 1rem; }

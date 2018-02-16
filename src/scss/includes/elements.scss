@@ -618,11 +618,15 @@ ul.dropDownButtons {
     color: white;
     box-sizing: border-box;
     @include transition(all, $xlongDuration);
-    * {
+    .statement, p, a{
       @include transition(all, $xlongDuration);
       color: white;
       fill: white;
       border-color: white;
+    }
+    svg *{
+      fill: white;
+      @include transition(all, $longDuration);
     }
     // transition: all $duration $ease;
   }
@@ -655,6 +659,9 @@ ul.dropDownButtons {
         fill: $black;
         border-color: $black;
       }
+      .bigNumber{
+        -webkit-text-stroke: 3px $black;
+      }
       // transition: all $duration $ease;
     }
     &:before {
@@ -674,6 +681,14 @@ ul.dropDownButtons {
         width: 100%;
       }
     }
+    .bigNumber{
+      font-weight: 700;
+      font-size: 10rem;
+      color: transparent;
+      @include transition(all, $xlongDuration);
+      -webkit-text-stroke: 3px white;
+      margin-bottom: -2rem;
+    }
     .statement {
       font-size: 3rem;
       font-weight: 400;
@@ -681,6 +696,11 @@ ul.dropDownButtons {
       line-height: 3rem;
       .underlined {
         text-decoration: underline;
+      }
+      &.small{
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
       }
     }
     .btn {

@@ -4,6 +4,20 @@ log = (msg) ->
 initReveal = () ->
 	targetIn = '.revealSection'
 	inView(targetIn).on('enter', (el) ->
+		if $('.bigNumber').length
+			unless $('.bigNumber').hasClass 'active'
+				$('.bigNumber').addClass 'active'
+				bigNumber = false
+				num = $('.bigNumber').attr('data-number')
+				n = 5
+				t = 10
+				inter = setInterval ( -> 
+					if num > n
+						$('.bigNumber').html n
+						n++
+					else
+						clearInterval(inter)
+				), 20
 		$(el).removeClass 'active'
 	).on 'exit', (el) ->
 		# el.removeClass 'active'
