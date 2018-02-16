@@ -1371,3 +1371,29 @@ body.me2we .grid{
     }
   }
 }
+
+.filterPanel{
+  display: none;
+  @include transition(all, $longDuration);
+  header{
+    position: relative;
+    padding-left: 2rem;
+    .close{
+      cursor: pointer;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      svg{
+        margin-left: .5rem;
+        width: 1em;
+      }
+    }
+  }
+  img.full{
+    width: 100%;
+  }
+}

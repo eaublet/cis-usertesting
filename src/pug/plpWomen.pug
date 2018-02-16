@@ -9,10 +9,12 @@ include blocks/std_css.pug
 
 body.nav.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
+		+filters('Women', 'Footwear', '123')
 	.grid.desktop.plp.border-bottom.nomargin
 		.cell.single.padded-double.header.noBorder
 			h6 Women
 			h1.big Footwear
+				h6 123 Items
 			a.btn.btn-gradient.btn-big Filter + 
 		.cell.empty.halftexture.single.noBorder
 		+product('AFILADIEN', '$49.99', 'women/W03.jpg').double
