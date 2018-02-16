@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, addToWishList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initParalax, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, setAdded, showCart, showMegaNav, showOverlay, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, addToWishList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initParalax, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, scrollTop, setAdded, showCart, showMegaNav, showOverlay, showUtility, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -49,6 +49,11 @@
             hidePanel();
           }
         }
+      }
+    });
+    $('.megaNav').mouseleave(function(e) {
+      if ($(this).hasClass('active')) {
+        return hidePanel();
       }
     });
     $(window).scroll(function() {
@@ -474,85 +479,97 @@
     if (el !== false) {
       elements = el.split(',');
       toValidate = elements.length;
-      $('.nextStep').html(nextLabel);
+      log(toValidate);
       results = [];
       for (j = 0, len = elements.length; j < len; j++) {
         i = elements[j];
         results.push($(i).on('focus', function() {
           toValidate--;
+          log(toValidate);
           if (toValidate === 0) {
-            return $('.nextStep').removeClass('btn-inactive');
+            return setTimeout((function() {
+              $('.nextStep').removeClass('btn-inactive isHidden', {
+                duration: 500
+              });
+              return $('.section.inactive').first().find('h2').animate({
+                opacity: 0.25
+              }, 500);
+            }), 500);
           }
         }));
       }
       return results;
     } else {
-      return $('.nextStep').html(nextLabel).removeClass('btn-inactive');
+      return $('.nextStep').html(nextLabel).removeClass('isHidden');
     }
   };
 
-  checkoutButtonNextStep = function() {
+  checkoutButtonNextStep = function(thisStep) {
     var maxStep;
     maxStep = '3';
     return $('.nextStep').click(function() {
-      var thisStep;
-      if ($('.nextStep').hasClass('btn-inactive')) {
+      var nextStep;
+      if ($('.nextStep').hasClass('btn-inactive isHidden')) {
 
       } else {
-        thisStep = $(this).attr('data-current-step');
-        if (JSON.stringify(thisStep) === JSON.stringify(maxStep)) {
+        nextStep = parseInt(thisStep) + 1;
+        log(thisStep === maxStep);
+        if (parseInt(thisStep) === parseInt(maxStep)) {
           if ($('body').hasClass('desktop')) {
-            $('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }');
+            $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }');
           } else {
-            $('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
+            $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
           }
-          $('.nextStep').click();
-          return;
+          $('.nextStep[data-current-step=' + thisStep + ']').click();
+        } else {
+          $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
+          thisStep++;
+          $('.section[data-step=' + nextStep + ']').removeClass('filled inactive').addClass('active');
+          setTimeout((function() {
+            return $('html, body').animate({
+              scrollTop: $('.section[data-step=' + nextStep + ']').position().top - $('nav').outerHeight()
+            }, 640);
+          }), 640);
+          $('.btn[data-current-step=' + nextStep + ']').addClass('btn-inactive isHidden');
+          return changeStep(nextStep);
         }
-        $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
-        thisStep++;
-        $('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass('active');
-        setTimeout((function() {
-          return $('html, body').animate({
-            scrollTop: $('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()
-          }, 640);
-        }), 640);
-        $(this).attr('data-current-step', thisStep).addClass('btn-inactive');
-        return changeStep();
       }
     });
   };
 
-  changeStep = function() {
-    switch ($('.nextStep').attr('data-current-step')) {
-      case '0':
+  changeStep = function(step) {
+    if (step == null) {
+      step = 0;
+    }
+    switch (step) {
+      case 0:
         watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping');
-        return checkoutButtonNextStep();
-      case '1':
+        return checkoutButtonNextStep(step);
+      case 1:
         $('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
         $('.section[data-step=0] .surcontent .email').text($('#first-email').val());
         $('#second-fn').val($('#first-fn').val());
         $('#second-ln').val($('#first-ln').val());
         $('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#second-address', 'Continue to payment');
-        return checkoutButtonNextStep();
-      case '2':
+        return checkoutButtonNextStep(step);
+      case 2:
         $('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#third-cc', 'Continue to review');
-        return checkoutButtonNextStep();
-      case '3':
+        return checkoutButtonNextStep(step);
+      case 3:
         if (!$('body').hasClass('desktop')) {
           $('.cartSummary').hide();
         }
         setTimeout((function() {
-          return $('.nextStep').html('Complete your purchase').removeClass('btn-inactive');
+          return $('.nextStep[data-current-step=3]').html('Complete your purchase').removeClass('btn-inactive isHidden');
         }), 320);
-        return checkoutButtonNextStep();
+        return checkoutButtonNextStep(JSON.stringify(step));
     }
   };
 
   initCheckoutButton = function() {
-    return changeStep();
+    return changeStep(0);
   };
 
   getUrlParameter = function(sParam) {
@@ -649,7 +666,21 @@
   initUI = function() {
     initCheckboxes();
     initRadios();
-    return addToWishList();
+    addToWishList();
+    scrollTop();
+    return showUtility();
+  };
+
+  showUtility = function() {
+    return $(window).scroll(function() {
+      var scrolledY;
+      scrolledY = $(window).scrollTop();
+      if (scrolledY > 900) {
+        return $('.scrollToTop').removeClass('isHidden');
+      } else {
+        return $('.scrollToTop').addClass('isHidden');
+      }
+    });
   };
 
   checkAddress = function() {
@@ -657,6 +688,15 @@
       if ($('#second-address').val().length > 2) {
         return $('.hidden-address').addClass('active');
       }
+    });
+  };
+
+  scrollTop = function() {
+    return $('.scrollToTop').click(function() {
+      $("html, body").animate({
+        scrollTop: 0
+      }, 600);
+      return false;
     });
   };
 

@@ -154,7 +154,7 @@ body {
   }
   &.inactive {
     h2 {
-      opacity: 0.25;
+      opacity: 0;
     }
     .content {
       max-height: 0;
@@ -162,6 +162,11 @@ body {
     }
   }
   &.filled {
+    &.inactive {
+      opacity: 1;
+      visibility: visible;
+      display: inherit;
+    }
     .surcontent {
       display: block;
     }
