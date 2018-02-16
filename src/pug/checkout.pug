@@ -13,23 +13,24 @@ body.checkout
 		header
 			h1 Checkout
 				span.side
-					|Already have an<br/>account? 
+					|Already have an<br/>account?
 					a.btnLink Sign in
 
 		.section.active(data-step=0)
-			h2.left Who is placing the order? 
+			h2.left Who is placing the order?
 			a.btn.btn-alt.editSection Edit
 			.surcontent
 				h5 Your info
-				span.name First Last 
+				span.name First Last
 				span.email Email
 			.content
 				+input(false, 'First name', 'first-fn')
 				+input(false, 'Last name', 'first-ln')
 				+input(true, 'Email address', 'first-email')
 				+check(false, 'Yes, please send me newsletters')
-		.section.inactive(data-step=1)
-			h2.left Where are we sending your items? 
+				a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=0) Continue to shipping
+		.section.inactive(data-step=1 tabIndex="-1")
+			h2.left Where are we sending your items?
 			a.btn.btn-alt.editSection Edit
 			.surcontent
 				h5 Shipping
@@ -71,9 +72,10 @@ body.checkout
 				.shipping-option(data-tab='store')
 					| Show me only if ship to store is selected
 
+				a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=1) Continue to review
 
-		.section.inactive(data-step=2)
-			h2.left How would you like to pay? 
+		.section.inactive(data-step=2 tabIndex="-1")
+			h2.left How would you like to pay?
 			a.btn.btn-alt.editSection Edit
 			.surcontent
 				h5 Billing
@@ -105,13 +107,14 @@ body.checkout
 						span.line2 Montreal, QC
 						span.line3 H3A 1L4
 						span.phone (514) 448-4035
-					a.btnLink Add promo code(s)	
+					a.btnLink Add promo code(s)
 				.payment-option(data-tab='pp')
 					| Show me only if PayPal
 				.payment-option(data-tab='vc')
 					| Show me only if Visa Checkout
+				a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=2) Continue to review
 
-		.section.inactive(data-step=3)
+		.section.inactive(data-step=3 tabIndex="-1")
 			h2.left Review your order
 			a.btn.btn-alt.editSection Edit
 			.content
@@ -142,7 +145,8 @@ body.checkout
 								span.small.beforeTaxes (Shipping & taxes calculated)
 						.tableCell
 							.totalPrice $XX
-		
+				a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=3) Complete your purchase
+
 	.cartSummary
 		.container
 			hr.large
@@ -153,7 +157,7 @@ body.checkout
 						span ID: 29525114
 				//- .tableCell: a.btnLink Edit shopping bag
 		ul.productsCart
-			//- li 
+			//- li
 				.img
 					img(src='/img/pdp/bag.jpg')
 				.data
@@ -163,8 +167,6 @@ body.checkout
 						span Size
 				.options
 					.price $79
-	a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive(data-current-step=0) Continue to shipping
-
 
 	//- REGULAR SCRIPTS
 	include blocks/std_scripts.pug

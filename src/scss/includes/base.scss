@@ -137,6 +137,7 @@ body {
 .section {
   margin-top: 3rem;
   position: relative;
+  outline: none;
   .content {
     padding-bottom: 2rem;
     max-height: 3000px;
@@ -152,9 +153,16 @@ body {
     right: 0;
     display: none;
   }
+  // &.active {
+  //   h2.left {
+  //     opacity: 1 !important;
+  //   }
+  // }
   &.inactive {
+    overflow: hidden;
+    display: none;
     h2 {
-      opacity: 0.25;
+      opacity: 0;
     }
     .content {
       max-height: 0;
@@ -162,6 +170,11 @@ body {
     }
   }
   &.filled {
+    &.inactive {
+      opacity: 1;
+      visibility: visible;
+      display: inherit;
+    }
     .surcontent {
       display: block;
     }

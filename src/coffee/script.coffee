@@ -11,7 +11,7 @@ initReveal = () ->
 				num = $('.bigNumber').attr('data-number')
 				n = 5
 				t = 10
-				inter = setInterval ( -> 
+				inter = setInterval ( ->
 					if num > n
 						$('.bigNumber').html n
 						n++
@@ -37,6 +37,11 @@ initPanelNav = () ->
 				unless $('.navItem').is(e.target)
 					hidePanel()
 			return
+
+	$('.megaNav').mouseleave (e) ->
+		if $(@).hasClass 'active'
+			hidePanel()
+
 	$(window).scroll ->
 		if $('.megaNav').hasClass 'active'
 			hidePanel()
@@ -369,62 +374,86 @@ watchField = (el, nextLabel) ->
 	unless el is false
 		elements = el.split(',')
 		toValidate = elements.length
-		$('.nextStep').html(nextLabel)
+		nextSection = $('.section.inactive').first()
+		log(nextSection)
+		# $('.nextStep').html(nextLabel)
 		for i in elements
 			$(i).on 'focus', ->
 				toValidate--
 				if toValidate is 0
-					$('.nextStep').removeClass('btn-inactive')
-	else
-		$('.nextStep').html(nextLabel).removeClass('btn-inactive')
 
-checkoutButtonNextStep = () ->
+					setTimeout (->
+						$('.nextStep').removeClass 'btn-inactive isHidden', {duration:500}
+						nextSection.css {overflow: 'visible'; display: 'block';}
+						nextSection.find('h2').animate {opacity: 0.25}, 500
+						nextSection.attr('tabIndex', 0)
+					), 500
+	else
+		nextSection.css {overflow: 'visible'; display: 'block';}
+		$('.nextStep').html(nextLabel).removeClass('isHidden')
+
+checkoutButtonNextStep = (thisStep) ->
 	maxStep = '3'
 	$('.nextStep').click ->
-		if $('.nextStep').hasClass 'btn-inactive'
+		if $('.nextStep').hasClass 'btn-inactive isHidden'
 			return
 		else
-			thisStep = $(@).attr('data-current-step')
-			if JSON.stringify(thisStep) is JSON.stringify(maxStep)
+			# thisStep = $(@).attr('data-current-step')
+			nextStep = parseInt(thisStep) + 1
+			log(thisStep == maxStep)
+			if parseInt(thisStep) == parseInt(maxStep)
 				if $('body').hasClass 'desktop'
-					$('.nextStep').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }')
+					$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }')
 				else
-					$('.nextStep').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
-				$('.nextStep').click()
+					$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
+				$('.nextStep[data-current-step=' + thisStep + ']').click()
 				return
-			$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
-			thisStep++
-			$('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass 'active'
-			setTimeout (-> $('html, body').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 640), 640
-			$(@).attr('data-current-step', thisStep).addClass('btn-inactive')
-			changeStep()
+			else
+				$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
+				thisStep++
+				$('.section[data-step=' + nextStep + ']').removeClass('filled inactive').addClass 'active'
+				setTimeout (-> $('html, body').animate { scrollTop: ($('.section[data-step=' + nextStep + ']').position().top - $('nav').outerHeight()) }, 640), 640
+				# $(@).attr('data-current-step', thisStep).addClass('btn-inactive isHidden')
+				$('.btn[data-current-step=' + nextStep + ']').addClass('btn-inactive isHidden')
+				changeStep(nextStep)
 
-changeStep = () ->
-	switch $('.nextStep').attr('data-current-step')
-		when '0'
+changeStep = (step = 0) ->
+	switch step
+		when 0
 			watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping')
-			checkoutButtonNextStep()
-		when '1'
+			checkoutButtonNextStep(step)
+		when 1
+			setTimeout (->
+				$('.section[data-step=1]').first().find('h2').animate {opacity: 1}, 500
+			), 500
 			$('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
 			$('.section[data-step=0] .surcontent .email').text($('#first-email').val())
 			$('#second-fn').val($('#first-fn').val())
 			$('#second-ln').val($('#first-ln').val())
 			$('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#second-address', 'Continue to payment')
-			checkoutButtonNextStep()
-		when '2'
+			checkoutButtonNextStep(step)
+		when 2
+			setTimeout (->
+				$('.section[data-step=2]').first().find('h2').animate {opacity: 1}, 500
+			), 500
 			$('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#third-cc', 'Continue to review')
-			checkoutButtonNextStep()
-		when '3'
+			checkoutButtonNextStep(step)
+		when 3
 			unless $('body').hasClass 'desktop'
 				$('.cartSummary').hide()
-			setTimeout ( -> $('.nextStep').html('Complete your purchase').removeClass('btn-inactive') ), 320
-			checkoutButtonNextStep()
+			setTimeout (->
+				$('.section[data-step=3]').first().find('h2').animate {opacity: 1}, 500
+				$('.section[data-step=3]').attr('tabbindex', 0)
+
+			), 500
+			setTimeout ( -> $('.nextStep[data-current-step=3]').html('Complete your purchase').removeClass('btn-inactive isHidden') ), 320
+			checkoutButtonNextStep(JSON.stringify(step))
 		else
 
 initCheckoutButton = () ->
-	changeStep()
+	changeStep(0)
 	# checkoutButtonNextStep('#second-address', 'Continue to payment')
 
 getUrlParameter = (sParam) ->
@@ -498,12 +527,27 @@ initUI = () ->
 	initCheckboxes()
 	initRadios()
 	addToWishList()
+	scrollTop()
+	showUtility()
 	# initTabs()
+
+showUtility = () ->
+	$(window).scroll ->
+		scrolledY = $(window).scrollTop()
+		if scrolledY > 900
+			$('.scrollToTop').removeClass 'isHidden'
+		else
+			$('.scrollToTop').addClass 'isHidden'
 
 checkAddress = () ->
 	$('#second-address').keyup (event) ->
 		if $('#second-address').val().length > 2
 			$('.hidden-address').addClass 'active'
+
+scrollTop = () ->
+	$('.scrollToTop').click () ->
+    $("html, body").animate({ scrollTop: 0 }, 600)
+    return false
 
 checkCC = () ->
 	$('#third-cc').keyup (event) ->

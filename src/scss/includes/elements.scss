@@ -246,6 +246,15 @@
     left: 50%;
     transform: translate(-50%, 0);
   }
+  &.isHidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.isVisible {
+    opacity: 1;
+    visibility: visible;
+  }
   &.btn-inactive {
     color: $white;
     background: #c0c0c0;
@@ -627,13 +636,15 @@ ul.dropDownButtons {
     color: white;
     box-sizing: border-box;
     @include transition(all, $xlongDuration);
-    .statement, p, a{
+    .statement,
+    p,
+    a {
       @include transition(all, $xlongDuration);
       color: white;
       fill: white;
       border-color: white;
     }
-    svg *{
+    svg * {
       fill: white;
       @include transition(all, $longDuration);
     }
@@ -668,7 +679,7 @@ ul.dropDownButtons {
         fill: $black;
         border-color: $black;
       }
-      .bigNumber{
+      .bigNumber {
         -webkit-text-stroke: 3px $black;
       }
       // transition: all $duration $ease;
@@ -690,7 +701,7 @@ ul.dropDownButtons {
         width: 100%;
       }
     }
-    .bigNumber{
+    .bigNumber {
       font-weight: 700;
       font-size: 10rem;
       color: transparent;
@@ -706,7 +717,7 @@ ul.dropDownButtons {
       .underlined {
         text-decoration: underline;
       }
-      &.small{
+      &.small {
         margin-top: 1rem;
         font-size: 1.5rem;
         line-height: 1.5rem;
@@ -802,19 +813,19 @@ ul.dropDownButtons {
   text-align: center;
 }
 
-.fourofour{
-  header{
+.fourofour {
+  header {
     text-align: center;
     margin: 4rem auto;
     position: relative;
     z-index: 9;
   }
-  img.shoe{
+  img.shoe {
     width: 90%;
     max-width: 1000px;
     margin: -8rem auto 0;
     display: block;
-    &.mobile{
+    &.mobile {
       margin-top: -4rem;
     }
   }
