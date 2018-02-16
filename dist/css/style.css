@@ -43,8 +43,10 @@ body.fixed { overflow: hidden; height: 100vh; }
 .section .content { padding-bottom: 2rem; max-height: 3000px; will-change: all 400ms; transition: all 400ms 180ms cubic-bezier(0.77, 0, 0.175, 1); overflow-x: hidden; }
 .section .surcontent { display: none; }
 .section .editSection { position: absolute; top: 0; right: 0; display: none; }
+.section.inactive { opacity: 0; visibility: hidden; display: none; }
 .section.inactive h2 { opacity: 0.25; }
 .section.inactive .content { max-height: 0; padding: 0; }
+.section.filled.inactive { opacity: 1; visibility: visible; display: inherit; }
 .section.filled .surcontent { display: block; }
 .section.filled .editSection { display: block; }
 .section.filled h2 { font-size: 0.875rem; opacity: 0; display: none; font-weight: 700; }
@@ -549,34 +551,10 @@ body.desktop.fixed:before { opacity: 1; }
 .topVertical li .img { width: 7rem; }
 .topVertical li .img img { width: 100%; }
 .topVertical li span { display: block; }
-.topVertical li .details { font-size: .875rem; margin-left: 1rem; }
-.topVertical li .num { margin-right: 1rem; position: relative; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: .875rem; color: white; z-index: 99; }
+.topVertical li .details { font-size: 0.875rem; margin-left: 1rem; }
+.topVertical li .num { margin-right: 1rem; position: relative; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: 0.875rem; color: white; z-index: 99; }
 .topVertical li .num:before { position: absolute; top: 0rem; left: 0rem; width: 1.5rem; height: 1.5rem; background-color: black; content: ''; z-index: -1; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); -ms-transform-origin: center center; transform-origin: center center; }
 .topVertical li:hover .details { text-decoration: underline; color: #683EBD; }
-
-.promo.filters { padding: 2rem; }
-.promo.filters ul { list-style-type: none; margin: 2rem 0 0 0; padding: 0; }
-.promo.filters ul li { display: table; padding: .5rem 1.5rem; border-radius: 3rem; border: 1px solid #683EBD; color: #683EBD; font-size: 1.875rem; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); cursor: pointer; }
-.promo.filters ul li:not(:last-child) { margin-bottom: 1rem; }
-.promo.filters ul li:hover { background-color: #683EBD; color: white; }
-
-.promo.bigOff { padding: 1.5rem; display: -ms-flexbox; display: flex; position: relative; -ms-flex-direction: column; flex-direction: column; cursor: pointer; }
-.promo.bigOff .content { padding: 1rem; position: relative; background: linear-gradient(135deg, #10069F, #9932CC); color: white; font-weight: 600; -ms-flex-positive: 1; flex-grow: 1; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); background-size: 100%; background-position: bottom right; }
-.promo.bigOff .content .left { position: absolute; top: 1rem; left: 1rem; }
-.promo.bigOff .content .right { position: absolute; top: 1rem; right: 1rem; }
-.promo.bigOff .content .sale { position: absolute; bottom: 1rem; left: 1rem; font-size: 2.875rem; line-height: 2.8rem; }
-.promo.bigOff .btn { margin-top: 1rem; border: 2px solid #683EBD; font-weight: 600; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
-.promo.bigOff:before { border: 0px solid #9932CC; position: absolute; width: 100%; height: 100%; content: ""; top: 0; left: 0; box-sizing: border-box; opacity: 0; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
-.promo.bigOff:hover .content { background-size: 200%; }
-.promo.bigOff:hover .btn { border-color: #9932CC; color: #9932CC; }
-
-.promo.shipping { position: relative; width: 100%; height: 100%; cursor: pointer; }
-.promo.shipping:before { border: 0px solid #9932CC; position: absolute; width: 100%; height: 100%; content: ""; top: 0; left: 0; box-sizing: border-box; opacity: 0; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
-.promo.shipping p { font-size: 2.875rem; line-height: 2.8rem; color: #683EBD; font-weight: 600; padding: 1.5rem; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
-.promo.shipping .triangle { position: absolute; bottom: 0; right: 0; width: 25vw; height: 25vw; padding: 0; background: linear-gradient(135deg, #10069F, #9932CC); background-position: bottom right; background-size: 100%; -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%); clip-path: polygon(100% 0, 0% 100%, 100% 100%); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
-.promo.shipping:hover:before { border-width: 3px; opacity: 1; }
-.promo.shipping:hover p { color: #9932CC; }
-.promo.shipping:hover .triangle { background-size: 200%; padding: 2rem; width: calc(25vw - 3rem); height: calc(25vw - 3rem); bottom: 1.5rem; right: 1.5rem; }
 
 .colorList li { width: 2rem; height: 2rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.12501turn); transform: rotate(0.12501turn); color: transparent; position: relative; background-size: cover; }
 .colorList li:before { content: ''; width: 110%; height: 110%; position: absolute; background-color: transparent; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); box-shadow: inset 0 0 0 0 transparent; border: 1px solid transparent; opacity: 0; }
@@ -603,6 +581,8 @@ body.desktop.fixed:before { opacity: 1; }
 .btn.btn-big { height: 3.75rem; line-height: 3.75rem; min-width: 7.74rem; }
 .btn.btn-mega { height: 5.625rem; line-height: 5.625rem; padding-left: 6rem; padding-right: 6rem; }
 .btn.btn-full { display: block; width: 100%; }
+.btn.isHidden { opacity: 0; visibility: hidden; }
+.btn.isVisible { opacity: 1; visibility: visible; }
 .btn.btn-gradient { position: relative; overflow: hidden; z-index: 0; background-color: #000; min-width: 6.74rem; background-size: 200%; background-position: 0; color: #fff; font-weight: 700; transition: none; }
 .btn.btn-gradient:before { position: absolute; width: 130%; height: 1000%; border-radius: 100%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: red; top: 50%; left: 50%; content: ''; z-index: -1; opacity: 1; background: linear-gradient(90deg, #10069F 0%, #9932CC 100%); }
 .btn.btn-gradient:after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: -1; opacity: 0; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
@@ -711,20 +691,16 @@ ul.dropDownButtons li { height: 75px; line-height: 75px; font-weight: 700; font-
 .revealSection { background: linear-gradient(-45deg, #9932CC, #10069F); position: relative; padding: 4rem; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; height: 100%; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 @media (max-width: 640px) { .revealSection { padding: 4rem 2rem; height: initial; } }
 .revealSection .content { position: relative; z-index: 1; opacity: 1; width: 100%; color: white; box-sizing: border-box; will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); }
-.revealSection .content .statement, .revealSection .content p, .revealSection .content a { will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); color: white; fill: white; border-color: white; }
-.revealSection .content svg * { fill: white; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
+.revealSection .content * { will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); color: white; fill: white; border-color: white; }
 .revealSection:before { position: absolute; top: 0; left: 0; width: 100%; height: 100%; content: ''; background: linear-gradient(-35deg, white, white, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)); background-position: 0 0; background-size: 500%; will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); z-index: 0; }
 .revealSection.active .content { opacity: 1; color: #000; }
 .revealSection.active .content * { color: #000; fill: #000; border-color: #000; }
-.revealSection.active .content .bigNumber { -webkit-text-stroke: 3px #000; }
 .revealSection.active:before { background-position: 100% 100%; }
 .revealSection .pdpContextual { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; text-align: center; }
 .revealSection .pdpContextual .icon { width: 2.625rem; margin: 0 auto; }
 .revealSection .pdpContextual .icon svg { display: block; width: 100%; }
-.revealSection .pdpContextual .bigNumber { font-weight: 700; font-size: 10rem; color: transparent; will-change: all; transition: all 1800ms cubic-bezier(0.77, 0, 0.175, 1); -webkit-text-stroke: 3px white; margin-bottom: -2rem; }
 .revealSection .pdpContextual .statement { font-size: 3rem; font-weight: 400; margin: 3rem 0; line-height: 3rem; }
 .revealSection .pdpContextual .statement .underlined { text-decoration: underline; }
-.revealSection .pdpContextual .statement.small { margin-top: 1rem; font-size: 1.5rem; line-height: 1.5rem; }
 .revealSection .pdpContextual .btn { margin-top: 1rem; display: table; margin: 1rem auto 0; font-size: 1.125rem; font-weight: 700; }
 @media (max-width: 640px) { .revealSection .pdpContextual .icon { width: 2rem; }
   .revealSection .pdpContextual .statement { font-size: 1.5rem; line-height: 1.5rem; margin: 2rem auto 1rem; }
@@ -747,3 +723,10 @@ ul.dropDownButtons li { height: 75px; line-height: 75px; font-weight: 700; font-
 .fourofour header { text-align: center; margin: 4rem auto; position: relative; z-index: 9; }
 .fourofour img.shoe { width: 90%; max-width: 1000px; margin: -8rem auto 0; display: block; }
 .fourofour img.shoe.mobile { margin-top: -4rem; }
+
+.utility { position: fixed; bottom: 1rem; right: 1rem; z-index: 100; width: 2.5rem; }
+.utility img { max-width: 100%; width: auto; height: auto; }
+.utility .scrollToTop { opacity: 1; cursor: pointer; will-change: all; transition: all 250ms cubic-bezier(0.77, 0, 0.175, 1); }
+.utility .scrollToTop.isHidden { opacity: 0; }
+.utility .helpCenter { opacity: 1; cursor: pointer; will-change: all; transition: all 250ms cubic-bezier(0.77, 0, 0.175, 1); }
+.utility .helpCenter.isHidden { opacity: 0; }
