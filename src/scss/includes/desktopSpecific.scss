@@ -165,7 +165,7 @@ a.uncolor {
       }
     }
     &.noBorder {
-      box-shadow: 0 0 0 1px #fff;
+      box-shadow: 0 0 0 1px transparent;
     }
     h3 {
       font-size: 2.25rem;
@@ -520,6 +520,42 @@ a.uncolor {
   // 	grid-row: 3 / span 2;
   // 	grid-column: 2;
   // }
+  &.column{
+    display: flex;
+    flex-direction: column;
+    // padding: 2rem;
+    .content{
+      padding: 1rem 2rem 1rem!important;
+    }
+    .pdpButtons, .colorSelector, .sizeSelector{
+      padding: 1rem 2rem;
+    }
+    .pdpButtons{
+      display: block;
+      .row, .column{
+        width: 100%;
+        display: block;
+        margin: 0;
+      }
+      .row{
+        display: flex;
+        flex-direction: column-reverse;
+        > .column:first-child{
+          margin-top: 1rem;
+        }
+      }
+    }
+    .header{
+      padding: 0;
+      display: block;
+      h1{
+        margin: 0;
+      }
+      p.price{
+        margin: 0;
+      }
+    }
+  }
 }
 
 .footer.desktop {

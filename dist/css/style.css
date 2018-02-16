@@ -334,7 +334,7 @@ a.uncolor { color: inherit; }
 .grid.desktop .cell.halftexture { background-image: url(../img/global/halfTexture.jpg); background-size: auto 100%; background-position: bottom right; background-repeat: no-repeat; }
 .grid.desktop .cell.stroke { position: relative; }
 .grid.desktop .cell.stroke:before { width: 200%; height: 1px; background-color: #e5e5e5; position: absolute; top: 0.5px; left: 0.5px; -ms-transform-origin: top left; transform-origin: top left; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); content: ''; }
-.grid.desktop .cell.noBorder { box-shadow: 0 0 0 1px #fff; }
+.grid.desktop .cell.noBorder { box-shadow: 0 0 0 1px transparent; }
 .grid.desktop .cell h3 { font-size: 2.25rem; }
 .grid.desktop .cell.doubleWidth { grid-column: span 2; height: 25vw; display: -ms-flexbox; display: flex; padding: 0; }
 .grid.desktop .cell.doubleWidth .content { padding: 2rem; }
@@ -410,6 +410,16 @@ a.uncolor { color: inherit; }
 .d-heroProduct .sizeSelector .sizeOptions { display: inline; margin-left: 1rem; }
 .d-heroProduct .pdpButtons { grid-row: 2 / span 2; grid-column: 4; padding-top: 2.2rem; padding-right: 2rem; }
 .d-heroProduct .pdpButtons .column { width: 50%; }
+.d-heroProduct.column { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+.d-heroProduct.column .content { padding: 1rem 2rem 1rem !important; }
+.d-heroProduct.column .pdpButtons, .d-heroProduct.column .colorSelector, .d-heroProduct.column .sizeSelector { padding: 1rem 2rem; }
+.d-heroProduct.column .pdpButtons { display: block; }
+.d-heroProduct.column .pdpButtons .row, .d-heroProduct.column .pdpButtons .column { width: 100%; display: block; margin: 0; }
+.d-heroProduct.column .pdpButtons .row { display: -ms-flexbox; display: flex; -ms-flex-direction: column-reverse; flex-direction: column-reverse; }
+.d-heroProduct.column .pdpButtons .row > .column:first-child { margin-top: 1rem; }
+.d-heroProduct.column .header { padding: 0; display: block; }
+.d-heroProduct.column .header h1 { margin: 0; }
+.d-heroProduct.column .header p.price { margin: 0; }
 
 .footer.desktop { background-color: black; }
 .footer.desktop img { max-width: 1440px; width: 100%; margin: 0 auto; }
@@ -692,7 +702,7 @@ ul.dropDownButtons li { height: 75px; line-height: 75px; font-weight: 700; font-
   .revealSection .pdpContextual .statement { font-size: 1.5rem; line-height: 1.5rem; margin: 2rem auto 1rem; }
   .revealSection .pdpContextual .btn { font-size: initial; font-weight: 400; } }
 
-.size-selectbox { font-family: 'dia'; -webkit-appearance: none; background: white; border-radius: 0; font-size: 1rem; border: 2px solid; width: 100%; height: 3.75rem; display: inline-block; vertical-align: text-bottom; font-weight: 700; padding: 0 1.2rem; }
+.size-selectbox { font-family: 'dia'; -webkit-appearance: none; background: white; border-radius: 0; font-size: 0.875rem; border: 2px solid; width: 100%; height: 3.75rem; display: inline-block; vertical-align: text-bottom; font-weight: 700; padding: 0 1.2rem; }
 @media (max-width: 640px) { .size-selectbox { height: 2.5rem; padding: 0 1.25rem 0 1rem; } }
 
 .selectbox-wrapper { position: relative; width: 150px; margin-right: 1.5rem; display: inline-block; height: 3.75rem; line-height: 3.75rem; vertical-align: top; }
