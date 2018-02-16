@@ -115,7 +115,7 @@
         return $('.navContent').removeClass('reduced');
       }
     });
-    $('nav.mobile, .navContent.desktop').headroom({
+    $('nav.mobile, body.desktop.pdp .navContent').headroom({
       tolerance: {
         up: 5,
         down: 10
@@ -210,9 +210,15 @@
 
   closeCart = function() {
     $(document).mouseup(function(e) {
+      var container;
       if ($('.cartWrapper').hasClass('isVisible')) {
-        closeOverlay();
-        return $('.cartWrapper').removeClass('isVisible');
+        if ($('body').hasClass('desktop')) {
+          container = $('.cartWrapper');
+          if (!container.is(e.target) && container.has(e.target).length === 0) {
+            closeOverlay();
+            $('.cartWrapper').removeClass('isVisible');
+          }
+        }
       }
     });
     return $('.u-btn__content').click(function() {

@@ -88,7 +88,7 @@ initNav = () ->
 			$('.navContent').addClass 'reduced'
 		if scroll < 40
 			$('.navContent').removeClass 'reduced'
-	$('nav.mobile, .navContent.desktop').headroom
+	$('nav.mobile, body.desktop.pdp .navContent').headroom
 		tolerance:
 			up: 5
 			down: 10
@@ -169,8 +169,16 @@ showCart = () ->
 closeCart = () ->
 	$(document).mouseup (e) ->
 		if $('.cartWrapper').hasClass 'isVisible'
-			closeOverlay()
-			$('.cartWrapper').removeClass 'isVisible'
+			if $('body').hasClass 'desktop'
+				container = $('.cartWrapper')
+				if !container.is(e.target) and container.has(e.target).length == 0
+					closeOverlay()
+					$('.cartWrapper').removeClass 'isVisible'
+				return
+	# $(document).mouseup (e) ->
+	# 	if $('.cartWrapper').hasClass 'isVisible'
+	# 		closeOverlay()
+	# 		$('.cartWrapper').removeClass 'isVisible'
 	$('.u-btn__content').click ->
 		closeOverlay()
 		$('.cartWrapper').removeClass 'isVisible'

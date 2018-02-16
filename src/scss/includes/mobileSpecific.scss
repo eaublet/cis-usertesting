@@ -292,6 +292,16 @@ nav.mobile {
       display: flex;
       align-items: center;
     }
+    &.texture {
+      background-image: url(../img/pdp/linearBkg.png);
+      background-size: cover;
+    }
+    &.halftexture {
+      background-image: url(../img/global/halfTexture.jpg);
+      background-size: auto 100%;
+      background-position: bottom right;
+      background-repeat: no-repeat;
+    }
     &.product {
       position: relative;
       .details {

@@ -1,0 +1,25 @@
+//- TITLE
+- var pagetitle = '404'
+
+//- REGULAR INCLUDES
+include blocks/mixin-mobile.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body.fourofour
+	+nav('Free shipping for pick-up in-store & online orders of $45+')
+	header
+		h1.big Error—404
+		p Well, that’s not good. Try 
+			a.btnLink refreshing 
+			| your<br/>browser or return to the 
+			a.btnLink homepage
+			|.
+	img.shoe.mobile(src="/img/fourofour/fourofour_D.jpg")
+	.footer
+		img(src="/img/FooterMobile.png")
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+

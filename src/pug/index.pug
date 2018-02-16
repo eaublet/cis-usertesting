@@ -8,14 +8,15 @@ include blocks/std_css.pug
 body.index
 
 	h1 User testing
-	p.small January 31st
+	//- p.small January 31st
 
 	//- p.status All the pages have been added in desktop, but all except PLP > Checkout are only images. We will transform them progressively in HTML. Thanks
 	ul.listLinks
 		li
 			.label Homepage
 			.links
-				a.btnLink(href="/homepage.html") Desktop
+				a.btnLink(href="/homepage.html") Desktop A
+				a.btnLink(href="/homepageB.html") Desktop B
 		li
 			.label Me to We
 			.links
@@ -64,6 +65,11 @@ body.index
 			.links
 				a.btnLink(href='/confirm.html?products=[{"name":"Fabiano","img":"/img/pdp/lintun_a.jpg","price":"$79.99","color":"Beige%20Suede","size":6.5,"active":true,"id":0.2895750306468896}]&infos={email:"john@doe.com", name:"John Doe"}') Mobile
 				a.btnLink(href='/confirmDesktop.html?products=[{"name":"Fabiano","img":"/img/pdp/lintun_a.jpg","price":"$79.99","color":"Beige%20Suede","size":6.5,"active":true,"id":0.2895750306468896}]&infos={email:"john@doe.com", name:"John Doe"}') Desktop
+		li
+			.label 404
+			.links
+				a.btnLink(href="/404-mobile.html") Mobile
+				a.btnLink(href="/404-desktop.html") Desktop
 
 
 	//- REGULAR SCRIPTS

@@ -772,3 +772,21 @@ ul.dropDownButtons {
   min-width: 0.9375rem;
   text-align: center;
 }
+
+.fourofour{
+  header{
+    text-align: center;
+    margin: 4rem auto;
+    position: relative;
+    z-index: 9;
+  }
+  img.shoe{
+    width: 90%;
+    max-width: 1000px;
+    margin: -8rem auto 0;
+    display: block;
+    &.mobile{
+      margin-top: -4rem;
+    }
+  }
+}

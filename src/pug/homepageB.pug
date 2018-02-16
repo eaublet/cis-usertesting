@@ -1,0 +1,81 @@
+//- TITLE
+- var pagetitle = 'Homepage'
+
+//- REGULAR INCLUDES
+include blocks/mixin-desktop.pug
+include blocks/mixin-global.pug
+include blocks/std_head.pug
+include blocks/std_css.pug
+
+body.nav.desktop
+	+nav('Free shipping for pick-up in-store & online orders of $45+')
+	+imgFull('/img/hp/hp_bannerDesktop.png')
+	+trendModule('Pastels', 'Shop the Trend', '/img/hp/hpHero.jpg', 'Trend Shop', 'Put on some soft hues to pull off the<br/> look of the season.')
+	.grid.desktop.nomargin
+		.cell.doubleWidth
+			.left
+				h6 Men
+				h3 Chelsea
+					br
+					|Boots
+				p Rain or shine, Chelsea Boots
+					br
+					|are a wardrobe staple.
+				a.btnLink.small Shop Chelsea Boots
+			.right
+				img(src='/img/hp/chelseaTile.jpg')
+		.cell.doubleWidth
+			.left
+				a(href="/metowe.html").uncolor
+					h6 Partnership
+					img.logo(src="/img/hp/me2we.jpg", width=120)
+					p WE is a movement that believes when we come together we can create an even better world.
+					a(href="/metowe.html").btnLink.small Learn more
+			.right
+				a(href="/metowe.html").uncolor
+					img(src='/img/hp/me2weTile.jpg')
+	//- +imgFull('/img/hp/hp_sectionB.jpg')
+	.grid.desktop.nomargin.hp.border-bottom
+		.cell.single.halftexture.padded-double
+			h3 The Top 3:
+				br
+				| January
+				br
+				| 2018
+		+product('Umtiti', '$79.99', 'hp/top3_A.jpg').single.num.num1
+		+product('Vermaelen', '$69.99', 'hp/top3_B.jpg').single.num.num2
+		+product('Dembele', '$49.99', 'hp/top3_C.jpg').single.num.num3
+		.cell.doubleWidth.halftexture
+			.left
+				h3 #instashop
+				p.lead Curabitur blandit tempus porttitor.<br/> Lorem ipsum dolor sit amet, consectetur adipiscing.
+				a.btnLink.small Check out @brandname
+		.cell.double.padded-double
+			img.full(src='/img/hp/hp_socialC.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		.cell.single.padded-double
+			img.full(src='/img/hp/hp_socialA.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+		.cell.single.padded-double
+			img.full(src='/img/hp/hp_socialB.jpg')
+			.socialInfo
+				.handle @stevenblack
+				.likes
+					img(src="/img/pdp/save.svg")
+					span 32 likes
+	+loadMore('Load more images')
+	
+	.footer.desktop
+		img(src="/img/global/desktopFooter.png")
+
+	//- REGULAR SCRIPTS
+	include blocks/std_scripts.pug
+

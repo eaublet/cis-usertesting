@@ -12,6 +12,9 @@ a.uncolor {
   background-size: 100% auto;
   background-position: center 0;
   margin-top: 2rem;
+  img.full.fullH{
+    height: 100%;
+  }
   &.thirds {
     grid-template-columns: 1fr 1fr 1fr;
     .cell {

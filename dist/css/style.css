@@ -85,6 +85,7 @@ body { font-family: "Dia", "sans-serif"; }
 h1, h2, h3, h4, h5, h6, .header, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: "Dia", "sans-serif"; line-height: 1; margin: 0; }
 
 p { margin: 0; }
+p a.btnLink { font-size: 1rem; }
 p.lead { margin: 2rem 0; line-height: 1.5; }
 @media (min-width: 1024px) { p.lead { font-size: 1.125rem; line-height: 2; } }
 p.large { margin: 1rem 0; line-height: 1.5; }
@@ -95,6 +96,7 @@ h1 { font-size: 1.875rem; margin-bottom: 0; }
 h1 span.side { font-size: 0.875rem; font-weight: 400; color: #767676; float: right; text-align: right; }
 h1.hero { font-size: 4.5rem; color: #282d40; }
 h1.big { font-size: 3.75rem; }
+@media (max-width: 768px) { h1.big { font-size: 2.75rem; } }
 
 h2 { font-size: 1.875rem; text-align: center; margin: 2rem 0 2rem; font-weight: 500; }
 h2 img { display: block; margin: 0.45rem auto; }
@@ -195,6 +197,8 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .grid .cell img.full { width: 100%; display: block; }
 .grid .cell img.full.padded { padding: 0.75rem; }
 .grid .cell .wrapper { height: 100%; width: 100%; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; }
+.grid .cell.texture { background-image: url(../img/pdp/linearBkg.png); background-size: cover; }
+.grid .cell.halftexture { background-image: url(../img/global/halfTexture.jpg); background-size: auto 100%; background-position: bottom right; background-repeat: no-repeat; }
 .grid .cell.product { position: relative; }
 .grid .cell.product .details { color: #666; font-size: 0.875rem; position: absolute; bottom: 1rem; left: 1rem; }
 .grid .cell.product .details .title { text-transform: lowercase; }
@@ -300,6 +304,7 @@ a.uncolor { color: inherit; }
 .desktop .brand { cursor: pointer; }
 
 .grid.desktop { grid-template-columns: 1fr 1fr 1fr 1fr; background-attachment: fixed; background-size: 100% auto; background-position: center 0; margin-top: 2rem; }
+.grid.desktop img.full.fullH { height: 100%; }
 .grid.desktop.thirds { grid-template-columns: 1fr 1fr 1fr; }
 .grid.desktop.thirds .cell a { margin: 2rem 0 0; display: block; text-align: center; }
 .grid.desktop.thirds .cell.padded { padding: 2rem; }
@@ -684,3 +689,7 @@ ul.dropDownButtons li { height: 75px; line-height: 75px; font-weight: 700; font-
 .addToWishList.added path { fill: #ff8585; transition: fill 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
 
 #fav .count { min-width: 0.9375rem; text-align: center; }
+
+.fourofour header { text-align: center; margin: 4rem auto; position: relative; z-index: 9; }
+.fourofour img.shoe { width: 90%; max-width: 1000px; margin: -8rem auto 0; display: block; }
+.fourofour img.shoe.mobile { margin-top: -4rem; }
