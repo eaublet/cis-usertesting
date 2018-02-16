@@ -1149,3 +1149,153 @@ body.desktop.fixed {
     }
   }
 }
+
+.promo.filters{
+  padding: 2rem;
+  ul{
+    list-style-type: none;
+    margin: 2rem 0 0 0;
+    padding: 0;
+    li{
+      display: table;
+      padding: .5rem 1.5rem;
+      &:not(:last-child){
+        margin-bottom: 1rem;
+      }
+      border-radius: 3rem;
+      border: 1px solid $main-color;
+      color: $main-color;
+      font-size: 1.875rem;
+      @include transition(all);
+      cursor: pointer;
+      &:hover{
+        background-color: $main-color;
+        color: white;
+      }
+    }
+  }
+}
+
+.promo.bigOff{
+  padding: 1.5rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  cursor: pointer;
+  .content{
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(135deg, $alt-color, $alt2-color);
+    color: white;
+    font-weight: 600;
+    flex-grow: 1;
+    @include transition(all);
+    background-size: 100%;
+    background-position: bottom right;
+    .left{
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+    .right{
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .sale{
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      font-size: 2.875rem;
+      line-height: 2.8rem
+    }
+  }
+  .btn{
+    margin-top: 1rem;
+    border: 2px solid $main-color;
+    font-weight: 600;
+    @include transition(all)
+  }
+  &:before{
+    border: 0px solid $alt2-color;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    opacity: 0;
+    @include transition(all)
+  }
+  &:hover{
+    // &:before{
+    //   border-width: 3px;
+    //   opacity: 1;
+    // }
+    .content{
+      background-size: 200%;
+    }
+    .btn{
+      border-color: $alt2-color;
+      color: $alt2-color;
+    }
+  }
+}
+
+.promo.shipping{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  &:before{
+    border: 0px solid $alt2-color;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    opacity: 0;
+    @include transition(all)
+  }
+  p{
+    font-size: 2.875rem;
+    line-height: 2.8rem;
+    color: $main-color;
+    font-weight: 600;
+    padding: 1.5rem;
+    @include transition(all)
+  }
+  .triangle{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 25vw;
+    height: 25vw;
+    padding: 0;
+    background: linear-gradient(135deg, $alt-color, $alt2-color);
+    background-position: bottom right;
+    background-size: 100%;
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    @include transition(all, $duration);
+  }
+  &:hover{
+    &:before{
+      border-width: 3px;
+      opacity: 1;
+    }
+    p{
+      color: $alt2-color;
+    }
+    .triangle{
+      background-size: 200%;
+      padding: 2rem;
+      width: calc(25vw - 3rem);
+      height: calc(25vw - 3rem);
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+}

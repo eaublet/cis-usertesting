@@ -1,3 +1,23 @@
+mixin promoFilters(title, links)
+	.cell.promo.filters(class=attributes.class)
+		h6= title
+		ul.filters
+			for l in links
+				li= l
+
+mixin promoBigOff(left, right, bottom, btn)
+	.cell.promo.bigOff(class=attributes.class)
+		.content
+			.left= left
+			.right= right
+			.sale!= bottom
+
+		a.btn.btn-alt.btn-full.btn-big= btn
+
+mixin promoShipping(txt)
+	.cell.promo.shipping(class=attributes.class)
+		p!= txt
+		.triangle
 mixin promo(img)
 	.cell.promo(class=attributes.class)
 		img.full(src=img)
