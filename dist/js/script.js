@@ -475,31 +475,40 @@
   };
 
   watchField = function(el, nextLabel) {
-    var elements, i, j, len, results, toValidate;
+    var elements, i, j, len, nextSection, results, toValidate;
     if (el !== false) {
       elements = el.split(',');
       toValidate = elements.length;
-      log(toValidate);
+      nextSection = $('.section.inactive').first();
+      log(nextSection);
       results = [];
       for (j = 0, len = elements.length; j < len; j++) {
         i = elements[j];
         results.push($(i).on('focus', function() {
           toValidate--;
-          log(toValidate);
           if (toValidate === 0) {
             return setTimeout((function() {
               $('.nextStep').removeClass('btn-inactive isHidden', {
                 duration: 500
               });
-              return $('.section.inactive').first().find('h2').animate({
+              nextSection.css({
+                overflow: 'visible',
+                display: 'block'
+              });
+              nextSection.find('h2').animate({
                 opacity: 0.25
               }, 500);
+              return nextSection.attr('tabIndex', 0);
             }), 500);
           }
         }));
       }
       return results;
     } else {
+      nextSection.css({
+        overflow: 'visible',
+        display: 'block'
+      });
       return $('.nextStep').html(nextLabel).removeClass('isHidden');
     }
   };
@@ -546,6 +555,11 @@
         watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping');
         return checkoutButtonNextStep(step);
       case 1:
+        setTimeout((function() {
+          return $('.section[data-step=1]').first().find('h2').animate({
+            opacity: 1
+          }, 500);
+        }), 500);
         $('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
         $('.section[data-step=0] .surcontent .email').text($('#first-email').val());
         $('#second-fn').val($('#first-fn').val());
@@ -554,6 +568,11 @@
         watchField('#second-address', 'Continue to payment');
         return checkoutButtonNextStep(step);
       case 2:
+        setTimeout((function() {
+          return $('.section[data-step=2]').first().find('h2').animate({
+            opacity: 1
+          }, 500);
+        }), 500);
         $('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#third-cc', 'Continue to review');
         return checkoutButtonNextStep(step);
@@ -561,6 +580,12 @@
         if (!$('body').hasClass('desktop')) {
           $('.cartSummary').hide();
         }
+        setTimeout((function() {
+          $('.section[data-step=3]').first().find('h2').animate({
+            opacity: 1
+          }, 500);
+          return $('.section[data-step=3]').attr('tabbindex', 0);
+        }), 500);
         setTimeout((function() {
           return $('.nextStep[data-current-step=3]').html('Complete your purchase').removeClass('btn-inactive isHidden');
         }), 320);

@@ -374,18 +374,22 @@ watchField = (el, nextLabel) ->
 	unless el is false
 		elements = el.split(',')
 		toValidate = elements.length
+		nextSection = $('.section.inactive').first()
+		log(nextSection)
 		# $('.nextStep').html(nextLabel)
-		log(toValidate)
 		for i in elements
 			$(i).on 'focus', ->
 				toValidate--
-				log(toValidate)
 				if toValidate is 0
+
 					setTimeout (->
 						$('.nextStep').removeClass 'btn-inactive isHidden', {duration:500}
-						$('.section.inactive').first().find('h2').animate {opacity: 0.25}, 500
+						nextSection.css {overflow: 'visible'; display: 'block';}
+						nextSection.find('h2').animate {opacity: 0.25}, 500
+						nextSection.attr('tabIndex', 0)
 					), 500
 	else
+		nextSection.css {overflow: 'visible'; display: 'block';}
 		$('.nextStep').html(nextLabel).removeClass('isHidden')
 
 checkoutButtonNextStep = (thisStep) ->
@@ -419,6 +423,9 @@ changeStep = (step = 0) ->
 			watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping')
 			checkoutButtonNextStep(step)
 		when 1
+			setTimeout (->
+				$('.section[data-step=1]').first().find('h2').animate {opacity: 1}, 500
+			), 500
 			$('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
 			$('.section[data-step=0] .surcontent .email').text($('#first-email').val())
 			$('#second-fn').val($('#first-fn').val())
@@ -427,12 +434,20 @@ changeStep = (step = 0) ->
 			watchField('#second-address', 'Continue to payment')
 			checkoutButtonNextStep(step)
 		when 2
+			setTimeout (->
+				$('.section[data-step=2]').first().find('h2').animate {opacity: 1}, 500
+			), 500
 			$('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#third-cc', 'Continue to review')
 			checkoutButtonNextStep(step)
 		when 3
 			unless $('body').hasClass 'desktop'
 				$('.cartSummary').hide()
+			setTimeout (->
+				$('.section[data-step=3]').first().find('h2').animate {opacity: 1}, 500
+				$('.section[data-step=3]').attr('tabbindex', 0)
+
+			), 500
 			setTimeout ( -> $('.nextStep[data-current-step=3]').html('Complete your purchase').removeClass('btn-inactive isHidden') ), 320
 			checkoutButtonNextStep(JSON.stringify(step))
 		else

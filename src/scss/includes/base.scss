@@ -152,7 +152,14 @@ body {
     right: 0;
     display: none;
   }
+  // &.active {
+  //   h2.left {
+  //     opacity: 1 !important;
+  //   }
+  // }
   &.inactive {
+    overflow: hidden;
+    display: none;
     h2 {
       opacity: 0;
     }
