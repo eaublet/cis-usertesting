@@ -333,6 +333,8 @@ checkout = () ->
 		# $('.c-checkout__wrapper').removeClass 'isHidden'
 		# $('.c-checkout__wrapper').addClass 'isVisible'
 
+window.goto = (link) ->
+	window.location = link || '/';
 
 initCheckboxes = () ->
 	$('.check').click ->

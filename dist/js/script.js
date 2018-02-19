@@ -431,6 +431,10 @@
     });
   };
 
+  window.goto = function(link) {
+    return window.location = link || '/';
+  };
+
   initCheckboxes = function() {
     return $('.check').click(function() {
       return $(this).toggleClass('checked');
