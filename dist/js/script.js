@@ -91,12 +91,10 @@
     $('.megaNav').addClass('active');
     $('.megaNav').addClass(panel);
     if (panel !== $('.navpanel.active').attr('data-panel')) {
-      $('.navpanel, .navItem').each(function() {
-        return $(this).removeClass('active');
-      });
-      return setTimeout((function() {
+      return $('.navpanel, .navItem').each(function() {
+        $(this).removeClass('active');
         return $('.navpanel[data-panel=' + panel + ']').addClass('active');
-      }), 320);
+      });
     }
   };
 

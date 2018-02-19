@@ -59,9 +59,9 @@ hidePanel = () ->
 	$('.navpanel, .navItem').each ->
 		$(@).removeClass 'active'
 	$('.megaNav').addClass 'inactive'
-	setTimeout (->
+	# setTimeout (->
 		$('.megaNav').removeClass 'active sale inactive'
-	), 320
+	# ), 320
 
 showMegaNav = (panel) ->
 	$('body').addClass 'overlayed'
@@ -71,9 +71,9 @@ showMegaNav = (panel) ->
 	unless panel is $('.navpanel.active').attr('data-panel')
 		$('.navpanel, .navItem').each ->
 			$(@).removeClass 'active'
-		setTimeout ( ->
+		# setTimeout ( ->
 			$('.navpanel[data-panel=' + panel + ']').addClass 'active'
-		), 320
+		# ), 320
 
 
 
