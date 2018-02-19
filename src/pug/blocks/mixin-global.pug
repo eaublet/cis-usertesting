@@ -60,12 +60,13 @@ mixin pdpButtons(desktop)
 				a.link.save.icon Save for later
 				a.link.icon.share Share
 
-mixin input(collect, label, id, value)
+mixin input(collect, label, id, value, type)
+	- var fieldtype = type || 'text'
 	.input
 		if collect
-			input.collect(type='text', id=id, value=value, placeholder=label)
+			input.collect(type=fieldtype, id=id, value=value, placeholder=label)
 		else
-			input(type='text', id=id, value=value, placeholder=label)
+			input(type=fieldtype, id=id, value=value, placeholder=label)
 		label(for=id)!= label
 
 mixin check(checked, label, sub)

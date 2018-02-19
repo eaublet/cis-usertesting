@@ -102,7 +102,7 @@ body { font-family: "Dia", "sans-serif"; }
 h1, h2, h3, h4, h5, h6, .header, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: "Dia", "sans-serif"; line-height: 1; margin: 0; }
 
 p { margin: 0; }
-p a.btnLink { font-size: 1rem; }
+p a.btnLink { font-size: 1em; }
 p.lead { margin: 2rem 0; line-height: 1.5; }
 @media (min-width: 1024px) { p.lead { font-size: 1.125rem; line-height: 2; } }
 p.large { margin: 1rem 0; line-height: 1.5; }
@@ -706,10 +706,10 @@ header h1 { margin-bottom: 2rem; }
 .input { width: 100%; position: relative; }
 @media (min-width: 1024px) { .input { margin-top: 2rem; } }
 
-input[type='text'] { border-radius: 0; display: block; height: 3.75rem; width: 100%; border: 0; font-size: 1.125rem; border-bottom: 1px solid #ccc; margin-bottom: 1.5rem; font-family: "Dia", "sans-serif"; padding: 0; }
-input[type='text'] + label { color: #767676; position: absolute; top: 1.125rem; left: 0; font-size: 1.125rem; -ms-transform-origin: top left; transform-origin: top left; -ms-transform: scale(0.75) translate(0, -1.5rem); transform: scale(0.75) translate(0, -1.5rem); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
-input[type='text']:placeholder-shown + label { -ms-transform: scale(1) translate(0, 0); transform: scale(1) translate(0, 0); }
-input[type='text']:focus { outline: none; border-color: #683EBD; }
+input[type='text'], input[type='email'], input[type='number'], input[type='tel'] { border-radius: 0; display: block; height: 3.75rem; width: 100%; border: 0; font-size: 1.125rem; border-bottom: 1px solid #ccc; margin-bottom: 1.5rem; font-family: "Dia", "sans-serif"; padding: 0; }
+input[type='text'] + label, input[type='email'] + label, input[type='number'] + label, input[type='tel'] + label { color: #767676; position: absolute; top: 1.125rem; left: 0; font-size: 1.125rem; -ms-transform-origin: top left; transform-origin: top left; -ms-transform: scale(0.75) translate(0, -1.5rem); transform: scale(0.75) translate(0, -1.5rem); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
+input[type='text']:placeholder-shown + label, input[type='email']:placeholder-shown + label, input[type='number']:placeholder-shown + label, input[type='tel']:placeholder-shown + label { -ms-transform: scale(1) translate(0, 0); transform: scale(1) translate(0, 0); }
+input[type='text']:focus, input[type='email']:focus, input[type='number']:focus, input[type='tel']:focus { outline: none; border-color: #683EBD; }
 
 input:focus + label { -ms-transform: scale(0.75) translate(0, -1.5rem) !important; transform: scale(0.75) translate(0, -1.5rem) !important; }
 

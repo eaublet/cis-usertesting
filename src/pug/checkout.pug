@@ -28,7 +28,7 @@ body.checkout
 			.content
 				+input(false, 'First name', 'first-fn')
 				+input(false, 'Last name', 'first-ln')
-				+input(true, 'Email address', 'first-email')
+				+input(true, 'Email address', 'first-email', '', 'email')
 				+check(false, 'Yes, please send me newsletters')
 				//- a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=0) Continue to shipping
 				.nextStep-wrapper.isHidden(data-current-step=0)
@@ -65,9 +65,9 @@ body.checkout
 					p.lead We ship to any valid United States address, except A.P.O./F.P.O. and P.O. box.
 					+input(false, 'First name', 'second-fn')
 					+input(false, 'Last name', 'second-ln')
-					+input(false, 'Phone number*', 'second-pn')
+					+input(false, 'Phone number*', 'second-pn', '', 'tel')
 					p.small *We'll only call if we need assistance delivering your order
-					+input(false, 'Extension (optional)', 'second-ext')
+					+input(false, 'Extension (optional)', 'second-ext', '', 'tel')
 					+input(false, 'Start typing your address...', 'second-address')
 					.hidden-address
 						+input(false, 'Address Line 1', 'addr-line1', '400 Boulevard de Maisonneuve O #700')
@@ -114,8 +114,8 @@ body.checkout
 						img(src="/img/checkout/cc.png", width=194)
 						img(src="/img/checkout/ccFade.png", width=194)
 					.row.gutter
-						.column: +input(false, 'Exp. MM/YY', 'third-exp')
-						.column: +input(false, 'CVC', 'third-cvc')
+						.column: +input(false, 'Exp. MM/YY', 'third-exp','', 'number')
+						.column: +input(false, 'CVC', 'third-cvc','', 'number')
 
 					+check(true, 'Billing address same as shipping', 'Billing address, country, name, and zip code must match your credit card statement.')
 					.address

@@ -347,7 +347,7 @@ header {
     margin-top: 2rem;
   }
 }
-input[type='text'] {
+input[type='text'] , input[type='email'], input[type='number'], input[type='tel']  {
   border-radius: 0;
   display: block;
   height: 3.75rem;
