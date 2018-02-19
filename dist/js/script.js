@@ -732,6 +732,14 @@
   };
 
   $(document).ready(function() {
+    $('#openFilters').click(function() {
+      $('body').addClass('overlayed');
+      return $('.filterPanel').addClass('active');
+    });
+    $('.filterPanel .close').click(function() {
+      $('body').removeClass('overlayed');
+      return $('.filterPanel').removeClass('active');
+    });
     initUI();
     $('.surnav').dblclick(function() {
       return window.location = './';
