@@ -1,5 +1,5 @@
 (function() {
-  var addToCart, addToProductList, addToWishList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initParalax, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, scrollTop, setAdded, showCart, showMegaNav, showOverlay, showUtility, sizeSelector, stickyBuyNow, updateCart, updateCartCount, watchField;
+  var addToCart, addToProductList, addToWishList, changeStep, checkAddress, checkCC, checkout, checkoutButtonNextStep, closeCart, closeOverlay, colorSelector, getInfos, getProducts, getUrlParameter, hidePanel, initBuySticky, initCheckboxes, initCheckout, initCheckoutButton, initConfirm, initNav, initPDP, initPanelNav, initParalax, initRadios, initReveal, initSections, initSurvey, initTabs, initUI, log, quickAddToCart, removeProduct, scrollTop, setAdded, showCart, showMegaNav, showOverlay, showUtility, sizeSelector, stickyBuyNow, toggleAvB, updateCart, updateCartCount, watchField;
 
   log = function(msg) {
     return console.log(msg);
@@ -626,6 +626,20 @@
     }
   };
 
+  toggleAvB = function() {
+    return $('.avb').click(function(e) {
+      if ($(e.target).hasClass('option-a')) {
+        return setTimeout((function() {
+          return $('.result-a').removeClass('isHidden');
+        }), 250);
+      } else {
+        return setTimeout((function() {
+          return $('.result-b').removeClass('isHidden');
+        }), 250);
+      }
+    });
+  };
+
   initPDP = function() {
     window.products = [];
     window.product = {
@@ -650,7 +664,8 @@
     initRadios();
     addToWishList();
     scrollTop();
-    return showUtility();
+    showUtility();
+    return toggleAvB();
   };
 
   showUtility = function() {

@@ -517,6 +517,21 @@ getInfos = () ->
 		if infos.name
 			$('span.name').html(infos.name)
 
+
+toggleAvB = () ->
+	$('.avb').click (e) ->
+
+		if $(e.target).hasClass('option-a')
+			setTimeout (->
+				$('.result-a').removeClass('isHidden')
+			), 250
+		else
+			setTimeout (->
+				$('.result-b').removeClass('isHidden')
+			), 250
+
+
+
 initPDP = () ->
 	window.products = []
 	window.product = {name: $('h1.productName').text(), price: $('p.price').first().text(), active: false}
@@ -539,6 +554,7 @@ initUI = () ->
 	addToWishList()
 	scrollTop()
 	showUtility()
+	toggleAvB()
 	# initTabs()
 
 showUtility = () ->
