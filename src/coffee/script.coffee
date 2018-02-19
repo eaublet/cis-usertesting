@@ -59,9 +59,7 @@ hidePanel = () ->
 	$('.navpanel, .navItem').each ->
 		$(@).removeClass 'active'
 	$('.megaNav').addClass 'inactive'
-	# setTimeout (->
-		$('.megaNav').removeClass 'active sale inactive'
-	# ), 320
+	$('.megaNav').removeClass 'active sale inactive'
 
 showMegaNav = (panel) ->
 	$('body').addClass 'overlayed'
@@ -71,9 +69,7 @@ showMegaNav = (panel) ->
 	unless panel is $('.navpanel.active').attr('data-panel')
 		$('.navpanel, .navItem').each ->
 			$(@).removeClass 'active'
-		# setTimeout ( ->
-			$('.navpanel[data-panel=' + panel + ']').addClass 'active'
-		# ), 320
+		$('.navpanel[data-panel=' + panel + ']').addClass 'active'
 
 
 
@@ -119,8 +115,8 @@ initNav = () ->
 addToWishList = () ->
 	$('.addToWishList').click ->
 		totalFav = $('#fav .count').text()
-		$(@).toggleClass 'added'
-		if $(@).hasClass 'added'
+		$(@).parent().toggleClass 'added'
+		if $(@).parent().hasClass 'added'
 			val = parseInt(totalFav) + 1
 			$('#fav').find('.count').text(val)
 		else

@@ -353,7 +353,10 @@ a.uncolor {
       margin: 0 0.5rem;
     }
     .item:last-child {
-      margin-left: 4rem;
+      margin-left: 1.5rem;
+      img{
+        filter: grayscale(100%);
+      }
     }
   }
 }
@@ -1460,4 +1463,8 @@ h1 + h6{
 
 .desktop .container .options{
   padding-right: 0;
+}
+
+.filterPanel h1{
+  margin-bottom: 1rem;
 }

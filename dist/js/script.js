@@ -80,9 +80,7 @@
       return $(this).removeClass('active');
     });
     $('.megaNav').addClass('inactive');
-    return setTimeout((function() {
-      return $('.megaNav').removeClass('active sale inactive');
-    }), 320);
+    return $('.megaNav').removeClass('active sale inactive');
   };
 
   showMegaNav = function(panel) {
@@ -91,10 +89,10 @@
     $('.megaNav').addClass('active');
     $('.megaNav').addClass(panel);
     if (panel !== $('.navpanel.active').attr('data-panel')) {
-      return $('.navpanel, .navItem').each(function() {
-        $(this).removeClass('active');
-        return $('.navpanel[data-panel=' + panel + ']').addClass('active');
+      $('.navpanel, .navItem').each(function() {
+        return $(this).removeClass('active');
       });
+      return $('.navpanel[data-panel=' + panel + ']').addClass('active');
     }
   };
 
@@ -152,8 +150,8 @@
     return $('.addToWishList').click(function() {
       var totalFav, val;
       totalFav = $('#fav .count').text();
-      $(this).toggleClass('added');
-      if ($(this).hasClass('added')) {
+      $(this).parent().toggleClass('added');
+      if ($(this).parent().hasClass('added')) {
         val = parseInt(totalFav) + 1;
         return $('#fav').find('.count').text(val);
       } else {
