@@ -213,8 +213,10 @@ updateCart = (products) ->
 	$('#navBag').addClass('adding')
 	setTimeout ( ->
 		updateCartCount(products.length)
+	), 1000
+	setTimeout ( ->
 		$('#navBag').removeClass('adding')
-	), 1300
+	), 2300
 	totalValue = 0
 	$.each products, (index) ->
 		oldVal = totalValue

@@ -261,9 +261,11 @@
     $('nav.mobile, .desktop.navContent').addClass('headroom--pinned').removeClass('headroom--unpinned');
     $('#navBag').addClass('adding');
     setTimeout((function() {
-      updateCartCount(products.length);
+      return updateCartCount(products.length);
+    }), 1000);
+    setTimeout((function() {
       return $('#navBag').removeClass('adding');
-    }), 1300);
+    }), 2300);
     totalValue = 0;
     $.each(products, function(index) {
       var oldVal, productRowTmpl;

@@ -180,7 +180,8 @@
       &:before {
         transform: translate(-50%, -50%) rotate(0.5turn);
         opacity: 0;
-        @include transition(all, $longDuration, ease-out);
+        transition: all $longDuration ($longDuration * 2) ease-out;
+        // @include transition(all, $longDuration, ease-out);
       }
     }
   }
@@ -753,12 +754,12 @@ ul.dropDownButtons {
   background: white;
   border-radius: 0;
   font-size: 0.875rem;
-  border: 2px solid;
+  border: 1px solid;
   width: 100%;
   height: 3.75rem;
   display: inline-block;
   vertical-align: text-bottom;
-  font-weight: 700;
+  font-weight: 400;
   padding: 0 1.2rem;
   @media (max-width: 640px) {
     height: 2.5rem;

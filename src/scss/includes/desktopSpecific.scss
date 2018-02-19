@@ -420,6 +420,9 @@ a.uncolor {
         }
       }
     }
+    .btn, .selectbox-wrapper{
+      width: 190px;
+    }
     .left,
     .right {
       transition: all $longDuration $duration $ease;
@@ -1188,7 +1191,7 @@ body.desktop.fixed {
     position: absolute;
     top: 1.5rem;
     left: 1.5rem;
-    background: $main-gradient;
+    background:linear-gradient(135deg, #10069F 0%, #9932CC 100%);
     width: calc(100% - 3rem);
     height: calc(100% - 3rem);
   }
@@ -1264,7 +1267,7 @@ body.desktop.fixed {
     margin-top: 1rem;
     border: 2px solid $main-color;
     font-weight: 600;
-    @include transition(all)
+    @include transition(all, $longDuration)
   }
   &:before{
     border: 0px solid $alt2-color;
@@ -1276,7 +1279,7 @@ body.desktop.fixed {
     left: 0;
     box-sizing: border-box;
     opacity: 0;
-    @include transition(all)
+    @include transition(all, $longDuration)
   }
   &:hover{
     // &:before{
