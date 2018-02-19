@@ -373,55 +373,73 @@ initSections = () ->
 	# 	$(@).parent().prevAll().removeClass('active').addClass('inactive filled')
 
 watchField = (el, nextLabel) ->
-	console.log(el.split(','))
-	unless el is false
-		elements = el.split(',')
-		toValidate = elements.length
-		nextSection = $('.section.inactive').first()
-		nextStepIndex = parseInt($('.section.inactive').first().data('step'))
-		log(toValidate)
-		for i in elements
-			$(i).on 'focus', ->
-				toValidate--
-				if toValidate is 0
-					log($('.nextStep'))
-					setTimeout (->
-						$('.nextStep').removeClass('isHidden')
-						$('a.btn').removeClass('btn-inactive')
-						$('.nextStep-wrapper.isHidden').first().removeClass('isHidden').css({visibility: 'visible'; display: 'block'}).animate {opacity: 1;}, 500
-					), 500
-	else
-		nextSection.css {overflow: 'visible'; display: 'block';}
-		$('.nextStep').html(nextLabel).removeClass('isHidden')
+	$(el).keyup (event) ->
+		if $(el).val().length > 0
+			log($('.nextStep'))
+			setTimeout (->
+				$('.nextStep').removeClass('isHidden')
+				$('a.btn').removeClass('btn-inactive')
+				$('.nextStep-wrapper.isHidden').removeClass('isHidden').addClass('transition')
+				setTimeout (->
+					$('.nextStep-wrapper').removeClass('transition')
+				), 100
+			), 500
+	# console.log(el.split(','))
+	# unless el is false
+	# 	elements = el.split(',')
+	# 	toValidate = elements.length
+	# 	nextSection = $('.section.inactive').first()
+	# 	nextStepIndex = parseInt($('.section.inactive').first().data('step'))
+	# 	log(toValidate)
+	# 	for i in elements
+	# 		$(i).on 'focus', ->
+	# 			toValidate--
+	# 			if toValidate is 0
+	# 				log($('.nextStep'))
+	# 				setTimeout (->
+	# 					$('.nextStep').removeClass('isHidden')
+	# 					$('a.btn').removeClass('btn-inactive')
+	# 					$('.nextStep-wrapper.isHidden').removeClass('isHidden').addClass('transition')
+	# 					setTimeout (->
+	# 						$('.nextStep-wrapper').removeClass('transition')
+	# 					), 100
+	# 				), 500
+	# else
+	# 	nextSection.css {overflow: 'visible'; display: 'block';}
+	# 	$('.nextStep').html(nextLabel).removeClass('isHidden')
 
 checkoutButtonNextStep = ->
 	maxStep = '3'
 	$('.nextStep').unbind('click').click ->
-		if $(@).hasClass 'isHidden'
+		# if $(@).hasClass 'isHidden'
+		# 	return
+		# else
+		thisStep = $(@).attr('data-current-step')
+
+		if thisStep == maxStep
+			if $('body').hasClass 'desktop'
+				$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }')
+			else
+				$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
+			$('.nextStep[data-current-step=' + thisStep + ']').click()
 			return
 		else
-			thisStep = $(@).attr('data-current-step')
 
-			if thisStep == maxStep
-				if $('body').hasClass 'desktop'
-					$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }')
-				else
-					$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}')
-				$('.nextStep[data-current-step=' + thisStep + ']').click()
-				return
-			else
-				$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
-				thisStep++
-				$('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass 'active'
-				setTimeout (-> $('html, body').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 640), 640
-				# $(@).attr('data-current-step', thisStep).addClass('btn-inactive isHidden')
-				$('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden')
-				changeStep()
+			$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
+			thisStep++
+			$('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass 'active'
+			# setTimeout (-> 
+			# 	console.log('ujyjh')
+			# 	$('.sideLeft').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 1640
+			# ), 3640
+			# $(@).attr('data-current-step', thisStep).addClass('btn-inactive isHidden')
+			$('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden')
+			changeStep()
 
 changeStep = ->
 	switch $('.nextStep.isHidden').attr('data-current-step')
 		when '0'
-			watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping')
+			watchField('#first-email', 'Continue to shipping')
 			checkoutButtonNextStep()
 		when '1'
 			$('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())

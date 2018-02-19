@@ -158,10 +158,25 @@ body {
     h2.left {
       color: $black;
     }
+    .nextStep.btn{
+      margin-top: 2rem;
+    }
     .nextStep-wrapper {
-      opacity: 0;
-      visibility: hidden;
-      display: none;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      @include transition(all, $duration);
+      &.transition{
+        opacity: 0;
+        transform: translateY(2rem);
+        visibility: visible;
+        display: block;
+      }
+      &.isHidden{
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+      }
       .isHidden h2 {
         opacity: 0;
       }
@@ -184,9 +199,13 @@ body {
   }
   &.filled {
     &.inactive {
+      overflow: visible;
       opacity: 1;
       visibility: visible;
       display: inherit;
+      .surcontent{
+        display: block;
+      }
     }
     .surcontent {
       display: block;

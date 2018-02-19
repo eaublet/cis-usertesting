@@ -37,7 +37,7 @@ body.checkout.desktop
 							.column
 								+check(false, 'Yes, please send me newsletters')
 						.nextStep-wrapper.isHidden(data-current-step=0)
-							a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=0) Continue to shipping
+							a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden.btn-full(data-current-step=0) Continue to shipping
 							a.nextStep.isHidden(data-current-step=0)
 								h2.left Where are we sending your items?
 				.section.inactive(data-step=1)
@@ -95,7 +95,7 @@ body.checkout.desktop
 							| Show me only if ship to store is selected
 						//- a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=1) Continue to payment
 						.nextStep-wrapper.isHidden(data-current-step=1)
-							a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=1) Continue to payment
+							a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden.btn-full(data-current-step=1) Continue to payment
 							a.nextStep.isHidden(data-current-step=1)
 								h2.left How would you like to pay?
 				.section.inactive(data-step=2)
@@ -141,7 +141,7 @@ body.checkout.desktop
 							| Show me only if Visa Checkout
 						//- a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=2) Continue to review
 						.nextStep-wrapper.isHidden(data-current-step=2)
-							a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=2) Continue to review
+							a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden.btn-full(data-current-step=2) Continue to review
 							a.nextStep.isHidden(data-current-step=2)
 								h2.left Review your order
 				.section.inactive(data-step=3)
@@ -177,7 +177,7 @@ body.checkout.desktop
 									.totalPrice $XX
 
 						+check(false, 'Save this information to my account', 'Save your info for fast and easy checkout, plus see our recommendations based on the styles you like.')
-						a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden(data-current-step=3) Complete your purchase
+						a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden.btn-full(data-current-step=3) Complete your purchase
 			//- a.btn.btn-full.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive(data-current-step=0) Continue to shipping
 		.sideRight
 			.cartSummary

@@ -479,42 +479,19 @@
   };
 
   watchField = function(el, nextLabel) {
-    var elements, i, j, len, nextSection, nextStepIndex, results, toValidate;
-    console.log(el.split(','));
-    if (el !== false) {
-      elements = el.split(',');
-      toValidate = elements.length;
-      nextSection = $('.section.inactive').first();
-      nextStepIndex = parseInt($('.section.inactive').first().data('step'));
-      log(toValidate);
-      results = [];
-      for (j = 0, len = elements.length; j < len; j++) {
-        i = elements[j];
-        results.push($(i).on('focus', function() {
-          toValidate--;
-          if (toValidate === 0) {
-            log($('.nextStep'));
-            return setTimeout((function() {
-              $('.nextStep').removeClass('isHidden');
-              $('a.btn').removeClass('btn-inactive');
-              return $('.nextStep-wrapper.isHidden').first().removeClass('isHidden').css({
-                visibility: 'visible',
-                display: 'block'
-              }).animate({
-                opacity: 1
-              }, 500);
-            }), 500);
-          }
-        }));
+    return $(el).keyup(function(event) {
+      if ($(el).val().length > 0) {
+        log($('.nextStep'));
+        return setTimeout((function() {
+          $('.nextStep').removeClass('isHidden');
+          $('a.btn').removeClass('btn-inactive');
+          $('.nextStep-wrapper.isHidden').removeClass('isHidden').addClass('transition');
+          return setTimeout((function() {
+            return $('.nextStep-wrapper').removeClass('transition');
+          }), 100);
+        }), 500);
       }
-      return results;
-    } else {
-      nextSection.css({
-        overflow: 'visible',
-        display: 'block'
-      });
-      return $('.nextStep').html(nextLabel).removeClass('isHidden');
-    }
+    });
   };
 
   checkoutButtonNextStep = function() {
@@ -522,29 +499,20 @@
     maxStep = '3';
     return $('.nextStep').unbind('click').click(function() {
       var thisStep;
-      if ($(this).hasClass('isHidden')) {
-
-      } else {
-        thisStep = $(this).attr('data-current-step');
-        if (thisStep === maxStep) {
-          if ($('body').hasClass('desktop')) {
-            $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }');
-          } else {
-            $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
-          }
-          $('.nextStep[data-current-step=' + thisStep + ']').click();
+      thisStep = $(this).attr('data-current-step');
+      if (thisStep === maxStep) {
+        if ($('body').hasClass('desktop')) {
+          $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }');
         } else {
-          $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
-          thisStep++;
-          $('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass('active');
-          setTimeout((function() {
-            return $('html, body').animate({
-              scrollTop: $('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()
-            }, 640);
-          }), 640);
-          $('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden');
-          return changeStep();
+          $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirm.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '"}');
         }
+        $('.nextStep[data-current-step=' + thisStep + ']').click();
+      } else {
+        $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
+        thisStep++;
+        $('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass('active');
+        $('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden');
+        return changeStep();
       }
     });
   };
@@ -552,7 +520,7 @@
   changeStep = function() {
     switch ($('.nextStep.isHidden').attr('data-current-step')) {
       case '0':
-        watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping');
+        watchField('#first-email', 'Continue to shipping');
         return checkoutButtonNextStep();
       case '1':
         $('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
