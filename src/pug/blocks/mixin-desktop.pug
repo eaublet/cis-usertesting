@@ -55,22 +55,16 @@ mixin product(title, price, img, link, padded, sale, salePrice, slash)
 				img.full(src='/img/products/' + img + '')
 			.details
 				.title!= title
-<<<<<<< HEAD
 				if slash
 					.price.slash
 						span!= price
-						if salePrice 
+						if salePrice
 							.salePrice!= salePrice
 				else
 					.price
 						span!= price
-						if salePrice 
+						if salePrice
 							.salePrice!= salePrice
-=======
-				.price!= price
-				if salePrice
-					.salePrice!= salePrice
->>>>>>> WIP A/B module
 
 mixin trendModule(title, cta, img, sur, p)
 	.trendModule(style='background-image: url(' + img + ')', class=attributes.class)
@@ -373,17 +367,19 @@ mixin sizeSelectbox(sizes, desktop)
 					option(value=s) Size #{s}
 
 mixin AvB(women = true)
-	- var file = women ? "StyleAorB" : "TwoWaysAorB"
-	.avb
-		.options
-			.option-a
-			.option-b
-			img(src="/img/plp/" + file + "_A.png")
-		.results
-			.result-a.isHidden
-				img(src="/img/plp/result_" + file + "_A.png")
-			.result-b.isHidden
-				img(src="/img/plp/result_" + file + "_B.png")
+	if women
+		.avb
+			.options
+				.option-a
+				.option-b
+				img(src="/img/plp/Prefer_Desktop_A.png ")
+			.results
+				.result-a.isHidden
+					img(src="/img/plp/Prefer_Desktop_B1.png")
+				.result-b.isHidden
+					img(src="/img/plp/Prefer_Desktop_B2.png")
+	else
+		img(src="/img/plp/TwoWays_Desktop.png")
 
 
 

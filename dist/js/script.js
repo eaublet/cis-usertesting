@@ -628,15 +628,14 @@
 
   toggleAvB = function() {
     return $('.avb').click(function(e) {
-      log($(e.target).get(0) === $('.option-a img').get(0));
-      if ($(e.target) === $('.option-a img')) {
+      if ($(e.target).hasClass('option-a')) {
         return setTimeout((function() {
           return $('.result-a').removeClass('isHidden');
-        }), 500);
+        }), 250);
       } else {
         return setTimeout((function() {
           return $('.result-b').removeClass('isHidden');
-        }), 500);
+        }), 250);
       }
     });
   };

@@ -520,15 +520,15 @@ getInfos = () ->
 
 toggleAvB = () ->
 	$('.avb').click (e) ->
-		log($(e.target).get(0), $('.option-a img').get(0))
-		if $(e.target) == $('.option-a img')
+
+		if $(e.target).hasClass('option-a')
 			setTimeout (->
 				$('.result-a').removeClass('isHidden')
-			), 500
+			), 250
 		else
 			setTimeout (->
 				$('.result-b').removeClass('isHidden')
-			), 500
+			), 250
 
 
 

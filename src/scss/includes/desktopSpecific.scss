@@ -354,7 +354,7 @@ a.uncolor {
     }
     .item:last-child {
       margin-left: 1.5rem;
-      img{
+      img {
         filter: grayscale(100%);
       }
     }
@@ -1421,35 +1421,32 @@ h1 + h6 {
   }
 }
 
-<<<<<<< HEAD
-
-
-.salePrice{
+.salePrice {
   color: $main-color;
   font-weight: 700;
   display: inline;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
-.saleMessage{
+.saleMessage {
   position: absolute;
   top: 1rem;
   left: 1rem;
   z-index: 100;
-  font-size: .875rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: $main-color;
   width: calc(100% - 2rem);
   height: 2rem;
-  &.new{
-    span{
+  &.new {
+    span {
       padding: 4px 6px 3px 7px;
       background-color: $main-color;
       color: white;
     }
   }
-  &.triangle{
-    &:before{
-      content: "";
+  &.triangle {
+    &:before {
+      content: '';
       width: 0;
       position: absolute;
       height: 0;
@@ -1462,20 +1459,20 @@ h1 + h6 {
   }
 }
 
-.price.slash{
-  > span{
+.price.slash {
+  > span {
     text-decoration: line-through;
   }
 }
 
-.desktop .container .options{
+.desktop .container .options {
   padding-right: 0;
 }
 
-.filterPanel h1{
+.filterPanel h1 {
   margin-bottom: 1rem;
 }
-=======
+
 .avb {
   position: relative;
   .options {
@@ -1485,11 +1482,11 @@ h1 + h6 {
   .option-b {
     opacity: 1;
     cursor: pointer;
-    transition: all 400ms ease;
     position: absolute;
     top: 0;
     width: 50%;
     bottom: 0;
+    z-index: 10;
   }
   .option-a {
     left: 0;
@@ -1504,6 +1501,7 @@ h1 + h6 {
   .result-a,
   .result-b {
     opacity: 1;
+    transition: all 400ms ease;
     &.isHidden {
       position: absolute;
       top: 0;
@@ -1512,4 +1510,3 @@ h1 + h6 {
     }
   }
 }
->>>>>>> WIP A/B module
