@@ -116,6 +116,7 @@ h1.big { font-size: 3.75rem; }
 @media (max-width: 768px) { h1.big { font-size: 2.75rem; } }
 
 h2 { font-size: 1.875rem; text-align: center; margin: 2rem 0 2rem; font-weight: 500; }
+h2 .eyeBrow { color: #767676; font-size: .875rem; font-weight: 400; margin-bottom: .25rem; }
 h2 img { display: block; margin: 0.45rem auto; }
 h2.left { text-align: left; }
 @media (min-width: 1024px) { h2 { font-size: 2.25rem; margin: 6rem 0 4rem; } }
