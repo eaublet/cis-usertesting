@@ -798,12 +798,22 @@ ul.dropDownButtons {
 .addToWishList {
   position: absolute;
   z-index: 1;
-  top: 1rem;
+  bottom: 1rem;
+  opacity: 0;
+  @include transition(opacity);
   right: 1rem;
   &.added {
     path {
       fill: #ff8585;
       transition: fill 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+  }
+}
+.cell.product:hover{
+  .addToWishList{
+    opacity: .3;
+    &:hover{
+      opacity: 1;
     }
   }
 }
