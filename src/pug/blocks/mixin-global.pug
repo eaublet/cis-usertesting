@@ -83,6 +83,14 @@ mixin check(checked, label, sub)
 			if sub
 				span.sub!= sub
 
+mixin utility(helpCenter = false)
+	.utility
+		if helpCenter
+			.helpCenter
+				img(src="/img/global/helpBtn.png")
+		.scrollToTop.isHidden
+			img(src="/img/global/bttBtn.png")
+
 mixin radio(checked, label, sub)
 	if checked
 		.radio.checked
