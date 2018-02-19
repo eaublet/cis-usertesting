@@ -9,7 +9,7 @@ include blocks/std_css.pug
 
 body.checkout
 	+nav('', true)
-	.container
+	.container#checkout
 		header
 			h1 Checkout
 				span.side
@@ -17,7 +17,7 @@ body.checkout
 					a.btnLink Sign in
 
 		.section.active(data-step=0)
-			h2.left 
+			h2.left
 				.eyeBrow 1 of 4
 				|Who is placing the order?
 			a.btn.btn-alt.editSection Edit
@@ -90,7 +90,7 @@ body.checkout
 							.eyeBrow 3 of 4
 							|How would you like to pay?
 		.section.inactive(data-step=2 tabIndex="-1")
-			h2.left 
+			h2.left
 				.eyeBrow 3 of 4
 				|How would you like to pay?
 			a.btn.btn-alt.editSection Edit
@@ -133,11 +133,11 @@ body.checkout
 				.nextStep-wrapper.isHidden(data-current-step=2)
 					a.btn.btn-gradient.btn-big.nextStep.btn-fixedBottom.btn-inactive.isHidden.btn-full(data-current-step=2) Continue to review
 					a.nextStep.isHidden(data-current-step=2)
-						h2.left 
+						h2.left
 							.eyeBrow 4 of 4
 							|Review your order
 		.section.inactive(data-step=3 tabIndex="-1")
-			h2.left 
+			h2.left
 				.eyeBrow 4 of 4
 				|Review your order
 			a.btn.btn-alt.editSection Edit

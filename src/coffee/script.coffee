@@ -417,7 +417,10 @@ checkoutButtonNextStep = ->
 		# 	return
 		# else
 		thisStep = $(@).attr('data-current-step')
-
+		mobileScrollStep = [0, 235, 430, 622]
+		desktopScrollStep = [0, 315, 538, 639]
+		elAnchor = if $('body').hasClass('desktop') then $('#checkout') else $('body')
+		step = if $('body').hasClass('desktop') then desktopScrollStep[parseInt(thisStep) + 1] else mobileScrollStep[parseInt(thisStep) + 1]
 		if thisStep == maxStep
 			if $('body').hasClass 'desktop'
 				$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }')
@@ -430,11 +433,12 @@ checkoutButtonNextStep = ->
 			$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
 			thisStep++
 			$('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass 'active'
-			# setTimeout (-> 
+			# setTimeout (->
 			# 	console.log('ujyjh')
 			# 	$('.sideLeft').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 1640
 			# ), 3640
 			# $(@).attr('data-current-step', thisStep).addClass('btn-inactive isHidden')
+			elAnchor.animate({scrollTop: step})
 			$('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden')
 			changeStep()
 

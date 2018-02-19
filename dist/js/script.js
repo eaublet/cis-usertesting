@@ -500,8 +500,12 @@
     var maxStep;
     maxStep = '3';
     return $('.nextStep').unbind('click').click(function() {
-      var thisStep;
+      var desktopScrollStep, elAnchor, mobileScrollStep, step, thisStep;
       thisStep = $(this).attr('data-current-step');
+      mobileScrollStep = [0, 235, 430, 622];
+      desktopScrollStep = [0, 315, 538, 639];
+      elAnchor = $('body').hasClass('desktop') ? $('#checkout') : $('body');
+      step = $('body').hasClass('desktop') ? desktopScrollStep[parseInt(thisStep) + 1] : mobileScrollStep[parseInt(thisStep) + 1];
       if (thisStep === maxStep) {
         if ($('body').hasClass('desktop')) {
           $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }');
@@ -513,6 +517,9 @@
         $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
         thisStep++;
         $('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass('active');
+        elAnchor.animate({
+          scrollTop: step
+        });
         $('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden');
         return changeStep();
       }

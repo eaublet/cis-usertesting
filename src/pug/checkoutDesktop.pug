@@ -9,7 +9,7 @@ include blocks/std_css.pug
 
 body.checkout.desktop
 	.checkoutLayout
-		.sideLeft
+		.sideLeft#checkout
 			+nav('', true)
 			.container
 				header
@@ -19,7 +19,7 @@ body.checkout.desktop
 							a.btnLink.small Sign in
 
 				.section.active(data-step=0)
-					h2.left 
+					h2.left
 						.eyeBrow 1 of 4
 						|Who is placing the order?
 					a.btn.btn-alt.editSection Edit
@@ -45,7 +45,7 @@ body.checkout.desktop
 									.eyeBrow 2 of 4
 									|Where are we sending your items?
 				.section.inactive(data-step=1)
-					h2.left 
+					h2.left
 						.eyeBrow 2 of 4
 						|Where are we sending your items?
 					a.btn.btn-alt.editSection Edit
@@ -107,7 +107,7 @@ body.checkout.desktop
 									.eyeBrow 3 of 4
 									|How would you like to pay?
 				.section.inactive(data-step=2)
-					h2.left 
+					h2.left
 						.eyeBrow 3 of 4
 						|How would you like to pay?
 					a.btn.btn-alt.editSection Edit
