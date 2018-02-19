@@ -134,6 +134,7 @@ body {
     }
   }
 }
+
 .section {
   margin-top: 3rem;
   position: relative;
@@ -153,11 +154,23 @@ body {
     right: 0;
     display: none;
   }
-  // &.active {
-  //   h2.left {
-  //     opacity: 1 !important;
-  //   }
-  // }
+  &.active {
+    h2.left {
+      color: $black;
+    }
+    .nextStep-wrapper {
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+      .isHidden h2 {
+        opacity: 0;
+      }
+      h2.left {
+        color: $main-color;
+        cursor: pointer;
+      }
+    }
+  }
   &.inactive {
     overflow: hidden;
     display: none;

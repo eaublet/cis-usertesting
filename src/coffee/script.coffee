@@ -371,37 +371,36 @@ initSections = () ->
 	# 	$(@).parent().prevAll().removeClass('active').addClass('inactive filled')
 
 watchField = (el, nextLabel) ->
+	console.log(el.split(','))
 	unless el is false
 		elements = el.split(',')
 		toValidate = elements.length
 		nextSection = $('.section.inactive').first()
-		log(nextSection)
-		# $('.nextStep').html(nextLabel)
+		nextStepIndex = parseInt($('.section.inactive').first().data('step'))
+		log(toValidate)
 		for i in elements
 			$(i).on 'focus', ->
 				toValidate--
 				if toValidate is 0
-
+					log($('.nextStep'))
 					setTimeout (->
-						$('.nextStep').removeClass 'btn-inactive isHidden', {duration:500}
-						nextSection.css {overflow: 'visible'; display: 'block';}
-						nextSection.find('h2').animate {opacity: 0.25}, 500
-						nextSection.attr('tabIndex', 0)
+						$('.nextStep').removeClass('isHidden')
+						$('a.btn').removeClass('btn-inactive')
+						$('.nextStep-wrapper.isHidden').first().removeClass('isHidden').css({visibility: 'visible'; display: 'block'}).animate {opacity: 1;}, 500
 					), 500
 	else
 		nextSection.css {overflow: 'visible'; display: 'block';}
 		$('.nextStep').html(nextLabel).removeClass('isHidden')
 
-checkoutButtonNextStep = (thisStep) ->
+checkoutButtonNextStep = ->
 	maxStep = '3'
-	$('.nextStep').click ->
-		if $('.nextStep').hasClass 'btn-inactive isHidden'
+	$('.nextStep').unbind('click').click ->
+		if $(@).hasClass 'isHidden'
 			return
 		else
-			# thisStep = $(@).attr('data-current-step')
-			nextStep = parseInt(thisStep) + 1
-			log(thisStep == maxStep)
-			if parseInt(thisStep) == parseInt(maxStep)
+			thisStep = $(@).attr('data-current-step')
+
+			if thisStep == maxStep
 				if $('body').hasClass 'desktop'
 					$('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }')
 				else
@@ -411,49 +410,38 @@ checkoutButtonNextStep = (thisStep) ->
 			else
 				$('.section[data-step=' + thisStep + ']').addClass 'filled inactive'
 				thisStep++
-				$('.section[data-step=' + nextStep + ']').removeClass('filled inactive').addClass 'active'
-				setTimeout (-> $('html, body').animate { scrollTop: ($('.section[data-step=' + nextStep + ']').position().top - $('nav').outerHeight()) }, 640), 640
+				$('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass 'active'
+				setTimeout (-> $('html, body').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 640), 640
 				# $(@).attr('data-current-step', thisStep).addClass('btn-inactive isHidden')
-				$('.btn[data-current-step=' + nextStep + ']').addClass('btn-inactive isHidden')
-				changeStep(nextStep)
+				$('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden')
+				changeStep()
 
-changeStep = (step = 0) ->
-	switch step
-		when 0
+changeStep = ->
+	switch $('.nextStep.isHidden').attr('data-current-step')
+		when '0'
 			watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping')
-			checkoutButtonNextStep(step)
-		when 1
-			setTimeout (->
-				$('.section[data-step=1]').first().find('h2').animate {opacity: 1}, 500
-			), 500
+			checkoutButtonNextStep()
+		when '1'
 			$('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
 			$('.section[data-step=0] .surcontent .email').text($('#first-email').val())
 			$('#second-fn').val($('#first-fn').val())
 			$('#second-ln').val($('#first-ln').val())
 			$('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#second-address', 'Continue to payment')
-			checkoutButtonNextStep(step)
-		when 2
-			setTimeout (->
-				$('.section[data-step=2]').first().find('h2').animate {opacity: 1}, 500
-			), 500
+			checkoutButtonNextStep()
+		when '2'
 			$('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val())
 			watchField('#third-cc', 'Continue to review')
-			checkoutButtonNextStep(step)
-		when 3
+			checkoutButtonNextStep()
+		when '3'
 			unless $('body').hasClass 'desktop'
 				$('.cartSummary').hide()
-			setTimeout (->
-				$('.section[data-step=3]').first().find('h2').animate {opacity: 1}, 500
-				$('.section[data-step=3]').attr('tabbindex', 0)
-
-			), 500
 			setTimeout ( -> $('.nextStep[data-current-step=3]').html('Complete your purchase').removeClass('btn-inactive isHidden') ), 320
-			checkoutButtonNextStep(JSON.stringify(step))
+			checkoutButtonNextStep()
 		else
 
-initCheckoutButton = () ->
-	changeStep(0)
+initCheckoutButton = ->
+	changeStep()
 	# checkoutButtonNextStep('#second-address', 'Continue to payment')
 
 getUrlParameter = (sParam) ->
@@ -571,12 +559,6 @@ initConfirm = () ->
 	getInfos()
 
 $(document).ready ->
-	$('#openFilters').click ->
-		$('body').addClass 'overlayed'
-		$('.filterPanel').addClass 'active'
-	$('.filterPanel .close').click ->
-		$('body').removeClass 'overlayed'
-		$('.filterPanel').removeClass 'active'
 	initUI()
 	$('.surnav').dblclick ->
 		window.location = './'

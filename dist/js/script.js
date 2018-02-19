@@ -475,30 +475,30 @@
   };
 
   watchField = function(el, nextLabel) {
-    var elements, i, j, len, nextSection, results, toValidate;
+    var elements, i, j, len, nextSection, nextStepIndex, results, toValidate;
+    console.log(el.split(','));
     if (el !== false) {
       elements = el.split(',');
       toValidate = elements.length;
       nextSection = $('.section.inactive').first();
-      log(nextSection);
+      nextStepIndex = parseInt($('.section.inactive').first().data('step'));
+      log(toValidate);
       results = [];
       for (j = 0, len = elements.length; j < len; j++) {
         i = elements[j];
         results.push($(i).on('focus', function() {
           toValidate--;
           if (toValidate === 0) {
+            log($('.nextStep'));
             return setTimeout((function() {
-              $('.nextStep').removeClass('btn-inactive isHidden', {
-                duration: 500
-              });
-              nextSection.css({
-                overflow: 'visible',
+              $('.nextStep').removeClass('isHidden');
+              $('a.btn').removeClass('btn-inactive');
+              return $('.nextStep-wrapper.isHidden').first().removeClass('isHidden').css({
+                visibility: 'visible',
                 display: 'block'
-              });
-              nextSection.find('h2').animate({
-                opacity: 0.25
+              }).animate({
+                opacity: 1
               }, 500);
-              return nextSection.attr('tabIndex', 0);
             }), 500);
           }
         }));
@@ -513,17 +513,16 @@
     }
   };
 
-  checkoutButtonNextStep = function(thisStep) {
+  checkoutButtonNextStep = function() {
     var maxStep;
     maxStep = '3';
-    return $('.nextStep').click(function() {
-      var nextStep;
-      if ($('.nextStep').hasClass('btn-inactive isHidden')) {
+    return $('.nextStep').unbind('click').click(function() {
+      var thisStep;
+      if ($(this).hasClass('isHidden')) {
 
       } else {
-        nextStep = parseInt(thisStep) + 1;
-        log(thisStep === maxStep);
-        if (parseInt(thisStep) === parseInt(maxStep)) {
+        thisStep = $(this).attr('data-current-step');
+        if (thisStep === maxStep) {
           if ($('body').hasClass('desktop')) {
             $('.nextStep[data-current-step=' + thisStep + ']').attr('href', '/confirmDesktop.html?products=' + JSON.stringify(products) + '&infos={email:"' + $('#first-email').val() + '", name:"' + $('#first-fn').val() + ' ' + $('#first-ln').val() + '" }');
           } else {
@@ -533,68 +532,49 @@
         } else {
           $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
           thisStep++;
-          $('.section[data-step=' + nextStep + ']').removeClass('filled inactive').addClass('active');
+          $('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass('active');
           setTimeout((function() {
             return $('html, body').animate({
-              scrollTop: $('.section[data-step=' + nextStep + ']').position().top - $('nav').outerHeight()
+              scrollTop: $('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()
             }, 640);
           }), 640);
-          $('.btn[data-current-step=' + nextStep + ']').addClass('btn-inactive isHidden');
-          return changeStep(nextStep);
+          $('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden');
+          return changeStep();
         }
       }
     });
   };
 
-  changeStep = function(step) {
-    if (step == null) {
-      step = 0;
-    }
-    switch (step) {
-      case 0:
+  changeStep = function() {
+    switch ($('.nextStep.isHidden').attr('data-current-step')) {
+      case '0':
         watchField('#first-fn,#first-ln,#first-email', 'Continue to shipping');
-        return checkoutButtonNextStep(step);
-      case 1:
-        setTimeout((function() {
-          return $('.section[data-step=1]').first().find('h2').animate({
-            opacity: 1
-          }, 500);
-        }), 500);
+        return checkoutButtonNextStep();
+      case '1':
         $('.section[data-step=0] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
         $('.section[data-step=0] .surcontent .email').text($('#first-email').val());
         $('#second-fn').val($('#first-fn').val());
         $('#second-ln').val($('#first-ln').val());
         $('.address span.name').html($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#second-address', 'Continue to payment');
-        return checkoutButtonNextStep(step);
-      case 2:
-        setTimeout((function() {
-          return $('.section[data-step=2]').first().find('h2').animate({
-            opacity: 1
-          }, 500);
-        }), 500);
+        return checkoutButtonNextStep();
+      case '2':
         $('.section[data-step=1] .surcontent .name').text($('#first-fn').val() + ' ' + $('#first-ln').val());
         watchField('#third-cc', 'Continue to review');
-        return checkoutButtonNextStep(step);
-      case 3:
+        return checkoutButtonNextStep();
+      case '3':
         if (!$('body').hasClass('desktop')) {
           $('.cartSummary').hide();
         }
         setTimeout((function() {
-          $('.section[data-step=3]').first().find('h2').animate({
-            opacity: 1
-          }, 500);
-          return $('.section[data-step=3]').attr('tabbindex', 0);
-        }), 500);
-        setTimeout((function() {
           return $('.nextStep[data-current-step=3]').html('Complete your purchase').removeClass('btn-inactive isHidden');
         }), 320);
-        return checkoutButtonNextStep(JSON.stringify(step));
+        return checkoutButtonNextStep();
     }
   };
 
   initCheckoutButton = function() {
-    return changeStep(0);
+    return changeStep();
   };
 
   getUrlParameter = function(sParam) {
@@ -752,14 +732,6 @@
   };
 
   $(document).ready(function() {
-    $('#openFilters').click(function() {
-      $('body').addClass('overlayed');
-      return $('.filterPanel').addClass('active');
-    });
-    $('.filterPanel .close').click(function() {
-      $('body').removeClass('overlayed');
-      return $('.filterPanel').removeClass('active');
-    });
     initUI();
     $('.surnav').dblclick(function() {
       return window.location = './';
