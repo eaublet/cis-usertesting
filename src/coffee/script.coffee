@@ -559,6 +559,12 @@ initConfirm = () ->
 	getInfos()
 
 $(document).ready ->
+	$('#openFilters').click ->
+		$('body').addClass 'overlayed'
+		$('.filterPanel').addClass 'active'
+	$('.filterPanel .close').click ->
+		$('body').removeClass 'overlayed'
+		$('.filterPanel').removeClass 'active'
 	initUI()
 	$('.surnav').dblclick ->
 		window.location = './'
