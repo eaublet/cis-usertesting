@@ -637,6 +637,7 @@ h1 + h6 { margin-top: 1rem; }
 .filterPanel h1 { margin-bottom: 1rem; }
 
 .avb { position: relative; }
+.avb img { width: 100%; }
 .avb .options { position: relative; }
 .avb .option-a, .avb .option-b { opacity: 1; cursor: pointer; position: absolute; top: 0; width: 50%; bottom: 0; z-index: 10; }
 .avb .option-a { left: 0; }
