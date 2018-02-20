@@ -38,7 +38,8 @@ mixin nav(surnav, simple)
 								span 1
 								span
 			.middle
-				.brand: img(src="./img/global/ico_brand.svg")
+				.brand(ondblclick="goto('/')")
+					img(src="./img/global/ico_brand.svg")
 			if simple
 				.right
 					p.small Need help?
