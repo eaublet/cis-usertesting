@@ -145,14 +145,19 @@ body {
   margin-top: 3rem;
   position: relative;
   outline: none;
+  // min-height: 6rem;
   .content {
     padding-bottom: 2rem;
     max-height: 3000px;
-    @include transition(all $longDuration);
+    transition: all 640ms linear;
     overflow-x: hidden;
   }
   .surcontent {
-    display: none;
+    // display: none;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: all 640ms linear
   }
   .editSection {
     position: absolute;
@@ -171,7 +176,7 @@ body {
       opacity: 1;
       transform: translateY(0);
       visibility: visible;
-      @include transition(all, $duration);
+      transition: all 640ms linear;
       &.transition{
         opacity: 0;
         transform: translateY(2rem);
@@ -214,7 +219,10 @@ body {
       }
     }
     .surcontent {
-      display: block;
+      // display: block;
+      // position: absolute;
+      // top: 0;
+      opacity: 1;
     }
     .editSection {
       display: block;
@@ -249,7 +257,15 @@ body {
     }
   }
 }
-
+.section[data-step="0"]{
+  min-height: 5rem;
+}
+.section[data-step="1"]{
+  min-height: 9rem;
+}
+.section[data-step="2"]{
+  min-height: 5rem;
+}
 .hidden-address {
   max-height: 0;
   @include transition(all);

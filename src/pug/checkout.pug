@@ -22,7 +22,8 @@ body.checkout
 				|Who is placing the order?
 			a.btn.btn-alt.editSection Edit
 			.surcontent
-				h5 Your info
+				h6(style="margin-bottom: 0") 1 of 4
+				h5(style="margin-top: 0.5rem") Your info
 				span.name First Last
 				span.email Email
 			.content
@@ -43,7 +44,8 @@ body.checkout
 				|Where are we sending your items?
 			a.btn.btn-alt.editSection Edit
 			.surcontent
-				h5 Shipping
+				h6(style="margin-bottom: 0") 2 of 4
+				h5(style="margin-top: 0.5rem") Shipping
 				span.name Sarah
 				span.line1 400 Boulevard de Maisonneuve O #700
 				span.line2 Montreal, QC
@@ -55,7 +57,7 @@ body.checkout
 						.img: img(src='/img/checkout/box.svg')
 						.info
 							.label Ship by mail
-							p.small Sorry, no P.O. boxes
+							p.small Free for this order!
 					.tab(data-tab='store', data-container='.shipping-option')
 						.img: img(src='/img/checkout/icon.svg')
 						.info
@@ -95,7 +97,8 @@ body.checkout
 				|How would you like to pay?
 			a.btn.btn-alt.editSection Edit
 			.surcontent
-				h5 Billing
+				h6(style="margin-bottom: 0") 3 of 4
+				h5(style="margin-top: 0.5rem") Billing
 				.visa
 					img(src="/img/checkout/visa.png", width=49)
 					span **** **** **** 4632
