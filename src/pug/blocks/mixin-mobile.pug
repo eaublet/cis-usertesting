@@ -205,13 +205,13 @@ mixin cart(productA, productB)
 			hr.large
 		h4 Popular add-ons
 		.grid.border-top
-			.cell.single.product.cta
+			.cell.single.product.cta.quickBuyCell
 				img.full(src=productA.img)
 				.details
 					.title!= productA.title
 					.price!= productA.price
 				a.btn.btn-alt.btn-padded.quickAddToCart(quick-name= productA.title, 'quick-price'=productA.price, quick-image=productA.img) Quick add
-			.cell.single.product.cta
+			.cell.single.product.cta.quickBuyCell
 				img.full(src=productB.img)
 				.details
 					.title!= productB.title

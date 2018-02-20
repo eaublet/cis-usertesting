@@ -232,10 +232,10 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 .grid .cell.product .details { color: #666; font-size: 0.875rem; position: absolute; bottom: 1rem; left: 1rem; }
 .grid .cell.product .details .title { text-transform: lowercase; }
 .grid .cell.product .details .title:first-letter { text-transform: uppercase; }
-.grid .cell.product.cta .details { bottom: 4.5rem; }
+.grid .cell.product.cta .details { bottom: 5rem; }
 @media (min-width: 1024px) { .grid .cell.product.cta .details { bottom: 6.5rem; left: 2rem; } }
-.grid .cell.product.cta .btn { margin-top: 2rem; margin-bottom: 1rem; }
-@media (min-width: 1024px) { .grid .cell.product.cta .btn { margin-top: 2rem; margin-bottom: 2rem; width: calc(100% - 4rem); margin-left: 2rem; height: 60px; line-height: 60px; } }
+.grid .cell.product.cta .btn { margin-top: 2rem; margin-bottom: 0rem; -ms-transform: translateY(1rem); transform: translateY(1rem); }
+@media (min-width: 1024px) { .grid .cell.product.cta .btn { margin-top: 2rem; margin-bottom: 2rem; width: calc(100% - 4rem); margin-left: 2rem; height: 60px; line-height: 60px; -ms-transform: none; transform: none; } }
 
 .socialInfo { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; padding-top: 1rem; padding-left: 1rem; font-size: 0.875rem; }
 .socialInfo img { width: 0.75rem; -ms-transform: translate(-0.35rem, 1px); transform: translate(-0.35rem, 1px); }
@@ -280,6 +280,7 @@ nav.mobile .buySticky.visible { -ms-transform: translate(0, 0); transform: trans
 
 .cartWrapper { position: fixed; height: 100%; top: 0; left: 0; width: 100%; overflow: scroll; -ms-transform: translateY(-120%); transform: translateY(-120%); z-index: 9999; background-color: #fff; -webkit-overflow-scrolling: touch; will-change: transform; transition: transform 800ms cubic-bezier(0.77, 0, 0.175, 1); padding-top: 1rem; }
 .cartWrapper.isVisible { -ms-transform: translateY(0); transform: translateY(0); }
+.cartWrapper .quickBuyCell { min-height: 19rem; }
 .cartWrapper h1 span.count { margin-left: 0.5rem; font-weight: 500; color: #767676; }
 .cartWrapper .cartId { color: #767676; margin-top: 0.5rem; margin-bottom: 2rem; font-size: 0.875rem; }
 .cartWrapper .total { margin-bottom: 0; }

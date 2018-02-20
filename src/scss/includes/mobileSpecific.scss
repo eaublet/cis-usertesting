@@ -343,15 +343,18 @@ nav.mobile {
       }
       &.cta {
         .details {
-          bottom: 4.5rem;
+          bottom: 5rem;
           @media (min-width: 1024px) {
             bottom: 6.5rem;
             left: 2rem;
           }
         }
         .btn {
+          // position: absolute;
+          // bottom: 0.5rem;
           margin-top: 2rem;
-          margin-bottom: 1rem;
+          margin-bottom: 0rem;
+          transform: translateY(1rem);
           // width:
           @media (min-width: 1024px) {
             margin-top: 2rem;
@@ -360,6 +363,7 @@ nav.mobile {
             margin-left: 2rem;
             height: 60px;
             line-height: 60px;
+            transform: none;
           }
         }
       }
@@ -566,6 +570,9 @@ nav.mobile {
   }
   padding-top: 1rem;
   // padding-bottom: 60px;
+  .quickBuyCell{
+    min-height: 19rem;
+  }
   h1 {
     span.count {
       margin-left: 0.5rem;
@@ -613,6 +620,7 @@ nav.mobile {
       display: block;
     }
   }
+ 
   .options {
     padding-right: 1rem;
     padding-top: 0.5rem;
