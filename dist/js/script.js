@@ -513,9 +513,24 @@
         $('.section[data-step=' + thisStep + ']').addClass('filled inactive');
         thisStep++;
         $('.section[data-step=' + thisStep + ']').removeClass('filled inactive').addClass('active');
-        elAnchor.animate({
-          scrollTop: step
+        elAnchor.scrollTo('.section[data-step=' + (thisStep - 1) + '] h5', 0, {
+          offset: function() {
+            return {
+              margin: true,
+              top: ($('nav').outerHeight() * -1) - 20
+            };
+          }
         });
+        setTimeout((function() {
+          return elAnchor.scrollTo('.section[data-step=' + thisStep + '] .eyeBrow', 640, {
+            offset: function() {
+              return {
+                margin: true,
+                top: ($('nav').outerHeight() * -1) - 20
+              };
+            }
+          });
+        }), 640);
         $('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden');
         return changeStep();
       }

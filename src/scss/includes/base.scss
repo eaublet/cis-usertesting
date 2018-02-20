@@ -148,7 +148,7 @@ body {
   .content {
     padding-bottom: 2rem;
     max-height: 3000px;
-    // @include transition(all $longDuration);
+    @include transition(all $longDuration);
     overflow-x: hidden;
   }
   .surcontent {

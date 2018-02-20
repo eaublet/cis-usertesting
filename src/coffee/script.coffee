@@ -434,7 +434,20 @@ checkoutButtonNextStep = ->
 			# 	$('.sideLeft').animate { scrollTop: ($('.section[data-step=' + thisStep + ']').position().top - $('nav').outerHeight()) }, 1640
 			# ), 3640
 			# $(@).attr('data-current-step', thisStep).addClass('btn-inactive isHidden')
-			elAnchor.animate({scrollTop: step})
+			# console.log($('.section[data-step=' + thisStep + ']').offset().top)
+			# elAnchor.animate {scrollTop: ($('.section[data-step=' + thisStep + ']').offset().top - $('.section[data-step=' + thisStep + ']').outerHeight()) }, 1000
+			elAnchor.scrollTo '.section[data-step=' + (thisStep - 1) + '] h5', 0, offset: ->
+				{
+					margin: true,
+					top: ($('nav').outerHeight() * -1) - 20
+				}
+			setTimeout ( ->
+				elAnchor.scrollTo '.section[data-step=' + thisStep + '] .eyeBrow', 640, offset: ->
+					{
+						margin: true,
+						top: ($('nav').outerHeight() * -1) - 20
+					}
+			), 640
 			$('.btn[data-current-step=' + thisStep + ']').addClass('btn-inactive isHidden')
 			changeStep()
 
