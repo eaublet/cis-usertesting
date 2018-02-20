@@ -783,16 +783,21 @@ ul.dropDownButtons {
 }
 
 .selectbox-wrapper:before {
-  content: '▴';
+  content: '';
+  background-image: url(../img/pdp/carrott.png);
+  background-size: 7px;
+  background-repeat: no-repeat;
+  width: 7px;
+  height: 7px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%) rotate(180deg);
   color: $black;
   display: inline-block;
   right: 1.2rem;
   pointer-events: none;
+  transform: translate(0, -20%);
   @media (max-width: 640px) {
-    right: 0.5rem;
+    right: 0.85rem;
   }
 }
 
