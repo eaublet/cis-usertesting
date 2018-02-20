@@ -579,13 +579,13 @@ body.desktop.fixed:before { opacity: 1; }
 .topVertical li .img { width: 7rem; }
 .topVertical li .img img { width: 100%; }
 .topVertical li span { display: block; }
-.topVertical li .details { font-size: .875rem; margin-left: 1rem; }
-.topVertical li .num { margin-right: 1rem; position: relative; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: .875rem; color: white; z-index: 99; }
+.topVertical li .details { font-size: 0.875rem; margin-left: 1rem; }
+.topVertical li .num { margin-right: 1rem; position: relative; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: 0.875rem; color: white; z-index: 99; }
 .topVertical li .num:before { position: absolute; top: 0rem; left: 0rem; width: 1.5rem; height: 1.5rem; background-color: black; content: ''; z-index: -1; -ms-transform: rotate(0.125turn); transform: rotate(0.125turn); -ms-transform-origin: center center; transform-origin: center center; }
 .topVertical li:hover .details { text-decoration: underline; color: #4200D7; }
 
 .promo.filters { padding: 3rem 3rem; position: relative; }
-.promo.filters:before { content: ""; position: absolute; top: 1.5rem; left: 1.5rem; background: linear-gradient(135deg, #10069F 0%, #9932CC 100%); width: calc(100% - 3rem); height: calc(100% - 3rem); }
+.promo.filters:before { content: ''; position: absolute; top: 1.5rem; left: 1.5rem; background: linear-gradient(135deg, #10069f 0%, #9932cc 100%); width: calc(100% - 3rem); height: calc(100% - 3rem); }
 .promo.filters h6 { color: white; position: relative; }
 .promo.filters ul { list-style-type: none; margin: 1.5rem 0 0 0; padding: 0; }
 .promo.filters ul li { display: table; height: 3.75rem; padding: 0 1.5rem; line-height: 3.75rem; border-radius: 3rem; box-shadow: inset 0 0 0 1px white; color: white; font-size: 1.5rem; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); cursor: pointer; position: relative; overflow: hidden; z-index: 1; }
@@ -598,19 +598,19 @@ body.desktop.fixed:before { opacity: 1; }
 .promo.bigOff .content .right { position: absolute; top: 1rem; right: 1rem; }
 .promo.bigOff .content .sale { position: absolute; bottom: 1rem; left: 1rem; font-size: 2.875rem; line-height: 2.8rem; }
 .promo.bigOff .btn { margin-top: 1rem; border: 2px solid #4200D7; font-weight: 600; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
-.promo.bigOff:before { border: 0px solid #9932CC; position: absolute; width: 100%; height: 100%; content: ""; top: 0; left: 0; box-sizing: border-box; opacity: 0; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
+.promo.bigOff:before { border: 0px solid #9932CC; position: absolute; width: 100%; height: 100%; content: ''; top: 0; left: 0; box-sizing: border-box; opacity: 0; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 .promo.bigOff:hover .content { background-size: 200%; }
 .promo.bigOff:hover .btn { border-color: #9932CC; color: #9932CC; }
 
 .promo.shipping { position: relative; width: 100%; height: 100%; cursor: pointer; }
-.promo.shipping:before { border: 0px solid #9932CC; position: absolute; width: 100%; height: 100%; content: ""; top: 0; left: 0; box-sizing: border-box; opacity: 0; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
+.promo.shipping:before { border: 0px solid #9932CC; position: absolute; width: 100%; height: 100%; content: ''; top: 0; left: 0; box-sizing: border-box; opacity: 0; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
 .promo.shipping p { font-size: 2.875rem; line-height: 2.8rem; color: #4200D7; font-weight: 600; padding: 1.5rem; will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
 .promo.shipping .triangle { position: absolute; bottom: 0; right: 0; width: 25vw; height: 25vw; padding: 0; background: linear-gradient(135deg, #10069F, #9932CC); background-position: bottom right; background-size: 100%; -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%); clip-path: polygon(100% 0, 0% 100%, 100% 100%); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); }
 .promo.shipping:hover:before { border-width: 3px; opacity: 1; }
 .promo.shipping:hover p { color: #9932CC; }
 .promo.shipping:hover .triangle { background-size: 200%; padding: 2rem; width: calc(25vw - 3rem); height: calc(25vw - 3rem); bottom: 1.5rem; right: 1.5rem; }
 
-body.me2we .grid h2 { padding: 0 !important; margin-bottom: 1rem !important; margin-top: 2rem !important; color: #0B3252; font-size: 2.25rem; }
+body.me2we .grid h2 { padding: 0 !important; margin-bottom: 1rem !important; margin-top: 2rem !important; color: #0b3252; font-size: 2.25rem; }
 body.me2we .grid p { font-size: 1rem; line-height: 1.2; color: #767676; margin-bottom: 1rem !important; }
 body.me2we .grid .icon { margin: 0; padding: 0; width: 3.75rem; }
 body.me2we .grid .icon img { width: 100%; }
@@ -620,21 +620,30 @@ h1 + h6 { margin-top: 1rem; }
 .filterPanel { position: absolute; -ms-transform: translateY(-100%); transform: translateY(-100%); opacity: 0; background-color: white; will-change: all; transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1); }
 .filterPanel header { position: relative; padding-left: 2rem; }
 .filterPanel header .close { cursor: pointer; position: absolute; top: 2rem; right: 2rem; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; font-size: 0.875rem; font-weight: 600; }
-.filterPanel header .close svg { margin-left: .5rem; width: 1em; }
+.filterPanel header .close svg { margin-left: 0.5rem; width: 1em; }
 .filterPanel img.full { width: 100%; }
 .filterPanel.active { -ms-transform: translateY(0); transform: translateY(0); opacity: 1; }
 
-.salePrice { color: #4200D7; font-weight: 700; display: inline; margin-left: .5rem; }
+.salePrice { color: #4200D7; font-weight: 700; display: inline; margin-left: 0.5rem; }
 
-.saleMessage { position: absolute; top: 1rem; left: 1rem; z-index: 100; font-size: .875rem; font-weight: 700; color: #4200D7; width: calc(100% - 2rem); height: 2rem; }
+.saleMessage { position: absolute; top: 1rem; left: 1rem; z-index: 100; font-size: 0.875rem; font-weight: 700; color: #4200D7; width: calc(100% - 2rem); height: 2rem; }
 .saleMessage.new span { padding: 4px 6px 3px 7px; background-color: #4200D7; color: white; }
-.saleMessage.triangle:before { content: ""; width: 0; position: absolute; height: 0; top: 0; right: 0; border-style: solid; border-width: 0 1rem 1rem 0; border-color: transparent #4200D7 transparent transparent; }
+.saleMessage.triangle:before { content: ''; width: 0; position: absolute; height: 0; top: 0; right: 0; border-style: solid; border-width: 0 1rem 1rem 0; border-color: transparent #4200D7 transparent transparent; }
 
 .price.slash > span { text-decoration: line-through; }
 
 .desktop .container .options { padding-right: 0; }
 
 .filterPanel h1 { margin-bottom: 1rem; }
+
+.avb { position: relative; }
+.avb .options { position: relative; }
+.avb .option-a, .avb .option-b { opacity: 1; cursor: pointer; position: absolute; top: 0; width: 50%; bottom: 0; z-index: 10; }
+.avb .option-a { left: 0; }
+.avb .option-b { right: 0; }
+.avb .results { position: absolute; top: 0; }
+.avb .result-a, .avb .result-b { opacity: 1; transition: all 400ms ease; }
+.avb .result-a.isHidden, .avb .result-b.isHidden { position: absolute; top: 0; z-index: 0; opacity: 0; }
 
 .colorList li { width: 2rem; height: 2rem; margin: 1rem 1rem 0.5rem 0.5rem; -ms-transform: rotate(0.12501turn); transform: rotate(0.12501turn); color: transparent; position: relative; background-size: cover; }
 .colorList li:before { content: ''; width: 110%; height: 110%; position: absolute; background-color: transparent; top: 50%; left: 50%; -ms-transform-origin: center center; transform-origin: center center; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); will-change: all; transition: all 180ms cubic-bezier(0.77, 0, 0.175, 1); box-shadow: inset 0 0 0 0 transparent; border: 1px solid transparent; opacity: 0; }
