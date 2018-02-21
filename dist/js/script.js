@@ -637,11 +637,13 @@
       }
       $(e.target).addClass('disabled');
       if ($(e.target).hasClass('option-a')) {
+        $('option-b').addClass('disabled');
         return setTimeout((function() {
           $('.result-a').removeClass('isHidden');
           return $('.result-b').addClass('isHidden');
         }), 250);
       } else {
+        $('option-a').addClass('disabled');
         return setTimeout((function() {
           $('.result-b').removeClass('isHidden');
           return $('.result-a').addClass('isHidden');
