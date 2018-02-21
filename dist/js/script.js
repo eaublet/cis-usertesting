@@ -479,9 +479,8 @@
   watchField = function(el, nextLabel) {
     return $(el).keyup(function(event) {
       if ($(el).val().length > 0) {
-        log($('.nextStep'));
         return setTimeout((function() {
-          $('.nextStep').removeClass('isHidden');
+          $(el).parentsUntil('.content').parent().first().find('.nextStep').removeClass('isHidden');
           $('a.btn').removeClass('btn-inactive');
           $('.nextStep-wrapper.isHidden').removeClass('isHidden').addClass('transition');
           return setTimeout((function() {

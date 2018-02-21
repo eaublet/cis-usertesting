@@ -373,9 +373,9 @@ initSections = () ->
 watchField = (el, nextLabel) ->
 	$(el).keyup (event) ->
 		if $(el).val().length > 0
-			log($('.nextStep'))
 			setTimeout (->
-				$('.nextStep').removeClass('isHidden')
+				$(el).parentsUntil('.content').parent().first().find('.nextStep').removeClass('isHidden')
+				# $('.nextStep').removeClass('isHidden')
 				$('a.btn').removeClass('btn-inactive')
 				$('.nextStep-wrapper.isHidden').removeClass('isHidden').addClass('transition')
 				setTimeout (->
