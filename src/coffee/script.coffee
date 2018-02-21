@@ -539,10 +539,12 @@ toggleAvB = () ->
 		if $(e.target).hasClass('option-a')
 			setTimeout (->
 				$('.result-a').removeClass('isHidden')
+				$('.result-b').addClass('isHidden')
 			), 250
 		else
 			setTimeout (->
 				$('.result-b').removeClass('isHidden')
+				$('.result-a').addClass('isHidden')
 			), 250
 
 

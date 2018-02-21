@@ -639,11 +639,13 @@
       $(e.target).addClass('disabled');
       if ($(e.target).hasClass('option-a')) {
         return setTimeout((function() {
-          return $('.result-a').removeClass('isHidden');
+          $('.result-a').removeClass('isHidden');
+          return $('.result-b').addClass('isHidden');
         }), 250);
       } else {
         return setTimeout((function() {
-          return $('.result-b').removeClass('isHidden');
+          $('.result-b').removeClass('isHidden');
+          return $('.result-a').addClass('isHidden');
         }), 250);
       }
     });
