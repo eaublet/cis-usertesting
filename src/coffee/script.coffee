@@ -138,7 +138,7 @@ sizeSelector = () ->
 			$(".size-selectbox option[selected=selected]").removeAttr("selected")
 			$(".size-selectbox option[value='"+	sizeSelectedVal+"']").attr('selected', 'selected')
 			$('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(@).text() + ' to Cart')
-			$('a.addToCart').removeClass('added').find('.label').html('Add to cart')
+			$('a.addToCart').removeClass('added').find('.label').html('Add to bag')
 
 
 	$('.size-selectbox').change (e) ->
@@ -227,8 +227,8 @@ updateCart = (products) ->
 	$('.totalPrice').html('$' + totalValue)
 setAdded = () ->
 	setTimeout ( ->
-		$('.btn.addToCart').addClass('added').find('.label').html('Added! Open cart')
-		$('.right > .btn-gradient').addClass('added').find('.label').html('Added! Open cart')
+		$('.btn.addToCart').addClass('added').find('.label').html('Added! Open bag')
+		$('.right > .btn-gradient').addClass('added').find('.label').html('Added! Open bag')
 	), 640
 addToCart = () ->
 	$('.btn.addToCart').on 'click', (e) ->

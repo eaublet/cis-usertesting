@@ -117,12 +117,12 @@ body {
           margin-left: 0.25rem;
         }
         &:first-child {
-          >* {
+          > * {
             padding-right: 0.5rem;
           }
         }
         &:last-child {
-          >* {
+          > * {
             padding-left: 0.5rem;
           }
         }
@@ -157,7 +157,7 @@ body {
     position: absolute;
     top: 0;
     opacity: 0;
-    transition: all 640ms linear
+    transition: all 640ms linear;
   }
   .editSection {
     position: absolute;
@@ -169,7 +169,7 @@ body {
     h2.left {
       color: $black;
     }
-    .nextStep.btn{
+    .nextStep.btn {
       margin-top: 2rem;
     }
     .nextStep-wrapper {
@@ -177,13 +177,13 @@ body {
       transform: translateY(0);
       visibility: visible;
       transition: all 640ms linear;
-      &.transition{
+      &.transition {
         opacity: 0;
         transform: translateY(2rem);
         visibility: visible;
         display: block;
       }
-      &.isHidden{
+      &.isHidden {
         opacity: 0;
         visibility: hidden;
         display: none;
@@ -214,7 +214,7 @@ body {
       opacity: 1;
       visibility: visible;
       display: inherit;
-      .surcontent{
+      .surcontent {
         display: block;
       }
     }
@@ -257,13 +257,13 @@ body {
     }
   }
 }
-.section[data-step="0"]{
+.section[data-step='0'] {
   min-height: 5rem;
 }
-.section[data-step="1"]{
+.section[data-step='1'] {
   min-height: 9rem;
 }
-.section[data-step="2"]{
+.section[data-step='2'] {
   min-height: 5rem;
 }
 .hidden-address {

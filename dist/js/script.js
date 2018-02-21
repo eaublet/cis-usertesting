@@ -178,7 +178,7 @@
         $(".size-selectbox option[selected=selected]").removeAttr("selected");
         $(".size-selectbox option[value='" + sizeSelectedVal + "']").attr('selected', 'selected');
         $('.right > .btn-gradient').removeClass('added').find('.label').text('Add size ' + $(this).text() + ' to Cart');
-        return $('a.addToCart').removeClass('added').find('.label').html('Add to cart');
+        return $('a.addToCart').removeClass('added').find('.label').html('Add to bag');
       }
     });
     return $('.size-selectbox').change(function(e) {
@@ -282,8 +282,8 @@
 
   setAdded = function() {
     return setTimeout((function() {
-      $('.btn.addToCart').addClass('added').find('.label').html('Added! Open cart');
-      return $('.right > .btn-gradient').addClass('added').find('.label').html('Added! Open cart');
+      $('.btn.addToCart').addClass('added').find('.label').html('Added! Open bag');
+      return $('.right > .btn-gradient').addClass('added').find('.label').html('Added! Open bag');
     }), 640);
   };
 
