@@ -533,7 +533,9 @@ getInfos = () ->
 
 toggleAvB = () ->
 	$('.avb').click (e) ->
-
+		if $(e.target).hasClass('disabled')
+			return
+		$(e.target).addClass('disabled')
 		if $(e.target).hasClass('option-a')
 			setTimeout (->
 				$('.result-a').removeClass('isHidden')

@@ -633,6 +633,10 @@
 
   toggleAvB = function() {
     return $('.avb').click(function(e) {
+      if ($(e.target).hasClass('disabled')) {
+        return;
+      }
+      $(e.target).addClass('disabled');
       if ($(e.target).hasClass('option-a')) {
         return setTimeout((function() {
           return $('.result-a').removeClass('isHidden');
