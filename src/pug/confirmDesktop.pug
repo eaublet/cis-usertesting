@@ -9,7 +9,7 @@ include blocks/std_css.pug
 
 body.confirm.desktop
 	+nav('Free shipping for pick-up in-store & online orders of $45+')
-	
+
 
 	.grid.desktop
 		header.halfSquare.cell.double(style="background-image: url(/img/confirm/giphy.gif)")
@@ -50,7 +50,7 @@ body.confirm.desktop
 				.table.summary
 					.tableRow
 						.tableCell
-							h5 Subtotal
+							h5 Subtotal (CAD)
 						.tableCell
 							p.subtotalPrice $0.00
 					.tableRow
@@ -65,16 +65,16 @@ body.confirm.desktop
 							p.taxes $0.00
 					.tableRow
 						.tableCell
-							h5.total Total
+							h5.total Total (CAD)
 								span.small.beforeTaxes (Shipping & taxes calculated)
 						.tableCell
 							.totalPrice $XX
-		
+
 		.cell.doubleFree.cartSummary
 			ul.productsCart
 	.footer.desktop
 		img(src="/img/global/desktopFooter.png")
-			//- li 
+			//- li
 				.img
 					img(src='/img/pdp/bag.jpg')
 				.data
